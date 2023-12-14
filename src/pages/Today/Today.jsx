@@ -1,7 +1,7 @@
-import DailyGoal from './DailyGoal/DailyGoal';
-import Food from './Food/Food';
+import DailyGoal from '../../components/Today/DailyGoal/DailyGoal';
+import Food from '../../components/Today/Food/Food';
 import { StyledDiv, StyledDiv2 } from './Today.style';
-import Water from './Water/Water';
+import Water from '../../components/Today/Water/Water';
 
 const Today = () => {
   return (
