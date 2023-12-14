@@ -2,6 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
+body {
+    background-color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 400;
+    color: #FFFFFF
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -21,6 +28,7 @@ h1, h2, h3, h4, h5, h5, p {
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 button {
