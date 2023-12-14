@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
     background-color: #000000;
     font-family: 'Poppins', sans-serif;
-    font-size: 400;
+    font-weight: 400;
     color: #FFFFFF
 }
 
@@ -42,16 +42,16 @@ button {
     margin-left: auto;
     margin-right: auto;
 
-    @media (max-width: 810px) {
-        width: 780px
+    @media (min-width: 810px) {
+        width: 780px;
         padding-left: 15px;
         padding-right: 15px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    @media (max-width: 1402px) {
-        width: 1372px
+    @media (min-width: 1402px) {
+        width: 1372px;
         padding-left: 15px;
         padding-right: 15px;
         margin-left: auto;

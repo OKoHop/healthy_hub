@@ -1,8 +1,13 @@
+import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
+import { StyledDiv } from './Food.style';
+
 const Food = () => {
   return (
-    <>
-      <h4>Food</h4>
-    </>
+    <div>
+      <StyledSubtitle>Food</StyledSubtitle>
+
+      <StyledDiv></StyledDiv>
+    </div>
   );
 };
 
