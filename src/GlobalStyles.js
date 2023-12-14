@@ -26,4 +26,28 @@ a {
 button {
     cursor: pointer;
 }
+
+.container {
+    width: 300px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 810px) {
+        width: 780px
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (max-width: 1402px) {
+        width: 1372px
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 `;
