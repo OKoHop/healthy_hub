@@ -13,18 +13,18 @@ export const selectProductsForBreakfast = createSelector(
   intakeFood => getProductsByMealType(intakeFood, 'Breakfast')
 );
 
+const calculateSumMacronutrients = (products, inputMacronutrient) => {
+  return products.reduce(
+    (acc, product) => (acc += product[inputMacronutrient]),
+    0
+  );
+};
+
 // повертає к-сть спожитих вугеводів на сніданок (число)
 export const selectCarbonohidratesForBreakfast = createSelector(
     [selectProductsForBreakfast],
     products => calculateSumMacronutrients(products, 'carbohydrate')
   );
-
-  const calculateSumMacronutrients = (products, inputMacronutrient) => {
-    return products.reduce(
-      (acc, product) => (acc += product[inputMacronutrient]),
-      0
-    );
-  };
 
 // повертає к-сть спожитих білків на сніданок (число)
 export const selectConsumedProteinForBreakfast = createSelector(
@@ -38,16 +38,16 @@ export const selectConsumedFatForBreakfast = createSelector(
   products => calculateSumMacronutrients(products, 'fat')
 );
 
-// повертає к-сть спожитих вугеводів на обід (число)
-export const selectConsumedCarbonohidratesForLunch = createSelector(
-  [selectProductsForLunch],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
-);
-
 // повертає масив продуктів спожитих на обід
 export const selectProductsForLunch = createSelector(
   [selectIntakeFoodPerDay],
   intakeFood => getProductsByMealType(intakeFood, 'Lunch')
+);
+
+// повертає к-сть спожитих вугеводів на обід (число)
+export const selectConsumedCarbonohidratesForLunch = createSelector(
+  [selectProductsForLunch],
+  products => calculateSumMacronutrients(products, 'carbohydrate')
 );
 
 // повертає к-сть спожитих білків на обід (число)
@@ -62,16 +62,17 @@ export const selectConsumedFatForLunch = createSelector(
   products => calculateSumMacronutrients(products, 'fat')
 );
 
-// повертає к-сть спожитих вугеводів на вечерю (число)
-export const selectConsumedCarbonohidratesForDinner = createSelector(
-  [selectConsumedProductsForDinner],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
-);
-
 // повертає масив продуктів спожитих на вечерю
 export const selectConsumedProductsForDinner = createSelector(
   [selectIntakeFoodPerDay],
   intakeFood => getProductsByMealType(intakeFood, 'Dinner')
+);
+
+
+// повертає к-сть спожитих вугеводів на вечерю (число)
+export const selectConsumedCarbonohidratesForDinner = createSelector(
+  [selectConsumedProductsForDinner],
+  products => calculateSumMacronutrients(products, 'carbohydrate')
 );
 
 // повертає к-сть спожитих білків на вечерю (число)
@@ -86,16 +87,16 @@ export const selectConsumedFatForDinner = createSelector(
   products => calculateSumMacronutrients(products, 'fat')
 );
 
-// повертає к-сть спожитих вугеводів на перекус (число)
-export const selectConsumedCarbonohidratesForSnack = createSelector(
-  [selectProductsForSnack],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
-);
-
 // повертає масив продуктів спожитих на перекус
 export const selectProductsForSnack = createSelector(
   [selectIntakeFoodPerDay],
   intakeFood => getProductsByMealType(intakeFood, 'Snack')
+);
+
+// повертає к-сть спожитих вугеводів на перекус (число)
+export const selectConsumedCarbonohidratesForSnack = createSelector(
+  [selectProductsForSnack],
+  products => calculateSumMacronutrients(products, 'carbohydrate')
 );
 
 // повертає к-сть спожитих білків на перекус (число)

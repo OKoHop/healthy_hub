@@ -1,4 +1,4 @@
-import edit from './images/diaryPageImages/edit-2.svg'
+import edit from '../../images/diaryPageImages/edit-2.svg'
 
 import {
   Wrapper,

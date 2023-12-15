@@ -3,22 +3,22 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
-import ItemsToAdd from 'components/DiaryPage/ItemsToAdd';
-import ElementOfFood from 'components/DiaryPage/ElementOfFood';
+import ItemsToAdd from '../../components/DiaryPage/ItemsToAdd';
+import ElementOfFood from '../../components/DiaryPage/ElementOfFood';
 import {
   selectMacronutrientsPerDay,
   selectProductsForBreakfast,
   selectConsumedProductsForDinner,
   selectProductsForLunch,
   selectProductsForSnack,
-} from 'redux/statistics/statisticSelectors';
-import { getArrayToRenderDiary } from 'helpers/getArrayToRenderDiary';
+} from '../../redux/statistics/statisticSelectors';
+import { getArrayToRenderDiary } from '../../helpers/getArrayToRenderDiary';
 
-import breakfastImg from 'images/diaryPageImages/breakfast.png';
-import dinnerImg from 'images/diaryPageImages/dinner.png';
-import lunchImg from 'images/diaryPageImages/lunch.png';
-import snackImg from 'images/diaryPageImages/snack.png';
-import arrowRight from 'images/diaryPageImages/arrow-right.svg';
+import breakfastImg from '../../images/diaryPageImages/breakfast.png';
+import dinnerImg from '../../images/diaryPageImages/dinner.png';
+import lunchImg from '../../images/diaryPageImages/lunch.png';
+import snackImg from '../../images/diaryPageImages/snack.png';
+import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
 import {
   Section,
