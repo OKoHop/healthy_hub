@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/main" element={<Today />} />
       </Routes>
+      <SignUpPage />
       <GlobalStyle />
     </>
   );
