@@ -1,8 +1,4 @@
-import { useState } from 'react';
-import RecordDiaryModal from 'components/Modals/RecordDiaryModal/RecordDiaryModal.jsx';
-import UpdateMealModal from 'components/Modals/UpdateMealModal/UpdateMealModal';
-
-import edit from 'images/diaryPageImages/edit-2.svg'
+import edit from './images/diaryPageImages/edit-2.svg'
 
 import {
   Wrapper,
@@ -19,13 +15,7 @@ import {
 } from './ElementOfFood.styled';
 
 
-const ElementOfFood = ({ item, index, img }) => {
-  const [isRecordModalOpen, setIsRecordModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const toggleModalRecord = () => setIsRecordModalOpen(!isRecordModalOpen);
-  const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
-
+const ElementOfFood = ({ item, index }) => {
   const { carbohydrate, protein, fat, mealName, mealType, showButton } = item;  
 
   return (
@@ -36,16 +26,10 @@ const ElementOfFood = ({ item, index, img }) => {
             <SequenceNumber>
               {index + 1}
             </SequenceNumber>
-            <AddFoodButton onClick={toggleModalRecord}>
+            <AddFoodButton onClick>
               + Record your meal
             </AddFoodButton>
-            {isRecordModalOpen && (
-              <RecordDiaryModal
-                onClose={toggleModalRecord}
-                image={img}
-                mealType={mealType}
-              />
-            )}
+
           </Wrapper>
         ) : (
           <Wrapper>
@@ -55,7 +39,7 @@ const ElementOfFood = ({ item, index, img }) => {
             {mealType && (
               <Dish>                
                 <Title>{mealName}</Title>
-                <EditButton type="button" onClick={toggleModalEdit}><Img src={edit} alt="Edit" />Edit</EditButton>                
+                <EditButton type="button" onClick><Img src={edit} alt="Edit" />Edit</EditButton>                
                 <BlockInfo>
                   <Carbonohidrates>
                     <span>Carb.</span>
@@ -71,9 +55,6 @@ const ElementOfFood = ({ item, index, img }) => {
                   </Fat>
                 </BlockInfo>                
               </Dish>
-            )}
-            {isEditModalOpen && (
-              <UpdateMealModal onClose={toggleModalEdit} mealType={mealType} item={item} />
             )}
           </Wrapper>
         )}
