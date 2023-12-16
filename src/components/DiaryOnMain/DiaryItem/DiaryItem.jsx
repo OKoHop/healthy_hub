@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from 'react';
 
 import {
   AddButton,
@@ -11,10 +12,12 @@ import {
   FatWrap,
   DiaryImage,
   TitleWrap
-} from './DiaryItem.styled.jsx';
+} from './DiaryItem.styled';
 
 const DiaryItem = ({ title, image, info }) => {
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  
   const { carbonohidrates, protein, fat } = info;  
 
   return (
@@ -36,7 +39,7 @@ const DiaryItem = ({ title, image, info }) => {
           </FatWrap>
         </InfoWrap>
       ) : (
-        <AddButton onClick>+ Record your meal</AddButton>
+        <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
       )}
     </CardWrap>
   );
