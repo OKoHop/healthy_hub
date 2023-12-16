@@ -1,0 +1,22 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="add" viewBox="0 0 32 32">
+<path stroke-width="4" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M8 16h16M16 24v-16"></path>
+</symbol>
+<symbol id="arrow-right" viewBox="0 0 32 32">
+<path stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" d="M19.24 7.906l8.094 8.094-8.094 8.092M4.666 16h22.44"></path>
+</symbol>
+<symbol id="bubble" viewBox="0 0 32 32">
+<path stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" d="M20.786 16.347c3.778 0 6.84-3.062 6.84-6.84s-3.062-6.84-6.84-6.84c-3.778 0-6.84 3.062-6.84 6.84s3.062 6.84 6.84 6.84zM8.48 25.92c2.268 0 4.107-1.839 4.107-4.107s-1.839-4.106-4.107-4.106c-2.268 0-4.106 1.838-4.106 4.106s1.838 4.107 4.106 4.107zM22.16 29.333c1.885 0 3.413-1.528 3.413-3.413s-1.528-3.413-3.413-3.413v0c-1.885 0-3.413 1.528-3.413 3.413s1.528 3.413 3.413 3.413v0z"></path>
+</symbol>
+<symbol id="water" viewBox="0 0 32 32">
+<path stroke-width="0.8" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M24 20v5.333c0 2.2-1.8 4-4 4h-8c-2.2 0-4-1.8-4-4v-6.693l5.187 0.027c0.973 0 1.933 0.226 2.813 0.666s1.84 0.667 2.827 0.667h5.173z"></path>
+<path stroke-width="0.8" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M24 14.44v5.56h-5.173c-0.987 0-1.947-0.227-2.827-0.667s-1.84-0.666-2.813-0.666l-5.187-0.027v-4.2c0-0.614 0.347-1.453 0.787-1.894l2.826-2.826c0.24-0.24 0.387-0.587 0.387-0.934v-2.12h8v2.12c0 0.347 0.147 0.694 0.387 0.934l2.826 2.826c0.44 0.44 0.787 1.28 0.787 1.894z"></path>
+<path stroke-width="0.6" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M24 21.333v-1.333M8 19.973v-1.333"></path>
+<path stroke-width="0.8" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M19.334 6.666h-6.667c-1.107 0-2-0.906-2-2s0.893-2 2-2h6.667c1.106 0 2 0.907 2 2s-0.894 2-2 2z"></path>
+</symbol>
+<symbol id="trash" viewBox="0 0 32 32">
+<path stroke-width="2.4" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M12 4h8M13.333 14v6.667M18.667 14v6.667M4 8h24M25.333 8l-0.934 14.026c-0.141 2.104-0.211 3.157-0.666 3.955-0.405 0.703-0.997 1.258-1.708 1.609l-0.023 0.010c-0.826 0.4-1.88 0.4-3.989 0.4h-4.026c-2.109 0-3.163 0-3.989-0.4-0.734-0.361-1.326-0.917-1.721-1.6l-0.010-0.019c-0.454-0.8-0.525-1.851-0.666-3.955l-0.934-14.026"></path>
+</symbol>
+</defs>
+</svg>
