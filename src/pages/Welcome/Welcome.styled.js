@@ -79,11 +79,11 @@ export const Title = styled.h1`
     ont-family: Poppins;
     font-size: 24px;
     font-weight: 500;
-    line-height: (30/24);
+    line-height: 30/24;
 
     @media (${p.theme.mq.mobile}) and (max-width: 833px) {
       font-size: 30px;
-      line-height: (36/30);
+      line-height: 36/30;
     }
 
     @media (${p.theme.mq.tablet}) and (max-width: 1439px) {
@@ -104,23 +104,23 @@ export const Subtitle = styled.h2`
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: (24/18);
+    line-height: 24/18;
 
     @media (${p.theme.mq.mobile}) and (max-width: 833px) {
-      line-height: (24/18);
+      line-height: 24/18;
     }
 
     @media (${p.theme.mq.tablet}) and (max-width: 1439px) {
       width: 410px;
       font-size: 22px;
-      line-height: (32/22);
+      line-height: 32/22;
       text-align: center;
     }
 
     @media (${p.theme.mq.desktop}) {
       width: 410px;
       font-size: 22px;
-      line-height: (32/22);
+      line-height: 32/22;
       text-align: left;
     }
   `}
@@ -155,7 +155,7 @@ const sharedButtonStyles = css`
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: (20/14);
+  line-height: 20/14;
   text-align: center;
   transition: ${(p) => p.theme.transition.customTrans};
 `;
@@ -271,5 +271,5 @@ export const AdvantagesItem = styled.li`
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: (20/14);
+  line-height: 20/14;
 `;
