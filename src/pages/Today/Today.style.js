@@ -5,7 +5,7 @@ export const StyledDiv = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
   }
 `;
@@ -14,14 +14,14 @@ export const StyledDiv2 = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     display: flex;
     gap: 20px;
     flex-direction: row;
     justify-content: flex-start;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     display: flex;
     gap: 20px;
     justify-content: flex-start;
@@ -39,11 +39,11 @@ export const Div = styled.div`
   align-items: center;
   margin-bottom: 20px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     margin-bottom: 24px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     margin-bottom: 16px;
   }
 `;

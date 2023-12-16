@@ -49,24 +49,24 @@ button {
     }
 
 .container {
-    width: 330px;
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-left: auto;
     margin-right: auto;
 
-    @media (min-width: 810px) {
-        width: 810px;
-        padding-left: 15px;
-        padding-right: 15px;
+    @media (min-width: 834px) {
+        width: 834px;
+        padding-left: 27px;
+        padding-right: 27px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    @media (min-width: 1402px) {
-        width: 1402px;
-        padding-left: 15px;
-        padding-right: 15px;
+    @media (min-width: 1440px) {
+        width: 1440px;
+        padding-left: 34px;
+        padding-right: 34px;
         margin-left: auto;
         margin-right: auto;
     }
