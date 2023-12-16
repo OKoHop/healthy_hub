@@ -7,21 +7,21 @@ export const H1 = styled.h1`
   line-height: 1.25;
   margin-bottom: 24px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     font-size: 30px;
     line-height: 1.2;
   }
 `;
 
 export const Form = styled.form`
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +42,7 @@ export const Input = styled.input`
     color: #b6b6b6;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 212px;
     height: 36px;
     margin-left: auto;
@@ -60,7 +60,7 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 12px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     text-align: center;
   }
 `;
@@ -72,7 +72,7 @@ export const FormBtn = styled.button`
   border-radius: 12px;
   background-color: #e3ffa8;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 212px;
     height: 36px;
   }
@@ -101,7 +101,7 @@ export const ModalWindow = styled(Modal)`
   margin-right: -50%;
   transform: translate(-50%, -50%);
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 338px;
     height: 280px;
     padding: 24px 40px;

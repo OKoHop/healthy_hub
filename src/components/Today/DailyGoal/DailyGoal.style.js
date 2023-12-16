@@ -6,21 +6,21 @@ export const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
     height: 212px;
     padding: 16px 12px;
     gap: 20px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
     height: 240px;
     padding: 24px 40px;
     gap: 32px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 328px;
     height: 240px;
     padding: 24px 40px;
@@ -63,15 +63,15 @@ export const StyledSubtitle = styled.p`
 `;
 
 export const Thumb = styled.div`
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 328px;
   }
 `;

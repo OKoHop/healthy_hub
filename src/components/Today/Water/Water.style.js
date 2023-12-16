@@ -5,21 +5,21 @@ export const StyledDiv = styled.div`
   background-color: #0f0f0f;
   display: flex;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
     height: 224px;
     padding: 16px 12px;
     gap: 20px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
     height: 240px;
     padding: 24px 22px;
     gap: 40px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 444px;
     height: 240px;
     padding: 24px 40px;
@@ -27,7 +27,7 @@ export const StyledDiv = styled.div`
 `;
 
 export const StyledDiv2 = styled.div`
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     display: flex;
     gap: 40px;
     align-items: center;
@@ -42,17 +42,17 @@ export const StyledP = styled.p`
   margin-top: 22px;
   margin-bottom: 12px;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     margin-top: 22px;
     margin-bottom: 12px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     margin-top: 33px;
     margin-bottom: 12px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     margin-top: 33px;
     margin-bottom: 12px;
   }
@@ -93,7 +93,7 @@ export const StyledLeft = styled.p`
   gap: 4px;
   margin-bottom: 16px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     margin-bottom: 0px;
   }
 `;
@@ -118,15 +118,15 @@ export const StyledDiagram = styled.div`
   background-color: #292928;
 `;
 export const Thumb = styled.div`
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 444px;
   }
 `;
