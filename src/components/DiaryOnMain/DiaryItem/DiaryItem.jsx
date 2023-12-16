@@ -14,6 +14,8 @@ import {
   TitleWrap
 } from './DiaryItem.styled';
 
+// import RecordDiaryModal from '../../components/Modals/RecordDiaryModal/RecordDiaryModal.jsx'
+
 const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
@@ -41,6 +43,10 @@ const DiaryItem = ({ title, image, info }) => {
       ) : (
         <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
       )}
+
+      {/* {isModalOpen && (
+        <RecordDiaryModal onClose={toggleModal} image={ image } mealType={ title } />
+      )} */}
     </CardWrap>
   );
 };
