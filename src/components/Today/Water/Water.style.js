@@ -130,3 +130,15 @@ export const Thumb = styled.div`
     width: 444px;
   }
 `;
+
+export const BtnDiv = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+`;
+
+export const SVG = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: #0f0f0f;
+`;

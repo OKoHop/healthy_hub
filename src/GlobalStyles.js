@@ -35,15 +35,28 @@ button {
     cursor: pointer;
 }
 
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(5, 5, 5, 0.8);
+    z-index: 1200;
+    }
+
 .container {
-    width: 300px;
+    width: 330px;
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
 
     @media (min-width: 810px) {
-        width: 780px;
+        width: 810px;
         padding-left: 15px;
         padding-right: 15px;
         margin-left: auto;
@@ -51,11 +64,12 @@ button {
     }
 
     @media (min-width: 1402px) {
-        width: 1372px;
+        width: 1402px;
         padding-left: 15px;
         padding-right: 15px;
         margin-left: auto;
         margin-right: auto;
     }
 }
+    
 `;

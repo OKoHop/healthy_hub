@@ -75,3 +75,17 @@ export const Thumb = styled.div`
     width: 328px;
   }
 `;
+
+export const BubleSvg = styled.svg`
+  width: 80px;
+  height: 80px;
+  stroke: #45ffbc;
+  fill: #0f0f0f;
+`;
+
+export const WaterSvg = styled.svg`
+  width: 80px;
+  height: 80px;
+  stroke: #b6c3ff;
+  fill: #0f0f0f;
+`;
