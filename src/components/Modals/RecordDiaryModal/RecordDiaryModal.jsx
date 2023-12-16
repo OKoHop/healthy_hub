@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from "react-redux";
 
 import { addFood, updateFood } from '../../../redux/foods/foodsOperations';
-import { getStats } from "../../../redux/statistics/statisticsOperations";
+import { getStats } from "../../../redux/statistics/statisticOperations";
 
 import { FieldArray, Formik } from 'formik';
 import * as yup from 'yup';
