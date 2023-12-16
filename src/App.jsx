@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './components/SharedLayout/SharedLayout';
-import { GlobalStyle } from './GlobalStyles';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import Today from './pages/Today/Today';
 
