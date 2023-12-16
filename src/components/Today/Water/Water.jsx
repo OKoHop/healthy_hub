@@ -14,7 +14,7 @@ import {
   StyledSpan2,
   Thumb,
 } from './Water.style';
-import svgSlice from '../../../images/Today/today-svg-sprite.svg';
+import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 import WaterModal from '../Modal/Modal';
 
 const Water = () => {

@@ -10,7 +10,7 @@ import {
   StyledDiv2,
 } from './Today.style';
 import Water from '../../components/Today/Water/Water';
-import svgSlice from '../../images/Today/today-svg-sprite.svg';
+import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import { Link } from 'react-router-dom';
 
 const Today = () => {

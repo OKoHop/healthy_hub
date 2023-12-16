@@ -9,7 +9,7 @@ import {
   Thumb,
   WaterSvg,
 } from './DailyGoal.style';
-import svgSlice from '../../../images/Today/today-svg-sprite.svg';
+import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 
 const DailyGoal = () => {
   return (
