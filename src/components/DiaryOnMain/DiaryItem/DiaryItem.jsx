@@ -14,7 +14,7 @@ import {
   TitleWrap
 } from './DiaryItem.styled';
 
-// import RecordDiaryModal from '../../components/Modals/RecordDiaryModal/RecordDiaryModal.jsx'
+import RecordDiaryModal from '../../components/Modals/RecordDiaryModal/RecordDiaryModal.jsx'
 
 const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +28,7 @@ const DiaryItem = ({ title, image, info }) => {
         <DiaryImage src={image} alt="Plate" />
         <Title>{title}</Title>
       </TitleWrap>
-      {carbonohidrates !== 0 || protein !== 0 || fat !== 0 ? (
+      {carbonohidrates !== 0 && protein !== 0 && fat !== 0 ? (
         <InfoWrap>
           <CarbonohidratesWrap>
             Carbonohidrates: <Value>{carbonohidrates}</Value>
@@ -44,9 +44,9 @@ const DiaryItem = ({ title, image, info }) => {
         <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
       )}
 
-      {/* {isModalOpen && (
+      {isModalOpen && (
         <RecordDiaryModal onClose={toggleModal} image={ image } mealType={ title } />
-      )} */}
+      )}
     </CardWrap>
   );
 };
