@@ -15,12 +15,6 @@ export const StyledFormInput = styled.input`
     color: #b6b6b6;
   }
   ${(props) =>
-    !props.error &&
-    props.filled &&
-    css`
-      border: 1px solid #3cbc81;
-    `}
-  ${(props) =>
     props.error &&
     css`
       border: 1px solid #e74a3b;
@@ -35,35 +29,23 @@ export const ErrorText = styled.div`
   margin-top: 4px;
 `;
 
-const FormInput = ({
-  label,
-  id,
-  name,
-  type,
-  placeholder,
-  onChange,
-  onBlur,
-  value,
-  touched,
-  error,
-}) => {
-  /*  const filled = Boolean(value); */
+const FormInput = ({ formik, label, id, type, placeholder }) => {
+  const hasError = formik.touched[id] && formik.errors[id];
+
   return (
     <>
       {label && <label htmlFor={id}>{label}</label>}
       <StyledFormInput
         id={id}
-        name={name}
+        name={id}
         type={type}
         placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        value={value}
-        error={touched && error}
-        /*  filled={filled} */
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values[id]}
+        error={hasError}
       />
-
-      {touched && error && <ErrorText>{error}</ErrorText>}
+      {hasError && <ErrorText>{formik.errors[id]}</ErrorText>}
     </>
   );
 };
