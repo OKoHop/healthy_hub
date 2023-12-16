@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const Today = lazy(() => import('./pages/Today/Today'));
 const Welcome = lazy(() => import('./pages/Welcome/Welcome'));
+const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
           <Route path="forgot-password" />
           <Route path="/main" element={<Today />} />
           <Route path="/dashboard" />
-          <Route path="/diary" />
+          <Route path="/diary" element={<Diary />} />
           <Route path="recommended-food" />
           <Route path="/settings" />
-          <Route path="*" element={<Layout />} />
+          <Route path="*" element={<Welcome />} />
         </Route>
       </Routes>
     </>
