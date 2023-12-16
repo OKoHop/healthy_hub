@@ -13,7 +13,6 @@ function App() {
           <Route path="main" element={<Today />} />
         </Route>
       </Routes>
-      <GlobalStyle />
     </>
   );
 }
