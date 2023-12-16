@@ -291,24 +291,24 @@ button {
     }
 
 .container {
-    width: 330px;
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-left: auto;
     margin-right: auto;
 
-    @media (min-width: 810px) {
-        width: 810px;
-        padding-left: 15px;
-        padding-right: 15px;
+    @media (min-width: 834px) {
+        width: 834px;
+        padding-left: 27px;
+        padding-right: 27px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    @media (min-width: 1402px) {
-        width: 1402px;
-        padding-left: 15px;
-        padding-right: 15px;
+    @media (min-width: 1440px) {
+        width: 1440px;
+        padding-left: 34px;
+        padding-right: 34px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -324,7 +324,7 @@ button {
   color: grey;
 `,_w=dl.div`
  display: flex;
-`,Pw=()=>F.jsx(F.Fragment,{children:F.jsx("header",{children:F.jsxs(kw,{children:[F.jsx(Cw,{to:"/main",children:"HealthyHub"}),F.jsxs(_w,{children:[F.jsx(Fu,{to:"/",children:"Sign in"}),F.jsx("p",{children:"/"}),F.jsx(Fu,{to:"/",children:"Sign up"}),F.jsx("svg",{width:"26",height:"26"})]})]})})}),Rw=()=>F.jsxs("div",{children:[F.jsx(Pw,{}),F.jsx(C.Suspense,{fallback:null,children:F.jsx(p1,{})})]}),Ow=C.lazy(()=>ec(()=>import("./SignUpPage-3da3d377.js"),[])),Nw=C.lazy(()=>ec(()=>import("./Today-d5361d91.js"),[])),Tw=C.lazy(()=>ec(()=>import("./Welcome-389a8ba7.js"),[]));function $w(){return F.jsx(F.Fragment,{children:F.jsx(m1,{children:F.jsxs(jr,{path:"/",element:F.jsx(Rw,{}),children:[F.jsx(jr,{index:!0,element:F.jsx(Tw,{})}),F.jsx(jr,{path:"/signup",element:F.jsx(Ow,{})}),F.jsx(jr,{path:"/main",element:F.jsx(Nw,{})})]})})})}var Lw={};/**
+`,Pw=()=>F.jsx(F.Fragment,{children:F.jsx("header",{children:F.jsxs(kw,{children:[F.jsx(Cw,{to:"/main",children:"HealthyHub"}),F.jsxs(_w,{children:[F.jsx(Fu,{to:"/",children:"Sign in"}),F.jsx("p",{children:"/"}),F.jsx(Fu,{to:"/",children:"Sign up"}),F.jsx("svg",{width:"26",height:"26"})]})]})})}),Rw=()=>F.jsxs("div",{children:[F.jsx(Pw,{}),F.jsx(C.Suspense,{fallback:null,children:F.jsx(p1,{})})]}),Ow=C.lazy(()=>ec(()=>import("./SignUpPage-a4fc4484.js"),[])),Nw=C.lazy(()=>ec(()=>import("./Today-7b7bae43.js"),[])),Tw=C.lazy(()=>ec(()=>import("./Welcome-543289ef.js"),[]));function $w(){return F.jsx(F.Fragment,{children:F.jsx(m1,{children:F.jsxs(jr,{path:"/",element:F.jsx(Rw,{}),children:[F.jsx(jr,{index:!0,element:F.jsx(Tw,{})}),F.jsx(jr,{path:"/signup",element:F.jsx(Ow,{})}),F.jsx(jr,{path:"/main",element:F.jsx(Nw,{})})]})})})}var Lw={};/**
  * @license React
  * use-sync-external-store-with-selector.production.min.js
  *

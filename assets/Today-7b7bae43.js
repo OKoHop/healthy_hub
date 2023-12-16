@@ -1,24 +1,24 @@
-import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d9f.js";const ot=p.div`
+import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-6b2ee864.js";const ot=p.div`
   border-radius: 12px;
   background-color: #0f0f0f;
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
     height: 212px;
     padding: 16px 12px;
     gap: 20px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
     height: 240px;
     padding: 24px 40px;
     gap: 32px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 328px;
     height: 240px;
     padding: 24px 40px;
@@ -50,15 +50,15 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   line-height: 1.33;
   margin-bottom: 6px;
 `,at=p.div`
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 328px;
   }
 `,it=p.svg`
@@ -75,19 +75,19 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   background-color: #0f0f0f;
   border-radius: 12px;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
     height: 380px;
     padding: 16px 12px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 780px;
     height: 240px;
     padding: 36px 40px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 560px;
     height: 240px;
     padding: 36px 40px;
@@ -97,7 +97,7 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   flex-direction: column;
   gap: 20px;
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
   }
 `,pt=p.div`
@@ -105,14 +105,14 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   flex-direction: column;
   gap: 20px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     display: flex;
     gap: 20px;
     flex-direction: row;
     justify-content: flex-start;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     display: flex;
     gap: 20px;
     justify-content: flex-start;
@@ -127,11 +127,11 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   align-items: center;
   margin-bottom: 20px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     margin-bottom: 24px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     margin-bottom: 16px;
   }
 `,mt=p.h1`
@@ -158,27 +158,27 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   background-color: #0f0f0f;
   display: flex;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
     height: 224px;
     padding: 16px 12px;
     gap: 20px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
     height: 240px;
     padding: 24px 22px;
     gap: 40px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 444px;
     height: 240px;
     padding: 24px 40px;
   }
 `,gt=p.div`
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     display: flex;
     gap: 40px;
     align-items: center;
@@ -191,17 +191,17 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   margin-top: 22px;
   margin-bottom: 12px;
 
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     margin-top: 22px;
     margin-bottom: 12px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     margin-top: 33px;
     margin-bottom: 12px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     margin-top: 33px;
     margin-bottom: 12px;
   }
@@ -235,7 +235,7 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   gap: 4px;
   margin-bottom: 16px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     margin-bottom: 0px;
   }
 `,St=p.button`
@@ -256,15 +256,15 @@ import{s as p,j as i,r as he,a as Ze,b as et,g as tt,L as nt}from"./index-f4914d
   border-radius: 20px;
   background-color: #292928;
 `,Et=p.div`
-  @media (max-width: 810px) {
+  @media (max-width: 834px) {
     width: 300px;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 380px;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     width: 444px;
   }
 `,Mt=p.div`
@@ -303,19 +303,19 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof t.getDerivedStat
   line-height: 1.25;
   margin-bottom: 24px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     font-size: 30px;
     line-height: 1.2;
   }
 `,In=p.form`
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  @media (min-width: 1402px) {
+  @media (min-width: 1440px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -334,7 +334,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof t.getDerivedStat
     color: #b6b6b6;
   }
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 212px;
     height: 36px;
     margin-left: auto;
@@ -350,7 +350,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof t.getDerivedStat
   flex-direction: column;
   gap: 12px;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     text-align: center;
   }
 `,Bn=p.button`
@@ -360,7 +360,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof t.getDerivedStat
   border-radius: 12px;
   background-color: #e3ffa8;
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 212px;
     height: 36px;
   }
@@ -385,7 +385,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof t.getDerivedStat
   margin-right: -50%;
   transform: translate(-50%, -50%);
 
-  @media (min-width: 810px) {
+  @media (min-width: 834px) {
     width: 338px;
     height: 280px;
     padding: 24px 40px;
