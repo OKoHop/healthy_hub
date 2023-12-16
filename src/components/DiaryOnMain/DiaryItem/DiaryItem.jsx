@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from 'react';
 
 import {
   AddButton,
@@ -11,10 +12,14 @@ import {
   FatWrap,
   DiaryImage,
   TitleWrap
-} from './DiaryItem.styled.jsx';
+} from './DiaryItem.styled';
+
+import RecordDiaryModal from '../../components/Modals/RecordDiaryModal/RecordDiaryModal.jsx'
 
 const DiaryItem = ({ title, image, info }) => {
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  
   const { carbonohidrates, protein, fat } = info;  
 
   return (
@@ -23,7 +28,7 @@ const DiaryItem = ({ title, image, info }) => {
         <DiaryImage src={image} alt="Plate" />
         <Title>{title}</Title>
       </TitleWrap>
-      {carbonohidrates !== 0 || protein !== 0 || fat !== 0 ? (
+      {carbonohidrates !== 0 && protein !== 0 && fat !== 0 ? (
         <InfoWrap>
           <CarbonohidratesWrap>
             Carbonohidrates: <Value>{carbonohidrates}</Value>
@@ -36,7 +41,11 @@ const DiaryItem = ({ title, image, info }) => {
           </FatWrap>
         </InfoWrap>
       ) : (
-        <AddButton onClick>+ Record your meal</AddButton>
+        <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
+      )}
+
+      {isModalOpen && (
+        <RecordDiaryModal onClose={toggleModal} image={ image } mealType={ title } />
       )}
     </CardWrap>
   );

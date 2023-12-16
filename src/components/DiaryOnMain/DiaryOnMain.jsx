@@ -1,5 +1,5 @@
-import { selectMacronutrientsPerDay } from '/redux/statistics/statisticSelectors';
-import DiaryItem from './DiaryItem';
+import { selectMacronutrientsPerDay } from '../../redux/statistics/statisticSelectors';
+import DiaryItem from './DiaryItem/DiaryItem';
 import {
   CardsWrap,
   DiaryLink,
@@ -8,10 +8,10 @@ import {
   Container,
 } from './DiaryOnMain.styled';
 
-import breakfastImage from 'images/breakfast-image.svg';
-import dinnerImage from 'images/dinner-image.svg';
-import lunchImage from 'images/lunch-image.svg';
-import snackImage from 'images/snack-image.svg';
+import breakfastImage from '../../images/diaryPageImages/breakfast.png';
+import dinnerImage from '../../images/diaryPageImages/dinner.png';
+import lunchImage from '../../images/diaryPageImages/lunch.png';
+import snackImage from '../../images/diaryPageImages/snack.png';
 import { useSelector } from 'react-redux';
 
 const DiaryOnMain = () => {
