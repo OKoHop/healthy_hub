@@ -28,5 +28,14 @@
 <path fill="none" stroke="#fff" style="stroke: var(--color3, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.8462" d="M24.987 25.84c-2.373 2.173-5.52 3.493-8.987 3.493s-6.613-1.32-8.987-3.493c0.133-1.253 0.933-2.48 2.36-3.44 3.653-2.427 9.627-2.427 13.253 0 1.427 0.96 2.227 2.187 2.36 3.44z"></path>
 <path fill="none" stroke="#fff" style="stroke: var(--color3, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.8462" d="M16 29.333c7.364 0 13.333-5.969 13.333-13.333s-5.97-13.333-13.333-13.333c-7.364 0-13.333 5.97-13.333 13.333s5.97 13.333 13.333 13.333z"></path>
 </symbol>
+<symbol id="icon-logout" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M11.867 10.080c0.413-4.8 2.88-6.76 8.28-6.76h0.173c5.96 0 8.347 2.387 8.347 8.347v8.693c0 5.96-2.387 8.347-8.347 8.347h-0.173c-5.36 0-7.827-1.933-8.267-6.653"></path>
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M20 16h-15.173"></path>
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M7.801 11.533l-4.467 4.467 4.467 4.467"></path>
+</symbol>
+<symbol id="icon-setting" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M16 20c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4z"></path>
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M2.666 17.173v-2.347c0-1.387 1.133-2.533 2.533-2.533 2.413 0 3.4-1.707 2.187-3.8-0.693-1.2-0.28-2.76 0.933-3.453l2.307-1.32c1.053-0.627 2.413-0.253 3.040 0.8l0.147 0.253c1.2 2.093 3.173 2.093 4.387 0l0.147-0.253c0.627-1.053 1.987-1.427 3.040-0.8l2.307 1.32c1.213 0.693 1.627 2.253 0.933 3.453-1.213 2.093-0.227 3.8 2.187 3.8 1.387 0 2.533 1.133 2.533 2.533v2.347c0 1.387-1.133 2.533-2.533 2.533-2.413 0-3.4 1.707-2.187 3.8 0.693 1.213 0.28 2.76-0.933 3.453l-2.307 1.32c-1.053 0.627-2.413 0.253-3.040-0.8l-0.147-0.253c-1.2-2.093-3.173-2.093-4.387 0l-0.147 0.253c-0.627 1.053-1.987 1.427-3.040 0.8l-2.307-1.32c-1.213-0.693-1.627-2.253-0.933-3.453 1.213-2.093 0.227-3.8-2.187-3.8-1.4 0-2.533-1.147-2.533-2.533z"></path>
+</symbol>
 </defs>
 </svg>

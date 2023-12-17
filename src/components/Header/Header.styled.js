@@ -19,4 +19,3 @@ export const StyledNavLogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
 `;
-
