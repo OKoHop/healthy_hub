@@ -49,7 +49,7 @@ button {
     }
 
 .container {
-    width: 300px;
+    width: 320px;
     padding-left: 10px;
     padding-right: 10px;
     margin-left: auto;
