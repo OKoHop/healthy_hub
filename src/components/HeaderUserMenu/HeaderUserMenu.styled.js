@@ -19,7 +19,12 @@ export const StyledNavLinkUserMenu = styled(NavLink)`
   font-size: 12px;
   font-weight: 400;
   display: flex;
+  align-items: center;
   gap: 8px;
+  &:hover,
+  :focus {
+    color: #e3ffa8;
+  }
 `;
 
 export const UserMenuList = styled.ul`
@@ -30,7 +35,8 @@ export const UserMenuList = styled.ul`
 `;
 
 export const SvgUserMenu = styled.svg`
-  fill: #fff;
+  fill: currentColor;
+  stroke: currentColor;
   width: 16px;
   height: 16px;
 `;

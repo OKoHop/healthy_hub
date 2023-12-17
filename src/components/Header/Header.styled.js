@@ -6,6 +6,10 @@ export const StyledHeader = styled.header`
   height: 60px;
   display: flex;
   align-items: center;
+
+  @media (min-width: 834px) {
+    height: 100px;
+  }
 `;
 
 export const HeaderContainer = styled.div`
