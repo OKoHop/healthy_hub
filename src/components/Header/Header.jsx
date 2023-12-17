@@ -3,7 +3,7 @@ import {
   StyledHeader,
   StyledNavLogoLink,
 } from './Header.styled';
-import { HeaderMenuMobBtn } from '../HeaderMenuMobBtn/HeaderMenuMobBtn';
+import { HeaderMobMenuBtn } from '../HeaderMobMenuBtn/HeaderMobMenuBtn';
 import { HeaderAuthNav } from '../HeaderAuthNav/HeaderAuthNav';
 import { HeaderUserInfo } from '../HeaderUserInfo/HeaderUserInfo';
 
@@ -13,11 +13,10 @@ export const Header = () => {
       <StyledHeader>
         <HeaderContainer className="container">
           <StyledNavLogoLink to="/main">HealthyHub</StyledNavLogoLink>
+          <HeaderMobMenuBtn />
+
           {/* <HeaderAuthNav/> */}
-          <>
-            <HeaderMenuMobBtn />
-            <HeaderUserInfo />
-          </>
+          <HeaderUserInfo />
         </HeaderContainer>
       </StyledHeader>
     </>
