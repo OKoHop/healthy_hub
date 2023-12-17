@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-import FormInput from '../FormInput';
-import FormRadioButton from '../FormRadioButton';
-
+import { useDispatch } from 'react-redux';
 import { register } from '../../../redux/auth/operations';
+
+import { InputsBlock, ButtonsBlock, StyledRadioGroup } from './AuthForm.styled';
 import { inputFields, radioData } from '../constants';
 import validationSchema from '../ValidationSchema';
 
-const MultiStepFormCombined = () => {
+import FormInput from '../FormInput';
+import FormRadioButton from '../FormRadioButton';
+import SubmitNextButton from '../SubmitNextButton';
+import { BackButtonStyled } from '../BackButton';
+
+const MultiPageRegisterForm = ({ currentStep, setCurrentStep }) => {
   const dispatch = useDispatch();
-  const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -28,12 +33,14 @@ const MultiStepFormCombined = () => {
   const formik = useFormik({
     initialValues: data,
     validationSchema: validationSchema(currentStep),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       if (currentStep === 4) {
         values.activity = modifyActivityValue(values.activity);
 
         try {
-          dispatch(register(values));
+          await dispatch(register(values));
+          formik.resetForm();
+          navigate('/signin');
         } catch (error) {
           console.error('Registration failed:', error.message);
         }
@@ -45,34 +52,37 @@ const MultiStepFormCombined = () => {
   });
 
   const handlePrevStep = () => {
-    setCurrentStep((prev) => prev - 1);
+    if (currentStep > 0) {
+      setCurrentStep((prev) => prev - 1);
+    }
   };
 
-  const renderRadioButtons = (name, values) => (
-    <div>
+  const renderRadioButtons = (name, values, row = false) => (
+    <StyledRadioGroup row={row}>
       {values.map((value, index) => (
         <FormRadioButton
           key={index}
           name={name}
           value={value}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          onBlur={() => formik.handleBlur({ target: { name } })}
           checked={formik.values[name] === value}
           label={value}
         />
       ))}
-    </div>
+    </StyledRadioGroup>
   );
 
   const renderInputs = (fields) =>
-    fields.map(({ name, typeInput, label }) => (
+    fields.map(({ name, typeInput, label, placeholder }) => (
       <div key={name}>
         <FormInput
           formik={formik}
           id={name.toLowerCase()}
           type={typeInput}
-          placeholder={name}
+          placeholder={placeholder}
           label={label}
+          onBlur={() => formik.handleBlur({ target: { name } })}
         />
       </div>
     ));
@@ -83,8 +93,8 @@ const MultiStepFormCombined = () => {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
+      <InputsBlock hasbackbutton={currentStep > 0}>
         {currentStep === 0 && <>{renderInputs(inputFields.main)}</>}
         {currentStep === 1 && <>{renderRadioButtons('goal', radioData.goal)}</>}
 
@@ -96,20 +106,25 @@ const MultiStepFormCombined = () => {
         )}
         {currentStep === 3 && <>{renderInputs(inputFields.parameters)}</>}
         {currentStep === 4 && (
-          <>{renderRadioButtons('activity', radioData.activity)}</>
+          <>{renderRadioButtons('activity', radioData.activity, true)}</>
         )}
+      </InputsBlock>
 
-        <div>
-          {currentStep > 0 && (
-            <button type="button" onClick={handlePrevStep}>
-              Back
-            </button>
-          )}
-          <button type="submit">{currentStep === 4 ? 'Submit' : 'Next'}</button>
-        </div>
-      </form>
-    </div>
+      <ButtonsBlock>
+        <SubmitNextButton
+          type="submit"
+          btnName={currentStep === 4 ? 'Submit' : 'Next'}
+        >
+          {currentStep === 4 ? 'Submit' : 'Next'}
+        </SubmitNextButton>
+        {currentStep > 0 && (
+          <BackButtonStyled type="button" onClick={handlePrevStep}>
+            Back
+          </BackButtonStyled>
+        )}
+      </ButtonsBlock>
+    </form>
   );
 };
 
-export default MultiStepFormCombined;
+export default MultiPageRegisterForm;
