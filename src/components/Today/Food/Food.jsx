@@ -2,7 +2,7 @@ import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
 import Calories from './Calories/Calories';
 import Carbonohidrates from './Carbonohidrates/Carbonohidrates';
 import Fat from './Fat/Fat';
-import { CaloriesDiv, StyledDiv } from './Food.style';
+import { CaloriesDiv, StyleDiv, StyledDiv } from './Food.style';
 import Protein from './Protein/Protein';
 
 const Food = () => {
@@ -14,11 +14,11 @@ const Food = () => {
         <CaloriesDiv>
           <Calories />
         </CaloriesDiv>
-        <div>
+        <StyleDiv>
           <Carbonohidrates />
           <Protein />
           <Fat />
-        </div>
+        </StyleDiv>
       </StyledDiv>
     </div>
   );
