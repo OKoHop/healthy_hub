@@ -1,15 +1,10 @@
-
-import AuthForm from '../../components/AuthForm/AuthForm';
+import AuthForm from '../../components/Auth/AuthForm/AuthForm';
 
 const SignUpPage = () => {
   return (
     <div>
       SignUpPage
-      <AuthForm currentPage={'registrationMain'} />
-      <AuthForm currentPage={'goal'} />
-      <AuthForm currentPage={'gender&age'} />
-      <AuthForm currentPage={'bodyParameters'} />
-      <AuthForm currentPage={'activity'} />
+      <AuthForm />
     </div>
   );
 };

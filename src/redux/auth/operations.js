@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import 'dotenv/config';
 
-axios.defaults.baseURL = process.env.DB_URI;
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -13,10 +13,10 @@ const clearAuthHeader = () => {
 };
 
 export const register = createAsyncThunk(
-  'auth/register',
+  'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/signup', credentials);
+      const res = await axios.post('api/auth/signup', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -26,10 +26,10 @@ export const register = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-  'auth/login',
+  'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/signin', credentials);
+      const res = await axios.post('api/auth/signin', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -40,7 +40,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('api/auth/signout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
