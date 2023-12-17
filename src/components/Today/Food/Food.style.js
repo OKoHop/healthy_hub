@@ -32,6 +32,12 @@ export const StyledDiv = styled.div`
   }
 `;
 
+export const StyleDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
 export const CaloriesDiv = styled.div`
   width: 168px;
   height: 168px;
