@@ -1,20 +1,25 @@
-import { NavLink } from 'react-router-dom/dist';
-import { AuthNav, HeaderContainer, StyledNavLogoLink } from './Header.styled';
+import {
+  HeaderContainer,
+  StyledHeader,
+  StyledNavLogoLink,
+} from './Header.styled';
+import { HeaderMenuMobBtn } from '../HeaderMenuMobBtn/HeaderMenuMobBtn';
+import { HeaderAuthNav } from '../HeaderAuthNav/HeaderAuthNav';
+import { HeaderUserInfo } from '../HeaderUserInfo/HeaderUserInfo';
 
 export const Header = () => {
   return (
     <>
-      <header>
-        <HeaderContainer>
+      <StyledHeader>
+        <HeaderContainer className="container">
           <StyledNavLogoLink to="/main">HealthyHub</StyledNavLogoLink>
-          <AuthNav>
-            <NavLink to="/">Sign in</NavLink>
-            <p>/</p>
-            <NavLink to="/">Sign up</NavLink>
-            <svg width="26" height="26"></svg>
-          </AuthNav>
+          {/* <HeaderAuthNav/> */}
+          <>
+            <HeaderMenuMobBtn />
+            <HeaderUserInfo />
+          </>
         </HeaderContainer>
-      </header>
+      </StyledHeader>
     </>
   );
 };
