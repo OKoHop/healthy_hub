@@ -4,7 +4,6 @@ const StyledLabel = styled.label`
   display: flex;
   align-items: center;
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;

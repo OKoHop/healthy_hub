@@ -6,6 +6,7 @@ export const BackButtonStyled = styled.button`
   font-family: Poppins;
   font-size: 14px;
   line-height: 20px;
+  padding: 8px 10px;
   border: 1px solid transparent;
   background-color: transparent;
   transition: ${(p) => p.theme.transition.customTrans};
