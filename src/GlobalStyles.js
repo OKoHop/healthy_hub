@@ -33,6 +33,7 @@ a {
 
 button {
     cursor: pointer;
+    outline: none;
 }
 
 .Overlay {
