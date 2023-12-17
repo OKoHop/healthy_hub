@@ -4,6 +4,7 @@ export const StyledDiv = styled.div`
   border-radius: 12px;
   background-color: #0f0f0f;
   display: flex;
+  position: relative;
 
   @media (max-width: 834px) {
     width: 300px;
@@ -116,7 +117,16 @@ export const StyledDiagram = styled.div`
   height: 192px;
   border-radius: 20px;
   background-color: #292928;
+  padding: 8px;
 `;
+
+export const Progress = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #b6c3ff;
+`;
+
 export const Thumb = styled.div`
   @media (max-width: 834px) {
     width: 300px;
@@ -141,4 +151,19 @@ export const SVG = styled.svg`
   width: 16px;
   height: 16px;
   stroke: #0f0f0f;
+`;
+
+export const Svg = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: #e3ffa8;
+
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  @media (max-width: 320px) {
+    top: 12px;
+    right: 12px;
+  }
 `;

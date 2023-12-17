@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
 import {
   BtnDiv,
+  Progress,
   SVG,
   StyledBtn,
   StyledDiagram,
@@ -12,6 +13,7 @@ import {
   StyledP,
   StyledSpan,
   StyledSpan2,
+  Svg,
   Thumb,
 } from './Water.style';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
@@ -32,10 +34,14 @@ const Water = () => {
     <>
       <Thumb>
         <StyledSubtitle>Water</StyledSubtitle>
-
         <StyledDiv>
-          <StyledDiagram></StyledDiagram>
+          <StyledDiagram>
+            <Progress></Progress>
+          </StyledDiagram>
           <div>
+            <Svg>
+              <use href={`${svgSlice}#trash`}></use>
+            </Svg>
             <StyledP>Water consumption</StyledP>
             <StyledDiv2>
               <StyledNum>
