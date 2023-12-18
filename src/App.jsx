@@ -15,11 +15,11 @@ function App() {
           <Route index element={<Welcome />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" />
-          <Route path="forgot-password" />
+          <Route path="/forgot-password" />
           <Route path="/main" element={<Today />} />
           <Route path="/dashboard" />
           <Route path="/diary" element={<Diary />} />
-          <Route path="recommended-food" />
+          <Route path="/recommended-food" />
           <Route path="/settings" />
           <Route path="*" element={<Welcome />} />
         </Route>
