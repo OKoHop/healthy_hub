@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { ReactComponent as ClosedEye } from '../../images/signupIcons/eye-closed.svg';
+import { ReactComponent as OpenedEye } from '../../images/signupIcons/eye-opened.svg';
+import { ReactComponent as InformationIcon } from '../../images/signupIcons/info.svg';
+import Tooltip from './Tooltip';
 
 export const InputBlock = styled.div`
   position: relative;
@@ -11,7 +15,6 @@ export const InputBlock = styled.div`
 export const StyledFormInput = styled.input`
   width: 100%;
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   line-height: 20px;
   padding: 7px 30px 7px 10px;
@@ -40,31 +43,42 @@ export const StyledFormInput = styled.input`
 
 export const ErrorText = styled.div`
   color: #e74a3b;
-  font-family: Poppins;
   font-size: 12px;
   line-height: 14px;
   margin-left: 10px;
   margin-top: 4px;
+  display: flex;
+  gap: 5px;
 `;
 
 export const StyledLabel = styled.label`
   display: block;
-  font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   margin-bottom: 12px;
 `;
 
-export const StyledHideShowButton = styled.button`
+export const StyledHideShowButton = styled.div`
   width: 16px;
   height: 16px;
   position: absolute;
   top: 10px;
   right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
-const FormInput = ({ formik, label, id, type, placeholder }) => {
+const StyledInformationIcon = styled(InformationIcon)`
+  width: 12px;
+  height: 12px;
+  fill: white;
+  cursor: pointer;
+`;
+
+const FormInput = ({ formik, label, id, type, placeholder, showError }) => {
   const hasError = formik.touched[id] && formik.errors[id];
   const isPassword = type === 'password';
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -89,10 +103,21 @@ const FormInput = ({ formik, label, id, type, placeholder }) => {
       />
       {type === 'password' && (
         <StyledHideShowButton onClick={togglePasswordVisibility}>
-          {/*  {isPasswordVisible ? 'H' : 'S'} */}
+          {isPasswordVisible ? <OpenedEye /> : <ClosedEye />}
         </StyledHideShowButton>
       )}
-      {hasError && <ErrorText>{formik.errors[id]}</ErrorText>}
+      {showError && hasError && (
+        <ErrorText>
+          {formik.errors[id]}
+          {type === 'email' && (
+            <Tooltip
+              text={'Should contain the "@" symbol and have the correct format'}
+            >
+              <StyledInformationIcon />
+            </Tooltip>
+          )}
+        </ErrorText>
+      )}
     </InputBlock>
   );
 };

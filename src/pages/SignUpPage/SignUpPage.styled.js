@@ -47,7 +47,6 @@ export const Info = styled.div`
 `;
 export const Title = styled.h2`
   color: #fff;
-  font-family: Poppins;
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
@@ -61,7 +60,6 @@ export const Title = styled.h2`
 
 export const Subtitle = styled.p`
   color: #b6b6b6;
-  font-family: Poppins;
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 24px;
@@ -94,7 +92,6 @@ export const SigInQuestion = styled.div`
 
   p {
     color: #b6b6b6;
-    font-family: Poppins;
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 16px;
@@ -106,7 +103,6 @@ export const SigInQuestion = styled.div`
 
 export const StyledLink = styled(Link)`
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

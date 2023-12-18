@@ -17,6 +17,7 @@ import { BackButtonStyled } from '../BackButton';
 const MultiPageRegisterForm = ({ currentStep, setCurrentStep }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [submitted, setSubmitted] = useState(false);
 
   const [data, setData] = useState({
     name: '',
@@ -83,6 +84,7 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep }) => {
           placeholder={placeholder}
           label={label}
           onBlur={() => formik.handleBlur({ target: { name } })}
+          showError={() => setSubmitted(true)}
         />
       </div>
     ));

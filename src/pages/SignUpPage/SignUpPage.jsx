@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import MultiStepRegisterForm from '../../components/Auth/AuthForm/AuthForm';
-import { generateSources } from '../../components/ResponsiveImg/ResponsiveImg';
 
 import {
   FormBlock,
