@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import SignIn from './pages/SignInPage/SignIn';
 
-const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const Today = lazy(() => import('./pages/Today/Today'));
 const Welcome = lazy(() => import('./pages/Welcome/Welcome'));
 const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 
 function App() {
   return (
