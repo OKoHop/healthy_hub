@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
+import SignIn from './pages/SignInPage/SignIn';
 
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const Today = lazy(() => import('./pages/Today/Today'));
@@ -14,8 +15,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Welcome />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/signin" />
-          <Route path="forgot-password" />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/forgot-password" />
           <Route path="/main" element={<Today />} />
           <Route path="/dashboard" />
           <Route path="/diary" element={<Diary />} />
