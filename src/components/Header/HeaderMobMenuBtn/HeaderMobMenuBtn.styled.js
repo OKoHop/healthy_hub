@@ -17,3 +17,22 @@ export const SvgMenuMobBtn = styled.svg`
   width: 16px;
   height: 16px;
 `;
+
+export const BtnClose = styled.button`
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+`;
+
+export const SvgClose = styled.svg`
+  width: 16px;
+  height: 16px;
+`;

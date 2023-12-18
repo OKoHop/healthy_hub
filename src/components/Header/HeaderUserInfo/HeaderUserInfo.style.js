@@ -26,6 +26,7 @@ export const UserName = styled.p`
   margin-right: 6px;
   font-size: 12px;
   font-weight: 400;
+  line-height: 16px;
 `;
 
 export const BtnUser = styled.button`

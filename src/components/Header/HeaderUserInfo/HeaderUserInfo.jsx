@@ -7,7 +7,7 @@ import {
   UserPohotoStub,
   SvgUserBtnUp,
 } from './HeaderUserInfo.style';
-import scgIcons from '../../images/Header/icons.svg';
+import swgIcons from '../../../images/Header/icons.svg';
 import { HeaderUserMenu } from '../HeaderUserMenu/HeaderUserMenu';
 
 export const HeaderUserInfo = () => {
@@ -25,17 +25,15 @@ export const HeaderUserInfo = () => {
       <BtnUser onClick={heandleClick}>
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
-            <use href={`${scgIcons}#icon-arrow-down`}></use>
+            <use href={`${swgIcons}#icon-arrow-down`}></use>
           </SvgUserBtnDown>
         ) : (
           <SvgUserBtnUp>
-            <use href={`${scgIcons}#icon-arrow-down`}></use>
+            <use href={`${swgIcons}#icon-arrow-down`}></use>
           </SvgUserBtnUp>
         )}
       </BtnUser>
-      {isUserMenuOpen && (
-        <HeaderUserMenu/>
-      )}
+      {isUserMenuOpen && <HeaderUserMenu />}
     </UserInfo>
   );
 };

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom/dist';
 
+
 export const HeaderStyledUserMenu = styled.div`
   position: absolute;
   top: 34px;
@@ -9,7 +10,7 @@ export const HeaderStyledUserMenu = styled.div`
   height: 112px;
   background-color: #0f0f0f;
   border-radius: 12px;
-  box-shadow: 0px 2px 5px 3px rgba(227, 255, 168, 0.2);
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
   padding: 24px;
   z-index: 999;
 `;

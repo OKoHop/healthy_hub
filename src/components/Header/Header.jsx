@@ -3,9 +3,9 @@ import {
   StyledHeader,
   StyledNavLogoLink,
 } from './Header.styled';
-import { HeaderMobMenuBtn } from '../HeaderMobMenuBtn/HeaderMobMenuBtn';
-import { HeaderAuthNav } from '../HeaderAuthNav/HeaderAuthNav';
-import { HeaderUserInfo } from '../HeaderUserInfo/HeaderUserInfo';
+import { HeaderMobMenuBtn } from './HeaderMobMenuBtn/HeaderMobMenuBtn';
+import { HeaderAuthNav } from './HeaderAuthNav/HeaderAuthNav';
+import { HeaderUserInfo } from './HeaderUserInfo/HeaderUserInfo';
 
 export const Header = () => {
   return (
