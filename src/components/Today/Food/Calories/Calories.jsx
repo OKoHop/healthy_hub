@@ -10,6 +10,7 @@ const Calories = () => {
         data: [100, 200],
         backgroundColor: ['#45FFBC', '#292928'],
         borderWidth: 0,
+        borderRadius: 14,
         circumference: 360,
         cutout: '80%',
       },

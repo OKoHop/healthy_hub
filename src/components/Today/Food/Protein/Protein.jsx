@@ -11,6 +11,8 @@ const Protein = () => {
         data: [100, 200],
         backgroundColor: ['#B6B6B6', '#292928'],
         borderWidth: 0,
+        borderRadius: 14,
+
         circumference: 360,
         cutout: '80%',
       },

@@ -11,6 +11,8 @@ const Fat = () => {
         data: [100, 200],
         backgroundColor: ['#FFF3B7', '#292928'],
         borderWidth: 0,
+        borderRadius: 14,
+
         circumference: 360,
         cutout: '80%',
       },
