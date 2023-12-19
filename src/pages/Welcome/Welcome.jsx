@@ -1,22 +1,23 @@
+import { theme } from '../../theme';
 import {
   Container,
-  Image,
   Content,
   Title,
   Subtitle,
   SubmitBtnContainer,
-  SignInBtn,
-  SignUpBtn,
   AdvantagesList,
   Bullet,
-  AdvantagesItem,
+  AdvantagesItem
 } from './Welcome.styled';
 import {
-  imagePaths,
-  imageName,
-  basePath,
+  welcomeSrcMob,
+  welcomeSrcTab,
+  welcomeSrcDesk,
+  welcomeImgSrc,
+  welcomeImgName
 } from '../../images/Illustrations/Welcome/WelcomeImg';
-import { generateSources } from '../../components/ResponsiveImg/ResponsiveImg';
+import StyledButtons from '../../components/Buttons/Buttons';
+import StyledImage from '../../components/ResponsiveImg/ImageAdaptSize';
 
 const Welcome = () => {
   const AdvantageList = [
@@ -28,12 +29,18 @@ const Welcome = () => {
   return (
     <Container>
       <picture>
-        {generateSources(basePath, 'desk', imagePaths)}
-        {generateSources(basePath, 'tab', imagePaths)}
-        {generateSources(basePath, 'mob', imagePaths)}
-        <Image
-          src={`${basePath}/${imagePaths['desk'].png[0]}`}
-          alt={`${imageName}`}
+        {welcomeSrcMob}
+        {welcomeSrcTab}
+        {welcomeSrcDesk}
+        <StyledImage
+          src={welcomeImgSrc}
+          alt={welcomeImgName}
+          mobwidth={'300px'}
+          mobmargin={'24px auto'}
+          tabwidth={'380px'}
+          tabmargin={'0 0 80px 0'}
+          deskwidth={'592px'}
+          deskmargin={'40px 104px 72px 0'}
         />
       </picture>
       <Content>
@@ -43,8 +50,33 @@ const Welcome = () => {
         </Subtitle>
 
         <SubmitBtnContainer>
-          <SignInBtn to={'/signin'}>Sign in</SignInBtn>
-          <SignUpBtn to={'/signup'}>Sign up</SignUpBtn>
+          <StyledButtons
+            to={'/signin'}
+            text={'Sign In'}
+            width={'122px'}
+            textcolor={theme.colors.primaryBlack2}
+            backgcolor={theme.colors.primaryGreenLite}
+            bordercolor={'transparent'}
+            tabwidth={'192px'}
+            hoverbgcolor={theme.colors.primaryBlack2}
+            hoverborder={theme.colors.primaryGreenLite}
+            hovertextcolor={theme.colors.primaryWhite}
+            type={'submit'}
+          />
+
+          <StyledButtons
+            to={'/signup'}
+            text={'Sign Up'}
+            width={'122px'}
+            textcolor={theme.colors.primaryWhite}
+            backgcolor={theme.colors.primaryBlack2}
+            bordercolor={theme.colors.primaryBlack2}
+            hoverbgcolor={theme.colors.primaryBlack2}
+            hoverborder={theme.colors.primaryGreenLite}
+            hovertextcolor={theme.colors.primaryWhite}
+            hovertabwidth={'192px'}
+            type={'submit'}
+          />
         </SubmitBtnContainer>
 
         <AdvantagesList>
