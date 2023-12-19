@@ -18,7 +18,7 @@ const calculateSumMacronutrients = (products, inputMacronutrient) => {
     (acc, product) => (acc += product[inputMacronutrient]),
     0
   );
-};
+}; 
 
 // повертає к-сть спожитих вугеводів на сніданок (число)
 export const selectCarbonohidratesForBreakfast = createSelector(

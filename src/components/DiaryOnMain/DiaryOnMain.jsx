@@ -5,8 +5,8 @@ import {
   DiaryLink,
   Title,
   TitleWrapper,
-  Container,
-} from './DiaryOnMain.styled';
+  Section,
+} from '../../DiaryOnMain/DiaryOnMain.styled';
 
 import breakfastImage from '../../images/diaryPageImages/breakfast.png';
 import dinnerImage from '../../images/diaryPageImages/dinner.png';
@@ -25,22 +25,24 @@ const DiaryOnMain = () => {
   } = ConsumedMacronutrients;
 
   return (
-    <Container>
-      <TitleWrapper>
-        <Title>Diary</Title>
-        <DiaryLink to="/diary">See more</DiaryLink>
-      </TitleWrapper>
-      <CardsWrap>
-        <DiaryItem
-          title={'Breakfast'}
-          image={breakfastImage}
-          info={breakfastInfo}
-        />
-        <DiaryItem title={'Lunch'} image={lunchImage} info={lunchInfo} />
-        <DiaryItem title={'Dinner'} image={dinnerImage} info={dinnerInfo} />
-        <DiaryItem title={'Snack'} image={snackImage} info={snackInfo} />
-      </CardsWrap>
-    </Container>
+    <Section>
+      <div className="container">
+        <TitleWrapper>
+          <Title>Diary</Title>
+          <DiaryLink to="/diary">See more</DiaryLink>
+        </TitleWrapper>
+        <CardsWrap>
+          <DiaryItem
+            title={'Breakfast'}
+            image={breakfastImage}
+            info={breakfastInfo}
+          />
+          <DiaryItem title={'Lunch'} image={lunchImage} info={lunchInfo} />
+          <DiaryItem title={'Dinner'} image={dinnerImage} info={dinnerInfo} />
+          <DiaryItem title={'Snack'} image={snackImage} info={snackInfo} />
+        </CardsWrap>
+      </div>
+    </Section>
   );
 };
 
