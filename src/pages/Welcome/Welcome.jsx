@@ -28,6 +28,7 @@ const Welcome = () => {
   ];
   return (
     <Container>
+      
       <picture>
         {welcomeSrcMob}
         {welcomeSrcTab}
@@ -38,9 +39,9 @@ const Welcome = () => {
           widthMob={'300px'}
           marginMob={'24px auto'}
           widthTab={'380px'}
-          marginTab={'0 0 80px 0'}
+          marginTab={'40px auto 80px'}
           widthDesk={'592px'}
-          marginDesk={'40px 104px 72px 0'}
+          marginDesk={'40px 104px 72px 150px'}
         />
       </picture>
       <Content>
@@ -97,7 +98,9 @@ const Welcome = () => {
           ))}
         </AdvantagesList>
       </Content>
+   
     </Container>
+    
   );
 };
 
