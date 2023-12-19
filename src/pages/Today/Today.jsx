@@ -8,7 +8,7 @@ import {
   Section,
   StyledDiv,
   StyledDiv2,
-  Wrapper
+  Wrapper,
 } from './Today.style';
 import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
@@ -40,7 +40,7 @@ const Today = () => {
 
         <Wrapper>
           {/* блок щоденник */}
-          <DiaryOnMain />
+          {/* <DiaryOnMain /> */}
         </Wrapper>
       </div>
     </Section>
