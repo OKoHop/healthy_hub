@@ -1,6 +1,5 @@
-import scgIcons from '../../images/Header/icons.svg';
+import swgIcons from '../../../images/Header/icons.svg';
 import {
-  HeaderStyledUserMenu,
   StyledNavLinkUserMenu,
   SvgUserMenu,
   UserMenuList,
@@ -8,12 +7,11 @@ import {
 
 export const HeaderUserMenu = () => {
   return (
-    <HeaderStyledUserMenu>
       <UserMenuList>
         <li>
           <StyledNavLinkUserMenu to="/settings">
             <SvgUserMenu>
-              <use href={`${scgIcons}#icon-setting`}></use>
+              <use href={`${swgIcons}#icon-setting`}></use>
             </SvgUserMenu>
             Setting
           </StyledNavLinkUserMenu>
@@ -21,12 +19,11 @@ export const HeaderUserMenu = () => {
         <li>
           <StyledNavLinkUserMenu to="/">
             <SvgUserMenu>
-              <use href={`${scgIcons}#icon-logout`}></use>
+              <use href={`${swgIcons}#icon-logout`}></use>
             </SvgUserMenu>
             Log out
           </StyledNavLinkUserMenu>
         </li>
       </UserMenuList>
-    </HeaderStyledUserMenu>
   );
 };
