@@ -16,12 +16,23 @@ const handleRegisterAndLogInFulfilled = (state, action) => {
   state.error = null;
 };
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: (builder) =>
     builder
       .addCase(register.fulfilled, handleRegisterAndLogInFulfilled)
+      .addCase(register.rejected, (state, action) => {
+        console.error('Registration rejected:', action.payload);
+
+        if (action.payload && action.payload.status === 409) {
+          state.error = 'User with this email already exists.';
+        } else {
+          state.error =
+            action.payload?.message || 'An unexpected error occurred.';
+        }
+      })
+
       .addCase(logIn.fulfilled, handleRegisterAndLogInFulfilled)
       .addCase(logIn.rejected, (state, action) => {
         state.error = action.error.message;

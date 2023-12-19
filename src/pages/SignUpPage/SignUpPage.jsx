@@ -15,8 +15,14 @@ import signUpPageData from './SignUpPageData';
 
 const SignUpPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [error, setError] = useState(null);
   const handleSetCurrentStep = (step) => {
     setCurrentStep(step);
+    setError(null);
+  };
+
+  const onError = (errorMessage) => {
+    setError(errorMessage);
   };
 
   const issigninvisible = currentStep === 0;
@@ -42,10 +48,12 @@ const SignUpPage = () => {
           <Subtitle>{currentPageData?.info.text}</Subtitle>
           <FormBlock issigninvisible={issigninvisible}>
             <MultiStepRegisterForm
+              onError={onError}
               currentStep={currentStep}
               setCurrentStep={handleSetCurrentStep}
             />
           </FormBlock>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
           {issigninvisible && (
             <SigInQuestion>
               <p>Do you already have an account?</p>
