@@ -13,6 +13,8 @@ import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import { Link } from 'react-router-dom';
 
+import RecommendedFoodMain from '../../components/RecommendedFoodMain/RecommendedFoodMain';
+
 const Today = () => {
   return (
     <Section>
@@ -35,6 +37,9 @@ const Today = () => {
           </StyledDiv2>
           <Food />
         </StyledDiv>
+      </div>
+      <div className="container">
+        <RecommendedFoodMain />
       </div>
     </Section>
   );
