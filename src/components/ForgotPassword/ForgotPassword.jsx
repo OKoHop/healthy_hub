@@ -3,32 +3,25 @@ import SportAndFitnessTrackerIMG from './../../images/Illustrations/Welcome/spor
 import { useFormik } from 'formik';
 import FormInput from '../Auth/FormInput';
 import validationSchema from './validationSchema';
-import { logIn } from '../../redux/auth/operations';
+import { forgotPassword } from '../../redux/auth/operations';
 import { Link } from 'react-router-dom';
 
-import css from './SignIn.module.css';
+import css from './ForgotPassword.module.css';
 import { selectError } from '../../redux/auth/selectors';
 
-const SignInForm = () => {
-  const error = useSelector(selectError);
-  const inputFields = [
-    { name: 'email', placeholder: 'E-mail', type: 'text' },
-    {
-      name: 'password',
-      placeholder: 'Password',
-      type: 'password',
-    },
-  ];
+const ForgotPasswordForm = () => {
+  const inputFields = [{ name: 'email', placeholder: 'E-mail', type: 'text' }];
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
 
   const formik = useFormik({
-    initialValues: { email: '', password: '' },
+    initialValues: { email: '' },
     validationSchema: validationSchema(),
     onSubmit: (values) => {
       try {
-        dispatch(logIn(values));
+        dispatch(forgotPassword(values));
       } catch (error) {
-        console.error('Registration failed:', error.message);
+        console.error('Something was wrong:', error.message);
       }
     },
   });
@@ -42,8 +35,10 @@ const SignInForm = () => {
           alt="illustration-sport-and-fitness-tracker"
         />
         <div className={css.content}>
-          <h1 className={css.title}>Sign in</h1>
-          <h2 className={css.subtitle}>You need to login to use the service</h2>
+          <h1 className={css.title}>Forgot your password</h1>
+          <h2 className={css.subtitle}>
+            We will send you an email with recovery instructions
+          </h2>
           <form className={css.form} onSubmit={formik.handleSubmit}>
             {inputFields.map((field) => (
               <FormInput
@@ -61,11 +56,8 @@ const SignInForm = () => {
             ))}
             {error && <div className={css.error}>{error}</div>}
             <button className={css.signinBtn} type="submit">
-              Sign in
+              Send
             </button>
-            <Link className={css.forgotPassword} to={'/forgot-password'}>
-              Forgot your password?
-            </Link>
           </form>
           <div className={css.questionTrumb}>
             <p className={css.question}> If you don't have an account yet? </p>
@@ -79,4 +71,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default ForgotPasswordForm;
