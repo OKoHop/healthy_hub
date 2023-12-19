@@ -6,7 +6,7 @@ import {
   Title,
   TitleWrapper,
   Section,
-} from '../../DiaryOnMain/DiaryOnMain.styled';
+} from './DiaryOnMain.styled';
 
 import breakfastImage from '../../images/diaryPageImages/breakfast.png';
 import dinnerImage from '../../images/diaryPageImages/dinner.png';
@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 
 const DiaryOnMain = () => {
   const ConsumedMacronutrients = useSelector(selectMacronutrientsPerDay);
-  
+
   const {
     breakfast: breakfastInfo,
     lunch: lunchInfo,
