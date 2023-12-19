@@ -1,6 +1,5 @@
 import swgIcons from '../../../images/Header/icons.svg';
 import {
-  HeaderStyledUserMenu,
   StyledNavLinkUserMenu,
   SvgUserMenu,
   UserMenuList,
@@ -8,7 +7,6 @@ import {
 
 export const HeaderUserMenu = () => {
   return (
-    <HeaderStyledUserMenu>
       <UserMenuList>
         <li>
           <StyledNavLinkUserMenu to="/settings">
@@ -27,6 +25,5 @@ export const HeaderUserMenu = () => {
           </StyledNavLinkUserMenu>
         </li>
       </UserMenuList>
-    </HeaderStyledUserMenu>
   );
 };

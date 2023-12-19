@@ -36,6 +36,7 @@ export const HeaderMobMenuBtn = () => {
   };
 
   const closeMenu = () => setIsMenuOpen(false);
+  
   return (
     <>
       <BtnMenuMob onClick={openMenu}>

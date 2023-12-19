@@ -6,6 +6,7 @@ export const StyledHeader = styled.header`
   height: 60px;
   display: flex;
   align-items: center;
+  position: relative;
 
   @media (${(p) => p.theme.mq.tablet}) {
     height: 100px;

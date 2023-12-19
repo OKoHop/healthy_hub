@@ -1,22 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom/dist';
 
-
-export const HeaderStyledUserMenu = styled.div`
-  position: absolute;
-  top: 34px;
-  right: 0;
-  width: 158px;
-  height: 112px;
-  background-color: #0f0f0f;
-  border-radius: 12px;
-  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
-  padding: 24px;
-  z-index: 999;
-`;
-
 export const StyledNavLinkUserMenu = styled(NavLink)`
-  color: #ffffff;
+  color: ${(p) => p.theme.colors.primaryWhite};
   font-size: 12px;
   font-weight: 400;
   display: flex;
@@ -24,7 +10,7 @@ export const StyledNavLinkUserMenu = styled(NavLink)`
   gap: 8px;
   &:hover,
   :focus {
-    color: #e3ffa8;
+    color: ${(p) => p.theme.colors.primaryGreenLite};
   }
 `;
 
