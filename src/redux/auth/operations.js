@@ -19,7 +19,11 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.error('Registration failed:', error.response);
+      return thunkAPI.rejectWithValue({
+        status: error.response ? error.response.status : null,
+        message: error.message,
+      });
     }
   }
 );

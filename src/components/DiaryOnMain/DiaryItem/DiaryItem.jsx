@@ -12,9 +12,9 @@ import {
   FatWrap,
   DiaryImage,
   TitleWrap
-} from './DiaryItem.styled';
+} from './DiaryItem.styled.js';
 
-import RecordDiaryModal from '../../components/Modals/RecordDiaryModal/RecordDiaryModal.jsx'
+import RecordDiaryModal from '../Modal/RecordDiaryModal.jsx'
 
 const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +28,7 @@ const DiaryItem = ({ title, image, info }) => {
         <DiaryImage src={image} alt="Plate" />
         <Title>{title}</Title>
       </TitleWrap>
-      {carbonohidrates !== 0 && protein !== 0 && fat !== 0 ? (
+      {carbonohidrates !== 0 || protein !== 0 || fat !== 0 ? (
         <InfoWrap>
           <CarbonohidratesWrap>
             Carbonohidrates: <Value>{carbonohidrates}</Value>

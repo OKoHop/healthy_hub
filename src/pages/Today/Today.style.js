@@ -73,3 +73,14 @@ export const DivLink = styled.div`
 export const Section = styled.section`
   position: relative;
 `;
+
+// блок щоденник
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (min-width: 834px) {
+    flex-direction: row;
+    flex-basis: calc((100% - 20px) / 2);
+  }`;

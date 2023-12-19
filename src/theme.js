@@ -1,5 +1,4 @@
-const breakpoints = ['320', '834', '1440'];
-
+const breakpoints = ['320', '833', '834', '1439', '1440'];
 
 export const theme = Object.freeze({
   // Colors / Example: background-color: ${p => p.theme.colors.white};
@@ -29,8 +28,10 @@ export const theme = Object.freeze({
   // Media request / Example: @media (${ p => p.theme.mq.tablet}) {
 
   mq: {
-    mobile: `min-width: ${breakpoints[0]}px`,
-    tablet: `min-width: ${breakpoints[1]}px`,
-    desktop: `min-width: ${breakpoints[2]}px`,
+    mobMin: `min-width: ${breakpoints[0]}px`, //320
+    mobMax: `max-width: ${breakpoints[1]}px`, //833
+    tabMin: `min-width: ${breakpoints[2]}px`, // 834
+    tabMax: `max-width: ${breakpoints[3]}px`, //1439
+    deskMin: `min-width: ${breakpoints[4]}px`, //1440
   },
 });
