@@ -1,13 +1,35 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useSelector } from 'react-redux';
+import { calories } from '../../../../redux/Today/Daily/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Calories = () => {
+  const calDaily = useSelector(calories);
+  const calReceived = 1000;
+
+  const remainingCalories = (calReceived, calDaily) => {
+    if (!calDaily && !calReceived) {
+      return 0;
+    }
+    return calDaily - calReceived;
+  };
+
+  const receivedCal = (calReceived) => {
+    if (!calReceived) {
+      return 0;
+    }
+    return calReceived;
+  };
+
   const data = {
     datasets: [
       {
-        data: [100, 200],
+        data: [
+          receivedCal(calReceived),
+          remainingCalories(calReceived, calDaily),
+        ],
         backgroundColor: ['#45FFBC', '#292928'],
         borderWidth: 0,
         borderRadius: 14,

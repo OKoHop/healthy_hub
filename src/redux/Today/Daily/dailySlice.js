@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchData } from './operations';
 
 const initialState = {
-  calories: '',
+  calories: null,
   water: '',
 };
 

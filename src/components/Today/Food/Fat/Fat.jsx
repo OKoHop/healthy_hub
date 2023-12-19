@@ -42,7 +42,7 @@ const Fat = () => {
     <Div>
       <Doughnut data={data} plugins={[textCenter]}></Doughnut>
       <Div2>
-        <P>Carbonohidrates</P>
+        <P>Fat</P>
         <Div3>
           <P2>
             Goal: <Span>0</Span>
