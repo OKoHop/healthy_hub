@@ -14,13 +14,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
-        <BrowserRouter basename="/healthy_hub">
-          <App />
-          <GlobalStyle />
-          <Toaster position="top-center" reverseOrder={false} />
-        </BrowserRouter>
-        {/* </PersistGate> */}
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter basename="/healthy_hub">
+            <App />
+            <GlobalStyle />
+            <Toaster position="top-center" reverseOrder={false} />
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

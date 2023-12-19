@@ -11,14 +11,24 @@ import {
   PURGE,
   REGISTER,
   persistStore,
+  persistReducer,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { waterIntakeReducer } from './Today/Water/waterSlice';
+
+const dayliPersistConfig = {
+  key: 'daily',
+  storage,
+  whitelist: ['waterIntake'],
+};
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     foods: foodsReducer,
     stats: statsReducer,
-    daily: dailyReducer,
+    daily: persistReducer(dayliPersistConfig, dailyReducer),
+    water: persistReducer(dayliPersistConfig, waterIntakeReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
