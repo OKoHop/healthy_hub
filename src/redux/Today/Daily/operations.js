@@ -7,8 +7,7 @@ export const fetchData = createAsyncThunk(
   'user/statistics',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/user/statistics');
-      console.log(response.data);
+      const response = await axios.get('/api/user/current');
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
