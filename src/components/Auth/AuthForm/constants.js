@@ -1,33 +1,16 @@
 export const inputFields = {
   main: [
-    { name: 'Name', typeInput: 'text', placeholder: 'Name' },
-    { name: 'Email', typeInput: 'email', placeholder: 'Email' },
-    { name: 'Password', typeInput: 'password', placeholder: 'Password' },
+    { name: 'Name', typeInput: 'text' },
+    { name: 'Email', typeInput: 'email' },
+    { name: 'Password', typeInput: 'password' },
   ],
 
   parameters: [
-    {
-      name: 'height',
-      typeInput: 'number',
-      label: 'Height',
-      placeholder: 'Enter your height',
-    },
-    {
-      name: 'weight',
-      typeInput: 'number',
-      label: 'Weight',
-      placeholder: 'Enter your weight',
-    },
+    { name: 'height', typeInput: 'number' },
+    { name: 'weight', typeInput: 'number' },
   ],
 
-  age: [
-    {
-      name: 'age',
-      typeInput: 'number',
-      label: 'Your age',
-      placeholder: 'Enter your age',
-    },
-  ],
+  age: [{ name: 'age', typeInput: 'number' }],
 };
 
 export const radioData = {
