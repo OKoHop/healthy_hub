@@ -10,8 +10,17 @@ import {
   WaterSvg,
 } from './DailyGoal.style';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchData } from '../../../redux/Today/Daily/operations';
 
 const DailyGoal = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
   return (
     <Thumb>
       <StyledSubtitle>Daily goal</StyledSubtitle>

@@ -72,6 +72,15 @@ export const DivLink = styled.div`
 `;
 export const Section = styled.section`
   position: relative;
+  margin-top: 16px;
+
+  @media (min-width: 834px) {
+    margin-top: 24px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 20px;
+  }
 `;
 
 // блок щоденник
