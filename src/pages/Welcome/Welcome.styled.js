@@ -4,24 +4,11 @@ export const Container = styled.div`
   ${(p) => css`
     background-color: ${p.theme.colors.primaryBlack2};
     display: flex;
-
-    @media (${p.theme.mq.mobMin}) and (${p.theme.mq.mobMax}) {
-      flex-direction: column;
-      margin: 0 auto;
-      padding: 24px 10px 40px 10px;
-    }
-
-    @media (${p.theme.mq.tabMin}) and (${p.theme.mq.tabMax}) {
-      flex-direction: column;
-      width: 834px;
-      padding: 40px 195px 286px 195px;
-    }
+    justify-content: center;
+    flex-direction: column;
 
     @media (${p.theme.mq.deskMin}) {
       flex-direction: row;
-      justify-content: center;
-      width: 1440px;
-      padding: 40px 150px 72px 150px;
     }
   `}
 `;
@@ -30,18 +17,19 @@ export const Content = styled.div`
   ${(p) => css`
     @media (${p.theme.mq.mobMin}) and (${p.theme.mq.mobMax}) {
       width: 300px;
-      margin: 0 auto 40px;
+      margin: 0 auto;
     }
 
     @media (${p.theme.mq.tabMin}) and (${p.theme.mq.tabMax}) {
-      max-width: 444px;
-      margin: 40px auto 286px;
+      width: 444px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     @media (${p.theme.mq.deskMin}) {
+      width: 444px;
       margin-top: 120px;
     }
   `}
@@ -65,9 +53,6 @@ export const Title = styled.h1`
       text-align: center;
       align-self: center;
     }
-    @media (${p.theme.mq.tabMin}) {
-      font-size: 30px;
-    }
   `}
 `;
 
@@ -81,10 +66,6 @@ export const Subtitle = styled.h2`
     font-weight: 400;
     line-height: 1.33;
 
-    @media (${p.theme.mq.mobMin}) and (${p.theme.mq.mobMax}) {
-      line-height: 1.33;
-    }
-
     @media (${p.theme.mq.tabMin}) and (${p.theme.mq.tabMax}) {
       width: 410px;
       font-size: 22px;
@@ -93,9 +74,6 @@ export const Subtitle = styled.h2`
     }
 
     @media (${p.theme.mq.deskMin}) {
-      width: 410px;
-      font-size: 22px;
-      line-height: 1.45;
       text-align: left;
     }
   `}
@@ -107,9 +85,6 @@ export const SubmitBtnContainer = styled.div`
     text-decoration: none;
     list-style: none;
     margin-bottom: 40px;
-    @media (${p.theme.mq.mobMin}) and (${p.theme.mq.mobMax}) {
-      margin-bottom: 40px;
-    }
 
     @media (${p.theme.mq.tabMin}) and (${p.theme.mq.tabMax}) {
       width: 350px;
@@ -120,7 +95,6 @@ export const SubmitBtnContainer = styled.div`
     }
   `}
 `;
-
 
 export const AdvantagesList = styled.ul`
   margin-bottom: 16px;
