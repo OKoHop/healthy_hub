@@ -11,8 +11,8 @@ const dailySlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
-      state.calories = action.payload;
-      state.water = action.payload;
+      state.calories = action.payload.bmr;
+      state.water = action.payload.water;
     });
   },
 });

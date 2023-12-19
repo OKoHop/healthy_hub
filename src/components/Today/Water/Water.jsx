@@ -18,9 +18,12 @@ import {
 } from './Water.style';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 import WaterModal from '../Modal/Modal';
+import { useSelector } from 'react-redux';
+import { water } from '../../../redux/Today/Daily/selectors';
 
 const Water = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const wat = useSelector(water);
 
   function openModal() {
     setIsOpen(true);
@@ -48,7 +51,8 @@ const Water = () => {
                 1050 <StyledSpan>ml</StyledSpan>
               </StyledNum>
               <StyledLeft>
-                left: <StyledSpan2>450</StyledSpan2> <StyledSpan>ml</StyledSpan>
+                left: <StyledSpan2>{wat ? wat : 0}</StyledSpan2>{' '}
+                <StyledSpan>ml</StyledSpan>
               </StyledLeft>
             </StyledDiv2>
             <StyledBtn onClick={openModal}>
