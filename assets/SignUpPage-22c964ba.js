@@ -1,4 +1,4 @@
-import{s as n,d as R,f as C,g as h,j as t,u as Y,x as H,r as j,y as A,z as W,A as G,L as U}from"./index-1493111e.js";import{g as s,e as w,i as S,f as V}from"./WelcomeImg-890ae2a5.js";const D=n.div.attrs(e=>({hasbackbutton:e.hasbackbutton?"true":void 0}))`
+import{s as n,c as R,d as C,e as h,j as t,k as Y,l as H,r as j,m as A,o as W,p as G,L as U}from"./index-7b853298.js";import{g as s,e as w,i as S,f as V}from"./WelcomeImg-fab44c8f.js";const D=n.div.attrs(e=>({hasbackbutton:e.hasbackbutton?"true":void 0}))`
   display: flex;
   flex-direction: column;
   gap: 20px;
