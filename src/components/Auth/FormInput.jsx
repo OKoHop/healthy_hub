@@ -23,6 +23,7 @@ export const StyledFormInput = styled.input`
   border: 1px solid #e3ffa8;
   background: #0f0f0f;
   position: relative;
+
   ::placeholder {
     color: #b6b6b6;
   }
@@ -100,6 +101,7 @@ const FormInput = ({ formik, label, id, type, placeholder, showError }) => {
         onBlur={formik.handleBlur}
         value={formik.values[id]}
         error={hasError}
+        autoComplete="off"
       />
       {type === 'password' && (
         <StyledHideShowButton onClick={togglePasswordVisibility}>
