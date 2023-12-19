@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
 import loseFatPng from '../../../images/Header/lose_fat_image_men.png';
 import {
@@ -8,10 +9,13 @@ import {
   TargetBtn,
   TitleGoal,
   TargetSelected,
-  SvgArroyRight,
+  SvgArroy,
 } from './HeaderFrameTarget.slyled';
 
 export const HeaderFrameTarget = () => {
+  const isTabletorDesktop = useMediaQuery({ query: '(min-width: 834px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
+
   return (
     <TargetFrame>
       <TargetImgBorder>
@@ -21,9 +25,16 @@ export const HeaderFrameTarget = () => {
         <TitleGoal>Goal</TitleGoal>
         <TargetBtn>
           <TargetSelected>Lose fat</TargetSelected>
-          <SvgArroyRight>
-            <use href={`${svgIcons}#icon-arrow-right`}></use>
-          </SvgArroyRight>
+          {isTabletorDesktop && (
+            <SvgArroy>
+              <use href={`${svgIcons}#icon-arrow-down`}></use>
+            </SvgArroy>
+          )}
+          {isMobile && (
+            <SvgArroy>
+              <use href={`${svgIcons}#icon-arrow-right`}></use>
+            </SvgArroy>
+          )}
         </TargetBtn>
       </TargetContainerBtn>
     </TargetFrame>

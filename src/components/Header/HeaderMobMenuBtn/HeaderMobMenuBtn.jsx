@@ -28,8 +28,6 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#root');
-
 export const HeaderMobMenuBtn = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

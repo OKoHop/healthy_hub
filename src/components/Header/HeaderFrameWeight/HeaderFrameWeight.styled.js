@@ -32,27 +32,50 @@ export const WeightContainerBtn = styled.div`
   padding: 3px 0;
 `;
 
-export const WeightBtn = styled.div`
-  display: flex;
-  align-items: flex-end;
-`;
-
-export const TitleWeight = styled.p`
-  font-weight: 600;
+export const SvgEdit = styled.svg`
+  width: 16px;
+  height: 16px;
+  transition: transform ${(p) => p.theme.transition.customTrans};
 `;
 
 export const TitleWeightNumber = styled.p`
   font-weight: 500;
   margin-right: 4px;
+  transition: color ${(p) => p.theme.transition.customTrans};
 `;
 
 export const TextKg = styled.p`
   color: #b6b6b6;
   font-weight: 400;
   margin-right: 6px;
+  transition: color ${(p) => p.theme.transition.customTrans};
 `;
 
-export const SvgEdit = styled.svg`
-  width: 16px;
-  height: 16px;
+export const WeightBtn = styled.button`
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+
+  &:hover,
+  :focus {
+    color: ${(p) => p.theme.colors.primaryGreenLite};
+    & > ${TitleWeightNumber} {
+      color: ${(p) => p.theme.colors.primaryGreenLite};
+    }
+    & > ${TextKg} {
+      color: ${(p) => p.theme.colors.primaryGreenLite};
+    }
+    & > ${SvgEdit} {
+      transform: scale(1.2);
+    }
+  }
+`;
+
+export const TitleWeight = styled.p`
+  font-weight: 600;
+  transition: color ${(p) => p.theme.transition.customTrans};
 `;

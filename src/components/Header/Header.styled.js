@@ -14,7 +14,24 @@ export const StyledHeader = styled.header`
 
 export const HeaderContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
+
+export const TargetSelectionList = styled.ul`
+  width: 100%;
+  margin-right: 75px; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+
+  @media (${(p) => p.theme.mq.desktop}) {
+    gap: 80px;
+    margin-right: 124px; 
+  }
+`;
+
+export const TargetSelectionListItem = styled.li``;
 
 export const StyledNavLogoLink = styled(NavLink)`
   color: #b6b6b6;
@@ -23,4 +40,9 @@ export const StyledNavLogoLink = styled(NavLink)`
   line-height: 22px;
   display: flex;
   align-items: center;
+
+  @media (${(p) => p.theme.mq.tablet}) {
+    font-size: 22px;
+    line-height: 32px;
+  }
 `;

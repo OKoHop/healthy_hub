@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const UserInfo = styled.div`
-  width: 100%;
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -20,6 +20,10 @@ export const UserPohotoStub = styled.div`
   font-weight: 700;
   -webkit-text-stroke: 0.5px #0f0f0f;
   font-size: 18px;
+  @media (${(p) => p.theme.mq.tablet}) {
+    width: 28px;
+    height: 28px;
+  }
 `;
 
 export const UserName = styled.p`
@@ -27,6 +31,10 @@ export const UserName = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
+  @media (${(p) => p.theme.mq.tablet}) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 `;
 
 export const BtnUser = styled.button`
@@ -57,4 +65,3 @@ export const SvgUserBtnUp = styled.svg`
   width: 14px;
   height: 14px;
 `;
-
