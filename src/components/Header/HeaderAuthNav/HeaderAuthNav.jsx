@@ -1,4 +1,4 @@
-import scgIcons from '../../images/Header/icons.svg';
+import scgIcons from '../../../images/Header/icons.svg';
 import {
   AuthNav,
   StyledNavLinkAuth,

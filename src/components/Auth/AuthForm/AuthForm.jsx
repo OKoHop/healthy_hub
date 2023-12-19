@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../../redux/auth/operations';
 
 import { InputsBlock, ButtonsBlock, StyledRadioGroup } from './AuthForm.styled';
@@ -14,7 +14,7 @@ import FormRadioButton from '../FormRadioButton';
 import SubmitNextButton from '../SubmitNextButton';
 import { BackButtonStyled } from '../BackButton';
 
-const MultiPageRegisterForm = ({ currentStep, setCurrentStep }) => {
+const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
@@ -31,26 +31,38 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep }) => {
     activity: radioData.activity[0],
   });
 
-  const formik = useFormik({
+  const formikConfig = {
     initialValues: data,
     validationSchema: validationSchema(currentStep),
     onSubmit: async (values) => {
       if (currentStep === 4) {
+        values.goal = values.goal.toLowerCase();
+        values.gender = values.gender.toLowerCase();
         values.activity = modifyActivityValue(values.activity);
+        const registrationResult = await dispatch(register(values));
 
-        try {
-          await dispatch(register(values));
-          formik.resetForm();
+        if (register.fulfilled.match(registrationResult)) {
           navigate('/signin');
-        } catch (error) {
-          console.error('Registration failed:', error.message);
+        } else {
+          const errorMessage =
+            registrationResult.payload?.response?.data?.message ||
+            'Registration failed. Please check your information and try again.';
+
+          onError(errorMessage);
         }
       } else {
         setCurrentStep((prev) => prev + 1);
         setData((prev) => ({ ...prev, ...values }));
       }
     },
-  });
+  };
+
+  if (currentStep === 2 || currentStep === 3) {
+    formikConfig.validateOnChange = false;
+    formikConfig.validateOnBlur = false;
+  }
+
+  const formik = useFormik(formikConfig);
 
   const handlePrevStep = () => {
     if (currentStep > 0) {

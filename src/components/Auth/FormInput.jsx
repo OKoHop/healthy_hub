@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { ReactComponent as ClosedEye } from '../../images/signupIcons/eye-closed.svg';
 import { ReactComponent as OpenedEye } from '../../images/signupIcons/eye-opened.svg';
