@@ -2,21 +2,27 @@ import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
 
 const Image = styled.img`
-  ${({ mobwidth, mobmargin, tabwidth, tabmargin, deskwidth, deskmargin }) => css`
+  ${({ 
+    widthMob,
+    marginMob,
+    widthTab,
+    marginTab,
+    widthDesk,
+    marginDesk }) => css`
     
     @media (${theme.mq.mobMin}) and (${theme.mq.mobMax}) {
-      width: ${mobwidth};
-      margin: ${mobmargin};
+      width: ${widthMob};
+      margin: ${marginMob};
     }
 
     @media (${theme.mq.tabMin}) and (${theme.mq.tabMax}) {
-      width: ${tabwidth};
-      margin: ${tabmargin};
+      width: ${widthTab};
+      margin: ${marginTab};
     }
 
     @media (${theme.mq.deskMin}) {
-      width: ${deskwidth};
-      margin: ${deskmargin};
+      width: ${widthDesk};
+      margin: ${marginDesk};
     }
   `}
 `;

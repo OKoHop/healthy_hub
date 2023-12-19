@@ -1,46 +1,49 @@
 import { NavLink } from 'react-router-dom';
 import StyledButton from './Buttons.styled';
+import { StyleSheetManager } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
 
 function StyledButtons({
   text,
   to,
   onClick,
   width,
-  textcolor,
-  backgcolor,
-  bordercolor,
-  tabwidth,
-  deskwidth,
-  hoverbgcolor,
-  hoverborder,
-  hovertextcolor,
-  hovertabwidth,
-  hoverdeskwidth,
+  textColor,
+  backGrColor,
+  borderColor,
+  widthTab,
+  widthDesk,
+  backGrColorHov,
+  borderColorHov,
+  textColorHov,
+  widthTabHov,
+  widthDeskHov,
   type
 }) {
-  const buttonStyles = {
-    width,
-    textcolor,
-    backgcolor,
-    bordercolor,
-    tabwidth,
-    deskwidth,
-    hoverbgcolor,
-    hoverborder,
-    hovertextcolor,
-    hovertabwidth,
-    hoverdeskwidth
-  };
-return (
-    <StyledButton
-      as={NavLink}
-      to={to}
-      onClick={onClick}
-      type={type}
-      {...buttonStyles}
-    >
+  return (
+    <StyleSheetManager shouldForwardProp={(prop) => isPropValid(prop)}>
+      <StyledButton
+        as={NavLink}
+        to={to}
+        text={text}
+        onClick={onClick}
+        type={type}
+        width={width}
+        textColor={textColor}
+        backGrColor={backGrColor}
+        borderColor={borderColor}
+        widthTab={widthTab}
+        widthDesk={widthDesk}
+        backGrColorHov={backGrColorHov}
+        textColorHov={textColorHov}
+        borderColorHov={borderColorHov}
+        widthTabHov={widthTabHov}
+        widthDeskHov={widthDeskHov}
+        
+      >
       {text}
-    </StyledButton>
+      </StyledButton>
+    </StyleSheetManager>
   );
 }
 

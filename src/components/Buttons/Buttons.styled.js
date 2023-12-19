@@ -18,54 +18,54 @@ const StyledButton = styled.button`
   ${sharedButtonStyles}
   ${({
     width,
-    textcolor,
-    backgcolor,
-    bordercolor,
-    tabwidth,
-    deskwidth,
-    hoverbgcolor,
-    hoverborder,
-    hovertextcolor,
-    hovertabwidth,
-    hoverdeskwidth
+    textColor,
+    backGrColor,
+    borderColor,
+    widthTab,
+    widthDesk,
+    backGrColorHov,
+    borderColorHov,
+    textColorHov,
+    widthTabHov,
+    widthDeskHov
   }) => css`
     width: ${width};
-    color: ${textcolor};
-    background-color: ${backgcolor};
+    color: ${textColor};
+    background-color: ${backGrColor};
     margin-right: 16px;
     cursor: pointer;
     padding: 8px 10px;
     border-radius: 12px;
     text-align: center;
-    border: 1px solid ${bordercolor};
+    border: 1px solid ${borderColor};
 
     @media (${theme.mq.tabMin}) {
-      width: ${tabwidth};
+      width: ${widthTab};
     }
 
     @media (${theme.mq.deskMin}) {
-      width: ${deskwidth};
+      width: ${widthDesk};
     }
 
     &&:hover,
     &&:focus {
-      background-color: ${hoverbgcolor};
-      border: 1px solid ${hoverborder};
-      color: ${hovertextcolor};
+      background-color: ${backGrColorHov};
+      border: 1px solid ${borderColorHov};
+      color: ${textColorHov};
       animation: ${theme.transition.customTrans};
     }
 
     @media (${theme.mq.tabMin}) {
       &&:hover,
       &&:focus {
-        width: ${hovertabwidth};
+        width: ${widthTabHov};
       }
     }
 
     @media (${theme.mq.deskMin}) {
       &&:hover,
       &&:focus {
-        width: ${hoverdeskwidth};
+        width: ${widthDeskHov};
       }
     }
   `}

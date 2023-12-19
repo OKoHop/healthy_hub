@@ -5,24 +5,24 @@ import isPropValid from '@emotion/is-prop-valid';
 function StyledImage({
     src,
     alt,
-    mobwidth,
-    mobmargin,
-    tabwidth,
-    tabmargin,
-    deskwidth,
-    deskmargin
+    widthMob,
+    marginMob,
+    widthTab,
+    marginTab,
+    widthDesk,
+    marginDesk
   }) {
     return (
         <StyleSheetManager shouldForwardProp={(prop) => isPropValid(prop)}>
         <Image
           src={src}
           alt={alt}
-          mobwidth={mobwidth}
-          mobmargin={mobmargin}
-          tabwidth={tabwidth}
-          tabmargin={tabmargin}
-          deskwidth={deskwidth}
-          deskmargin={deskmargin}
+          widthMob={widthMob}
+          marginMob={marginMob}
+          widthTab={widthTab}
+          marginTab={marginTab}
+          widthDesk={widthDesk}
+          marginDesk={marginDesk}
         />
       </StyleSheetManager>
     );
