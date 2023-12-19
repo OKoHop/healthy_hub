@@ -7,6 +7,9 @@ const Today = lazy(() => import('./pages/Today/Today'));
 const Welcome = lazy(() => import('./pages/Welcome/Welcome'));
 const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const RecFoodPage = lazy(() =>
+  import('./pages/RecommendedFoodPage/RecommendedFoodPage')
+);
 
 function App() {
   return (
@@ -20,7 +23,7 @@ function App() {
           <Route path="/main" element={<Today />} />
           <Route path="/dashboard" />
           <Route path="/diary" element={<Diary />} />
-          <Route path="/recommended-food" />
+          <Route path="/recommended-food" element={<RecFoodPage />} />
           <Route path="/settings" />
           <Route path="*" element={<Welcome />} />
         </Route>

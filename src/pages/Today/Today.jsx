@@ -15,6 +15,8 @@ import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import { Link } from 'react-router-dom';
 import DiaryOnMain from '../../components/DiaryOnMain/DiaryOnMain';
 
+import RecommendedFoodMain from '../../components/RecommendedFoodMain/RecommendedFoodMain';
+
 const Today = () => {
   return (
     <Section>
@@ -42,6 +44,9 @@ const Today = () => {
           {/* блок щоденник */}
           {/* <DiaryOnMain /> */}
         </Wrapper>
+      </div>
+      <div className="container">
+        <RecommendedFoodMain />
       </div>
     </Section>
   );
