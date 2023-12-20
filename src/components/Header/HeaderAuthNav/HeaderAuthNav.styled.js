@@ -10,11 +10,18 @@ export const AuthNav = styled.div`
 `;
 
 export const StyledNavLinkAuth = styled(NavLink)`
-  color: #ffffff;
+  color: ${(p) => p.theme.colors.primaryWhite};
+  text-align: right;
   font-size: 12px;
   font-weight: 400;
+  line-height: 16px;
   &.active {
-    color: #e3ffa8;
+    color: ${(p) => p.theme.colors.primaryGreenLite};
+  }
+
+  @media (${(p) => p.theme.mq.tabMin}) {
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
 
