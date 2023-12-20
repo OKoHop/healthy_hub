@@ -7,7 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Calories = () => {
   const calDaily = useSelector(calories);
-  const calReceived = 1000;
+  const calReceived = 1200;
 
   const remainingCalories = (calReceived, calDaily) => {
     if (!calDaily && !calReceived) {

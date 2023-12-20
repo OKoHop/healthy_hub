@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
 import {
   BtnDiv,
+  P,
   Progress,
   SVG,
   StyledBtn,
@@ -22,6 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { water } from '../../../redux/Today/Daily/selectors';
 import { delWaterIntake } from '../../../redux/Today/Water/operations';
 import { waterIntake } from '../../../redux/Today/Water/selectors';
+import toast from 'react-hot-toast';
 
 const Water = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -41,7 +43,14 @@ const Water = () => {
     if (wat - watIntake < 0) {
       return 0;
     }
-    return wat - watIntake;
+    return Math.round(wat - watIntake);
+  }
+
+  function persentWater(wat, waterIntake) {
+    if ((waterIntake / wat) * 100 >= 100) {
+      return 100;
+    }
+    return Math.round((waterIntake / wat) * 100);
   }
 
   return (
@@ -50,10 +59,17 @@ const Water = () => {
         <StyledSubtitle>Water</StyledSubtitle>
         <StyledDiv>
           <StyledDiagram>
-            <Progress></Progress>
+            <Progress>
+              <P>{persentWater(wat, watIntake)}%</P>
+            </Progress>
           </StyledDiagram>
           <div>
-            <Svg onClick={() => dispatch(delWaterIntake())}>
+            <Svg
+              onClick={() => {
+                dispatch(delWaterIntake());
+                toast.success('WaterIntake has been successfuly reset');
+              }}
+            >
               <use href={`${svgSlice}#trash`}></use>
             </Svg>
             <StyledP>Water consumption</StyledP>
