@@ -14,7 +14,6 @@ const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const RecFoodPage = lazy(() =>
   import('./pages/RecommendedFoodPage/RecommendedFoodPage')
 );
-const SignIn = lazy(() => import('./pages/SignInPage/SignIn'));
 
 function App() {
   const dispatch = useDispatch();
@@ -46,23 +45,10 @@ function App() {
             element={<PrivatRoute redirectTo="/signin" component={<Today />} />}
           />
           <Route path="/dashboard" />
-          <Route
-            path="/diary"
-            element={<PrivatRoute redirectTo="/signin" component={<Diary />} />}
-          />
-          <Route
-            path="/recommended-food"
-            element={
-              <PrivatRoute redirectTo="/signin" component={<RecFoodPage />} />
-            }
-          />
+          <Route path="/diary" element={<Diary />} />
+          <Route path="/recommended-food" element={<RecFoodPage />} />
           <Route path="/settings" />
-          <Route
-            path="*"
-            element={
-              <RestrictedRoute redirectTo="/main" component={<Welcome />} />
-            }
-          />
+          <Route path="*" element={<Welcome />} />
         </Route>
       </Routes>
     </>

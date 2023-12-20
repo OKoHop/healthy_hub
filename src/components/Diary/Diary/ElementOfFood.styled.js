@@ -3,10 +3,8 @@ import styled from 'styled-components';
 export const Wrapper = styled.li`
   display: flex;
   column-gap: 16px;
-  color: ${p => p.theme.colors.white};
-  font-family: ${p => p.theme.fontFamily.poppins};
+  color: ${p => p.theme.colors.primaryWhite};
   font-size: ${p => p.theme.fontSizes.xs};
-  font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
 `;
 
@@ -35,14 +33,12 @@ export const EditButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 6px;
-  color: ${p => p.theme.colors.gray};
-  font-family: ${p => p.theme.fontFamily.poppins};
+  color: ${p => p.theme.colors.primaryGray};
   font-size: ${p => p.theme.fontSizes.xs};
-  font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
   cursor: pointer;
 
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${p => p.theme.mq.tabMin}) {
     order: 1;
   }
 `;
@@ -58,7 +54,7 @@ export const BlockInfo = styled.div`
   font-size: 12px;
   line-height: 18px;
 
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${p => p.theme.mq.tabMin}) {
     font-size: ${p => p.theme.fontSizes.xs};
     line-height: 20px;
   }
@@ -70,10 +66,10 @@ export const Carbonohidrates = styled.p`
   column-gap: 6px;
 
   & > span {
-    color: ${props => props.theme.colors.gray};
+    color: ${props => props.theme.colors.primaryGray};
   }
   
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${p => p.theme.mq.tabMin}) {
     width: 80px;
 
     & > span {
@@ -84,7 +80,7 @@ export const Carbonohidrates = styled.p`
 
 export const Protein = styled(Carbonohidrates)`
   width: 62px;
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${p => p.theme.mq.tabMin}) {
     width: 80px;
   }
 `;
@@ -100,10 +96,8 @@ export const AddFoodButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 8px;
-  color: ${props => props.theme.colors.greenLite};
-  font-family: ${props => props.theme.fontFamily.poppins};
+  color: ${props => props.theme.colors.primaryLiteGreen};
   font-size: ${p => p.theme.fontSizes.xs};
-  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
   background-color: transparent;
   border: none;
