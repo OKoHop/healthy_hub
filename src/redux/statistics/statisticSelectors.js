@@ -39,7 +39,7 @@ export const selectConsumedProductsForBreakfast = createSelector(
   [selectIntakeFoodPerDay],
   intakeFood => {
     if (!intakeFood || intakeFood.length === 0) {
-      return []; // або інше значення за замовчуванням, якщо intakeFood порожній чи не визначений
+      return []; 
     }
 
     return getProductsByMealType(intakeFood, 'Breakfast');

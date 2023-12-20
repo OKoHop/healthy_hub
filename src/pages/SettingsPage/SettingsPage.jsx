@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import { updateUser, updateAvatar } from 'redux/auth/operations';
+import { updateUser, updateAvatar } from '../../redux/auth/operations';
 import { selectUser } from '../../redux/auth/selectors';
-import { getStats } from '../../redux/Statistics/statisticOperations';
+import { getStats } from '../../redux/statistics/statisticOperations';
 
 import {
   SettingsPageSection,
@@ -31,11 +31,11 @@ import {
   LinkDownloadPhoto,
 } from './SettingsPage.styled';
 
-import setingsPage from 'images/setings-page-png.png';
-import downloadPhoto from 'images/icons/download-new-photo.svg';
-import avatar from 'images/icons/profile-circle.svg';
+import setingsPage from '../../images/settingsPageImages/setings-page.png';
+import downloadPhoto from '../../images/settingsPageImages/download-new-photo.svg';
+import avatar from '../../images/settingsPageImages/profile-circle.svg';
 
-import CustomRadioButton from 'components/CustomRadioButton/CustomRadioButton';
+import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton/CustomRadioButton';
 
 const validationSchema = yup.object({
   name: yup
