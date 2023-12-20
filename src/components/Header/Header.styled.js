@@ -32,8 +32,6 @@ export const TargetSelectionList = styled.ul`
   }
 `;
 
-export const TargetSelectionListItem = styled.li``;
-
 export const StyledNavLogoLink = styled(NavLink)`
   color: #b6b6b6;
   font-size: 16px;
