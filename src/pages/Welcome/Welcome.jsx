@@ -44,6 +44,7 @@ const Welcome = () => {
           marginDesk={'40px 104px 72px 150px'}
         />
       </picture>
+      
       <Content>
         <Title>Set goals and achieve them</Title>
         <Subtitle>

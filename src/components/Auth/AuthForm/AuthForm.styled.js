@@ -7,7 +7,7 @@ export const InputsBlock = styled.div.attrs((props) => ({
   flex-direction: column;
   gap: 20px;
   margin-bottom: ${(props) => (props.hasbackbutton ? '24px' : '40px')};
-  @media (${(p) => p.theme.mq.desktop}) {
+  @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 328px;
   }
 `;
@@ -19,11 +19,11 @@ export const StyledRadioGroup = styled.div.attrs((props) => ({
   flex-direction: column;
   gap: 24px;
 
-  @media (${(p) => p.theme.mq.tablet}) {
+  @media (${(p) => p.theme.mq.tabMin}) {
     flex-direction: ${(props) => (props.row ? 'column' : 'row')};
   }
 
-  @media (${(p) => p.theme.mq.desktop}) {
+  @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 444px;
     flex-direction: column;
   }
@@ -34,7 +34,7 @@ export const ButtonsBlock = styled.div`
   flex-direction: column;
   gap: 20px;
   text-align: center;
-  @media (${(p) => p.theme.mq.desktop}) {
+  @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 212px;
   }
 `;
