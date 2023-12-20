@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import SportAndFitnessTrackerIMG from './../../images/Illustrations/Welcome/sport_fit_tracker_desk@1x.png';
 import { useFormik } from 'formik';
-import FormInput from '../Auth/FormInput';
+
 import validationSchema from './validationSchema';
 import { forgotPassword } from '../../redux/auth/operations';
 import { Link } from 'react-router-dom';
 
 import css from './ForgotPassword.module.css';
 import { selectError } from '../../redux/auth/selectors';
+import FormInput from '../Auth/AuthFormInput/FormInput';
 
 const ForgotPasswordForm = () => {
   const inputFields = [{ name: 'email', placeholder: 'E-mail', type: 'text' }];

@@ -44,13 +44,8 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
         values.activity = modifyActivityValue(values.activity);
 
         try {
-          const registrationResult = await dispatch(register(values));
-
-          if (register.fulfilled.match(registrationResult)) {
-            navigate('/signin');
-          } else {
-            values.activity = originalActivity;
-          }
+          await dispatch(register(values));
+          values.activity = originalActivity;
         } catch (error) {
           const errorMessage =
             selectErrorFromStore || 'An unexpected error occurred.';
