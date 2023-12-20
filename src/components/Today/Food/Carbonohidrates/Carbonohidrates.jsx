@@ -1,14 +1,26 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.style';
+import { useSelector } from 'react-redux';
+import { carbonohidrates } from '../../../../redux/Today/Food/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Carbonohidrates = () => {
+  const dailyCarb = useSelector(carbonohidrates);
+  const receivedCarb = 0;
+
+  const leftCarb = (dailyCarb, receivedCarb) => {
+    if (dailyCarb - receivedCarb === null) {
+      return 0;
+    }
+    return dailyCarb - receivedCarb;
+  };
+
   const data = {
     datasets: [
       {
-        data: [100, 200],
+        data: [receivedCarb, leftCarb(dailyCarb, receivedCarb)],
         backgroundColor: ['#FFC4F7', '#292928'],
         borderWidth: 0,
         borderRadius: 14,
@@ -48,7 +60,7 @@ const Carbonohidrates = () => {
             Goal: <Span>0</Span>
           </P2>
           <P2>
-            left: <Span>0</Span>
+            left: <Span>{leftCarb(dailyCarb, receivedCarb)}</Span>
           </P2>
         </Div3>
       </Div2>

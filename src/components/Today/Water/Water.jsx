@@ -59,9 +59,9 @@ const Water = () => {
         <StyledSubtitle>Water</StyledSubtitle>
         <StyledDiv>
           <StyledDiagram>
-            <Progress>
-              <P>{persentWater(wat, watIntake)}%</P>
-            </Progress>
+            <P>{persentWater(wat, watIntake)} %</P>
+
+            <Progress></Progress>
           </StyledDiagram>
           <div>
             <Svg
