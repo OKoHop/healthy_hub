@@ -1,4 +1,4 @@
-import{s as o,n as a,t,j as i,F as $,i as b,N as q}from"./index-45781d10.js";import{w as k,a as j,b as v,c as C,d as S}from"./WelcomeImg-d1b22ba1.js";const B=o.div`
+import{s as o,n as a,t,j as i,F as $,i as b,N as q}from"./index-c71c4a86.js";import{w as k,a as j,b as v,c as C,d as S}from"./WelcomeImg-66fd6e1c.js";const B=o.div`
   ${e=>a`
     background-color: ${e.theme.colors.primaryBlack2};
     display: flex;
