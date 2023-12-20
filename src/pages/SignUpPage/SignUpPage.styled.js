@@ -113,3 +113,12 @@ export const StyledLink = styled(Link)`
     text-decoration: underline;
   }
 `;
+
+export const ErrorBlock = styled.div`
+  border: 1px solid #e74a3b;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #e3ffa8;
+  border-radius: 14px;
+  margin-bottom: 30px;
+`;
