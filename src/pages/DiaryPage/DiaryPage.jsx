@@ -3,14 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
-import ItemsToAdd from '../../components/DiaryPage/ItemsToAdd';
-import ElementOfFood from '../../components/DiaryPage/ElementOfFood';
+import ItemsToAdd from '../../components/Diary/DiaryPageItemsToAdd/ItemsToAdd';
+import ElementOfFood from '../../components/Diary/Diary/ElementOfFood';
 import {
-  selectMacronutrientsPerDay,
-  selectProductsForBreakfast,
+  selectConsumedMacronutrientsPerDay,
+  selectConsumedProductsForBreakfast,
   selectConsumedProductsForDinner,
-  selectProductsForLunch,
-  selectProductsForSnack,
+  selectConsumedProductsForLunch,
+  selectConsumedProductsForSnack,
 } from '../../redux/statistics/statisticSelectors';
 import { getArrayToRenderDiary } from '../../helpers/getArrayToRenderDiary';
 
@@ -43,12 +43,12 @@ const DiaryPage = () => {
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
   const consumedMacronutrients = useSelector(
-    selectMacronutrientsPerDay
+    selectConsumedMacronutrientsPerDay
   );
-  const breakfastFoodIntake = useSelector(selectProductsForBreakfast);
-  const lunchFoodIntake = useSelector(selectProductsForLunch);
+  const breakfastFoodIntake = useSelector(selectConsumedProductsForBreakfast);
+  const lunchFoodIntake = useSelector(selectConsumedProductsForLunch);
   const dinnerFoodIntake = useSelector(selectConsumedProductsForDinner);
-  const snackFoodIntake = useSelector(selectProductsForSnack);
+  const snackFoodIntake = useSelector(selectConsumedProductsForSnack);
 
   const {
     breakfast: breakfastInfo,
@@ -72,7 +72,7 @@ const DiaryPage = () => {
             <BlockGeneralInfo>
               <BlockHeader>
                 <ThumbImg>
-                  <Img src={breakfastImg} alt="Breakfast on a plate" />
+                  <Img src={breakfastImg} alt="Plate" />
                 </ThumbImg>
                 <Title>Breakfast</Title>
               </BlockHeader>
@@ -98,7 +98,7 @@ const DiaryPage = () => {
             <BlockGeneralInfo>
               <BlockHeader>
                 <ThumbImg>
-                  <Img src={lunchImg} alt="Lunch on a plate" />
+                  <Img src={lunchImg} alt="Plate" />
                 </ThumbImg>
                 <Title>Lunch</Title>
               </BlockHeader>
@@ -124,7 +124,7 @@ const DiaryPage = () => {
             <BlockGeneralInfo>
               <BlockHeader>
                 <ThumbImg>
-                  <Img src={dinnerImg} alt="Dinner on a plate" />
+                  <Img src={dinnerImg} alt="Plate" />
                 </ThumbImg>
                 <Title>Dinner</Title>
               </BlockHeader>
@@ -150,7 +150,7 @@ const DiaryPage = () => {
             <BlockGeneralInfo>
               <BlockHeader>
                 <ThumbImg>
-                  <Img src={snackImg} alt="Snack on a plate" />
+                  <Img src={snackImg} alt="Plate" />
                 </ThumbImg>
                 <Title>Snack</Title>
               </BlockHeader>

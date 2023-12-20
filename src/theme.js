@@ -20,6 +20,22 @@ export const theme = Object.freeze({
     correct: '#3CBC81',
   },
 
+  fontWeights: {
+    medium: 500, 
+    semiBold: 600, 
+    bold: 700, 
+  },
+
+  fontSizes: {
+    xs: '14px',
+    s: '16px',
+    m: '18px',
+    l: '22px',
+    l2: '24px',
+    xl: '30px',
+    xxl: '32px',
+  },
+
   // Animation / Example: transition: ${p => p.theme.transition.customTrans};
   transition: {
     customTrans: '250ms cubic-bezier(0.4, 0, 0.2, 1)',

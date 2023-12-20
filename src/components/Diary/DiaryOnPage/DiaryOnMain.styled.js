@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Section = styled.section`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -15,27 +15,24 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #FFFFFF;
-  /* font-family: 'Poppins', sans-serif; */
-  font-size: 18px;
-  font-weight: 400;
+  color: ${props => props.theme.colors.primaryWhite};
+  font-size: ${p => p.theme.fontSizes.m};
   line-height: 24px;
 
-  @media screen and (min-width: 834px) {
-    font-size: 22px;
+  @media screen and (${ p => p.theme.mq.tabMin}) {
+    font-size: ${p => p.theme.fontSizes.l};
     line-height: 32px;
   }
 `;
 
 export const DiaryLink = styled(Link)`
-  color: #B6B6B6;
-  /* font-family: 'Poppins', sans-serif; */
-  font-size: 14px;
-  font-weight: 500;
+  color: ${props => props.theme.colors.primaryGray};
+  font-size: ${p => p.theme.fontSizes.xs};
+  font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
 
-  @media screen and (min-width: 1440px) {
-    font-size: 16px;
+  @media screen and (${ p => p.theme.mq.tabMin}) {
+    font-size: ${p => p.theme.fontSizes.s};
     line-height: 22px;
   }
 `;

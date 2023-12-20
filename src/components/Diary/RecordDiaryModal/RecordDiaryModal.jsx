@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from "react-redux";
@@ -165,7 +166,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
           onSubmit={handleSubmit}
           validationSchema={schema}
         >
-          {({ values }) => (
+          {({ errors, touched, values }) => (
 
             <FormFormic autoComplete="off">
 
@@ -285,6 +286,12 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
     </Backdrop>,
     modalRoot
   );
+};
+
+RecordDiaryModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired,
+  mealType: PropTypes.string.isRequired
 };
 
 export default RecordDiaryModal;
