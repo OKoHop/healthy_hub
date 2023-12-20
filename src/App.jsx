@@ -26,12 +26,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <RestrictedRoute redirectTo="/main" component={<Welcome />} />
-            }
-          />
+          <Route index element={<Welcome />} />
           <Route
             path="/signup"
             element={
