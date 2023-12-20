@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import RecordDiaryModal from '../RecordDiaryModal/RecordDiaryModal';
-import UpdateMealModal from '../components/UpdateMealModal/UpdateMealModal';
+import UpdateMealModal from '../UpdateMealModal/UpdateMealModal';
 
 import edit from '../../../images/diaryPageImages/edit-2.svg'
 
