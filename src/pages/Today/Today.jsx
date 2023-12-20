@@ -8,10 +8,14 @@ import {
   Section,
   StyledDiv,
   StyledDiv2,
+  Wrapper,
 } from './Today.style';
 import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import { Link } from 'react-router-dom';
+import DiaryOnMain from '../../components/DiaryOnMain/DiaryOnMain';
+
+import RecommendedFoodMain from '../../components/RecommendedFoodMain/RecommendedFoodMain';
 
 const Today = () => {
   return (
@@ -35,6 +39,14 @@ const Today = () => {
           </StyledDiv2>
           <Food />
         </StyledDiv>
+
+        <Wrapper>
+          {/* блок щоденник */}
+          {/* <DiaryOnMain /> */}
+        </Wrapper>
+      </div>
+      <div className="container">
+        <RecommendedFoodMain />
       </div>
     </Section>
   );

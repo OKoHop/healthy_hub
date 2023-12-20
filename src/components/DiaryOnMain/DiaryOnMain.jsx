@@ -5,7 +5,7 @@ import {
   DiaryLink,
   Title,
   TitleWrapper,
-  Container,
+  Section,
 } from './DiaryOnMain.styled';
 
 import breakfastImage from '../../images/diaryPageImages/breakfast.png';
@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 
 const DiaryOnMain = () => {
   const ConsumedMacronutrients = useSelector(selectMacronutrientsPerDay);
-  
+
   const {
     breakfast: breakfastInfo,
     lunch: lunchInfo,
@@ -25,22 +25,24 @@ const DiaryOnMain = () => {
   } = ConsumedMacronutrients;
 
   return (
-    <Container>
-      <TitleWrapper>
-        <Title>Diary</Title>
-        <DiaryLink to="/diary">See more</DiaryLink>
-      </TitleWrapper>
-      <CardsWrap>
-        <DiaryItem
-          title={'Breakfast'}
-          image={breakfastImage}
-          info={breakfastInfo}
-        />
-        <DiaryItem title={'Lunch'} image={lunchImage} info={lunchInfo} />
-        <DiaryItem title={'Dinner'} image={dinnerImage} info={dinnerInfo} />
-        <DiaryItem title={'Snack'} image={snackImage} info={snackInfo} />
-      </CardsWrap>
-    </Container>
+    <Section>
+      <div className="container">
+        <TitleWrapper>
+          <Title>Diary</Title>
+          <DiaryLink to="/diary">See more</DiaryLink>
+        </TitleWrapper>
+        <CardsWrap>
+          <DiaryItem
+            title={'Breakfast'}
+            image={breakfastImage}
+            info={breakfastInfo}
+          />
+          <DiaryItem title={'Lunch'} image={lunchImage} info={lunchInfo} />
+          <DiaryItem title={'Dinner'} image={dinnerImage} info={dinnerInfo} />
+          <DiaryItem title={'Snack'} image={snackImage} info={snackInfo} />
+        </CardsWrap>
+      </div>
+    </Section>
   );
 };
 

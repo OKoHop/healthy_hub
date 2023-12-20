@@ -4,8 +4,9 @@ export const StyledDiv = styled.div`
   border-radius: 12px;
   background-color: #0f0f0f;
   display: flex;
+  position: relative;
 
-  @media (max-width: 834px) {
+  @media (max-width: 833px) {
     width: 300px;
     height: 224px;
     padding: 16px 12px;
@@ -42,7 +43,7 @@ export const StyledP = styled.p`
   margin-top: 22px;
   margin-bottom: 12px;
 
-  @media (max-width: 834px) {
+  @media (max-width: 833px) {
     margin-top: 22px;
     margin-bottom: 12px;
   }
@@ -98,9 +99,7 @@ export const StyledLeft = styled.p`
   }
 `;
 export const StyledBtn = styled.button`
-  width: 166px;
-  height: 36px;
-  border: inherit;
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 8px 10px;
   background-color: #e3ffa8;
@@ -109,6 +108,13 @@ export const StyledBtn = styled.button`
   font-size: 14px;
   line-height: 1.43;
   color: #0f0f0f;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid #e3ffa8;
+    color: #ffffff;
+  }
 `;
 
 export const StyledDiagram = styled.div`
@@ -116,9 +122,20 @@ export const StyledDiagram = styled.div`
   height: 192px;
   border-radius: 20px;
   background-color: #292928;
+  padding: 8px;
+
+  position: relative;
 `;
+
+export const Progress = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #b6c3ff;
+`;
+
 export const Thumb = styled.div`
-  @media (max-width: 834px) {
+  @media (max-width: 833px) {
     width: 300px;
   }
 
@@ -141,4 +158,35 @@ export const SVG = styled.svg`
   width: 16px;
   height: 16px;
   stroke: #0f0f0f;
+
+  &:hover {
+    stroke: #ffffff;
+  }
+`;
+
+export const Svg = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: #e3ffa8;
+  cursor: pointer;
+
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  @media (max-width: 833px) {
+    top: 12px;
+    right: 12px;
+  }
+`;
+
+export const P = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.37;
+  text-align: center;
+
+  position: absolute;
+  top: 28px;
+  left: 22px;
 `;

@@ -31,7 +31,7 @@ export const inputFields = {
 };
 
 export const radioData = {
-  goal: ['Lose Fat', 'Maintain', 'Gain Muscle'],
+  goal: ['Lose fat', 'Maintain', 'Gain Muscle'],
   gender: ['Male', 'Female'],
   activity: [
     '1.2 - If you do not have physical activity and sedentary work',
