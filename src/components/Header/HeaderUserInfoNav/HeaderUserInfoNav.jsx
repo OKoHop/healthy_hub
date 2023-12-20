@@ -2,18 +2,18 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import {
-  BtnUser,
   SvgUserBtnDown,
   UserInfo,
   UserName,
   UserPohotoStub,
-  SvgUserBtnUp,
-} from './HeaderUserInfo.style';
+} from './HeaderUserInfoNav.style';
 import swgIcons from '../../../images/Header/icons.svg';
 import { HeaderUserMenu } from '../HeaderUserMenu/HeaderUserMenu';
+import { useAuth } from '../../../hooks/useAuth';
 
-export const HeaderUserInfo = () => {
+export const HeaderUserInfoNav = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const { user } = useAuth();
 
   const userName = 'Konstantin';
   const firstLetter = userName ? userName[0].toUpperCase() : '';
@@ -47,21 +47,23 @@ export const HeaderUserInfo = () => {
   };
 
   const closeMenu = () => setIsUserMenuOpen(false);
+
+  const rotateSvg = { transform: 'rotate(180deg)' };
   return (
-    <UserInfo>
-      <UserName>Konstantin</UserName>
-      <UserPohotoStub>{firstLetter}</UserPohotoStub>
-      <BtnUser type="button" onClick={openMenu}>
+    <>
+      <UserInfo onClick={openMenu}>
+        <UserName>Konstantin</UserName>
+        <UserPohotoStub>{firstLetter}</UserPohotoStub>
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
             <use href={`${swgIcons}#icon-arrow-down`}></use>
           </SvgUserBtnDown>
         ) : (
-          <SvgUserBtnUp>
+          <SvgUserBtnDown style={rotateSvg}>
             <use href={`${swgIcons}#icon-arrow-down`}></use>
-          </SvgUserBtnUp>
+          </SvgUserBtnDown>
         )}
-      </BtnUser>
+      </UserInfo>
 
       <Modal
         isOpen={isUserMenuOpen}
@@ -71,7 +73,6 @@ export const HeaderUserInfo = () => {
       >
         <HeaderUserMenu />
       </Modal>
-    </UserInfo>
+    </>
   );
 };
-

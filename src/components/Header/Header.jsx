@@ -7,7 +7,7 @@ import {
 } from './Header.styled';
 import { HeaderMobMenuBtn } from './HeaderMobMenuBtn/HeaderMobMenuBtn';
 import { HeaderAuthNav } from './HeaderAuthNav/HeaderAuthNav';
-import { HeaderUserInfo } from './HeaderUserInfo/HeaderUserInfo';
+import { HeaderUserInfoNav } from './HeaderUserInfoNav/HeaderUserInfoNav.jsx';
 import { HeaderFrameTarget } from './HeaderFrameTarget/HeaderFrameTarget';
 import { HeaderFrameWeight } from './HeaderFrameWeight/HeaderFrameWeight';
 import { useAuth } from '../../hooks/useAuth';
@@ -34,7 +34,7 @@ export const Header = () => {
               </li>
             </TargetSelectionList>
           )}
-          {isLoggedIn && <HeaderUserInfo />}
+          {isLoggedIn && <HeaderUserInfoNav />}
           {!isLoggedIn && <HeaderAuthNav />}
         </HeaderContainer>
       </StyledHeader>
