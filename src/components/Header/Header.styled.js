@@ -6,9 +6,9 @@ export const StyledHeader = styled.header`
   height: 60px;
   display: flex;
   align-items: center;
-  position: relative;
 
-  @media (${(p) => p.theme.mq.tablet}) {
+
+  @media (${(p) => p.theme.mq.tabMin}) {
     height: 100px;
   }
 `;
@@ -16,6 +16,7 @@ export const StyledHeader = styled.header`
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 `;
 
 export const TargetSelectionList = styled.ul`
@@ -26,13 +27,11 @@ export const TargetSelectionList = styled.ul`
   justify-content: flex-end;
   gap: 40px;
 
-  @media (${(p) => p.theme.mq.desktop}) {
+  @media (${(p) => p.theme.mq.deskMin}) {
     gap: 80px;
     margin-right: 124px; 
   }
 `;
-
-export const TargetSelectionListItem = styled.li``;
 
 export const StyledNavLogoLink = styled(NavLink)`
   color: #b6b6b6;
@@ -42,7 +41,7 @@ export const StyledNavLogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
 
-  @media (${(p) => p.theme.mq.tablet}) {
+  @media (${(p) => p.theme.mq.tabMin}) {
     font-size: 22px;
     line-height: 32px;
   }

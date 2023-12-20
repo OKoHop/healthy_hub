@@ -20,7 +20,8 @@ export const UserPohotoStub = styled.div`
   font-weight: 700;
   -webkit-text-stroke: 0.5px #0f0f0f;
   font-size: 18px;
-  @media (${(p) => p.theme.mq.tablet}) {
+
+  @media (${(p) => p.theme.mq.tabMin}) {
     width: 28px;
     height: 28px;
   }
@@ -31,7 +32,8 @@ export const UserName = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  @media (${(p) => p.theme.mq.tablet}) {
+
+  @media (${(p) => p.theme.mq.tabMin}) {
     font-size: 14px;
     line-height: 20px;
   }
@@ -47,6 +49,7 @@ export const BtnUser = styled.button`
   justify-content: center;
   border: none;
   background: transparent;
+  transition: transform ${p => p.theme.transition.customTrans};
   &:hover,
   :focus {
     transform: scale(1.2);

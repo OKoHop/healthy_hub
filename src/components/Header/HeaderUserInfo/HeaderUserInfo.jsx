@@ -51,7 +51,7 @@ export const HeaderUserInfo = () => {
     <UserInfo>
       <UserName>Konstantin</UserName>
       <UserPohotoStub>{firstLetter}</UserPohotoStub>
-      <BtnUser onClick={openMenu}>
+      <BtnUser type="button" onClick={openMenu}>
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
             <use href={`${swgIcons}#icon-arrow-down`}></use>

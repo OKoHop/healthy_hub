@@ -14,6 +14,22 @@ export const StyledNavLinkUserMenu = styled(NavLink)`
   }
 `;
 
+export const BtnLogOut = styled.button`
+  color: ${(p) => p.theme.colors.primaryWhite};
+  font-size: 12px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  gap: 8px;
+  &:hover,
+  :focus {
+    color: ${(p) => p.theme.colors.primaryGreenLite};
+  }
+`;
+
 export const UserMenuList = styled.ul`
   height: 100%;
   display: flex;
