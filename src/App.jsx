@@ -7,6 +7,13 @@ const Today = lazy(() => import('./pages/Today/Today'));
 const Welcome = lazy(() => import('./pages/Welcome/Welcome'));
 const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+<<<<<<< Updated upstream
+=======
+const RecFoodPage = lazy(() =>
+  import('./pages/RecommendedFoodPage/RecommendedFoodPage')
+);
+const SignIn = lazy(() => import('./pages/SignInPage/SignIn'));
+>>>>>>> Stashed changes
 
 function App() {
   return (
