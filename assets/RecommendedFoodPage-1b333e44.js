@@ -1,4 +1,4 @@
-import{s as n,N as l,r as i,u as g,m as f,j as t,x as u}from"./index-38fd0f65.js";import{g as w,r as b,R as j}from"./randomizeFood-af9d400a.js";const y="/healthy_hub/assets/Ketogenic-f362ff99.png",k=n.main`
+import{s as n,N as x,r as i,u as g,m as f,j as t,y as u}from"./index-3c9e1900.js";import{g as w,r as b,R as y}from"./randomizeFood-9ce40bb7.js";const j="/healthy_hub/assets/Ketogenic-f362ff99.png",k=n.main`
   background-color: ${e=>e.theme.colors.primaryBlack};
   color: ${e=>e.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
@@ -30,7 +30,7 @@ import{s as n,N as l,r as i,u as g,m as f,j as t,x as u}from"./index-38fd0f65.js
 `,R=n.header`
   display: flex;
   margin-bottom: 16px;
-`,q=n(l)`
+`,q=n(x)`
   display: flex;
   margin-right: 8px;
 
@@ -96,4 +96,4 @@ import{s as n,N as l,r as i,u as g,m as f,j as t,x as u}from"./index-38fd0f65.js
   @media screen and (${e=>e.theme.mq.desktop}) {
     width: calc((100% - 44px) / 2);
   }
-`,E="/healthy_hub/assets/arrow-right-246ec13a.svg";function I(){var o;const[e,s]=i.useState([]),d=g(),r=f(),m=i.useRef(((o=r.state)==null?void 0:o.from)??"/main");return i.useEffect(()=>{w().then(a=>{s(b(a,10))}).catch(a=>console.error(a))},[]),t.jsx(k,{children:t.jsxs($,{children:[t.jsxs(R,{children:[t.jsx(q,{to:m.current,onClick:()=>d(u("today")),children:t.jsx(F,{src:E,alt:"arrow right"})}),t.jsx(L,{children:"Recommended food"})]}),t.jsxs(v,{children:[t.jsx(B,{children:t.jsx(C,{src:y,alt:"Banner recommended food"})}),t.jsx(z,{children:e.map(({_id:a,img:c,name:p,amount:h,calories:x})=>t.jsx(j,{id:a,img:c,name:p,amount:h,calories:x},a))})]})]})})}export{I as default};
+`,E="/healthy_hub/assets/arrow-right-246ec13a.svg";function I(){var o;const[e,s]=i.useState([]),d=g(),r=f(),m=i.useRef(((o=r.state)==null?void 0:o.from)??"/main");return i.useEffect(()=>{w().then(a=>{s(b(a,10))}).catch(a=>console.error(a))},[]),t.jsx(k,{children:t.jsxs($,{children:[t.jsxs(R,{children:[t.jsx(q,{to:m.current,onClick:()=>d(u("today")),children:t.jsx(F,{src:E,alt:"arrow right"})}),t.jsx(L,{children:"Recommended food"})]}),t.jsxs(v,{children:[t.jsx(B,{children:t.jsx(C,{src:j,alt:"Banner recommended food"})}),t.jsx(z,{children:e.map(({_id:a,img:c,name:p,amount:h,calories:l})=>t.jsx(y,{id:a,img:c,name:p,amount:h,calories:l},a))})]})]})})}export{I as default};
