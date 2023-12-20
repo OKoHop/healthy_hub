@@ -118,6 +118,8 @@ export const StyledDiagram = styled.div`
   border-radius: 20px;
   background-color: #292928;
   padding: 8px;
+
+  position: relative;
 `;
 
 export const Progress = styled.div`
@@ -167,4 +169,14 @@ export const Svg = styled.svg`
     top: 12px;
     right: 12px;
   }
+`;
+
+export const P = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.37;
+
+  position: absolute;
+  top: 28px;
+  left: 22px;
 `;

@@ -5,6 +5,6 @@ export const getRecommendedFood = async () => {
     const { data } = await axios.get('/api/user/recommended-food');
     return data;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };

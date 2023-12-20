@@ -22,9 +22,15 @@ const dayliPersistConfig = {
   whitelist: ['waterIntake'],
 };
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
     foods: foodsReducer,
     stats: statsReducer,
     daily: persistReducer(dayliPersistConfig, dailyReducer),

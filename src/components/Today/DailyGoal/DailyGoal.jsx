@@ -35,7 +35,7 @@ const DailyGoal = () => {
           </BubleSvg>
           <div>
             <StyledH3>Calories</StyledH3>
-            <StyledP>{cal ? cal : 0}</StyledP>
+            <StyledP>{cal ? Math.round(cal) : 0}</StyledP>
           </div>
         </StyledDiv2>
         <StyledDiv2>
@@ -45,7 +45,7 @@ const DailyGoal = () => {
           <div>
             <StyledH3>Water</StyledH3>
             <StyledP>
-              {wat ? wat : 0} <StyledSpan>ml</StyledSpan>
+              {wat ? Math.round(wat) : 0} <StyledSpan>ml</StyledSpan>
             </StyledP>
           </div>
         </StyledDiv2>
