@@ -32,10 +32,12 @@ export const authSlice = createSlice({
         console.error('Registration rejected:', action.payload);
 
         if (action.payload && action.payload.status === 409) {
-          state.error = 'User with this email already exists.';
+          state.error =
+            'User with this email already exists. Please try log in or use a different email.';
         } else {
           state.error =
-            action.payload?.message || 'An unexpected error occurred.';
+            'Something went wrong. Please check your data and try again.' ||
+            action.payload?.message;
         }
       })
 
