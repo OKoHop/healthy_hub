@@ -1,9 +1,21 @@
 import Modal from 'react-modal';
 import { Form, FormBtn, H1, Input, Label, ModalWindow, P } from './Modal.style';
+import { useDispatch } from 'react-redux';
+import { saveWaterIntake } from '../../../redux/Today/Water/operations';
 
 Modal.setAppElement('#root');
 
 const WaterModal = ({ open, close }) => {
+  const dispatch = useDispatch();
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const waterData = form.elements.water.value;
+    dispatch(saveWaterIntake(waterData));
+    close();
+  };
+
   return (
     <ModalWindow
       isOpen={open}
@@ -14,7 +26,7 @@ const WaterModal = ({ open, close }) => {
       <H1>Add water intake</H1>
 
       <div>
-        <Form>
+        <Form onSubmit={handleSubmitForm}>
           <Label>
             How match water
             <Input type="text" name="water" placeholder="Enter milliliters" />

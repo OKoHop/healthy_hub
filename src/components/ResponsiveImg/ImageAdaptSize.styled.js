@@ -13,11 +13,13 @@ const Image = styled.img`
     @media (${theme.mq.mobMin}) and (${theme.mq.mobMax}) {
       width: ${widthMob};
       margin: ${marginMob};
+
     }
 
-    @media (${theme.mq.tabMin}) and (${theme.mq.tabMax}) {
+    @media (${theme.mq.tabMin}) {
       width: ${widthTab};
       margin: ${marginTab};
+      
     }
 
     @media (${theme.mq.deskMin}) {

@@ -1,4 +1,4 @@
-export const generateSources = (basePath, format, imagePaths) => {
+export const generateSources = (imagePaths, format) => {
   const mediaQuery =
     format === 'mob'
       ? '(max-width: 833px)'
@@ -8,7 +8,7 @@ export const generateSources = (basePath, format, imagePaths) => {
     <source
       key={index}
       media={mediaQuery}
-      srcSet={`${basePath}/${imagePaths[format][extension][0]} 1x, ${basePath}/${imagePaths[format][extension][1]} 2x`}
+      srcSet={`${imagePaths[format][extension][0]} 1x, ${imagePaths[format][extension][1]} 2x`}
       type={`image/${extension}`}
     />
   ));
@@ -26,3 +26,4 @@ export const getMinWidth = (format) => {
       return '1440px';
   }
 };
+

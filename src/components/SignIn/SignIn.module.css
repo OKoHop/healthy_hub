@@ -35,6 +35,11 @@
   row-gap: 16px;
 }
 
+.error {
+  color: #e74a3b;
+  font-size: 0.8rem;
+}
+
 
 .signinBtn {
   display: block;

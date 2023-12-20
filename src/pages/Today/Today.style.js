@@ -50,8 +50,12 @@ export const Div = styled.div`
 
 export const H1 = styled.h1`
   font-weight: 500;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.25;
+
+  @media (max-width: 834px) {
+    font-size: 24px;
+  }
 `;
 
 export const Link = styled.a`
@@ -72,6 +76,15 @@ export const DivLink = styled.div`
 `;
 export const Section = styled.section`
   position: relative;
+  margin-top: 16px;
+
+  @media (min-width: 834px) {
+    margin-top: 24px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 20px;
+  }
 `;
 
 // блок щоденник
@@ -83,4 +96,5 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 834px) {
     flex-direction: row;
     flex-basis: calc((100% - 20px) / 2);
-  }`;
+  }
+`;

@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SportAndFitnessTrackerIMG from './../../images/Illustrations/Welcome/sport_fit_tracker_desk@1x.png';
 import { useFormik } from 'formik';
 import FormInput from '../Auth/FormInput';
@@ -7,8 +7,10 @@ import { logIn } from '../../redux/auth/operations';
 import { Link } from 'react-router-dom';
 
 import css from './SignIn.module.css';
+import { selectError } from '../../redux/auth/selectors';
 
 const SignInForm = () => {
+  const error = useSelector(selectError);
   const inputFields = [
     { name: 'email', placeholder: 'E-mail', type: 'text' },
     {
@@ -51,8 +53,13 @@ const SignInForm = () => {
                 type={field.type}
                 placeholder={field.placeholder}
                 label={field.label}
+                onBlur={() =>
+                  formik.handleBlur({ target: { name: field.name } })
+                }
+                showError={true}
               />
             ))}
+            {error && <div className={css.error}>{error}</div>}
             <button className={css.signinBtn} type="submit">
               Sign in
             </button>

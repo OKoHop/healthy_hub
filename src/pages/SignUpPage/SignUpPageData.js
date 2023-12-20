@@ -1,23 +1,24 @@
 import { generateSources } from '../../components/ResponsiveImg/ResponsiveImg';
 import {
-  parametersImageName,
-  parametersImgSrc,
-  parametersSrcDesk,
-  parametersSrcMob,
-  parametersSrcTab,
+  bodyParamImgName,
+  bodyParamImgSrc,
+  bodyParamSrcDesk,
+  bodyParamSrcMob,
+  bodyParamSrcTab,
 } from '../../images/Illustrations/BodyParameters/BodyParametersImg';
 import {
-  genderImageName,
-  genderImgSrc,
-  genderSrcDesk,
-  genderSrcMob,
-  genderSrcTab,
+  genderAgeImgName,
+  genderAgeImgSrc,
+  genderAgeSrcDesk,
+  genderAgeSrcMob,
+  genderAgeSrcTab,
 } from '../../images/Illustrations/GenderAge/GenderAgeImg';
+
 import {
-  basePath,
   imageName,
-  imagePaths,
+  imagePaths
 } from '../../images/Illustrations/Welcome/WelcomeImg';
+
 import {
   activityImageName,
   activityImgSrc,
@@ -26,20 +27,20 @@ import {
   activitySrcTab,
 } from '../../images/Illustrations/YourActivity/YourActivityImg';
 import {
-  goalImageName,
-  goalImgSrc,
-  goalSrcDesk,
-  goalSrcMob,
-  goalSrcTab,
+  yourGoalImgName,
+  yourGoalImgSrc,
+  yourGoalSrcDesk,
+  yourGoalSrcMob,
+  yourGoalSrcTab,
 } from '../../images/Illustrations/YourGoal/YourGoalImg';
 
 const signUpPageData = {
   0: {
     media: {
-      srcDesk: generateSources(basePath, 'desk', imagePaths),
-      srcTab: generateSources(basePath, 'tab', imagePaths),
-      srcMob: generateSources(basePath, 'mob', imagePaths),
-      imgSrc: `${basePath}/${imagePaths['desk'].png[0]}`,
+      srcDesk: generateSources(imagePaths,'desk'),
+      srcTab: generateSources(imagePaths,'tab'),
+      srcMob: generateSources(imagePaths, 'mob'),
+      imgSrc: `${imagePaths['desk'].png[0]}`,
       alt: imageName,
     },
     info: {
@@ -49,11 +50,11 @@ const signUpPageData = {
   },
   1: {
     media: {
-      srcDesk: goalSrcDesk,
-      srcTab: goalSrcTab,
-      srcMob: goalSrcMob,
-      imgSrc: goalImgSrc,
-      alt: goalImageName,
+      srcDesk: yourGoalSrcDesk,
+      srcTab: yourGoalSrcTab,
+      srcMob: yourGoalSrcMob,
+      imgSrc: yourGoalImgSrc,
+      alt: yourGoalImgName,
     },
     info: {
       title: 'Your goal',
@@ -62,11 +63,11 @@ const signUpPageData = {
   },
   2: {
     media: {
-      srcDesk: genderSrcDesk,
-      srcTab: genderSrcTab,
-      srcMob: genderSrcMob,
-      imgSrc: genderImgSrc,
-      alt: genderImageName,
+      srcDesk: genderAgeSrcDesk,
+      srcTab: genderAgeSrcTab,
+      srcMob: genderAgeSrcMob,
+      imgSrc: genderAgeImgSrc,
+      alt: genderAgeImgName,
     },
     info: {
       title: 'Select gender, Age',
@@ -75,11 +76,11 @@ const signUpPageData = {
   },
   3: {
     media: {
-      srcDesk: parametersSrcDesk,
-      srcTab: parametersSrcTab,
-      srcMob: parametersSrcMob,
-      imgSrc: parametersImgSrc,
-      alt: parametersImageName,
+      srcDesk: bodyParamSrcDesk,
+      srcTab: bodyParamSrcTab,
+      srcMob: bodyParamSrcMob,
+      imgSrc: bodyParamImgSrc,
+      alt: bodyParamImgName,
     },
     info: {
       title: 'Body parameters',
