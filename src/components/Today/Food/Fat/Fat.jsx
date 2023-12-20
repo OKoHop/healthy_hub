@@ -11,6 +11,8 @@ const Fat = () => {
         data: [100, 200],
         backgroundColor: ['#FFF3B7', '#292928'],
         borderWidth: 0,
+        borderRadius: 14,
+
         circumference: 360,
         cutout: '80%',
       },
@@ -40,7 +42,7 @@ const Fat = () => {
     <Div>
       <Doughnut data={data} plugins={[textCenter]}></Doughnut>
       <Div2>
-        <P>Carbonohidrates</P>
+        <P>Fat</P>
         <Div3>
           <P2>
             Goal: <Span>0</Span>

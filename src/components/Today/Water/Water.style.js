@@ -157,6 +157,7 @@ export const Svg = styled.svg`
   width: 20px;
   height: 20px;
   stroke: #e3ffa8;
+  cursor: pointer;
 
   position: absolute;
   top: 24px;

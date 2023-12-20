@@ -11,6 +11,8 @@ const Carbonohidrates = () => {
         data: [100, 200],
         backgroundColor: ['#FFC4F7', '#292928'],
         borderWidth: 0,
+        borderRadius: 14,
+
         circumference: 360,
         cutout: '80%',
       },

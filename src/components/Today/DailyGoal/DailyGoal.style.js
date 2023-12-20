@@ -57,13 +57,17 @@ export const StyledSpan = styled.span`
 
 export const StyledSubtitle = styled.p`
   font-weight: 400;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.33;
   margin-bottom: 6px;
+
+  @media (max-width: 833px) {
+    font-size: 18px;
+  }
 `;
 
 export const Thumb = styled.div`
-  @media (max-width: 834px) {
+  @media (max-width: 833px) {
     width: 300px;
   }
 

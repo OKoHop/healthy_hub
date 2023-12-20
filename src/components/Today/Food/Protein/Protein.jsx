@@ -11,6 +11,8 @@ const Protein = () => {
         data: [100, 200],
         backgroundColor: ['#B6B6B6', '#292928'],
         borderWidth: 0,
+        borderRadius: 14,
+
         circumference: 360,
         cutout: '80%',
       },
@@ -40,7 +42,7 @@ const Protein = () => {
     <Div>
       <Doughnut data={data} plugins={[textCenter]}></Doughnut>
       <Div2>
-        <P>Carbonohidrates</P>
+        <P>Protein</P>
         <Div3>
           <P2>
             Goal: <Span>0</Span>
