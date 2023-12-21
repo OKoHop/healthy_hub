@@ -27,12 +27,13 @@ const SignUpPage = () => {
     setError(errorMessage);
   };
 
-  const issigninvisible = currentStep === 0;
+  const isSigninVisible = currentStep === 0;
 
   const currentPageData = signUpPageData[currentStep];
 
   return (
     <div className="container">
+      {error && <ErrorBlock style={{ color: 'red' }}>{error}</ErrorBlock>}
       <SignUpPageContainer>
         <Media>
           <picture>
@@ -47,10 +48,9 @@ const SignUpPage = () => {
         </Media>
 
         <Info>
-          {error && <ErrorBlock style={{ color: 'red' }}>{error}</ErrorBlock>}
           <Title>{currentPageData?.info.title}</Title>
           <Subtitle>{currentPageData?.info.text}</Subtitle>
-          <FormBlock issigninvisible={issigninvisible}>
+          <FormBlock $isSigninVisible={isSigninVisible}>
             <MultiStepRegisterForm
               onError={onError}
               currentStep={currentStep}
@@ -58,7 +58,7 @@ const SignUpPage = () => {
             />
           </FormBlock>
 
-          {issigninvisible && (
+          {isSigninVisible && (
             <SigInQuestion>
               <p>Do you already have an account?</p>
               <StyledLink to="/signin">Sign in</StyledLink>

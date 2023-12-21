@@ -4,10 +4,16 @@ import { ReactComponent as ClosedEye } from '../../../images/signupIcons/eye-clo
 import { ReactComponent as OpenedEye } from '../../../images/signupIcons/eye-opened.svg';
 
 import {
+  CorrectMessage,
   ErrorText,
+  FormInputBlock,
   InputBlock,
+  StyledCorrectIcon,
   StyledFormInput,
   StyledHideShowButton,
+  StyledHideShowButtonWithError,
+  StyledHideShowButtonWithVisibility,
+  StyledIncorrectIcon,
   StyledInformationIcon,
   StyledLabel,
 } from './FormInput.styled';
@@ -31,25 +37,43 @@ const FormInput = ({ formik, label, id, type, placeholder, showError }) => {
   };
 
   return (
-    <InputBlock>
+    <FormInputBlock>
       {label && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
-      <StyledFormInput
-        id={id}
-        name={id}
-        type={isPassword ? (isPasswordVisible ? 'text' : 'password') : type}
-        placeholder={placeholder}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        onFocus={handleFocus}
-        value={formik.values[id]}
-        error={hasError}
-        $showvalideffect={showValidEffect}
-      />
-      {type === 'password' && (
-        <StyledHideShowButton onClick={togglePasswordVisibility}>
-          {isPasswordVisible ? <OpenedEye /> : <ClosedEye />}
-        </StyledHideShowButton>
-      )}
+      <InputBlock>
+        <StyledFormInput
+          id={id}
+          name={id}
+          type={isPassword ? (isPasswordVisible ? 'text' : 'password') : type}
+          placeholder={placeholder}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          onFocus={handleFocus}
+          value={formik.values[id]}
+          error={hasError}
+          $showValidEffect={showValidEffect}
+        />
+        {showValidEffect && !hasError && (
+          <StyledCorrectIcon $isVisible={true} />
+        )}
+        {!hasError && showValidEffect && (
+          <CorrectMessage>Now field is correct</CorrectMessage>
+        )}
+        {isPassword && (
+          <>
+            {hasError && <StyledHideShowButtonWithError />}
+            {showValidEffect && <StyledHideShowButtonWithVisibility />}
+
+            <StyledHideShowButton
+              $hasIcons={hasError || showValidEffect}
+              onClick={togglePasswordVisibility}
+            >
+              {isPasswordVisible ? <OpenedEye /> : <ClosedEye />}
+            </StyledHideShowButton>
+          </>
+        )}
+        {showError && hasError && <StyledIncorrectIcon $isVisible={true} />}
+      </InputBlock>
+
       {showError && hasError && (
         <ErrorText>
           {formik.errors[id]}
@@ -62,7 +86,7 @@ const FormInput = ({ formik, label, id, type, placeholder, showError }) => {
           )}
         </ErrorText>
       )}
-    </InputBlock>
+    </FormInputBlock>
   );
 };
 

@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   width: 100%;
   padding: 8px 10px;
   border-radius: 12px;
-  background: #e3ffa8;
+  background: ${(p) => p.theme.colors.primaryGreenLite};
   text-align: center;
   border: none;
   transition: ${(p) => p.theme.transition.customTrans};

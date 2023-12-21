@@ -1,31 +1,36 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as InformationIcon } from '../../../images/signupIcons/info.svg';
+import { ReactComponent as CorrectIcon } from '../../../images/signupIcons/correct-icon.svg';
+import { ReactComponent as IncorrectIcon } from '../../../images/signupIcons/incorrect-icon.svg';
 
-export const InputBlock = styled.div`
-  position: relative;
-  @media (${(p) => p.theme.mq.desktop}) {
+export const FormInputBlock = styled.div`
+  @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 212px;
   }
 `;
 
+export const InputBlock = styled.div`
+  position: relative;
+`;
+
 export const StyledFormInput = styled.input`
   width: 100%;
-  color: #fff;
+  color: ${(p) => p.theme.colors.primaryWhite};
   font-size: 14px;
   line-height: 20px;
   padding: 7px 30px 7px 10px;
   outline: none;
   border-radius: 12px;
-  border: 1px solid #e3ffa8;
-  background: #0f0f0f;
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
+  background: ${(p) => p.theme.colors.primaryBlack2};
   position: relative;
   ::placeholder {
-    color: #b6b6b6;
+    color: ${(p) => p.theme.colors.primaryGray};
   }
   ${(props) =>
     props.error &&
     css`
-      border: 1px solid #e74a3b;
+      border: 1px solid ${(p) => p.theme.colors.error};
     `}
   &[type="number"] {
     -moz-appearance: textfield;
@@ -36,16 +41,16 @@ export const StyledFormInput = styled.input`
     margin: 0;
   }
   ${(props) =>
-    props.$showvalideffect &&
+    props.$showValidEffect &&
     !props.error &&
     props.value !== '' &&
     css`
-      border: 1px solid #4caf50;
+      border: 1px solid ${(p) => p.theme.colors.correct};
     `}
 `;
 
 export const ErrorText = styled.div`
-  color: #e74a3b;
+  color: ${(p) => p.theme.colors.error};
   font-size: 12px;
   line-height: 14px;
   margin-left: 10px;
@@ -62,7 +67,43 @@ export const StyledLabel = styled.label`
   margin-bottom: 12px;
 `;
 
+export const StyledInformationIcon = styled(InformationIcon)`
+  width: 12px;
+  height: 12px;
+  fill: ${(p) => p.theme.colors.primaryWhite};
+  cursor: pointer;
+`;
+
 export const StyledHideShowButton = styled.div`
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 10px;
+  right: ${(props) => (props.$hasIcons ? '30px' : '10px')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  ${(props) =>
+    props.error &&
+    css`
+      right: 30px;
+
+      ${(props) =>
+        props.$isVisible &&
+        css`
+          right: 10px;
+        `}
+    `}
+`;
+export const StyledHideShowButtonWithError = styled(StyledHideShowButton)`
+  right: 30px;
+`;
+export const StyledHideShowButtonWithVisibility = styled(StyledHideShowButton)`
+  right: 10px;
+`;
+
+const commonIconStyles = css`
   width: 16px;
   height: 16px;
   position: absolute;
@@ -71,12 +112,19 @@ export const StyledHideShowButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  visibility: ${(props) => (props.$isVisible ? 'visible' : 'hidden')};
 `;
 
-export const StyledInformationIcon = styled(InformationIcon)`
-  width: 12px;
-  height: 12px;
-  fill: white;
-  cursor: pointer;
+export const StyledCorrectIcon = styled(CorrectIcon)`
+  ${commonIconStyles}
+`;
+export const StyledIncorrectIcon = styled(IncorrectIcon)`
+  ${commonIconStyles}
+`;
+
+export const CorrectMessage = styled.div`
+  color: ${(p) => p.theme.colors.correct};
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: 10px;
 `;
