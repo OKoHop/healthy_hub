@@ -108,6 +108,7 @@ export const FormWeightBtn = styled.button`
     background: transparent;
     border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
     color: ${(p) => p.theme.colors.primaryWhite};
+  }
 `;
 
 export const BtnCancel = styled.button`
