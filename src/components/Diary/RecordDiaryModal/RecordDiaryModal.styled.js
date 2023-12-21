@@ -153,8 +153,8 @@ export const WrapperInput = styled.div`
 export const Input = styled(Field)`  
   padding: 8px 10px;
   width: 100%;  
-  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
-  border-radius: 1px solid;
+  border: 1px solid ${p => p.theme.colors.primaryGreenLite};
+  border-radius: 12px;
   background-color: ${p => p.theme.colors.primaryBlack2};  
   font-size: ${props => props.theme.fontSizes.xs};
   line-height: 20px;
@@ -214,7 +214,7 @@ export const BtnConfirm = styled.button`
   width: 100%;
   background-color: ${p => p.theme.colors.primaryGreenLite};
   color: ${p => p.theme.colors.primaryBlack2};
-  border: ${p => p.theme.borders.normal} transparent;
+  border: 1px solid transparent;
   border-radius: 12px;
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};
