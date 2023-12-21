@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import { updateUser, updateAvatar } from '../../redux/auth/operations';
+import { updateUser, updateAvatar } from '../../redux/settings/operations';
 import { selectUser } from '../../redux/auth/selectors';
 import { getStats } from '../../redux/statistics/statisticOperations';
 
