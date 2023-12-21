@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CardWrap = styled.li`
-  @media screen and (${ p => p.theme.mq.tablet}) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     display: flex;
     column-gap: 8px;
     align-items: center;
@@ -15,10 +15,9 @@ export const TitleWrap = styled.div`
   column-gap: 12px;
   margin-bottom: 8px;
 
-  color: ${props => props.theme.colors.white};
-  font-family: ${props => props.theme.fontFamily.poppins};  
+  color: ${props => props.theme.colors.primaryWhite};  
 
-  @media screen and (${ p => p.theme.mq.tablet}) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     margin-bottom: 0px;
   }
 `;
@@ -33,13 +32,11 @@ export const InfoWrap = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  color: ${props => props.theme.colors.white};
-  font-family: ${props => props.theme.fontFamily.poppins};
+  color: ${props => props.theme.colors.primaryWhite};
   font-size: ${p => p.theme.fontSizes.xs};
-  font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
 
-  @media screen and (${ p => p.theme.mq.tablet}) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     flex-direction: row;
     column-gap: 20px;
   }
@@ -58,7 +55,7 @@ export const FatWrap = styled.p`
 `;
 
 export const Value = styled.span`
-  color: ${props => props.theme.colors.gray};
+  color: ${props => props.theme.colors.primaryGray};
   font-weight: ${p => p.theme.fontWeights.medium};
 `;
 
@@ -71,8 +68,7 @@ export const AddButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 8px;
-  color: ${props => props.theme.colors.greenLite};
-  font-family: ${props => props.theme.fontFamily.poppins};
+  color: ${props => props.theme.colors.primaryGreenLite};
   font-size: ${p => p.theme.fontSizes.xs};
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
