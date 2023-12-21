@@ -4,7 +4,7 @@ import {
     CarbonohidratesWrap,
     ProteinWrap,
     FatWrap,
-  } from '../DiaryPage/ItemsToAdd.styled';
+  } from './ItemsToAdd.styled';
   
   const ItemToAdd = ({ info }) => {
   

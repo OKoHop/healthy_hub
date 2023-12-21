@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import SportAndFitnessTrackerIMG from './../../images/Illustrations/Welcome/sport_fit_tracker_desk@1x.png';
 import { useFormik } from 'formik';
-import FormInput from '../Auth/FormInput';
+import FormInput from '../Auth/AuthFormInput/FormInput';
 import validationSchema from './validationSchema';
 import { logIn } from '../../redux/auth/operations';
 import { Link } from 'react-router-dom';

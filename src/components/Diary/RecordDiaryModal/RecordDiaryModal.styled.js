@@ -19,12 +19,12 @@ export const Modal = styled.div`
   padding: 16px 12px;
   display: flex;
   flex-direction: column;
-  background-color: #0f0f0f;  
+  background-color: ${p => p.theme.colors.primaryBlack2};  
   border-radius: 12px;  
   transform: translate(-50%, -50%) scale(1);
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms;
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     width: 676px;
     height: 408px;
     padding: 24px;
@@ -34,12 +34,13 @@ export const Modal = styled.div`
 export const ModalTitle = styled.h1`
   margin-bottom: 24px;
   font-size: 24px;
+  font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 30px;
   letter-spacing: 0em;  
-  color: #ffffff;
+  color: ${p => p.theme.colors.primaryWhite};
 
-  @media screen and (min-width: 834px) {
-    font-size: 30px;
+  @media screen and (${ p => p.theme.mq.tabMin}) {
+    font-size: ${props => props.theme.fontSizes.xl};
     line-height: 36px;
   };
 `;
@@ -56,13 +57,13 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.h2`
-  font-size: 18px;
+  font-size: ${props => props.theme.fontSizes.m};
   line-height: 26px;
   letter-spacing: 0em;  
-  color: #ffffff;
+  color: ${p => p.theme.colors.primaryWhite};
   
-  @media screen and (min-width: 834px) {
-    font-size: 30px;
+  @media screen and (${ p => p.theme.mq.tabMin}) {
+    font-size: ${props => props.theme.fontSizes.l};
     line-height: 32px;
   };
 `;
@@ -79,7 +80,7 @@ export const ContentWrapper = styled.div`
   max-height: 300px; 
   margin-bottom: 16px;
 
-   @media screen and (min-width: 834px) {
+   @media screen and (${ p => p.theme.mq.tabMin}) {
    max-height: 200px;
   };  
 `
@@ -93,7 +94,7 @@ export const ProductList = styled.ul`
   flex-direction: column;
   gap: 30px;
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     height: calc(100% - 44px);
     gap: 24px;
   };
@@ -104,7 +105,7 @@ export const ProductList = styled.ul`
 
   &::-webkit-scrollbar-thumb {
     background-color: rgba(41, 41, 40, 0.2);
-    border-radius: 12[x];
+    border-radius: 12px;
     border: 1px solid  rgba(227, 255, 168, 0.2);    
 
     &:hover {
@@ -123,7 +124,7 @@ export const Product = styled.li`
     grid-column-end: 4;
   };
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     grid-template-columns: 40.5% 15.3% 11.5% 7.5% 13% 2.5%;
 
     & > div:nth-child(1){
@@ -152,13 +153,13 @@ export const WrapperInput = styled.div`
 export const Input = styled(Field)`  
   padding: 8px 10px;
   width: 100%;  
-  border: 12px #e3ffa8;
-  border-radius: 12px;
-  background-color: #0f0f0f;  
-  font-size: 14px;
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.greenLite};
+  border-radius: 1px solid;
+  background-color: ${p => p.theme.colors.primaryBlack2};  
+  font-size: ${props => props.theme.fontSizes.xs};
   line-height: 20px;
   letter-spacing: 0em;
-  color: #ffffff;
+  color: ${p => p.theme.colors.primaryWhite};
   
   &[type="number"]::-webkit-outer-spin-button,
   &[type="number"]::-webkit-inner-spin-button {
@@ -167,7 +168,7 @@ export const Input = styled(Field)`
   };       
 
   &::placeholder {
-    color: #b6b6b6;
+    color: ${p => p.theme.colors.primaryGray};
   };  
 `;
 
@@ -176,7 +177,7 @@ export const ErrorMsg = styled(ErrorMessage)`
   font-size: 10px;
   line-height: 12px;
   letter-spacing: 0em;
-  color: #e74a3b;  
+  color: #E74A3B;  
 `;
 
 export const BtnRemoveProduct = styled.button`
@@ -190,10 +191,11 @@ export const BtnRemoveProduct = styled.button`
 export const BtnAddNewProduct = styled.button`
   border: none;
   background-color: transparent;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
   letter-spacing: 0em;  
-  color: #e3ffa8;
+  color: ${p => p.theme.colors.primaryGreenLite};
   cursor: pointer; 
 `;
 
@@ -202,7 +204,7 @@ export const ContainerForBtns = styled.div`
   flex-direction: column;
   gap: 8px;
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     flex-direction: row-reverse;
   };
 `;
@@ -210,16 +212,17 @@ export const ContainerForBtns = styled.div`
 export const BtnConfirm = styled.button`
   padding: 8px 10px;  
   width: 100%;
-  background-color: #e3ffa8;
-  color: #0f0f0f;
-  border: 1px solid transparent;
+  background-color: ${p => p.theme.colors.primaryGreenLite};
+  color: ${p => p.theme.colors.primaryBlack2};
+  border: ${p => p.theme.borders.normal} transparent;
   border-radius: 12px;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: ${props => props.theme.fontWeights.medium};
   line-height: 20px;
   letter-spacing: 0em;
   cursor: pointer;
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     width: 212px;
   };
 `;
@@ -230,17 +233,18 @@ export const BtnCancel = styled.button`
   background-color: transparent;  
   border: 1px solid transparent;
   border-radius: 12px;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSizes.xs};;
   line-height: 20px;
   letter-spacing: 0em;
-  color: #b6b6b6;
+  color: ${p => p.theme.colors.primaryGray};
   cursor: pointer;
 
   &:hover {
-    border: 1px solid #e3ffa8;
+    border: 1px solid ${p => p.theme.colors.primaryGreenLite};
   }
 
-  @media screen and (min-width: 834px) {
+  @media screen and (${ p => p.theme.mq.tabMin}) {
     width: 212px;
   };
 `;
+

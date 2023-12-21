@@ -7,15 +7,14 @@ export const Info = styled.div`
   flex-wrap: wrap;
 
   font-size: ${p => p.theme.fontSizes.xs};
-  font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
 
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${p => p.theme.mq.tabMin}) {
     margin-right: 60px;
     flex-wrap: nowrap;
   }
 
-  @media screen and (${p => p.theme.mq.desktop}) {
+  @media screen and (${p => p.theme.mq.deskMin}) {
     margin-right: 25px;
   }
 `;
@@ -23,7 +22,7 @@ export const Info = styled.div`
 export const CarbonohidratesWrap = styled.p`
   width: 100%;
 
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${p => p.theme.mq.tabMin}) {
     width: 164px;
   }
 `;
@@ -37,6 +36,6 @@ export const FatWrap = styled.p`
 `;
 
 export const Value = styled.span`
-  color: ${props => props.theme.colors.gray};
+  color: ${props => props.theme.colors.primaryGray};
   font-weight: ${p => p.theme.fontWeights.medium};
 `;

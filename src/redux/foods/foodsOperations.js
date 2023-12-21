@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://health-en-app.onrender.com';
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 export const addFood = createAsyncThunk(
   'foods/addFood',

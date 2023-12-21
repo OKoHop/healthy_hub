@@ -27,7 +27,12 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Welcome />} />
+          <Route
+            index
+            element={
+              <RestrictedRoute redirectTo="/main" component={<Welcome />} />
+            }
+          />
           <Route
             path="/signup"
             element={
@@ -40,7 +45,15 @@ function App() {
               <RestrictedRoute redirectTo="/main" component={<SignIn />} />
             }
           />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/forgot-password"
+            element={
+              <RestrictedRoute
+                redirectTo="/main"
+                component={<ForgotPassword />}
+              />
+            }
+          />
           <Route
             path="/main"
             element={<PrivatRoute redirectTo="/signin" component={<Today />} />}
@@ -57,12 +70,7 @@ function App() {
             }
           />
           <Route path="/settings" />
-          <Route
-            path="*"
-            element={
-              <RestrictedRoute redirectTo="/main" component={<Welcome />} />
-            }
-          />
+          <Route path="*" element={<Welcome />} />
         </Route>
       </Routes>
     </>
