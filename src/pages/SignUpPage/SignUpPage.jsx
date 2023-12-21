@@ -2,6 +2,7 @@ import { useState } from 'react';
 import MultiStepRegisterForm from '../../components/Auth/AuthForm/AuthForm';
 
 import {
+  ErrorBlock,
   FormBlock,
   Info,
   Media,
@@ -22,6 +23,7 @@ const SignUpPage = () => {
   };
 
   const onError = (errorMessage) => {
+    console.error('Error:', errorMessage);
     setError(errorMessage);
   };
 
@@ -43,7 +45,9 @@ const SignUpPage = () => {
             />
           </picture>
         </Media>
+
         <Info>
+          {error && <ErrorBlock style={{ color: 'red' }}>{error}</ErrorBlock>}
           <Title>{currentPageData?.info.title}</Title>
           <Subtitle>{currentPageData?.info.text}</Subtitle>
           <FormBlock issigninvisible={issigninvisible}>
@@ -53,7 +57,7 @@ const SignUpPage = () => {
               setCurrentStep={handleSetCurrentStep}
             />
           </FormBlock>
-          {error && <div style={{ color: 'red' }}>{error}</div>}
+
           {issigninvisible && (
             <SigInQuestion>
               <p>Do you already have an account?</p>

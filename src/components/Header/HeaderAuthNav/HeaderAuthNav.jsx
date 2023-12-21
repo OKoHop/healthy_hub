@@ -8,9 +8,9 @@ import {
 export const HeaderAuthNav = () => {
   return (
     <AuthNav>
-      <StyledNavLinkAuth to="/">Sign in</StyledNavLinkAuth>
-      {' / '}
-      <StyledNavLinkAuth to="/">Sign up</StyledNavLinkAuth>
+      <StyledNavLinkAuth to="/signin">Sign in</StyledNavLinkAuth>
+      {'/'}
+      <StyledNavLinkAuth to="/signup">Sign up</StyledNavLinkAuth>
       <SvgProfilePhoto>
         <use href={`${scgIcons}#icon-profile-circle`}></use>
       </SvgProfilePhoto>
