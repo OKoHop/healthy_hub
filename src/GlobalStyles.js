@@ -73,5 +73,9 @@ button {
         margin-right: auto;
     }
 }
+
+.modal-open {
+  overflow: hidden;
+}
     
 `;

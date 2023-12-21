@@ -34,7 +34,7 @@ export const HeaderUserInfoNav = () => {
       border: 'none',
       backgroundColor: '#0F0F0F',
       boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
-      transition: 'top 0.3s ease-in-out',
+      transition: 'top 250ms cubic-bezier(0.4, 0, 0.2, 1)',
       ...(isTabletOrDesktop && {
         top: '90px',
         right: '50%',
@@ -42,14 +42,14 @@ export const HeaderUserInfoNav = () => {
       }),
     },
   };
+  const rotateSvg = { transform: 'rotate(180deg)' };
 
-  const openMenu = () => {
+    const openMenu = () => {
     setIsUserMenuOpen(true);
   };
-
   const closeMenu = () => setIsUserMenuOpen(false);
 
-  const rotateSvg = { transform: 'rotate(180deg)' };
+
   return (
     <>
       <UserInfo onClick={openMenu}>

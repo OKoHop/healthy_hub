@@ -20,9 +20,8 @@ import { HeaderCurrentWeightModal } from '../HeaderCurrentWeightModal/HeaderCurr
 export const HeaderFrameWeight = () => {
   const [isWeightPanelOpen, setIsWeightPanelOpen] = useState(false);
   const { user } = useAuth();
- 
+
   const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
-  const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
 
   const customStyles = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0)' },
@@ -49,16 +48,27 @@ export const HeaderFrameWeight = () => {
         border: 'none',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
-        transition: 'top 0.3s ease-in-out',
+        transition: 'top 250ms cubic-bezier(0.4, 0, 0.2, 1)',
       }),
     },
   };
 
-  const openPanel = () => {
+  const openPanelWeight = () => {
     setIsWeightPanelOpen(true);
+    document.body.classList.add('modal-open');
+  };
+  const closePanelWeight = () => {
+    setIsWeightPanelOpen(false);
+    document.body.classList.remove('modal-open');
   };
 
-  const closePanel = () => setIsWeightPanelOpen(false);
+  const shouldCloseOnOverlayClick = () => {
+    if (isTabletOrDesktop) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <>
@@ -68,7 +78,7 @@ export const HeaderFrameWeight = () => {
         </WeightImgBorder>
         <WeightContainerBtn>
           <TitleWeight>Weight</TitleWeight>
-          <WeightBtn onClick={openPanel}>
+          <WeightBtn onClick={openPanelWeight}>
             <TitleWeightNumber>{user.weight}</TitleWeightNumber>
             <TextKg>kg</TextKg>
             <SvgEdit>
@@ -80,11 +90,12 @@ export const HeaderFrameWeight = () => {
 
       <Modal
         isOpen={isWeightPanelOpen}
-        onRequestClose={closePanel}
+        onRequestClose={closePanelWeight}
         style={customStyles}
         ariaHideApp={false}
+        shouldCloseOnOverlayClick={shouldCloseOnOverlayClick()}
       >
-        <HeaderCurrentWeightModal closePanel={closePanel} />
+        <HeaderCurrentWeightModal closePanel={closePanelWeight} />
       </Modal>
     </>
   );
