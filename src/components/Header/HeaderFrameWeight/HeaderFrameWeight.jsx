@@ -20,7 +20,7 @@ import { HeaderCurrentWeightModal } from '../HeaderCurrentWeightModal/HeaderCurr
 export const HeaderFrameWeight = () => {
   const [isWeightPanelOpen, setIsWeightPanelOpen] = useState(false);
   const { user } = useAuth();
-
+ 
   const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
 
