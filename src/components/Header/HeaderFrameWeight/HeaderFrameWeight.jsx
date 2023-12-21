@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
+import { useAuth } from '../../../hooks/useAuth';
 import weightPng from '../../../images/Header/waight_image.png';
 import svgIcons from '../../../images/Header/icons.svg';
 import {
@@ -18,6 +19,7 @@ import { HeaderCurrentWeightModal } from '../HeaderCurrentWeightModal/HeaderCurr
 
 export const HeaderFrameWeight = () => {
   const [isWeightPanelOpen, setIsWeightPanelOpen] = useState(false);
+  const { user } = useAuth();
 
   const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
@@ -67,7 +69,7 @@ export const HeaderFrameWeight = () => {
         <WeightContainerBtn>
           <TitleWeight>Weight</TitleWeight>
           <WeightBtn onClick={openPanel}>
-            <TitleWeightNumber>65</TitleWeightNumber>
+            <TitleWeightNumber>{user.weight}</TitleWeightNumber>
             <TextKg>kg</TextKg>
             <SvgEdit>
               <use href={`${svgIcons}#icon-edit-2`}></use>

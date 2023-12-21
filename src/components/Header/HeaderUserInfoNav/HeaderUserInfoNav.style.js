@@ -33,9 +33,9 @@ export const UserPohotoStub = styled.div`
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
   -webkit-text-stroke: 0.5px #0f0f0f;
-  font-size: 18px;
+  font-size: 22px;
 
   @media (${(p) => p.theme.mq.tabMin}) {
     width: 28px;

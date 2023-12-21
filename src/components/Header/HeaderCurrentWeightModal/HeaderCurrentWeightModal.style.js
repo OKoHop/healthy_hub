@@ -12,9 +12,16 @@ export const BtnClose = styled.button`
   position: absolute;
   top: 20px;
   right: 32px;
+  color: ${(p) => p.theme.colors.primaryWhite};
+  
+  &:hover,
+  :focus {
+    stroke: ${(p) => p.theme.colors.primaryGreenLite};
+  }
 `;
 
 export const SvgClose = styled.svg`
+  fill: currentColor;
   width: 16px;
   height: 16px;
 `;

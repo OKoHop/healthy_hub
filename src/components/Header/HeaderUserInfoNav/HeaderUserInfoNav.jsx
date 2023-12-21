@@ -14,11 +14,11 @@ import { useAuth } from '../../../hooks/useAuth';
 export const HeaderUserInfoNav = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user } = useAuth();
-  console.log(user);
 
-  const userName = 'Konstantin';
-  const firstLetter = userName ? userName[0].toUpperCase() : '';
+  const firstLetter = user.name ? user.name[0].toUpperCase() : '';
+
   const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
+
   const customStyles = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0)' },
     content: {
@@ -53,7 +53,7 @@ export const HeaderUserInfoNav = () => {
   return (
     <>
       <UserInfo onClick={openMenu}>
-        <UserName>Konstantin</UserName>
+        <UserName>{user.name}</UserName>
         <UserPohotoStub>{firstLetter}</UserPohotoStub>
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
