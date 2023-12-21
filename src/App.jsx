@@ -9,7 +9,7 @@ import { refreshUser } from './redux/auth/operations';
 const Today = lazy(() => import('./pages/Today/Today'));
 const Welcome = lazy(() => import('./pages/Welcome/Welcome'));
 const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
-const Settings = lazy(() => import('./pages/SettingsPage/SettingsPage'));
+// const Settings = lazy(() => import('./pages/SettingsPage/SettingsPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const RecFoodPage = lazy(() =>
   import('./pages/RecommendedFoodPage/RecommendedFoodPage')
@@ -27,7 +27,6 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-<<<<<<< Updated upstream
           <Route
             index
             element={
@@ -71,17 +70,6 @@ function App() {
             }
           />
           <Route path="/settings" />
-=======
-          <Route index element={<Welcome />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/main" element={<Today />} />
-          <Route path="/dashboard" />
-          <Route path="/diary" element={<Diary />} />
-          <Route path="/recommended-food" element={<RecFoodPage />} />
-          <Route path="/settings" element={<Settings />}/>
->>>>>>> Stashed changes
           <Route path="*" element={<Welcome />} />
         </Route>
       </Routes>

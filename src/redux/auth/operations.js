@@ -83,8 +83,6 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-<<<<<<< Updated upstream
-=======
 export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (avatarData, thunkAPI) => {
@@ -117,4 +115,3 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
->>>>>>> Stashed changes
