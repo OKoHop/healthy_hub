@@ -7,7 +7,6 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
 
-
   @media (${(p) => p.theme.mq.tabMin}) {
     height: 100px;
   }

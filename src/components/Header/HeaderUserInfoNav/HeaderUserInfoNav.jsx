@@ -14,6 +14,7 @@ import { useAuth } from '../../../hooks/useAuth';
 export const HeaderUserInfoNav = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user } = useAuth();
+  console.log(user);
 
   const userName = 'Konstantin';
   const firstLetter = userName ? userName[0].toUpperCase() : '';

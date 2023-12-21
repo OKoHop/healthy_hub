@@ -15,7 +15,7 @@ import { useAuth } from '../../hooks/useAuth';
 export const Header = () => {
   const { isLoggedIn } = useAuth();
 
-  const isTabletorDesktop = useMediaQuery({ query: '(min-width: 834px)' });
+  const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
 
   return (
@@ -24,7 +24,7 @@ export const Header = () => {
         <HeaderContainer className="container" id="header_modal">
           <StyledNavLogoLink to="/main">HealthyHub</StyledNavLogoLink>
           {isLoggedIn && isMobile && <HeaderMobMenuBtn />}
-          {isLoggedIn && isTabletorDesktop && (
+          {isLoggedIn && isTabletOrDesktop && (
             <TargetSelectionList>
               <li>
                 <HeaderFrameTarget />
