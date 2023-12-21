@@ -83,3 +83,38 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+<<<<<<< Updated upstream
+=======
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (avatarData, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/avatars', avatarData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(
+        'updated avatarUrl: ',
+        response.data,
+        'this log is for checking data from the backend'
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/update', data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+>>>>>>> Stashed changes

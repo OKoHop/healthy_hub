@@ -8,12 +8,12 @@ import {
   Section,
   StyledDiv,
   StyledDiv2,
-  // Wrapper,
+  Wrapper,
 } from './Today.style';
 import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import { Link } from 'react-router-dom';
-// import DiaryOnMain from '../../components/Diary/DiaryOnPage/DiaryOnMain'
+import DiaryOnMain from '../../components/Diary/DiaryOnPage/DiaryOnMain';
 import RecommendedFoodMain from '../../components/RecommendedFoodMain/RecommendedFoodMain';
 
 const Today = () => {
@@ -40,12 +40,12 @@ const Today = () => {
         </StyledDiv>
       </div>
 
-      {/* <div className="container">
+      <div className="container">
       <Wrapper>
-        {/* блок щоденник 
+        {/* блок щоденник*/}
         <DiaryOnMain />
       </Wrapper>
-      </div> */}
+      </div> 
 
       <div className="container">
         <RecommendedFoodMain />

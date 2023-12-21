@@ -53,24 +53,22 @@ export const TitlePage = styled.h1`
 `;
 
 export const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   margin-top: 40px;
+  padding-bottom: 40pxa;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
-    position: absolute;
-    flex-direction: row-reverse;
+  @media screen and (min-width: ${props => props.theme.mq.tabMin}) {
+    display: flex;
     top: 0;
     right: 0;
     margin-top: 0;
     margin-right: 27px;
+    padding-bottom: 174px;
   }
 
   @media screen and (${props => props.theme.mq.deskMin}) {
-    position: absolute;
-    flex-direction: row-reverse;
     margin-right: 34px;
+    padding-bottom: 72px;
   }
 `;
 
@@ -82,7 +80,7 @@ export const CancelButton = styled.button`
 
   width: 100%;
   padding: 8px 12px;
-  border: ${p => p.theme.borders.normal} transparent;
+  border: 1px solid transparent;
   border-radius: 12px;
   cursor: pointer;
 
@@ -102,7 +100,7 @@ export const SaveButton = styled.button`
   line-height: 20px;
 
   width: 212px;
-  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.primaryGreenLite};
+  border: 1px solid ${p => p.theme.colors.primaryGreenLite};
   border-radius: 12px;
   padding: 8px;
   cursor: pointer;
@@ -165,7 +163,7 @@ export const FormFormik = styled(Form)`
     width: 499px;
 
     & > :not(div[aria-labelledby='activity-head']) {
-      width: calc((100% - 60px) / 2);
+      /* width: calc((100% - 60px) / 2); */
     }
   }
 `;
