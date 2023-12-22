@@ -1,4 +1,4 @@
-var Vn=Object.defineProperty;var Yn=(i,t,e)=>t in i?Vn(i,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):i[t]=e;var D=(i,t,e)=>(Yn(i,typeof t!="symbol"?t+"":t,e),e);import{s as y,u as Ue,a as ut,r as q,f as Xn,j as x,R as sn,g as Un,M as nn,b as Kn,d as qn,_ as Gn,P as jt,L as xi}from"./index-ecf01c0c.js";import{R as Zn,s as Qn,b as Jn,l as to,d as eo,a as io}from"./statisticSelectors-89aecc7e.js";import{g as so,r as no,R as oo}from"./randomizeFood-4e15499c.js";const ro=y.div`
+var Vn=Object.defineProperty;var Yn=(i,t,e)=>t in i?Vn(i,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):i[t]=e;var D=(i,t,e)=>(Yn(i,typeof t!="symbol"?t+"":t,e),e);import{s as y,u as Ue,a as ut,r as q,f as Xn,j as x,R as sn,g as Un,M as nn,b as Kn,d as qn,_ as Gn,P as jt,L as xi}from"./index-56e6fd5a.js";import{R as Zn,s as Qn,b as Jn,l as to,d as eo,a as io}from"./statisticSelectors-b13086c5.js";import{g as so,r as no,R as oo}from"./randomizeFood-0a6e976f.js";const ro=y.div`
   border-radius: 12px;
   background-color: #0f0f0f;
   display: flex;
@@ -393,10 +393,14 @@ var Vn=Object.defineProperty;var Yn=(i,t,e)=>t in i?Vn(i,t,{enumerable:!0,config
 
   position: relative;
 `,Rc=y.div`
-  width: 100%;
-  height: 100%;
+  width: 64px;
+  height: ${i=>`${i.height/100*128}px`};
+  max-height: 128px;
   border-radius: 20px;
   background-color: #b6c3ff;
+
+  position: absolute;
+  bottom: 8px;
 `,Fc=y.div`
   @media (max-width: 833px) {
     width: 300px;
@@ -440,10 +444,12 @@ var Vn=Object.defineProperty;var Yn=(i,t,e)=>t in i?Vn(i,t,{enumerable:!0,config
   font-weight: 600;
   line-height: 1.37;
   text-align: center;
+  color: #b6c3ff;
 
   position: absolute;
   top: 28px;
   left: 22px;
+  z-index: 100;
 `,Bc=y.h1`
   font-weight: 500;
   font-size: 24px;
@@ -537,7 +543,7 @@ var Vn=Object.defineProperty;var Yn=(i,t,e)=>t in i?Vn(i,t,{enumerable:!0,config
     height: 280px;
     padding: 24px 40px;
   }
-`;nn.setAppElement("#root");const Xc=({open:i,close:t})=>{const e=Ue(),s=n=>{n.preventDefault();const r=n.currentTarget.elements.water.value;e(Kn(r)),t()};return x.jsxs(Yc,{isOpen:i,onRequestClose:t,contentLabel:"Example Modal",overlayClassName:"Overlay",children:[x.jsx(Bc,{children:"Add water intake"}),x.jsxs("div",{children:[x.jsxs(Wc,{onSubmit:s,children:[x.jsxs(Nc,{children:["How match water",x.jsx(Hc,{type:"text",name:"water",placeholder:"Enter milliliters"})]}),x.jsx($c,{type:"submit",children:"Confirm"})]}),x.jsx(Vc,{onClick:t,children:"Cancel"})]})]})},Uc=i=>i.water.waterIntake,Kc=()=>{const[i,t]=q.useState(!1),e=ut(rn),s=ut(Uc),n=Ue();function o(){t(!0)}function r(){t(!1)}function a(c,h){return c-h<0?0:Math.round(c-h)}function l(c,h){return h/c*100>=100?100:Math.round(h/c*100)}return x.jsxs(x.Fragment,{children:[x.jsxs(Fc,{children:[x.jsx(bi,{children:"Water"}),x.jsxs(Sc,{children:[x.jsxs(Lc,{children:[x.jsxs(Ec,{children:[l(e,s)," %"]}),x.jsx(Rc,{})]}),x.jsxs("div",{children:[x.jsx(zc,{onClick:()=>{n(qn()),Gn.success("WaterIntake has been successfuly reset")},children:x.jsx("use",{href:`${ae}#trash`})}),x.jsx(Dc,{children:"Water consumption"}),x.jsxs(Cc,{children:[x.jsxs(Pc,{children:[s," ",x.jsx(en,{children:"ml"})]}),x.jsxs(Oc,{children:["left: ",x.jsx(Ac,{children:a(e,s)})," ",x.jsx(en,{children:"ml"})]})]}),x.jsx(Tc,{onClick:o,children:x.jsxs(jc,{children:[x.jsx(Ic,{children:x.jsx("use",{href:`${ae}#add`})}),"Add water intake"]})})]})]})]}),x.jsx(Xc,{open:i,close:r})]})},qc=y.li`
+`;nn.setAppElement("#root");const Xc=({open:i,close:t})=>{const e=Ue(),s=n=>{n.preventDefault();const r=n.currentTarget.elements.water.value;e(Kn(r)),t()};return x.jsxs(Yc,{isOpen:i,onRequestClose:t,contentLabel:"Example Modal",overlayClassName:"Overlay",children:[x.jsx(Bc,{children:"Add water intake"}),x.jsxs("div",{children:[x.jsxs(Wc,{onSubmit:s,children:[x.jsxs(Nc,{children:["How match water",x.jsx(Hc,{type:"text",name:"water",placeholder:"Enter milliliters"})]}),x.jsx($c,{type:"submit",children:"Confirm"})]}),x.jsx(Vc,{onClick:t,children:"Cancel"})]})]})},Uc=i=>i.water.waterIntake,Kc=()=>{const[i,t]=q.useState(!1),e=ut(rn),s=ut(Uc),n=Ue();function o(){t(!0)}function r(){t(!1)}function a(c,h){return c-h<0?0:Math.round(c-h)}function l(c,h){return h/c*100>=100?100:Math.round(h/c*100)}return x.jsxs(x.Fragment,{children:[x.jsxs(Fc,{children:[x.jsx(bi,{children:"Water"}),x.jsxs(Sc,{children:[x.jsxs(Lc,{children:[x.jsxs(Ec,{children:[l(e,s)," %"]}),x.jsx(Rc,{height:l(e,s)})]}),x.jsxs("div",{children:[x.jsx(zc,{onClick:()=>{n(qn()),Gn.success("WaterIntake has been successfuly reset")},children:x.jsx("use",{href:`${ae}#trash`})}),x.jsx(Dc,{children:"Water consumption"}),x.jsxs(Cc,{children:[x.jsxs(Pc,{children:[s," ",x.jsx(en,{children:"ml"})]}),x.jsxs(Oc,{children:["left: ",x.jsx(Ac,{children:a(e,s)})," ",x.jsx(en,{children:"ml"})]})]}),x.jsx(Tc,{onClick:o,children:x.jsxs(jc,{children:[x.jsx(Ic,{children:x.jsx("use",{href:`${ae}#add`})}),"Add water intake"]})})]})]})]}),x.jsx(Xc,{open:i,close:r})]})},qc=y.li`
   @media screen and (${i=>i.theme.mq.tabMin}) {
     display: flex;
     column-gap: 8px;
