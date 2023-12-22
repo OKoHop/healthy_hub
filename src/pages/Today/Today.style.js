@@ -94,7 +94,10 @@ export const Wrapper = styled.div`
   gap: 20px;
 
   @media screen and (min-width: 834px) {
-    flex-direction: row;
     flex-basis: calc((100% - 20px) / 2);
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
   }
 `;

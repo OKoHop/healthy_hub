@@ -39,16 +39,11 @@ const Today = () => {
           <Food />
         </StyledDiv>
       </div>
-
       <div className="container">
-      <Wrapper>
-        {/* блок щоденник*/}
-        <DiaryOnMain />
-      </Wrapper>
-      </div> 
-
-      <div className="container">
-        <RecommendedFoodMain />
+        <Wrapper>
+          <DiaryOnMain />
+          <RecommendedFoodMain />
+        </Wrapper>
       </div>
     </Section>
   );
