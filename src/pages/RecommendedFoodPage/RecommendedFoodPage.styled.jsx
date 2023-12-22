@@ -9,11 +9,11 @@ export const Container = styled.main`
   padding-top: 16px;
   padding-bottom: 40px;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 320px) {
     padding-top: 24px;
   }
 
-  @media screen and (${props => props.theme.mq.desktop}) {
+  @media screen and (min-width: 1440px) {
     padding-top: 20px;
   }
 `;
@@ -23,12 +23,12 @@ export const Content = styled.div`
   width: 320px;
   padding: 0 10px;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     width: 834px;
     padding: 0 27px;
   }
 
-  @media screen and (${props => props.theme.mq.desktop}) {
+  @media screen and (min-width: 1440px) {
     width: 1440px;
     padding: 0 34px;
   }
@@ -43,14 +43,14 @@ export const BackLink = styled(NavLink)`
   display: flex;
   margin-right: 8px;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     margin-right: 12px;
   }
 `;
 
 export const ArrowReturn = styled.img`
   width: 16px;
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     width: 24px;
   }
 `;
@@ -61,7 +61,7 @@ export const TitlePage = styled.h1`
   line-height: 30px;
   letter-spacing: 0em;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     font-size: 30px;
     line-height: 36px;
   }
@@ -73,7 +73,7 @@ export const InfoBox = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (${props => props.theme.mq.desktop}) {
+  @media screen and (min-width: 1440px) {
     flex-direction: row;
     align-items: start;
     justify-content: space-between;
@@ -85,12 +85,12 @@ export const BannerThumb = styled.div`
   width: 300px;
   height: 312px;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     width: 380px;
     height: 396px;
   }
 
-  @media screen and (${props => props.theme.mq.desktop}) {
+  @media screen and (min-width: 1440px) {
     width: 536px;
     height: 560px;
     margin-bottom: 0;
@@ -109,12 +109,12 @@ export const RecommendedFoodList = styled.ul`
   gap: 20px;
   width: 100%;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
 
-  @media screen and (${props => props.theme.mq.desktop}) {
+  @media screen and (1440px) {
     width: calc((100% - 44px) / 2);
   }
 `;
