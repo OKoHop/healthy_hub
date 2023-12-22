@@ -46,41 +46,47 @@ export const Info = styled.div`
   }
 `;
 export const Title = styled.h2`
-  color: #fff;
+  color: ${(p) => p.theme.colors.primaryWhite};
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
   margin-bottom: 16px;
-  text-align: center;
+
   @media (${(p) => p.theme.mq.tabMin}) {
     font-size: 30px;
     line-height: 36px;
+    text-align: center;
+  }
+  @media (${(p) => p.theme.mq.deskMin}) {
+    text-align: start;
   }
 `;
 
 export const Subtitle = styled.p`
-  color: #b6b6b6;
+  color: ${(p) => p.theme.colors.primaryGray};
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 24px;
-  text-align: center;
+
   @media (${(p) => p.theme.mq.tabMin}) {
+    text-align: center;
     font-size: 22px;
     line-height: 32px;
   }
+  @media (${(p) => p.theme.mq.deskMin}) {
+    text-align: start;
+  }
 `;
 
-export const FormBlock = styled.div.attrs((props) => ({
-  issigninvisible: props.issigninvisible ? 'true' : undefined,
-}))`
+export const FormBlock = styled.div`
   margin-bottom: ${(props) => (props.issigninvisible ? '48px' : '0')};
   @media (${(p) => p.theme.mq.tabMin}) {
-    margin-bottom: ${(props) => (props.issigninvisible ? '206px' : '0')};
+    margin-bottom: ${(props) => (props.$isSigninVisible ? '206px' : '0')};
     width: 380px;
   }
   @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 444px;
-    margin-bottom: ${(props) => (props.issigninvisible ? '168px' : '0')};
+    margin-bottom: ${(props) => (props.$isSigninVisible ? '168px' : '0')};
   }
 `;
 
@@ -91,7 +97,7 @@ export const SigInQuestion = styled.div`
   }
 
   p {
-    color: #b6b6b6;
+    color: ${(p) => p.theme.colors.primaryGray};
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 16px;
@@ -102,7 +108,7 @@ export const SigInQuestion = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  color: #fff;
+  color: ${(p) => p.theme.colors.primaryWhite};
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -115,10 +121,18 @@ export const StyledLink = styled(Link)`
 `;
 
 export const ErrorBlock = styled.div`
-  border: 1px solid #e74a3b;
-  font-size: 20px;
-  padding: 10px;
-  background-color: #e3ffa8;
+  max-width: 800px;
+  border: 1px solid ${(p) => p.theme.colors.error};
+  font-size: 16px;
+  padding: 5px;
+  background-color: ${(p) => p.theme.colors.primaryWhite};
   border-radius: 14px;
+  margin-top: 30px;
   margin-bottom: 30px;
+  margin-inline: auto;
+  text-align: center;
+  @media (${(p) => p.theme.mq.tabMin}) {
+    font-size: 20px;
+    padding: 10px;
+  }
 `;
