@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
 import loseFatPng from '../../../images/Header/lose_fat_image_men.png';
+import maintakePng from '../../../images/Header/maintake_image_men.png';
+import gainMusclePng from '../../../images/Header/gain_muscle.png';
 import { HeaderCurrentTargetModal } from '../HeaderCurrentTargetModal/HeaderCurrentTargetModal';
 import {
   TargetFrame,

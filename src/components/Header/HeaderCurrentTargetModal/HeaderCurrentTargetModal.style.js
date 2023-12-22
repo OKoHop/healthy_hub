@@ -60,3 +60,73 @@ export const BtnCancel = styled.button`
     color: ${(p) => p.theme.colors.primaryGreenLite};
   }
 `;
+
+export const FormTarget = styled.form`
+  margin-top: 16px;
+`;
+
+export const FormTargetList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const FormTargetInput = styled.input`
+  appearance: none;
+`;
+
+export const TargetImgBorder = styled.div`
+  padding: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid
+    ${(p) =>
+      p.isSelected
+        ? p.theme.colors.primaryViolet
+        : p.theme.colors.secondaryGray1};
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+`;
+
+export const ImgTarget = styled.img`
+  width: 28px;
+  height: 28px;
+`;
+
+export const FormTargetLabel = styled.label`
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+  color: ${(p) =>
+    p.isSelected ? p.theme.colors.primaryViolet : p.theme.colors.primaryWhite};
+`;
+
+export const FormTargetBtn = styled.button`
+  width: 100%;
+  display: flex;
+  padding: 8px 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: none;
+  background: ${(p) => p.theme.colors.primaryGreenLite};
+  color: ${(p) => p.theme.colors.primaryBlack2};
+  font-weight: 500;
+  line-height: 20px;
+
+  @media (${(p) => p.theme.mq.tabMin}) {
+    width: 166px;
+  }
+
+  &:hover,
+  :focus {
+    background: transparent;
+    border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
+    color: ${(p) => p.theme.colors.primaryWhite};
+  }
+`;
