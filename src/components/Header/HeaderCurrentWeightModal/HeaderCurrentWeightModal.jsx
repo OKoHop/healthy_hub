@@ -43,7 +43,7 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
         <DateToday>Today</DateToday>
         <DateText>{formattedDate}</DateText>
       </DateTextContainer>
-      <FormWeight>
+      <FormWeight onSubmit={null}>
         <FormWeightInput
           type="number"
           name="weight"

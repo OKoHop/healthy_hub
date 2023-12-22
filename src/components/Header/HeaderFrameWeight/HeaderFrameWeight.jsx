@@ -24,7 +24,7 @@ export const HeaderFrameWeight = () => {
   const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
 
   const customStyles = {
-    overlay: { backgroundColor: 'rgba(0, 0, 0, 0)' },
+    overlay: { backgroundColor: 'rgba(0, 0, 0, 0)', zIndex: 9999,},
     content: {
       top: '60px',
       left: '50%',

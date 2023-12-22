@@ -13,7 +13,7 @@ export const BtnClose = styled.button`
   top: 20px;
   right: 32px;
   color: ${(p) => p.theme.colors.primaryWhite};
-  
+
   &:hover,
   :focus {
     stroke: ${(p) => p.theme.colors.primaryGreenLite};
@@ -131,4 +131,9 @@ export const BtnCancel = styled.button`
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
+
+  &:hover,
+  :focus {
+    color: ${(p) => p.theme.colors.primaryGreenLite};
+  }
 `;

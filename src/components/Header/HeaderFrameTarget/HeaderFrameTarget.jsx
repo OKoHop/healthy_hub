@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
 import loseFatPng from '../../../images/Header/lose_fat_image_men.png';
+import { HeaderCurrentTargetModal } from '../HeaderCurrentTargetModal/HeaderCurrentTargetModal';
 import {
   TargetFrame,
   TargetImgBorder,
@@ -30,7 +31,7 @@ export const HeaderFrameTarget = () => {
       transform: 'translateX(-50%)',
       width: '320px',
       height: '100%',
-      padding: '24px 10px',
+      padding: '24px 10px 26px',
       border: 'none',
       backgroundColor: '#050505',
       ...(isTabletOrDesktop && {
@@ -40,7 +41,7 @@ export const HeaderFrameTarget = () => {
         transform: 'translateX(50%)',
         width: '392px',
         height: '352px',
-        padding: '20px 24px 0',
+        padding: '20px 84px 0 24px',
         borderRadius: '12px',
         border: 'none',
         backgroundColor: '#0F0F0F',
@@ -103,7 +104,9 @@ export const HeaderFrameTarget = () => {
         style={customStyles}
         ariaHideApp={false}
         shouldCloseOnOverlayClick={shouldCloseOnOverlayClick()}
-      ></Modal>
+      >
+        <HeaderCurrentTargetModal closePanel={closePanelTarget}/>
+      </Modal>
     </>
   );
 };

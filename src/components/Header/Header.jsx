@@ -21,7 +21,7 @@ export const Header = () => {
   return (
     <>
       <StyledHeader>
-        <HeaderContainer className="container" id="header_modal">
+        <HeaderContainer className="container">
           <StyledNavLogoLink to="/main">HealthyHub</StyledNavLogoLink>
           {isLoggedIn && isMobile && <HeaderMobMenuBtn />}
           {isLoggedIn && isTabletOrDesktop && (
