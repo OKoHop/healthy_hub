@@ -53,6 +53,8 @@ const Water = () => {
     return Math.round((waterIntake / wat) * 100);
   }
 
+  const persentWat = persentWater(wat, waterIntake);
+
   return (
     <>
       <Thumb>
@@ -60,8 +62,7 @@ const Water = () => {
         <StyledDiv>
           <StyledDiagram>
             <P>{persentWater(wat, watIntake)} %</P>
-
-            <Progress></Progress>
+            <Progress height={persentWater(wat, watIntake)}></Progress>
           </StyledDiagram>
           <div>
             <Svg

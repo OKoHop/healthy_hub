@@ -128,10 +128,14 @@ export const StyledDiagram = styled.div`
 `;
 
 export const Progress = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 64px;
+  height: ${(props) => `${(props.height / 100) * 128}px`};
+  max-height: 128px;
   border-radius: 20px;
   background-color: #b6c3ff;
+
+  position: absolute;
+  bottom: 8px;
 `;
 
 export const Thumb = styled.div`
@@ -185,8 +189,10 @@ export const P = styled.p`
   font-weight: 600;
   line-height: 1.37;
   text-align: center;
+  color: #b6c3ff;
 
   position: absolute;
   top: 28px;
   left: 22px;
+  z-index: 100;
 `;
