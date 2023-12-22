@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../../redux/auth/operations';
 
-import { InputsBlock, ButtonsBlock } from './AuthForm.styled';
+import { InputsBlock, ButtonsBlock, GenderLabel } from './AuthForm.styled';
 import { inputFields, radioData } from '../constants';
 import validationSchema from '../ValidationSchema';
 
@@ -79,7 +79,7 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <InputsBlock hasbackbutton={currentStep > 0}>
+      <InputsBlock $hasBackButton={currentStep > 0}>
         {currentStep === 0 && <>{renderInputs(inputFields.main, formik)}</>}
         {currentStep === 1 && (
           <>{renderRadioButtons('goal', radioData.goal, formik)}</>
@@ -87,6 +87,7 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
 
         {currentStep === 2 && (
           <>
+            <GenderLabel>Gender</GenderLabel>
             {renderRadioButtons('gender', radioData.gender, formik)}
             {renderInputs(inputFields.age, formik)}
           </>
