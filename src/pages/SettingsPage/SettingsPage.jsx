@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import { updateUser, updateAvatar } from '../../redux/auth/operations';
+import { updateUser, updateAvatar } from '../../redux/settings/operations';
 import { selectUser } from '../../redux/auth/selectors';
 import { getStats } from '../../redux/statistics/statisticOperations';
 
@@ -35,7 +35,7 @@ import setingsPage from '../../images/settingsPageImages/setings-page.png';
 import downloadPhoto from '../../images/settingsPageImages/download-new-photo.svg';
 import avatar from '../../images/settingsPageImages/profile-circle.svg';
 
-import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton/CustomRadioButton';
+import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
 
 const validationSchema = yup.object({
   name: yup
@@ -86,7 +86,7 @@ const SettingsPage = () => {
     gender: userProfile.gender,
     height: userProfile.height,
     weight: userProfile.weight,
-    activity: userProfile.activity.toString(),
+    activity: userProfile?.activity?.toString() || '',
   };
 
   const handleSaveClick = values => {
@@ -228,30 +228,35 @@ const SettingsPage = () => {
                     </FormGroupLabel>
                     <CustomRadioButton
                       name="activity"
+                      id="activity1"
                       value="1.2"
                       selectedValue={values.activity}
                       text="1.2 - if you do not have physical activity and sedentary work"
                     />
                     <CustomRadioButton
                       name="activity"
+                      id="activity2"
                       value="1.375"
                       selectedValue={values.activity}
                       text="1,375 - if you do short runs or light gymnastics 1-3 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
+                      id="activity3"
                       value="1.55"
                       selectedValue={values.activity}
                       text="1.55 - if you play sports with average loads 3-5 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
+                      id="activity4"
                       value="1.725"
                       selectedValue={values.activity}
                       text="1,725 - if you train fully 6-7 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
+                      id="activity5"
                       value="1.9"
                       selectedValue={values.activity.toString()}
                       text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"

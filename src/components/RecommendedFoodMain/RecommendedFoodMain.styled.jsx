@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const RecommendedFoodSection = styled.div`
-  @media screen and (${p => p.theme.mq.desktop}) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
@@ -10,6 +10,7 @@ export const RecommendedFoodSection = styled.div`
 `;
 
 export const TitleSection = styled.h2`
+  margin-top: 16px;
   margin-bottom: 16px;
   font-family: 'Poppins', sans-serif;
   color: ${props => props.theme.colors.primaryWhite};
@@ -17,7 +18,7 @@ export const TitleSection = styled.h2`
   font-weight: 400;
   line-height: 24px;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     font-size: 22px;
     line-height: 32px;
   }
@@ -29,7 +30,7 @@ export const RecommendedFoodList = styled.ul`
   gap: 20px;
   width: 100%;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -37,6 +38,7 @@ export const RecommendedFoodList = styled.ul`
 
 export const SeeMoreButton = styled(Link)`
   margin-top: 16px;
+  margin-bottom: 80px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -46,7 +48,8 @@ export const SeeMoreButton = styled(Link)`
   font-weight: 500;
   line-height: 20px;
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
+    margin-bottom: 40px;
     font-size: 16px;
     line-height: 22px;
   }

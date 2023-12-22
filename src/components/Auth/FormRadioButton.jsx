@@ -3,14 +3,10 @@ import styled from 'styled-components';
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
-  color: #fff;
+  color: ${(p) => p.theme.colors.primaryWhite};
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
-  @media (${(p) => p.theme.mq.tablet}) {
-  }
-  @media (${(p) => p.theme.mq.desktop}) {
-  }
 `;
 
 const StyledInput = styled.input`
@@ -18,7 +14,7 @@ const StyledInput = styled.input`
   margin: 0;
   width: 12px;
   height: 12px;
-  border: 1px solid #b6b6b6;
+  border: 1px solid ${(p) => p.theme.colors.primaryGray};
   border-radius: 50%;
   margin-right: 8px;
   transition: ${(p) => p.theme.transition.customTrans};
@@ -33,10 +29,10 @@ const StyledInput = styled.input`
     transition: ${(p) => p.theme.transition.customTrans};
   }
   &:checked::after {
-    background-color: #e3ffa8;
+    background-color: ${(p) => p.theme.colors.primaryGreenLite};
   }
   &:hover {
-    border: 1px solid #e3ffa8;
+    border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   }
   &:focus {
     outline: none;

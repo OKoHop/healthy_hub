@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const InputsBlock = styled.div.attrs((props) => ({
-  hasbackbutton: props.hasbackbutton ? 'true' : undefined,
-}))`
+export const InputsBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: ${(props) => (props.hasbackbutton ? '24px' : '40px')};
+  margin-bottom: ${(props) => (props.$hasBackButton ? '24px' : '40px')};
   @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 328px;
   }
@@ -37,4 +35,12 @@ export const ButtonsBlock = styled.div`
   @media (${(p) => p.theme.mq.deskMin}) {
     max-width: 212px;
   }
+`;
+
+export const GenderLabel = styled.span`
+  color: ${(p) => p.theme.colors.primaryWhite};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: -8px;
 `;

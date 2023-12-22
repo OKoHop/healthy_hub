@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const BackButtonStyled = styled.button`
-  color: #b6b6b6;
+  color: ${(p) => p.theme.colors.primaryGray};
   text-align: center;
-  font-family: Poppins;
   font-size: 14px;
   line-height: 20px;
   padding: 8px 10px;
@@ -11,8 +10,7 @@ export const BackButtonStyled = styled.button`
   background-color: transparent;
   transition: ${(p) => p.theme.transition.customTrans};
   border-radius: 12px;
-  outline: none;
   &:hover {
-    border-color: #e3ffa8;
+    border-color: ${(p) => p.theme.colors.primaryGreenLite};
   }
 `;

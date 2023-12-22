@@ -10,7 +10,7 @@ export const ProductCard = styled.li`
   border-radius: 12px;
   background-color: ${p => p.theme.colors.primaryBlack2};
 
-  @media screen and (${props => props.theme.mq.tablet}) {
+  @media screen and (min-width: 834px) {
     flex-basis: calc((100% - 20px) / 2);
   }
 `;
