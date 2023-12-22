@@ -1,4 +1,4 @@
-import{s as n,N as l,r as i,u as g,z as f,j as t,x as u}from"./index-023caa11.js";import{g as w,r as b,R as j}from"./randomizeFood-65cbf5b2.js";const y="/healthy_hub/assets/Ketogenic-f362ff99.png",k=n.main`
+import{s as n,N as l,r as i,u as g,x as f,j as t,w as u}from"./index-5b1929d0.js";import{g as w,r as b,R as j}from"./randomizeFood-9c1d8752.js";const y="/healthy_hub/assets/Ketogenic-f362ff99.png",k=n.main`
   background-color: ${e=>e.theme.colors.primaryBlack};
   color: ${e=>e.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
@@ -78,11 +78,11 @@ import{s as n,N as l,r as i,u as g,z as f,j as t,x as u}from"./index-023caa11.js
     height: 560px;
     margin-bottom: 0;
   }
-`,z=n.img`
+`,C=n.img`
   display: block;
   max-width: 100%;
   height: auto;
-`,C=n.ul`
+`,z=n.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -96,4 +96,4 @@ import{s as n,N as l,r as i,u as g,z as f,j as t,x as u}from"./index-023caa11.js
   @media screen and (${e=>e.theme.mq.desktop}) {
     width: calc((100% - 44px) / 2);
   }
-`,E="/healthy_hub/assets/arrow-right-246ec13a.svg";function I(){var o;const[e,s]=i.useState([]),d=g(),r=f(),m=i.useRef(((o=r.state)==null?void 0:o.from)??"/main");return i.useEffect(()=>{w().then(a=>{s(b(a,10))}).catch(a=>console.error(a))},[]),t.jsx(k,{children:t.jsxs($,{children:[t.jsxs(R,{children:[t.jsx(q,{to:m.current,onClick:()=>d(u("today")),children:t.jsx(F,{src:E,alt:"arrow right"})}),t.jsx(L,{children:"Recommended food"})]}),t.jsxs(v,{children:[t.jsx(B,{children:t.jsx(z,{src:y,alt:"Banner recommended food"})}),t.jsx(C,{children:e.map(({_id:a,img:c,name:p,amount:h,calories:x})=>t.jsx(j,{id:a,img:c,name:p,amount:h,calories:x},a))})]})]})})}export{I as default};
+`,E="/healthy_hub/assets/arrow-right-246ec13a.svg";function I(){var o;const[e,s]=i.useState([]),d=g(),r=f(),m=i.useRef(((o=r.state)==null?void 0:o.from)??"/main");return i.useEffect(()=>{w().then(a=>{s(b(a,10))}).catch(a=>console.error(a))},[]),t.jsx(k,{children:t.jsxs($,{children:[t.jsxs(R,{children:[t.jsx(q,{to:m.current,onClick:()=>d(u("today")),children:t.jsx(F,{src:E,alt:"arrow right"})}),t.jsx(L,{children:"Recommended food"})]}),t.jsxs(v,{children:[t.jsx(B,{children:t.jsx(C,{src:y,alt:"Banner recommended food"})}),t.jsx(z,{children:e.map(({_id:a,img:c,name:p,amount:h,calories:x})=>t.jsx(j,{id:a,img:c,name:p,amount:h,calories:x},a))})]})]})})}export{I as default};
