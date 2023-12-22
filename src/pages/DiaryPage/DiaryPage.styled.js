@@ -84,6 +84,7 @@ export const DiaryWrap = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+    padding-bottom: 52px;
 
     & > li:nth-child(2) {
       order: 2;
