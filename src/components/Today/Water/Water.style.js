@@ -98,6 +98,15 @@ export const StyledLeft = styled.p`
     margin-bottom: 0px;
   }
 `;
+
+export const SVG = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: #0f0f0f;
+
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+`;
+
 export const StyledBtn = styled.button`
   border: 1px solid transparent;
   border-radius: 12px;
@@ -110,10 +119,18 @@ export const StyledBtn = styled.button`
   color: #0f0f0f;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
-  &:hover {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &:hover,
+  :focus {
     background-color: transparent;
     border: 1px solid #e3ffa8;
     color: #ffffff;
+    & > ${SVG} {
+      stroke: #ffffff;
+    }
   }
 `;
 
@@ -153,22 +170,6 @@ export const Thumb = styled.div`
   }
 `;
 
-export const BtnDiv = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-`;
-
-export const SVG = styled.svg`
-  width: 16px;
-  height: 16px;
-  stroke: #0f0f0f;
-
-  &:hover {
-    stroke: #ffffff;
-  }
-`;
-
 export const Svg = styled.svg`
   width: 20px;
   height: 20px;
@@ -179,9 +180,16 @@ export const Svg = styled.svg`
   top: 24px;
   right: 24px;
 
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
   @media (max-width: 833px) {
     top: 12px;
     right: 12px;
+  }
+
+  &:hover,
+  :focus {
+    transform: scale(1.2);
   }
 `;
 
@@ -195,5 +203,4 @@ export const P = styled.p`
   position: absolute;
   top: 28px;
   left: 22px;
-  z-index: 100;
 `;
