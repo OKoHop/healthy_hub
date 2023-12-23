@@ -1,4 +1,4 @@
-import{s as n,N as l,r as a,u as g,x as w,j as e,w as f}from"./index-31c285da.js";import{g as u,r as j,R as y}from"./randomizeFood-5dedabf8.js";const R="/healthy_hub/assets/Ketogenic-f362ff99.png",b=n.main`
+import{s as n,N as l,r as a,u as g,y as f,j as e,x as w}from"./index-8aeed758.js";import{g as u,r as y,R as j}from"./randomizeFood-43e09bb4.js";const R="/healthy_hub/assets/Ketogenic-f362ff99.png",b=n.main`
   background-color: ${t=>t.theme.colors.primaryBlack};
   color: ${t=>t.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
@@ -96,4 +96,4 @@ import{s as n,N as l,r as a,u as g,x as w,j as e,w as f}from"./index-31c285da.js
   @media screen and (1440px) {
     width: calc((100% - 44px) / 2);
   }
-`,A="/healthy_hub/assets/arrow-right-246ec13a.svg";function S(){var d;const[t,o]=a.useState([]),r=g(),s=w(),c=a.useRef(((d=s.state)==null?void 0:d.from)??"/main");return a.useEffect(()=>{u().then(i=>{o(j(i,10))}).catch(i=>console.error(i))},[]),e.jsx(b,{children:e.jsxs(k,{children:[e.jsxs(F,{children:[e.jsx(L,{to:c.current,onClick:()=>r(f("today")),children:e.jsx(v,{src:A,alt:"arrow right"})}),e.jsx(B,{children:"Recommended food"})]}),e.jsxs(C,{children:[e.jsx(z,{children:e.jsx(E,{src:R,alt:"Banner recommended food"})}),e.jsx(P,{children:t.map(({_id:i,img:p,name:m,amount:x,calories:h})=>e.jsx(y,{id:i,img:p,name:m,amount:x,calories:h},i))})]})]})})}export{S as default};
+`,A="/healthy_hub/assets/arrow-right-246ec13a.svg";function S(){var d;const[t,o]=a.useState([]),r=g(),s=f(),c=a.useRef(((d=s.state)==null?void 0:d.from)??"/main");return a.useEffect(()=>{u().then(i=>{o(y(i,10))}).catch(i=>console.error(i))},[]),e.jsx(b,{children:e.jsxs(k,{children:[e.jsxs(F,{children:[e.jsx(L,{to:c.current,onClick:()=>r(w("today")),children:e.jsx(v,{src:A,alt:"arrow right"})}),e.jsx(B,{children:"Recommended food"})]}),e.jsxs(C,{children:[e.jsx(z,{children:e.jsx(E,{src:R,alt:"Banner recommended food"})}),e.jsx(P,{children:t.map(({_id:i,img:p,name:m,amount:x,calories:h})=>e.jsx(j,{id:i,img:p,name:m,amount:x,calories:h},i))})]})]})})}export{S as default};
