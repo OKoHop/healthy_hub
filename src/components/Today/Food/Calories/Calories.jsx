@@ -1,13 +1,14 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { calories } from '../../../../redux/Today/Daily/selectors';
+import { dailyCal } from '../../../../redux/Today/Food/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Calories = () => {
   const calDaily = useSelector(calories);
-  const calReceived = 1200;
+  const calReceived = useSelector(dailyCal);
 
   const remainingCalories = (calReceived, calDaily) => {
     if (!calDaily && !calReceived) {

@@ -71,10 +71,18 @@ export const FormBtn = styled.button`
   border: inherit;
   border-radius: 12px;
   background-color: #e3ffa8;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   @media (min-width: 834px) {
     width: 212px;
     height: 36px;
+  }
+
+  &:hover,
+  :focus {
+    background-color: transparent;
+    border: 1px solid #e3ffa8;
+    color: #ffffff;
   }
 `;
 

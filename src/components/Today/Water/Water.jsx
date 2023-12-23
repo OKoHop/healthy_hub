@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
 import {
-  BtnDiv,
   P,
   Progress,
   SVG,
@@ -53,6 +52,8 @@ const Water = () => {
     return Math.round((waterIntake / wat) * 100);
   }
 
+  const persentWat = persentWater(wat, waterIntake);
+
   return (
     <>
       <Thumb>
@@ -60,8 +61,7 @@ const Water = () => {
         <StyledDiv>
           <StyledDiagram>
             <P>{persentWater(wat, watIntake)} %</P>
-
-            <Progress></Progress>
+            <Progress height={persentWater(wat, watIntake) || 0}></Progress>
           </StyledDiagram>
           <div>
             <Svg
@@ -83,12 +83,10 @@ const Water = () => {
               </StyledLeft>
             </StyledDiv2>
             <StyledBtn onClick={openModal}>
-              <BtnDiv>
-                <SVG>
-                  <use href={`${svgSlice}#add`}></use>
-                </SVG>
-                Add water intake
-              </BtnDiv>
+              <SVG>
+                <use href={`${svgSlice}#add`}></use>
+              </SVG>
+              Add water intake
             </StyledBtn>
           </div>
         </StyledDiv>

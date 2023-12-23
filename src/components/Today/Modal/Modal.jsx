@@ -29,7 +29,12 @@ const WaterModal = ({ open, close }) => {
         <Form onSubmit={handleSubmitForm}>
           <Label>
             How match water
-            <Input type="text" name="water" placeholder="Enter milliliters" />
+            <Input
+              type="text"
+              name="water"
+              placeholder="Enter milliliters"
+              autoComplete="off"
+            />
           </Label>
           <FormBtn type="submit">Confirm</FormBtn>
         </Form>

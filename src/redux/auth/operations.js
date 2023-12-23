@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3000/';
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -73,7 +73,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get('api/user/current');
+      const res = await axios.get('/api/user/current');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
