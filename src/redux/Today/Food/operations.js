@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://health-en-app.onrender.com';
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 export const getStatisticts = createAsyncThunk(
   'user/foodStatistics',

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3000/';
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 export const addFood = createAsyncThunk(
   'foods/addFood',
