@@ -26,7 +26,7 @@ const dayliPersistConfig = {
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isLoggedIn', 'user'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 
 export const store = configureStore({

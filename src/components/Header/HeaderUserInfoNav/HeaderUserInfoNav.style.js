@@ -43,6 +43,17 @@ export const UserPohotoStub = styled.div`
   }
 `;
 
+export const UserPhoto = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  @media (${(p) => p.theme.mq.tabMin}) {
+    width: 28px;
+    height: 28px;
+  }
+`;
+
 export const UserName = styled.p`
   margin-right: 6px;
   font-size: 12px;

@@ -1,21 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import {
   SvgUserBtnDown,
   UserInfo,
   UserName,
+  UserPhoto,
   UserPohotoStub,
 } from './HeaderUserInfoNav.style';
 import swgIcons from '../../../images/Header/icons.svg';
 import { HeaderUserMenu } from '../HeaderUserMenu/HeaderUserMenu';
 import { useAuth } from '../../../hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../../../redux/auth/operations';
 
 export const HeaderUserInfoNav = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user } = useAuth();
+  const dispatch = useDispatch();
+  console.log(user);
 
-  const firstLetter = user.name ? user.name[0].toUpperCase() : '';
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  // const firstLetter = user.name ? user.name[0].toUpperCase() : '';
 
   const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
 
@@ -44,17 +53,17 @@ export const HeaderUserInfoNav = () => {
   };
   const rotateSvg = { transform: 'rotate(180deg)' };
 
-    const openMenu = () => {
+  const openMenu = () => {
     setIsUserMenuOpen(true);
   };
   const closeMenu = () => setIsUserMenuOpen(false);
-
 
   return (
     <>
       <UserInfo onClick={openMenu}>
         <UserName>{user.name}</UserName>
-        <UserPohotoStub>{firstLetter}</UserPohotoStub>
+        {/* <UserPohotoStub>{firstLetter}</UserPohotoStub> */}
+      <UserPhoto src={user.avatarURL}></UserPhoto>
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
             <use href={`${swgIcons}#icon-arrow-down`}></use>
