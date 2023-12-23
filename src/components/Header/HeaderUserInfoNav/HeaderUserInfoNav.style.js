@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const SvgUserBtnDown = styled.svg`
-  margin-left: 2px;
+  margin-left: 4px;
   fill: #e3ffa8;
-  width: 14px;
+  
   height: 14px;
+  width: 14px;
   transition: transform ${(p) => p.theme.transition.customTrans};
 `;
 
@@ -14,8 +15,7 @@ export const UserInfo = styled.div`
   align-items: center;
   justify-content: flex-end;
   cursor: pointer;
-  position: relative;
-
+ 
   &:hover,
   :focus {
     & > ${SvgUserBtnDown} {

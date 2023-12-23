@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const shouldForwardProp = (prop) => prop !== 'isSelected';
+
 export const BtnClose = styled.button`
   padding: 0;
   width: 20px;
@@ -130,3 +132,16 @@ export const FormTargetBtn = styled.button`
     color: ${(p) => p.theme.colors.primaryWhite};
   }
 `;
+
+BtnClose.shouldForwardProp = shouldForwardProp;
+SvgClose.shouldForwardProp = shouldForwardProp;
+TitleCurrentTarget.shouldForwardProp = shouldForwardProp;
+TextCurrentTarget.shouldForwardProp = shouldForwardProp;
+BtnCancel.shouldForwardProp = shouldForwardProp;
+FormTarget.shouldForwardProp = shouldForwardProp;
+FormTargetList.shouldForwardProp = shouldForwardProp;
+FormTargetInput.shouldForwardProp = shouldForwardProp;
+TargetImgBorder.shouldForwardProp = shouldForwardProp;
+ImgTarget.shouldForwardProp = shouldForwardProp;
+FormTargetLabel.shouldForwardProp = shouldForwardProp;
+FormTargetBtn.shouldForwardProp = shouldForwardProp;

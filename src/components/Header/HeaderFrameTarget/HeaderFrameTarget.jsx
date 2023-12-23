@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
@@ -16,9 +16,19 @@ import {
   TargetSelected,
   SvgArroy,
 } from './HeaderFrameTarget.slyled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../../redux/user/selectors';
+import { getUser } from '../../../redux/user/operations';
 
 export const HeaderFrameTarget = () => {
   const [isTargetPanelOpen, setIsTargetPanelOpen] = useState(false);
+  const {user} = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
+  console.log({user});
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
@@ -80,7 +90,7 @@ export const HeaderFrameTarget = () => {
         <TargetContainerBtn>
           <TitleGoal>Goal</TitleGoal>
           <TargetBtn onClick={openPanelTarget}>
-            <TargetSelected>Lose fat</TargetSelected>
+            <TargetSelected>{user.goal}</TargetSelected>
             {isTabletOrDesktop &&
               (!isTargetPanelOpen ? (
                 <SvgArroy>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -11,18 +11,10 @@ import {
 import swgIcons from '../../../images/Header/icons.svg';
 import { HeaderUserMenu } from '../HeaderUserMenu/HeaderUserMenu';
 import { useAuth } from '../../../hooks/useAuth';
-import { useDispatch } from 'react-redux';
-import { refreshUser } from '../../../redux/auth/operations';
 
 export const HeaderUserInfoNav = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user } = useAuth();
-  const dispatch = useDispatch();
-  console.log(user);
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
 
   // const firstLetter = user.name ? user.name[0].toUpperCase() : '';
 
@@ -63,7 +55,7 @@ export const HeaderUserInfoNav = () => {
       <UserInfo onClick={openMenu}>
         <UserName>{user.name}</UserName>
         {/* <UserPohotoStub>{firstLetter}</UserPohotoStub> */}
-      <UserPhoto src={user.avatarURL}></UserPhoto>
+        <UserPhoto src={user.avatarURL}></UserPhoto>
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
             <use href={`${swgIcons}#icon-arrow-down`}></use>

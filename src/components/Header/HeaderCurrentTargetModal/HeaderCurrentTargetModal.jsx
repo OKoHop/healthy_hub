@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from 'react-redux';
 import svgIcons from '../../../images/Header/icons.svg';
 import loseFatPng from '../../../images/Header/lose_fat_image_men.png';
 import maintakePng from '../../../images/Header/maintake_image_men.png';
@@ -18,9 +19,11 @@ import {
   FormTargetLabel,
   TargetImgBorder,
 } from './HeaderCurrentTargetModal.style';
+import { updateGoal } from '../../../redux/user/operations';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
   const [selectedTarget, setSelectedTarget] = useState('loseFat');
+  const dispatch = useDispatch();
 
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
@@ -31,6 +34,7 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    dispatch(updateGoal(selectedTarget));
     closePanel();
   };
 
@@ -50,43 +54,43 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
       <FormTarget onSubmit={handleFormSubmit}>
         <FormTargetList>
           <li>
-            <FormTargetLabel isSelected={selectedTarget === 'loseFat'}>
+            <FormTargetLabel isSelected={selectedTarget === 'Lose fat'}>
               <FormTargetInput
                 type="radio"
-                value="loseFat"
-                checked={selectedTarget === 'loseFat'}
-                onChange={() => handleTargetChange('loseFat')}
+                value="Lose fat"
+                checked={selectedTarget === 'Lose fat'}
+                onChange={() => handleTargetChange('Lose fat')}
               />
-              <TargetImgBorder isSelected={selectedTarget === 'loseFat'}>
+              <TargetImgBorder isSelected={selectedTarget === 'Lose fat'}>
                 <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
               </TargetImgBorder>
               Lose fat
             </FormTargetLabel>
           </li>
           <li>
-            <FormTargetLabel isSelected={selectedTarget === 'maintain'}>
+            <FormTargetLabel isSelected={selectedTarget === 'Maintain'}>
               <FormTargetInput
                 type="radio"
-                value="maintain"
-                checked={selectedTarget === 'maintain'}
-                onChange={() => handleTargetChange('maintain')}
+                value="Maintain"
+                checked={selectedTarget === 'Maintain'}
+                onChange={() => handleTargetChange('Maintain')}
               />
-              <TargetImgBorder isSelected={selectedTarget === 'maintain'}>
-                <ImgTarget src={`${maintakePng}`} alt="waight"></ImgTarget>
+              <TargetImgBorder isSelected={selectedTarget === 'Maintain'}>
+                <ImgTarget src={`${maintakePng}`} alt="=maintain"></ImgTarget>
               </TargetImgBorder>
               Maintain
             </FormTargetLabel>
           </li>
           <li>
-            <FormTargetLabel isSelected={selectedTarget === 'gainMuscle'}>
+            <FormTargetLabel isSelected={selectedTarget === 'Gain Muscle'}>
               <FormTargetInput
                 type="radio"
-                value="gainMuscle"
-                checked={selectedTarget === 'gainMuscle'}
-                onChange={() => handleTargetChange('gainMuscle')}
+                value="Gain Muscle"
+                checked={selectedTarget === 'Gain Muscle'}
+                onChange={() => handleTargetChange('Gain Muscle')}
               />
-              <TargetImgBorder isSelected={selectedTarget === 'gainMuscle'}>
-                <ImgTarget src={`${gainMusclePng}`} alt="waight"></ImgTarget>
+              <TargetImgBorder isSelected={selectedTarget === 'Gain Muscle'}>
+                <ImgTarget src={`${gainMusclePng}`} alt="muscle"></ImgTarget>
               </TargetImgBorder>
               Gain Muscle
             </FormTargetLabel>
