@@ -14,3 +14,26 @@ export const getStatisticts = createAsyncThunk(
     }
   }
 );
+
+export const getDailyStatistics = createAsyncThunk(
+  'user/dailyNutrients',
+  async (_, thunkAPI) => {
+    try {
+      const date = new Date();
+
+      const { data } = await axios.get('/api/user/statistics', {
+        params: {
+          dateFrom: `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}`,
+          dateTo: `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}`,
+        },
+      });
+      return data.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

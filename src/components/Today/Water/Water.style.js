@@ -129,7 +129,8 @@ export const StyledDiagram = styled.div`
 
 export const Progress = styled.div`
   width: 64px;
-  height: ${(props) => `${(props.height / 100) * 128}px`};
+  height: ${(props) =>
+    `${((props.height === false ? 0 : props.height) / 100) * 128}px`};
   max-height: 128px;
   border-radius: 20px;
   background-color: #b6c3ff;
