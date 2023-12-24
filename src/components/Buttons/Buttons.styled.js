@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
 
-const sharedButtonStyles = css`
+export const sharedButtonStyles = css`
   padding: 8px 10px;
   border-radius: 12px;
   text-decoration: none;
@@ -27,7 +27,7 @@ const StyledButton = styled.button`
     borderColorHov,
     textColorHov,
     widthTabHov,
-    widthDeskHov
+    widthDeskHov,
   }) => css`
     width: ${width};
     color: ${textColor};
