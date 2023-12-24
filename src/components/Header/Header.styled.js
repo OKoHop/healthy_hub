@@ -7,7 +7,6 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
 
-
   @media (${(p) => p.theme.mq.tabMin}) {
     height: 100px;
   }
@@ -20,8 +19,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const TargetSelectionList = styled.ul`
-  width: 100%;
-  margin-right: 75px; 
+  margin-left: 127px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -29,7 +27,7 @@ export const TargetSelectionList = styled.ul`
 
   @media (${(p) => p.theme.mq.deskMin}) {
     gap: 80px;
-    margin-right: 124px; 
+    margin-left: 636px;
   }
 `;
 

@@ -1,11 +1,27 @@
 import styled from 'styled-components';
 
+export const SvgUserBtnDown = styled.svg`
+  margin-left: 4px;
+  fill: #e3ffa8;
+  
+  height: 14px;
+  width: 14px;
+  transition: transform ${(p) => p.theme.transition.customTrans};
+`;
+
 export const UserInfo = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  position: relative;
+  cursor: pointer;
+ 
+  &:hover,
+  :focus {
+    & > ${SvgUserBtnDown} {
+      transform: scale(1.3);
+    }
+  }
 `;
 
 export const UserPohotoStub = styled.div`
@@ -17,9 +33,20 @@ export const UserPohotoStub = styled.div`
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
   -webkit-text-stroke: 0.5px #0f0f0f;
-  font-size: 18px;
+  font-size: 22px;
+
+  @media (${(p) => p.theme.mq.tabMin}) {
+    width: 28px;
+    height: 28px;
+  }
+`;
+
+export const UserPhoto = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 
   @media (${(p) => p.theme.mq.tabMin}) {
     width: 28px;
@@ -49,22 +76,9 @@ export const BtnUser = styled.button`
   justify-content: center;
   border: none;
   background: transparent;
-  transition: transform ${p => p.theme.transition.customTrans};
+  transition: transform ${(p) => p.theme.transition.customTrans};
   &:hover,
   :focus {
     transform: scale(1.2);
   }
-`;
-
-export const SvgUserBtnDown = styled.svg`
-  fill: #e3ffa8;
-  width: 14px;
-  height: 14px;
-`;
-
-export const SvgUserBtnUp = styled.svg`
-  transform: rotate(180deg);
-  fill: #e3ffa8;
-  width: 14px;
-  height: 14px;
 `;

@@ -7,7 +7,7 @@ import {
 } from './Header.styled';
 import { HeaderMobMenuBtn } from './HeaderMobMenuBtn/HeaderMobMenuBtn';
 import { HeaderAuthNav } from './HeaderAuthNav/HeaderAuthNav';
-import { HeaderUserInfo } from './HeaderUserInfo/HeaderUserInfo';
+import { HeaderUserInfoNav } from './HeaderUserInfoNav/HeaderUserInfoNav.jsx';
 import { HeaderFrameTarget } from './HeaderFrameTarget/HeaderFrameTarget';
 import { HeaderFrameWeight } from './HeaderFrameWeight/HeaderFrameWeight';
 import { useAuth } from '../../hooks/useAuth';
@@ -15,16 +15,16 @@ import { useAuth } from '../../hooks/useAuth';
 export const Header = () => {
   const { isLoggedIn } = useAuth();
 
-  const isTabletorDesktop = useMediaQuery({ query: '(min-width: 834px)' });
+  const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
 
   return (
     <>
       <StyledHeader>
-        <HeaderContainer className="container" id="header_modal">
+        <HeaderContainer className="container">
           <StyledNavLogoLink to="/main">HealthyHub</StyledNavLogoLink>
           {isLoggedIn && isMobile && <HeaderMobMenuBtn />}
-          {isLoggedIn && isTabletorDesktop && (
+          {isLoggedIn && isTabletOrDesktop && (
             <TargetSelectionList>
               <li>
                 <HeaderFrameTarget />
@@ -34,7 +34,7 @@ export const Header = () => {
               </li>
             </TargetSelectionList>
           )}
-          {isLoggedIn && <HeaderUserInfo />}
+          {isLoggedIn && <HeaderUserInfoNav />}
           {!isLoggedIn && <HeaderAuthNav />}
         </HeaderContainer>
       </StyledHeader>
