@@ -3,8 +3,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
+export const currentUser = createAsyncThunk(
+  'user/current',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get('api/user/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  })
+
 export const updateAvatar = createAsyncThunk(
-  'auth/updateAvatar',
+  'user/updateAvatar',
   async (avatarData, thunkAPI) => {
     try {
       const response = await axios.patch('api/user/avatars', avatarData, {
@@ -14,7 +25,6 @@ export const updateAvatar = createAsyncThunk(
         
       });
 
-      console.log();
       console.log(
         'updated avatarUrl: ',
         response.data,
@@ -32,8 +42,6 @@ export const updateUser = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.patch('api/user/update', data);
-
-      console.log();
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,13 +50,11 @@ export const updateUser = createAsyncThunk(
 );
 
 export const updateGoal = createAsyncThunk(
-  'auth/updateGoal',
+  'user/updateGoal',
   async (data, thunkAPI) => {
+    const currentGoal = { goal: data };
     try {
-      const currentGoal = { goal: data };
       const response = await axios.put('api/user/goal', currentGoal);
-
-      console.log();
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -57,12 +63,11 @@ export const updateGoal = createAsyncThunk(
 );
 
 export const updateWeight = createAsyncThunk(
-  'auth/updateWeight',
+  'user/updateWeight',
   async (data, thunkAPI) => {
+    const currentWeight = { goal: data };
     try {
-      const response = await axios.put('api/user/weight', data);
-
-      console.log();
+      const response = await axios.put('api/user/weight', currentWeight);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
