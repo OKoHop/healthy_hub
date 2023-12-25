@@ -19,6 +19,14 @@ const nutrientsSlice = createSlice({
         state.fat = action.payload.nutrients.fat;
       })
       .addCase(getDailyStatistics.fulfilled, (state, action) => {
+        if (!action.payload) {
+          state.dailyNutrients = {
+            totalCalories: 0,
+            totalCarbohidrates: 0,
+            totalProtein: 0,
+            totalFat: 0,
+          };
+        }
         state.dailyNutrients = action.payload[0].stats;
       });
   },

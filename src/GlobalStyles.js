@@ -3,7 +3,7 @@ import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
 body {
-    background-color: #000000;
+    background-color: #050505;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: #FFFFFF
