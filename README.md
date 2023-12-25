@@ -42,7 +42,7 @@ This service will help you:
 - [**Danylo Kliushnychenko**](https://github.com/KluDan) - fullstack developer,
   frontend part
 
-- [**Roman Stuck**](https://github.com/Romano1994o) - fullstack developer,
+- [**Roman Tuk**](https://github.com/Romano1994o) - fullstack developer,
   frontend part
 
 - [**Bohdan Faibysh**](https://github.com/Faibysh) - fullstack developer,
