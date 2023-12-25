@@ -18,7 +18,8 @@ export const HeaderUserInfoNav = () => {
 
   // const firstLetter = user.name ? user.name[0].toUpperCase() : '';
 
-  const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
 
   const customStyles = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0)' },
@@ -36,11 +37,16 @@ export const HeaderUserInfoNav = () => {
       backgroundColor: '#0F0F0F',
       boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
       transition: 'top 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-      ...(isTabletOrDesktop && {
+      ...(isTablet && {
         top: '90px',
         right: '50%',
         transform: 'translateX(50%)',
       }),
+      ...(isDesktop && {
+        left: 'auto',
+        right: '6%',
+        transform: 'translateX(50%)',
+      })
     },
   };
   const rotateSvg = { transform: 'rotate(180deg)' };
@@ -73,7 +79,7 @@ export const HeaderUserInfoNav = () => {
         style={customStyles}
         ariaHideApp={false}
       >
-        <HeaderUserMenu />
+        <HeaderUserMenu closeMenu={closeMenu}/>
       </Modal>
     </>
   );
