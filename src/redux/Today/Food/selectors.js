@@ -6,3 +6,4 @@ export const totalCarbohidrates = (state) =>
   state.nutrients.dailyNutrients.totalCarbohidrates;
 export const totalProt = (state) => state.nutrients.dailyNutrients.totalProtein;
 export const totalFat = (state) => state.nutrients.dailyNutrients.totalFat;
+export const dailyWater = (state) => state.nutrients.dailyNutrients.waterIntake;
