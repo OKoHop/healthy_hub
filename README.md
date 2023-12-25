@@ -23,8 +23,8 @@ This service will help you:
 | Formik            | Express             |
 | Yup               | Mongoose            |
 | Styled-components | Multer              |
-| Dotenv            | Dotenv              |
-| Vite              | Swagger-ui-express  |
+| Vite              | Dotenv              |
+| Lodash            | Swagger-ui-express  |
 
 ## Development team
 
