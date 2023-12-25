@@ -16,18 +16,19 @@ import {
   TargetSelected,
   SvgArroy,
 } from './HeaderFrameTarget.slyled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../../redux/user/selectors';
-import { getUser } from '../../../redux/user/operations';
+import { useDispatch } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
+import { refreshUser } from '../../../redux/auth/operations';
+import { useAuth } from '../../../hooks/useAuth';
 
 export const HeaderFrameTarget = () => {
   const [isTargetPanelOpen, setIsTargetPanelOpen] = useState(false);
-  const {user} = useSelector(selectCurrentUser);
+  const { user } = useAuth();
   const dispatch = useDispatch();
-  console.log({user});
+  console.log({ user });
 
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
@@ -117,7 +118,7 @@ export const HeaderFrameTarget = () => {
         ariaHideApp={false}
         shouldCloseOnOverlayClick={shouldCloseOnOverlayClick()}
       >
-        <HeaderCurrentTargetModal closePanel={closePanelTarget}/>
+        <HeaderCurrentTargetModal closePanel={closePanelTarget} />
       </Modal>
     </>
   );

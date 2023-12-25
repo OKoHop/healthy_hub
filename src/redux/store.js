@@ -44,7 +44,8 @@ export const store = configureStore({
     daily: persistReducer(dayliPersistConfig, dailyReducer),
     water: persistReducer(dayliPersistConfig, waterIntakeReducer),
     nutrients: nutrientsReducer,
-    user: persistReducer(currentUserPersistConfig, userReducer)
+    // user: persistReducer(currentUserPersistConfig, userReducer)
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUser, updateGoal, updateUser, updateWeight } from './operations';
+import { updateGoal, updateUser, updateWeight } from './operations';
 
 const initialState = {
   user: {
@@ -12,6 +12,7 @@ const initialState = {
     height: null,
     weight: null,
     activity: null,
+    avatarURL: null,
     bmr: null,
     water: null,
     nutrients: {
@@ -20,7 +21,6 @@ const initialState = {
       fat: null,
     },
     token: null,
-    avatarUrl: null,
   },
 };
 
@@ -33,10 +33,6 @@ const userSlice = createSlice({
   initialState,
   extraReducers: (builder) =>
     builder
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(getUser.rejected, handleRejected)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload;
       })
