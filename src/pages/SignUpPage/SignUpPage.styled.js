@@ -121,6 +121,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const ErrorBlock = styled.div`
+  color: ${(p) => p.theme.colors.error};
   max-width: 800px;
   border: 1px solid ${(p) => p.theme.colors.error};
   font-size: 16px;

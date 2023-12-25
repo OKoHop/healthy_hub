@@ -6,7 +6,6 @@
   padding: 24px 0;
 }
 
-
 .img {
   width: 300px;
   height: 296px;
@@ -40,7 +39,6 @@
   font-size: 0.8rem;
 }
 
-
 .signinBtn {
   display: block;
   width: 100%;
@@ -48,6 +46,7 @@
   border-radius: 12px;
   text-decoration: none;
   background: #e3ffa8;
+  border: 1px solid transparent;
   color: #0f0f0f;
   text-align: center;
   font-size: 14px;
@@ -56,6 +55,11 @@
   margin-bottom: 10px;
 }
 
+.signinBtn:hover {
+  border: 1px solid #e3ffa8;
+  background: transparent;
+  color: white;
+}
 .forgotPassword {
   text-align: center;
   font-size: 14px;
@@ -63,6 +67,10 @@
   color: #b6b6b6;
   text-decoration: none;
   margin-bottom: 50px;
+}
+
+.forgotPassword:hover {
+  color: white;
 }
 
 .question {
@@ -84,6 +92,10 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+}
+
+.signupBtn:hover {
+  text-decoration: underline;
 }
 
 /* TABLET */

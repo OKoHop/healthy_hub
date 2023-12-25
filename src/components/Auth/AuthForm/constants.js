@@ -1,7 +1,7 @@
 export const inputFields = {
   main: [
     { name: 'Name', typeInput: 'text' },
-    { name: 'Email', typeInput: 'email' },
+    { name: 'E-mail', typeInput: 'email' },
     { name: 'Password', typeInput: 'password' },
   ],
 
