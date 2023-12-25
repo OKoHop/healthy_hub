@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
@@ -35,7 +36,7 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
     e.preventDefault();
     const currentWeight = e.target.elements.weight.value;
     if(currentWeight === ""){
-      return
+      return toast.error('Enter current weight');
     }
     dispatch(updateWeight(currentWeight));
     closePanel();
