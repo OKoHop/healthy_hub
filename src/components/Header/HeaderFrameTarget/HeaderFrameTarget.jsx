@@ -16,21 +16,23 @@ import {
   TargetSelected,
   SvgArroy,
 } from './HeaderFrameTarget.slyled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../../redux/user/selectors';
-import { getUser } from '../../../redux/user/operations';
+import { useDispatch } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
+import { refreshUser } from '../../../redux/auth/operations';
+import { useAuth } from '../../../hooks/useAuth';
 
 export const HeaderFrameTarget = () => {
   const [isTargetPanelOpen, setIsTargetPanelOpen] = useState(false);
-  const {user} = useSelector(selectCurrentUser);
+  const { user } = useAuth();
   const dispatch = useDispatch();
-  console.log({user});
+  console.log({ user });
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
 
-  const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
 
   const customStyles = {
@@ -46,19 +48,25 @@ export const HeaderFrameTarget = () => {
       padding: '24px 10px 26px',
       border: 'none',
       backgroundColor: '#050505',
-      ...(isTabletOrDesktop && {
+      ...(isTablet && {
         top: '100px',
-        left: '20%',
+        left: '50%',
         right: 'auto',
-        transform: 'translateX(50%)',
+        transform: 'translateX(-50%)',
         width: '392px',
-        height: '352px',
-        padding: '20px 84px 0 24px',
+        height: '377px',
+        padding: '20px 84px 40px 24px',
         borderRadius: '12px',
         border: 'none',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
         transition: 'top 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+      }),
+      ...(isDesktop && {
+        top: '100px',
+        left: '42%',
+        right: 'auto',
+        transform: 'translateX(50%)',
       }),
     },
   };
@@ -74,7 +82,7 @@ export const HeaderFrameTarget = () => {
   };
 
   const shouldCloseOnOverlayClick = () => {
-    if (isTabletOrDesktop) {
+    if (isTablet) {
       return true;
     } else {
       return false;
@@ -85,13 +93,21 @@ export const HeaderFrameTarget = () => {
     <>
       <TargetFrame>
         <TargetImgBorder>
-          <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
+          {user.goal === 'Lose Fat' && (
+            <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
+          )}
+          {user.goal === 'Maintain' && (
+            <ImgTarget src={`${maintakePng}`} alt="waight"></ImgTarget>
+          )}
+          {user.goal === 'Gain Muscle' && (
+            <ImgTarget src={`${gainMusclePng}`} alt="waight"></ImgTarget>
+          )}
         </TargetImgBorder>
         <TargetContainerBtn>
           <TitleGoal>Goal</TitleGoal>
           <TargetBtn onClick={openPanelTarget}>
             <TargetSelected>{user.goal}</TargetSelected>
-            {isTabletOrDesktop &&
+            {isTablet &&
               (!isTargetPanelOpen ? (
                 <SvgArroy>
                   <use href={`${svgIcons}#icon-arrow-down`}></use>
@@ -117,7 +133,7 @@ export const HeaderFrameTarget = () => {
         ariaHideApp={false}
         shouldCloseOnOverlayClick={shouldCloseOnOverlayClick()}
       >
-        <HeaderCurrentTargetModal closePanel={closePanelTarget}/>
+        <HeaderCurrentTargetModal closePanel={closePanelTarget} />
       </Modal>
     </>
   );

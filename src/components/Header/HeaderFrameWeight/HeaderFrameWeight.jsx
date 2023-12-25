@@ -21,7 +21,8 @@ export const HeaderFrameWeight = () => {
   const [isWeightPanelOpen, setIsWeightPanelOpen] = useState(false);
   const { user } = useAuth();
 
-  const isTabletOrDesktop = useMediaQuery({ minWidth: 834 });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
 
   const customStyles = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0)', zIndex: 9999,},
@@ -36,7 +37,7 @@ export const HeaderFrameWeight = () => {
       padding: '24px 10px',
       border: 'none',
       backgroundColor: '#050505',
-      ...(isTabletOrDesktop && {
+      ...(isTablet && {
         top: '100px',
         left: '20%',
         right: 'auto',
@@ -49,6 +50,12 @@ export const HeaderFrameWeight = () => {
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
         transition: 'top 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+      }),
+      ...(isDesktop && {
+        top: '100px',
+        left: '42%',
+        right: 'auto',
+        transform: 'translateX(50%)',
       }),
     },
   };
@@ -63,7 +70,7 @@ export const HeaderFrameWeight = () => {
   };
 
   const shouldCloseOnOverlayClick = () => {
-    if (isTabletOrDesktop) {
+    if (isTablet) {
       return true;
     } else {
       return false;
