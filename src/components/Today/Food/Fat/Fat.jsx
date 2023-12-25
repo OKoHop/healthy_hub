@@ -2,13 +2,13 @@ import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Div, Div2, Div3, P, P2, Span } from './Fat.style';
 import { useSelector } from 'react-redux';
-import { fat } from '../../../../redux/Today/Food/selectors';
+import { fat, totalFat } from '../../../../redux/Today/Food/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Fat = () => {
-  const dailyFat = useSelector(fat);
-  const receivedFat = 50;
+  const dailyFat = useSelector(fat) || 0;
+  const receivedFat = useSelector(totalFat) || 0;
 
   const leftFat = (dailyFat, receivedFat) => {
     return dailyFat - receivedFat;
