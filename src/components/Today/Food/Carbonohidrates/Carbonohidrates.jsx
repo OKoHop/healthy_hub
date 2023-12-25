@@ -2,7 +2,11 @@ import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.style';
 import { useSelector } from 'react-redux';
-import { carbonohidrates } from '../../../../redux/Today/Food/selectors';
+import {
+  carbonohidrates,
+  foodIntake,
+} from '../../../../redux/Today/Food/selectors';
+import { useEffect } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

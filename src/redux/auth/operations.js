@@ -15,8 +15,8 @@ export const register = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('api/auth/signup', credentials);
-      setAuthHeader(res.data.token);
+      const res = await axios.post('/api/auth/signup', credentials);
+      setAuthHeader(res.data.user.token);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue({
@@ -31,9 +31,9 @@ export const logIn = createAsyncThunk(
   'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('api/auth/signin', credentials);
-      setAuthHeader(res.data.token);
-      return res.data;
+      const res = await axios.post('/api/auth/signin', credentials);
+      setAuthHeader(res.data.user.token);
+      return res.data.user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
@@ -43,7 +43,7 @@ export const forgotPassword = createAsyncThunk(
   'auth/forgotPassword',
   async (email, thunkAPI) => {
     try {
-      const res = await axios.post('api/auth/forgot-password', email);
+      const res = await axios.post('/api/auth/forgot-password', email);
 
       return res.data;
     } catch (error) {
@@ -52,9 +52,9 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('api/auth/signout');
+    await axios.post('/api/auth/signout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
