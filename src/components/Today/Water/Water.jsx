@@ -52,8 +52,6 @@ const Water = () => {
     return Math.round((waterIntake / wat) * 100);
   }
 
-  const persentWat = persentWater(wat, waterIntake);
-
   return (
     <>
       <Thumb>
