@@ -1,16 +1,15 @@
 import styled from 'styled-components';
+import { sharedButtonStyles } from '../Buttons/Buttons.styled';
 
 export const BackButtonStyled = styled.button`
+  ${sharedButtonStyles}
   color: ${(p) => p.theme.colors.primaryGray};
-  text-align: center;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 8px 10px;
   border: 1px solid transparent;
   background-color: transparent;
-  transition: ${(p) => p.theme.transition.customTrans};
-  border-radius: 12px;
+  width: 100px;
+  margin: auto;
   &:hover {
     border-color: ${(p) => p.theme.colors.primaryGreenLite};
+    width: 100%;
   }
 `;

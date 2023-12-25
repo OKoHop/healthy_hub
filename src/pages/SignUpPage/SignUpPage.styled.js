@@ -79,7 +79,7 @@ export const Subtitle = styled.p`
 `;
 
 export const FormBlock = styled.div`
-  margin-bottom: ${(props) => (props.issigninvisible ? '48px' : '0')};
+  margin-bottom: ${(props) => (props.$isSigninVisible ? '48px' : '0')};
   @media (${(p) => p.theme.mq.tabMin}) {
     margin-bottom: ${(props) => (props.$isSigninVisible ? '206px' : '0')};
     width: 380px;

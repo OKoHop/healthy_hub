@@ -1,18 +1,15 @@
 import styled from 'styled-components';
+import { sharedButtonStyles } from '../Buttons/Buttons.styled';
 
 const StyledButton = styled.button`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+  ${sharedButtonStyles}
   width: 100%;
-  padding: 8px 10px;
-  border-radius: 12px;
   background: ${(p) => p.theme.colors.primaryGreenLite};
-  text-align: center;
-  border: none;
-  transition: ${(p) => p.theme.transition.customTrans};
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   &:hover {
-    box-shadow: 0 0 10px rgba(227, 255, 168, 0.8);
+    background-color: transparent;
+    border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
+    color: ${(p) => p.theme.colors.primaryGray};
   }
 `;
 

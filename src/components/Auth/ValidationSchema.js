@@ -15,7 +15,7 @@ const validationSchema = (currentStep) => {
             .required('Age is required field')
             .positive('Age must be a positive number')
             .integer('Age must be an integer')
-            .min(12, 'Age must be at least 12 years old')
+            .min(1, 'Age must be at least 12 years old')
             .max(150, 'Age must be at most 150 years old')
         : Yup.number(),
     weight:
@@ -23,15 +23,15 @@ const validationSchema = (currentStep) => {
         ? Yup.number()
             .required('Weight is required field')
             .positive('Weight must be a positive number')
-            .min(30, 'Weight must be at least 30')
-            .max(500, 'Weight must be at most 500')
+            .min(5, 'Weight must be at least 30')
+            .max(400, 'Weight must be at most 500')
         : Yup.number(),
     height:
       currentStep === 3
         ? Yup.number()
             .required('Height is required field')
             .positive('Height must be a positive number')
-            .min(60, 'Height must be at least 60')
+            .min(50, 'Height must be at least 60')
             .max(300, 'Height must be at most 300')
         : Yup.number(),
   });

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +19,6 @@ import {
 
 const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const selectErrorFromStore = useSelector(selectError);
 
   const [data, setData] = useState({
@@ -106,9 +104,8 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
         <SubmitNextButton
           type="submit"
           btnName={currentStep === 4 ? 'Submit' : 'Next'}
-        >
-          {currentStep === 4 ? 'Submit' : 'Next'}
-        </SubmitNextButton>
+        />
+
         {currentStep > 0 && (
           <BackButtonStyled type="button" onClick={handlePrevStep}>
             Back
