@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
+import { refreshUser } from '../../../redux/auth/operations';
 import { updateWeight } from '../../../redux/user/operations';
 import {
   BtnCancel,
@@ -31,14 +33,15 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
     month < 10 ? '0' : ''
   }${month}.${year}`;
 
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const currentWeight = e.target.elements.weight.value;
-    if(currentWeight === ""){
+    if (currentWeight === '') {
       return toast.error('Enter current weight');
     }
     dispatch(updateWeight(currentWeight));
+    dispatch(refreshUser())
+   
     closePanel();
   };
 
@@ -66,6 +69,7 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
           autoComplete="off"
           placeholder="Enter your weight"
           min="1"
+          max="500"
           // required
         />
         <FormWeightBtn type="submit">Confirm</FormWeightBtn>

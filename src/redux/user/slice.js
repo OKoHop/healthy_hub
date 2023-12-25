@@ -1,28 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { updateGoal, updateUser, updateWeight } from './operations';
+import {
+  updateGoal,
+  updateUser,
+  updateWeight,
+} from './operations';
 
-const initialState = {
-  user: {
-    name: null,
-    email: null,
-    password: null,
-    goal: null,
-    gender: null,
-    age: null,
-    height: null,
-    weight: null,
-    activity: null,
-    avatarURL: null,
-    bmr: null,
-    water: null,
-    nutrients: {
-      carbohidrates: null,
-      protein: null,
-      fat: null,
-    },
-    token: null,
-  },
-};
 
 const handleRejected = (state, action) => {
   state.error = action.payload;
@@ -30,12 +12,9 @@ const handleRejected = (state, action) => {
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState:{},
   extraReducers: (builder) =>
     builder
-      .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
       .addCase(updateUser.rejected, handleRejected)
       .addCase(updateGoal.fulfilled, (state, action) => {
         state.user = action.payload;
