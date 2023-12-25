@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
@@ -58,7 +59,7 @@ export const H1 = styled.h1`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(NavLink)`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.43;
@@ -66,6 +67,16 @@ export const Link = styled.a`
 
   &:visited {
     color: #b6b6b6;
+  }
+
+  @media (min-width: 834px) {
+    font-size: 16px;
+    line-height: 1.375;
+  }
+
+  @media (min-width: 1140px) {
+    font-size: 16px;
+    line-height: 1.375;
   }
 `;
 
