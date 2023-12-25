@@ -1,5 +1,7 @@
+import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
+import { updateWeight } from '../../../redux/user/operations';
 import {
   BtnCancel,
   BtnClose,
@@ -15,6 +17,8 @@ import {
 } from './HeaderCurrentWeightModal.style';
 
 export const HeaderCurrentWeightModal = ({ closePanel }) => {
+  const dispatch = useDispatch();
+
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 833px)' });
 
@@ -25,6 +29,17 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
   const formattedDate = `${day < 10 ? '0' : ''}${day}.${
     month < 10 ? '0' : ''
   }${month}.${year}`;
+
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const currentWeight = e.target.elements.weight.value;
+    if(currentWeight === ""){
+      return
+    }
+    dispatch(updateWeight(currentWeight));
+    closePanel();
+  };
 
   return (
     <>
@@ -43,14 +58,14 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
         <DateToday>Today</DateToday>
         <DateText>{formattedDate}</DateText>
       </DateTextContainer>
-      <FormWeight onSubmit={null}>
+      <FormWeight onSubmit={handleFormSubmit}>
         <FormWeightInput
           type="number"
           name="weight"
           autoComplete="off"
           placeholder="Enter your weight"
           min="1"
-          required
+          // required
         />
         <FormWeightBtn type="submit">Confirm</FormWeightBtn>
       </FormWeight>

@@ -27,7 +27,7 @@ const dayliPersistConfig = {
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isLoggedIn'],
+  whitelist: ['token', 'isLoggedIn', 'user'],
 };
 
 const currentUserPersistConfig = {

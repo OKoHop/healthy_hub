@@ -66,8 +66,10 @@ const validationSchema = yup.object({
     .min(40, 'Weight must be at least 40kg')
     .max(200, 'Weight must be no more than 200kg')
     .required('Weight is required')
-    .test('maxDigitsAfterDecimal', 'Must have 1 digits after decimal', number =>
-      /^\d+(\.\d{1})?$/.test(number)
+    .test(
+      'maxDigitsAfterDecimal',
+      'Must have 1 digits after decimal',
+      (number) => /^\d+(\.\d{1})?$/.test(number)
     ),
 });
 
@@ -79,6 +81,7 @@ const SettingsPage = () => {
   const [isAvatarChanged, setIsAvatarChanged] = useState(false);
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(userProfile.avatarURL);
+  // const [selectedActivity, setSelectedActivity] = useState('');
 
   const initialValues = {
     name: userProfile.name,
@@ -89,7 +92,9 @@ const SettingsPage = () => {
     activity: userProfile?.activity?.toString() || '',
   };
 
-  const handleSaveClick = values => {
+  console.log(initialValues);
+
+  const handleSaveClick = (values) => {
     dispatch(updateUser(values));
     if (isAvatarChanged) {
       const formData = new FormData();
@@ -106,7 +111,7 @@ const SettingsPage = () => {
     dispatch(getStats('today'));
   };
 
-  const handleChangeInputFile = event => {
+  const handleChangeInputFile = (event) => {
     const selectedFile = event.target.files[0];
 
     if (!selectedFile) return;
@@ -117,6 +122,10 @@ const SettingsPage = () => {
     setAvatarPreview(selectedFileUrl);
     setIsAvatarChanged(true);
   };
+
+  // const handleActivityChange = (value) => {
+  //   setSelectedActivity(value);
+  // };
 
   return (
     <>
@@ -186,12 +195,14 @@ const SettingsPage = () => {
                     <FormGroupLabel id="gender-head">Gender</FormGroupLabel>
                     <WrapperRadioButton>
                       <CustomRadioButton
+                        type="radio"
                         name="gender"
                         value="Male"
                         selectedValue={values.gender}
                         text="Male"
                       />
                       <CustomRadioButton
+                        type="radio"
                         name="gender"
                         value="Female"
                         selectedValue={values.gender}

@@ -8,13 +8,13 @@ import {
   UserMenuList,
 } from './HeaderUserMenu.styled';
 
-export const HeaderUserMenu = () => {
+export const HeaderUserMenu = ({closeMenu}) => {
   const dispatch = useDispatch();
 
   return (
       <UserMenuList>
         <li>
-          <StyledNavLinkUserMenu to="/settings">
+          <StyledNavLinkUserMenu to="/settings" onClick={closeMenu}>
             <SvgUserMenu>
               <use href={`${swgIcons}#icon-setting`}></use>
             </SvgUserMenu>
