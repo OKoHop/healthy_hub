@@ -66,6 +66,7 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
           autoComplete="off"
           placeholder="Enter your weight"
           min="1"
+          max="500"
           // required
         />
         <FormWeightBtn type="submit">Confirm</FormWeightBtn>

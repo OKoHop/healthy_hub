@@ -20,9 +20,11 @@ import {
   TargetImgBorder,
 } from './HeaderCurrentTargetModal.style';
 import { updateGoal } from '../../../redux/user/operations';
+import { useAuth } from '../../../hooks/useAuth';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
-  const [selectedTarget, setSelectedTarget] = useState('loseFat');
+  const { user } = useAuth();
+  const [selectedTarget, setSelectedTarget] = useState(user.goal);
   const dispatch = useDispatch();
 
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
