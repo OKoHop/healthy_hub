@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import * as yup from 'yup';
 
-import { updateUser, updateAvatar } from '../../redux/user/operations';
+import { updateUser } from '../../redux/user/operations';
 import { selectUser } from '../../redux/auth/selectors';
 import { getStats } from '../../redux/statistics/statisticOperations';
 
@@ -36,6 +36,8 @@ import downloadPhoto from '../../images/settingsPageImages/download-new-photo.sv
 import avatar from '../../images/settingsPageImages/profile-circle.svg';
 
 import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
+import { values } from 'lodash';
+import { refreshUser } from '../../redux/auth/operations';
 
 const validationSchema = yup.object({
   name: yup
@@ -81,7 +83,6 @@ const SettingsPage = () => {
   const [isAvatarChanged, setIsAvatarChanged] = useState(false);
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(userProfile.avatarURL);
-  // const [selectedActivity, setSelectedActivity] = useState('');
 
   const initialValues = {
     name: userProfile.name,
@@ -92,16 +93,15 @@ const SettingsPage = () => {
     activity: userProfile?.activity?.toString() || '',
   };
 
-  console.log(initialValues);
-
   const handleSaveClick = (values) => {
     dispatch(updateUser(values));
-    if (isAvatarChanged) {
-      const formData = new FormData();
-      formData.append('avatar', avatarFile);
-      dispatch(updateAvatar(formData));
-    }
+    // if (isAvatarChanged) {
+    //   const formData = new FormData();
+    //   formData.append('avatar', avatarFile);
+    //   dispatch(updateAvatar(formData));
+    // }
     dispatch(getStats('today'));
+    dispatch(refreshUser());
     navigate('/main');
   };
 
@@ -123,10 +123,6 @@ const SettingsPage = () => {
     setIsAvatarChanged(true);
   };
 
-  // const handleActivityChange = (value) => {
-  //   setSelectedActivity(value);
-  // };
-
   return (
     <>
       <SettingsPageSection>
@@ -140,7 +136,7 @@ const SettingsPage = () => {
 
             <Formik
               initialValues={initialValues}
-              onSubmit={handleSaveClick}
+              onSubmit={(values)=>handleSaveClick(values)}
               validationSchema={validationSchema}
             >
               {({ values }) => (
@@ -197,14 +193,14 @@ const SettingsPage = () => {
                       <CustomRadioButton
                         type="radio"
                         name="gender"
-                        value="Male"
+                        value="male"
                         selectedValue={values.gender}
                         text="Male"
                       />
                       <CustomRadioButton
                         type="radio"
                         name="gender"
-                        value="Female"
+                        value="female"
                         selectedValue={values.gender}
                         text="Female"
                       />
@@ -249,7 +245,7 @@ const SettingsPage = () => {
                       id="activity2"
                       value="1.375"
                       selectedValue={values.activity}
-                      text="1,375 - if you do short runs or light gymnastics 1-3 times a week"
+                      text="1.375 - if you do short runs or light gymnastics 1-3 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
@@ -263,7 +259,7 @@ const SettingsPage = () => {
                       id="activity4"
                       value="1.725"
                       selectedValue={values.activity}
-                      text="1,725 - if you train fully 6-7 times a week"
+                      text="1.725 - if you train fully 6-7 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
@@ -272,6 +268,7 @@ const SettingsPage = () => {
                       selectedValue={values.activity.toString()}
                       text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"
                     />
+
                   </FormGroup>
 
                   <ButtonContainer>
