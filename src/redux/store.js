@@ -30,12 +30,6 @@ const authPersistConfig = {
   whitelist: ['user', 'isLoggedIn', 'token'],
 };
 
-const currentUserPersistConfig = {
-  key: 'currentUser',
-  storage,
-  whitelist: ['user'],
-};
-
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
@@ -44,8 +38,7 @@ export const store = configureStore({
     daily: persistReducer(dayliPersistConfig, dailyReducer),
     water: persistReducer(dayliPersistConfig, waterIntakeReducer),
     nutrients: nutrientsReducer,
-    user: persistReducer(currentUserPersistConfig, userReducer)
-    // user: userReducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

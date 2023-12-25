@@ -3,17 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
-export const currentUser = createAsyncThunk(
-  'user/current',
-  async (_, thunkAPI) => {
-    try {
-      const res = await axios.get('api/user/current');
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  })
-
 export const updateAvatar = createAsyncThunk(
   'user/updateAvatar',
   async (avatarData, thunkAPI) => {
@@ -65,9 +54,9 @@ export const updateGoal = createAsyncThunk(
 export const updateWeight = createAsyncThunk(
   'user/updateWeight',
   async (data, thunkAPI) => {
-    const currentWeight = { goal: data };
+    const currentWeight = { weight: Number(data) };
     try {
-      const response = await axios.put('api/user/weight', currentWeight);
+      const response = await axios.post('api/user/weight', currentWeight);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -1,14 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  currentUser,
   updateGoal,
   updateUser,
   updateWeight,
 } from './operations';
 
-// const initialState = {
-//   user: null,
-// };
 
 const handleRejected = (state, action) => {
   state.error = action.payload;
@@ -19,14 +15,6 @@ const userSlice = createSlice({
   initialState:{},
   extraReducers: (builder) =>
     builder
-      .addCase(currentUser.fulfilled, (state, action) => {
-        // console.log(action.payload);
-        state.user = action.payload.user;
-      })
-      .addCase(currentUser.rejected, handleRejected)
-      .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
       .addCase(updateUser.rejected, handleRejected)
       .addCase(updateGoal.fulfilled, (state, action) => {
         state.user = action.payload;

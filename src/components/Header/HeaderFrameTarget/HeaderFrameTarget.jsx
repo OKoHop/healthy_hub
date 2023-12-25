@@ -18,21 +18,16 @@ import {
 } from './HeaderFrameTarget.slyled';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../../hooks/useAuth';
-import { currentUser } from '../../../redux/user/operations';
 import { refreshUser } from '../../../redux/auth/operations';
 
 export const HeaderFrameTarget = () => {
   const [isTargetPanelOpen, setIsTargetPanelOpen] = useState(false);
   const {user} = useAuth();
   const dispatch = useDispatch();
-
-  console.log(user);
  
-  // useEffect(() => {
-  //   if (!user) {
-  //     dispatch(currentUser());
-  //   }
-  // }, [dispatch, user]);
+  useEffect(() => {
+      dispatch(refreshUser())
+  }, [dispatch]);
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
@@ -96,7 +91,7 @@ export const HeaderFrameTarget = () => {
     <>
       <TargetFrame>
         <TargetImgBorder>
-          {user.goal === 'Lose Fat' && (
+          {user.goal === 'Lose fat' && (
             <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
           )}
           {user.goal === 'Maintain' && (

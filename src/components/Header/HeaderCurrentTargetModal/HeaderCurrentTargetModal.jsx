@@ -21,6 +21,7 @@ import {
 } from './HeaderCurrentTargetModal.style';
 import { updateGoal } from '../../../redux/user/operations';
 import { useAuth } from '../../../hooks/useAuth';
+import { refreshUser } from '../../../redux/auth/operations';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
   const { user } = useAuth();
@@ -37,6 +38,7 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(updateGoal(selectedTarget));
+    dispatch(refreshUser());
     closePanel();
   };
 
