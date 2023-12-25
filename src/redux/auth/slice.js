@@ -16,10 +16,11 @@ const initialState = {
 };
 
 const handleRegisterAndLogInFulfilled = (state, action) => {
-  state.user = {
-    name: action.payload.name,
-    email: action.payload.email,
-  };
+  // state.user = {
+  //   name: action.payload.name,
+  //   email: action.payload.email,
+  // };
+  state.user = action.payload.user;
   state.token = action.payload.token;
   state.isLoggedIn = true;
   state.error = null;
@@ -62,10 +63,11 @@ export const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = {
-          name: action.payload.name,
-          email: action.payload.email,
-        };
+        // state.user = {
+        //   name: action.payload.name,
+        //   email: action.payload.email,
+        // };
+        state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

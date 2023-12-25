@@ -28,9 +28,11 @@ export const HeaderFrameTarget = () => {
 
   console.log(user);
  
-  useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     dispatch(currentUser());
+  //   }
+  // }, [dispatch, user]);
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
