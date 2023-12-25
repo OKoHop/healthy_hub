@@ -8,6 +8,7 @@ import { RestrictedRoute } from './components/Routes/RestrictedRoutes';
 import { PrivatRoute } from './components/Routes/PrivatRoutes';
 
 const Today = lazy(() => import('./pages/Today/Today'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage/DashboardPage'));
 const Welcome = lazy(() => import('./pages/Welcome/Welcome'));
 const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -59,7 +60,10 @@ function App() {
             path="/main"
             element={<PrivatRoute redirectTo="/signin" component={<Today />} />}
           />
-          <Route path="/dashboard" />
+          <Route 
+          path="/dashboard" 
+          element={<PrivatRoute redirectTo="/signin" component={<DashboardPage />} />}
+          />
           <Route
             path="/diary"
             element={<PrivatRoute redirectTo="/signin" component={<Diary />} />}
