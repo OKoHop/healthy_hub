@@ -1,6 +1,6 @@
-import{s as o,n,j as t,F as p,i as g,N as q,t as i}from"./index-8beb5529.js";import{S as j,w as k,a as v,b as C,c as S,d as B}from"./Buttons.styled-48e391fc.js";const G=o.div`
+import{s as o,n,j as t,F as p,i as g,N as q,t as i}from"./index-57d80861.js";import{S as j,w as k,a as v,b as C,c as S,d as B}from"./Buttons.styled-d7f829ea.js";const G=o.div`
   ${e=>n`
-    background-color: ${e.theme.colors.primaryBlack2};
+    background-color: ${e.theme.colors.primaryBlack};
     display: flex;
     justify-content: center;
     flex-direction: column;
