@@ -11,6 +11,7 @@ const DateRangePicker = () => {
   const currentDate = new Date();
   const nextMonthDate = addMonths(currentDate, 1);
 
+  const [startDate, setStartDate] = useState(currentDate);
   const [endDate, setEndDate] = useState(nextMonthDate);
 
   const handleDateChange = (dates) => {
