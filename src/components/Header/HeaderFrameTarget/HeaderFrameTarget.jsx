@@ -91,20 +91,20 @@ export const HeaderFrameTarget = () => {
     <>
       <TargetFrame>
         <TargetImgBorder>
-          {user.goal === 'Lose fat' && (
+          {user.goal === 'lose fat' && (
             <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
           )}
-          {user.goal === 'Maintain' && (
+          {user.goal === 'maintain' && (
             <ImgTarget src={`${maintakePng}`} alt="waight"></ImgTarget>
           )}
-          {user.goal === 'Gain Muscle' && (
+          {user.goal === 'gain muscle' && (
             <ImgTarget src={`${gainMusclePng}`} alt="waight"></ImgTarget>
           )}
         </TargetImgBorder>
         <TargetContainerBtn>
           <TitleGoal>Goal</TitleGoal>
           <TargetBtn onClick={openPanelTarget}>
-            <TargetSelected>{user.goal}</TargetSelected>
+            <TargetSelected>{user.goal.charAt(0).toUpperCase() + user.goal.slice(1)}</TargetSelected>
             {isTablet &&
               (!isTargetPanelOpen ? (
                 <SvgArroy>

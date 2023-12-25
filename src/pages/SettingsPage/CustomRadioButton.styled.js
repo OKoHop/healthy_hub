@@ -44,3 +44,26 @@ export const LabelWithRadio = styled.label`
     border-color: ${props => props.theme.colors.greenLite};
   }
 `;
+
+export const UncheckedRadioMark = styled.span`
+  min-width: 12px;
+  min-height: 12px;
+  border: 1px solid rgba(182, 182, 182, 1);
+  border-radius: 50%;
+  position: relative;
+
+  &:hover {
+    border-color: ${props => props.theme.colors.greenLite};
+  }
+`;
+
+export const UncheckedRadioInput = styled(Field)`
+  display: none;
+`;
+
+export const UncheckedLabelWithRadio = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+`;

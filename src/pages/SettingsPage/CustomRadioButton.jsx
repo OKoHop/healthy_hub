@@ -3,6 +3,9 @@ import {
     LabelWithRadio,
     RadioInput,
     RadioMark,
+    UncheckedRadioInput,
+    UncheckedRadioMark,
+    UncheckedLabelWithRadio,
   } from './CustomRadioButton.styled';
  
   
@@ -11,17 +14,26 @@ import {
 
     return (
       <>
-        <LabelWithRadio>
-          <RadioInput
-            type="radio"
-            name={name}
-            value={value}
-            checked={selectedValue === value}
-          />
-          <RadioMark />
-          {text}
-        </LabelWithRadio>
-      </>
+      <LabelWithRadio>
+        <RadioInput
+          type="radio"
+          name={name}
+          value={value}
+          checked={selectedValue === value}
+        />
+        <RadioMark />
+        {text}
+      </LabelWithRadio>
+      <UncheckedLabelWithRadio>
+        <UncheckedRadioInput
+          type="radio"
+          name={name}
+          value={value}
+          checked={selectedValue !== value}
+        />
+        <UncheckedRadioMark />
+      </UncheckedLabelWithRadio>
+    </>
     );
   };
   
