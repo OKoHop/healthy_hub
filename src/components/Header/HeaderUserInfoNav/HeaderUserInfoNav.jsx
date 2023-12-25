@@ -15,9 +15,8 @@ import { useAuth } from '../../../hooks/useAuth';
 export const HeaderUserInfoNav = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user } = useAuth();
- 
 
-  // const firstLetter = user.name ? user.name[0].toUpperCase() : '';
+  const firstLetter = user.name ? user.name[0].toUpperCase() : '';
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
@@ -47,7 +46,7 @@ export const HeaderUserInfoNav = () => {
         left: 'auto',
         right: '6%',
         transform: 'translateX(50%)',
-      })
+      }),
     },
   };
   const rotateSvg = { transform: 'rotate(180deg)' };
@@ -61,8 +60,12 @@ export const HeaderUserInfoNav = () => {
     <>
       <UserInfo onClick={openMenu}>
         <UserName>{user.name}</UserName>
-        {/* <UserPohotoStub>{firstLetter}</UserPohotoStub> */}
-        <UserPhoto src={user.avatarURL}></UserPhoto>
+        {user.avatarURL.includes('www.gravatar.com') ? (
+          <UserPohotoStub>{firstLetter}</UserPohotoStub>
+        ) : (
+          <UserPhoto src={user.avatarURL}></UserPhoto>
+        )}
+        
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
             <use href={`${swgIcons}#icon-arrow-down`}></use>
@@ -80,7 +83,7 @@ export const HeaderUserInfoNav = () => {
         style={customStyles}
         ariaHideApp={false}
       >
-        <HeaderUserMenu closeMenu={closeMenu}/>
+        <HeaderUserMenu closeMenu={closeMenu} />
       </Modal>
     </>
   );
