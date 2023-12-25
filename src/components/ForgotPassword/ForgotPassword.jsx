@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import css from './ForgotPassword.module.css';
 import { selectError } from '../../redux/auth/selectors';
 import FormInput from '../Auth/AuthFormInput/FormInput';
+import { ErrorBlock } from '../../pages/SignUpPage/SignUpPage.styled';
 
 const ForgotPasswordForm = () => {
   const inputFields = [{ name: 'email', placeholder: 'E-mail', type: 'text' }];
@@ -29,6 +30,7 @@ const ForgotPasswordForm = () => {
 
   return (
     <div className="container">
+      {error && <ErrorBlock>{error}</ErrorBlock>}
       <div className={css.wrapper}>
         <img
           className={css.img}
@@ -55,7 +57,7 @@ const ForgotPasswordForm = () => {
                 showError={true}
               />
             ))}
-            {error && <div className={css.error}>{error}</div>}
+
             <button className={css.signinBtn} type="submit">
               Send
             </button>

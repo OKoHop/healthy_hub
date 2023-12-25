@@ -4,6 +4,7 @@ import {
   Div,
   DivLink,
   H1,
+  Link,
   SVG,
   Section,
   StyledDiv,
@@ -12,7 +13,6 @@ import {
 } from './Today.style';
 import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
-import { Link } from 'react-router-dom';
 import DiaryOnMain from '../../components/Diary/DiaryOnPage/DiaryOnMain';
 import RecommendedFoodMain from '../../components/RecommendedFoodMain/RecommendedFoodMain';
 
@@ -22,7 +22,7 @@ const Today = () => {
       <div className="container">
         <Div>
           <H1>Today</H1>
-          <Link href="">
+          <Link to="/dashboard">
             <DivLink>
               On the way to the goal
               <SVG>

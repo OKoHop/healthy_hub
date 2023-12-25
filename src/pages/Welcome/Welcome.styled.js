@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${(p) => css`
-    background-color: ${p.theme.colors.primaryBlack2};
+    background-color: ${p.theme.colors.primaryBlack};
     display: flex;
     justify-content: center;
     flex-direction: column;

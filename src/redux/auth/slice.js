@@ -24,25 +24,36 @@ const handleRegisterAndLogInFulfilled = (state, action) => {
 
 const handleRegisterRejected = (state, action) => {
   if (action.payload && action.payload.status === 409) {
-    state.error =
-      'An account with this email already exists. Please try logging in or use a different email.';
+    state.error = {
+      type: 'register',
+      message:
+        'An account with this email already exists. Please try logging in or use a different email.',
+    };
   } else {
-    state.error =
-      'Something went wrong. Please check your data and try again.' ||
-      action.payload?.message;
+    state.error = {
+      type: 'register',
+      message:
+        'Something went wrong. Please check your data and try again.' ||
+        action.payload?.message,
+    };
   }
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    resetError: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(register.fulfilled, handleRegisterAndLogInFulfilled)
       .addCase(register.rejected, handleRegisterRejected)
       .addCase(logIn.fulfilled, handleRegisterAndLogInFulfilled)
       .addCase(logIn.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = { type: 'login', message: action.payload };
       })
       .addCase(forgotPassword.fulfilled, (state) => {
         state.error = null;
@@ -68,4 +79,5 @@ export const authSlice = createSlice({
       }),
 });
 
+export const { resetError } = authSlice.actions;
 export const authReducer = authSlice.reducer;

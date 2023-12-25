@@ -9,7 +9,12 @@ import { Link } from 'react-router-dom';
 import css from './SignIn.module.css';
 import { selectError } from '../../redux/auth/selectors';
 
+import useAuthResetError from '../../hooks/useAuthResetError';
+import { ErrorBlock } from '../../pages/SignUpPage/SignUpPage.styled';
+
 const SignInForm = () => {
+  const dispatch = useDispatch();
+
   const error = useSelector(selectError);
   const inputFields = [
     { name: 'email', placeholder: 'E-mail', type: 'text' },
@@ -19,7 +24,7 @@ const SignInForm = () => {
       type: 'password',
     },
   ];
-  const dispatch = useDispatch();
+  const { resetAuthError } = useAuthResetError();
 
   const formik = useFormik({
     initialValues: { email: '', password: '' },
@@ -35,6 +40,9 @@ const SignInForm = () => {
 
   return (
     <div className="container">
+      {error && error.type === 'login' && (
+        <ErrorBlock>{error.message}</ErrorBlock>
+      )}
       <div className={css.wrapper}>
         <img
           className={css.img}
@@ -59,17 +67,25 @@ const SignInForm = () => {
                 showError={true}
               />
             ))}
-            {error && <div className={css.error}>{error}</div>}
+
             <button className={css.signinBtn} type="submit">
               Sign in
             </button>
-            <Link className={css.forgotPassword} to={'/forgot-password'}>
+            <Link
+              className={css.forgotPassword}
+              to={'/forgot-password'}
+              onClick={resetAuthError}
+            >
               Forgot your password?
             </Link>
           </form>
           <div className={css.questionTrumb}>
             <p className={css.question}> If you don't have an account yet? </p>
-            <Link className={css.signupBtn} to="/signup">
+            <Link
+              className={css.signupBtn}
+              to="/signup"
+              onClick={resetAuthError}
+            >
               Sign up
             </Link>
           </div>

@@ -31,6 +31,9 @@ export const getDailyStatistics = createAsyncThunk(
           }-${date.getDate()}`,
         },
       });
+      if (!data.data) {
+        return null;
+      }
       return data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
