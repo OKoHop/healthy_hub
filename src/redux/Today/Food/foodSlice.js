@@ -25,6 +25,7 @@ const nutrientsSlice = createSlice({
             totalCarbohidrates: 0,
             totalProtein: 0,
             totalFat: 0,
+            waterIntake: 0,
           };
         }
         state.dailyNutrients = action.payload[0].stats;

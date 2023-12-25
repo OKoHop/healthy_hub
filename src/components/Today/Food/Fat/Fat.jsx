@@ -15,6 +15,7 @@ const Fat = () => {
   };
 
   const percent = (dailyFat, receivedFat) => {
+    if (isNaN(Math.round((receivedFat / dailyFat) * 100))) return 0;
     return Math.round((receivedFat / dailyFat) * 100);
   };
 

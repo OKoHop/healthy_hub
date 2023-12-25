@@ -10,7 +10,7 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Carbonohidrates = () => {
-  const dailyCarb = useSelector(carbonohidrates) || 0;
+  const dailyCarb = useSelector(carbonohidrates);
   const receivedCarb = useSelector(totalCarbohidrates) || 0;
 
   const leftCarb = (dailyCarb, receivedCarb) => {
@@ -21,6 +21,7 @@ const Carbonohidrates = () => {
   };
 
   const percent = (dailyCarb, receivedCarb) => {
+    if (isNaN(Math.round((receivedCarb / dailyCarb) * 100))) return 0;
     return Math.round((receivedCarb / dailyCarb) * 100);
   };
 

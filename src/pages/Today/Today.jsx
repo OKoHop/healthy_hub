@@ -15,8 +15,21 @@ import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import DiaryOnMain from '../../components/Diary/DiaryOnPage/DiaryOnMain';
 import RecommendedFoodMain from '../../components/RecommendedFoodMain/RecommendedFoodMain';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  getDailyStatistics,
+  getStatisticts,
+} from '../../redux/Today/Food/operations';
 
 const Today = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDailyStatistics());
+    dispatch(getStatisticts());
+  }, [dispatch]);
+
   return (
     <Section>
       <div className="container">

@@ -15,6 +15,7 @@ const Protein = () => {
   };
 
   const percent = (dailyProtein, recievedProtein) => {
+    if (isNaN(Math.round((recievedProtein / dailyProtein) * 100))) return 0;
     return Math.round((recievedProtein / dailyProtein) * 100);
   };
 
