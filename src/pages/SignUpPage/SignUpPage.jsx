@@ -14,7 +14,10 @@ import {
 } from './SignUpPage.styled';
 import signUpPageData from './SignUpPageData';
 
+import useAuthResetError from '../../hooks/useAuthResetError';
+
 const SignUpPage = () => {
+  const { resetAuthError } = useAuthResetError();
   const [currentStep, setCurrentStep] = useState(0);
   const [error, setError] = useState(null);
   const handleSetCurrentStep = (step) => {
@@ -23,7 +26,6 @@ const SignUpPage = () => {
   };
 
   const onError = (errorMessage) => {
-    console.error('Error:', errorMessage);
     setError(errorMessage);
   };
 
@@ -33,7 +35,9 @@ const SignUpPage = () => {
 
   return (
     <div className="container">
-      {error && <ErrorBlock style={{ color: 'red' }}>{error}</ErrorBlock>}
+      {error && error.type === 'register' && (
+        <ErrorBlock>{error.message}</ErrorBlock>
+      )}
       <SignUpPageContainer>
         <Media>
           <picture>
@@ -61,7 +65,9 @@ const SignUpPage = () => {
           {isSigninVisible && (
             <SigInQuestion>
               <p>Do you already have an account?</p>
-              <StyledLink to="/signin">Sign in</StyledLink>
+              <StyledLink to="/signin" onClick={resetAuthError}>
+                Sign in
+              </StyledLink>
             </SigInQuestion>
           )}
         </Info>
