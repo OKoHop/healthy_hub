@@ -42,7 +42,7 @@
 - [**Данило Клюшниченко**](https://github.com/KluDan) - fullstack розробник,
   frontend частина
 
-- [**Роман Тук**](https://github.com/Romano1994o) - fullstack розробник,
+- [**Роман Стук**](https://github.com/Romano1994o) - fullstack розробник,
   frontend частина
 
 - [**Богдан Файбиш**](https://github.com/Faibysh) - fullstack розробник,
