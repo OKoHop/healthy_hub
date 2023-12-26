@@ -7,7 +7,12 @@ export const getStats = createAsyncThunk(
   'stats/getAll',
   async (startDate, endDate, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/user/statistics?dateFrom=${startDate}&dateTo=${endDate}`);
+      const { data } = await axios.get(`/api/user/statistics`, {
+        params: {
+          dateFrom: startDate,
+          dateTo: endDate,
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -26,7 +31,6 @@ export const fetchGoalsConfirm = createAsyncThunk(
       const response = await axios.post('/user/food-intake', {
         [mealName]: placeholderData,
       });
-      // console.log(placeholderData);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
