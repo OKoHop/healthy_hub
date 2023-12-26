@@ -1,4 +1,4 @@
-import{s as n,N as l,r as a,u as g,o as f,j as e,n as w}from"./index-4fab0e4a.js";import{g as u,r as j,R as y}from"./randomizeFood-df5d02ce.js";const R="/healthy_hub/assets/Ketogenic-f362ff99.png",b=n.main`
+import{s as n,N as l,r as d,u as g,o as f,j as e,n as w}from"./index-75a71ad5.js";import{g as u,r as j,R as y}from"./randomizeFood-627af4a8.js";const R="/healthy_hub/assets/Ketogenic-f362ff99.png",k=n.main`
   background-color: ${t=>t.theme.colors.primaryBlack};
   color: ${t=>t.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
@@ -13,7 +13,7 @@ import{s as n,N as l,r as a,u as g,o as f,j as e,n as w}from"./index-4fab0e4a.js
   @media screen and (min-width: 1440px) {
     padding-top: 20px;
   }
-`,k=n.div`
+`,F=n.div`
   margin: 0 auto;
   width: 320px;
   padding: 0 10px;
@@ -27,7 +27,7 @@ import{s as n,N as l,r as a,u as g,o as f,j as e,n as w}from"./index-4fab0e4a.js
     width: 1440px;
     padding: 0 34px;
   }
-`,F=n.header`
+`,b=n.header`
   display: flex;
   margin-bottom: 16px;
 `,L=n(l)`
@@ -55,34 +55,27 @@ import{s as n,N as l,r as a,u as g,o as f,j as e,n as w}from"./index-4fab0e4a.js
 `,C=n.div`
   display: flex;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
   justify-content: center;
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    gap: 44px;
     align-items: start;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
-`,z=n.div`
-  margin-bottom: 24px;
+`,z=n.img`
   width: 300px;
-  height: 312px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
-    height: 396px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 536px;
-    height: 560px;
-    margin-bottom: 0;
   }
-`,E=n.img`
-  display: block;
-  max-width: 100%;
-  height: auto;
-`,P=n.ul`
+`,E=n.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -93,7 +86,7 @@ import{s as n,N as l,r as a,u as g,o as f,j as e,n as w}from"./index-4fab0e4a.js
     flex-wrap: wrap;
   }
 
-  @media screen and (1440px) {
-    width: calc((100% - 44px) / 2);
+  @media screen and (min-width: 1440px) {
+    width: 676px;
   }
-`,A="/healthy_hub/assets/arrow-right-246ec13a.svg";function S(){var d;const[t,o]=a.useState([]),r=g(),s=f(),c=a.useRef(((d=s.state)==null?void 0:d.from)??"/main");return a.useEffect(()=>{u().then(i=>{o(j(i,10))}).catch(i=>console.error(i))},[]),e.jsx(b,{children:e.jsxs(k,{children:[e.jsxs(F,{children:[e.jsx(L,{to:c.current,onClick:()=>r(w("today")),children:e.jsx(v,{src:A,alt:"arrow right"})}),e.jsx(B,{children:"Recommended food"})]}),e.jsxs(C,{children:[e.jsx(z,{children:e.jsx(E,{src:R,alt:"Banner recommended food"})}),e.jsx(P,{children:t.map(({_id:i,img:p,name:m,amount:x,calories:h})=>e.jsx(y,{id:i,img:p,name:m,amount:x,calories:h},i))})]})]})})}export{S as default};
+`,P="/healthy_hub/assets/arrow-right-246ec13a.svg";function N(){var a;const[t,o]=d.useState([]),r=g(),s=f(),c=d.useRef(((a=s.state)==null?void 0:a.from)??"/main");return d.useEffect(()=>{u().then(i=>{o(j(i,10))}).catch(i=>console.error(i))},[]),e.jsx(k,{children:e.jsxs(F,{children:[e.jsxs(b,{children:[e.jsx(L,{to:c.current,onClick:()=>r(w("today")),children:e.jsx(v,{src:P,alt:"arrow right"})}),e.jsx(B,{children:"Recommended food"})]}),e.jsxs(C,{children:[e.jsx(z,{src:R,alt:"Banner recommended food"}),e.jsx(E,{children:t.map(({_id:i,img:p,name:m,amount:x,calories:h})=>e.jsx(y,{id:i,img:p,name:m,amount:x,calories:h},i))})]})]})})}export{N as default};
