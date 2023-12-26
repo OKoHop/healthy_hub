@@ -2,33 +2,39 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 
 export const RadioMark = styled.span`
+  margin-right: 10px;
   min-width: 12px;
-  min-height: 12px;
+  height: 12px;
   border: 1px solid rgba(182, 182, 182, 1);
   border-radius: 50%;
   position: relative;
 
-  &:after {
+  &:before {
     content: '';
-    min-width: 6px;
-    min-height: 6px;
-    background-color: ${props => props.theme.colors.yellow};
+    width: 6px;
+    height: 6px;
+    background-color: ${(p) => p.theme.colors.primaryGreenLite};
     border-radius: 50%;
     position: absolute;
-    opacity: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: none;
+  }
+
+  input:checked + & {
+    &:before {
+      display: block;
+    }
   }
 `;
 
 export const RadioInput = styled(Field)`
-  display: none;
-  margin-right: 8px;
+  appearance: none;
 
   &:checked + ${RadioMark} {
-    &:after {
-      opacity: 1;
+    &:before {
+      display: block;
     }
   }
 `;
@@ -36,11 +42,9 @@ export const RadioInput = styled(Field)`
 export const LabelWithRadio = styled.label`
   display: flex;
   align-items: center;
-  gap: 10px;
-  /* width: 100%; */
   cursor: pointer;
 
   &:hover > ${RadioMark} {
-    border-color: ${props => props.theme.colors.greenLite};
+    border-color: ${(p) => p.theme.colors.primaryGreenLite};
   }
 `;
