@@ -52,7 +52,7 @@ export const HeaderFrameTarget = () => {
         right: 'auto',
         transform: 'translateX(-50%)',
         width: '392px',
-        height: '377px',
+        height: '378px',
         padding: '20px 84px 40px 24px',
         borderRadius: '12px',
         border: 'none',
