@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStats } from '../../redux/statistics/statisticOperations';
-import { selectStatsIsLoading, selectStatsInfo } from '../../redux/statistics/statisticSelectors';
+import {
+  selectStatsIsLoading,
+  selectStatsInfo,
+} from '../../redux/statistics/statisticSelectors';
 import { Loader } from '../../components/Loader/Loader';
 import DateRangePicker from '../../components/StyledDatepicker/StyledDatepicker';
 import LineChart from '../../components/Charts/LineChart';
@@ -18,7 +21,7 @@ import {
   SecondHeader,
   LineChartBlock,
   ChartGrid,
-  ScaleChartBlock
+  ScaleChartBlock,
 } from './DashboardPage.styled';
 
 const DashboardPage = () => {

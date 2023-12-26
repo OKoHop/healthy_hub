@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { addMonths } from "date-fns";
-import { getStats } from "../../redux/statistics/statisticOperations";
-import { CalendarGlobalStyles } from "./StyledDatepicker.styled";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { addMonths } from 'date-fns';
+import { getStats } from '../../redux/statistics/statisticOperations';
+import { CalendarGlobalStyles } from './StyledDatepicker.styled';
 const DateRangePicker = () => {
   const dispatch = useDispatch();
 
@@ -20,9 +20,7 @@ const DateRangePicker = () => {
     setEndDate(dates.length > 1 ? newEndDate : null);
 
     const formattedStartDate = newStartDate.toISOString();
-    const formattedEndDate = newEndDate
-      ? newEndDate.toISOString()
-      : null;
+    const formattedEndDate = newEndDate ? newEndDate.toISOString() : null;
 
     dispatch(getStats(formattedStartDate, formattedEndDate));
   };
@@ -30,16 +28,14 @@ const DateRangePicker = () => {
   return (
     <>
       <DatePicker
-      selected={startDate}
+        selected={startDate}
         onChange={handleDateChange}
         selectsRange
         startDate={startDate}
         endDate={endDate}
         dateFormat="yyyy-MM-dd"
         showMonthYearPicker
-       
-       
-        onClickOutside={() => setIsOpen(false)} 
+        onClickOutside={() => setIsOpen(false)}
       />
       <CalendarGlobalStyles />
     </>
