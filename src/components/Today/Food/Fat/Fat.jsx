@@ -15,6 +15,7 @@ const Fat = () => {
   };
 
   const percent = (dailyFat, receivedFat) => {
+    if (isNaN(Math.round((receivedFat / dailyFat) * 100))) return 0;
     return Math.round((receivedFat / dailyFat) * 100);
   };
 
@@ -64,7 +65,7 @@ const Fat = () => {
         <P>Fat</P>
         <Div3>
           <P2>
-            Goal: <Span>0</Span>
+            Goal: <Span>{receivedFat}</Span>
           </P2>
           <P2>
             left: <Span>{leftFat(dailyFat, receivedFat)}</Span>

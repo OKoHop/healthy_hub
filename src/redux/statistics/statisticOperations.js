@@ -5,9 +5,14 @@ axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 export const getStats = createAsyncThunk(
   'stats/getAll',
-  async (time, thunkAPI) => {
+  async (startDate, endDate, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/user/statistics?period=${time}`);
+      const { data } = await axios.get(`/api/user/statistics`, {
+        params: {
+          dateFrom: startDate,
+          dateTo: endDate,
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -26,7 +31,6 @@ export const fetchGoalsConfirm = createAsyncThunk(
       const response = await axios.post('/user/food-intake', {
         [mealName]: placeholderData,
       });
-      // console.log(placeholderData);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

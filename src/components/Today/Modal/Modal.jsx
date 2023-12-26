@@ -2,6 +2,7 @@ import Modal from 'react-modal';
 import { Form, FormBtn, H1, Input, Label, ModalWindow, P } from './Modal.style';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
+import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 
 Modal.setAppElement('#root');
 
@@ -13,6 +14,7 @@ const WaterModal = ({ open, close }) => {
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
     dispatch(saveWaterIntake(waterData));
+    dispatch(getDailyStatistics());
     close();
   };
 
