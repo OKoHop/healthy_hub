@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import { updateUser } from '../../redux/user/operations';
@@ -36,7 +36,6 @@ import downloadPhoto from '../../images/settingsPageImages/download-new-photo.sv
 import avatar from '../../images/settingsPageImages/profile-circle.svg';
 
 import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
-import { values } from 'lodash';
 import { refreshUser } from '../../redux/auth/operations';
 
 const validationSchema = yup.object({
