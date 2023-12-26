@@ -42,7 +42,7 @@ This service will help you:
 - [**Danylo Kliushnychenko**](https://github.com/KluDan) - fullstack developer,
   frontend part
 
-- [**Roman Tuk**](https://github.com/Romano1994o) - fullstack developer,
+- [**Roman Stuk**](https://github.com/Romano1994o) - fullstack developer,
   frontend part
 
 - [**Bohdan Faibysh**](https://github.com/Faibysh) - fullstack developer,
@@ -53,7 +53,7 @@ This service will help you:
 - [**Anton Maliutin**](https://github.com/Enab13d) - fullstack developer,
   backend part
 
-- [**Andrew Dyomin**](https://github.com/AndrewDyomin) - fullstack developer,
+- [**Andrii Dyomin**](https://github.com/AndrewDyomin) - fullstack developer,
   backend part
 
   ## Project deployed on:
