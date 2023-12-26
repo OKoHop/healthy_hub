@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import { selectStatsInfo } from '../../redux/statistics/statisticSelectors.js';
 
-
 import {
   TitleContainer,
   ChartsTitle,
@@ -12,7 +11,7 @@ import {
   ChartsCaption,
   Chart,
   ChartLabelBlock,
-  ChartLabelContent
+  ChartLabelContent,
 } from './ScaleLineCharts.styled.js';
 
 import {
@@ -23,7 +22,7 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -51,7 +50,11 @@ const LineChart = ({ dataFormat, type }) => {
       return;
     }
 
-    const { infoArray, timesArray, total } = processData(info, type, dataFormat);
+    const { infoArray, timesArray, total } = processData(
+      info,
+      type,
+      dataFormat
+    );
 
     setInformation(infoArray);
     setTime(timesArray);
@@ -59,7 +62,6 @@ const LineChart = ({ dataFormat, type }) => {
   }, [info, dataFormat, type, startDate, endDate]);
 
   useEffect(() => {
-    
     const monthsArray = generateMonthsArray(startDate, endDate);
     setTime(monthsArray);
   }, [startDate, endDate]);
@@ -70,7 +72,11 @@ const LineChart = ({ dataFormat, type }) => {
 
     while (currentMonth <= end) {
       monthsArray.push(currentMonth.getMonth() + 1);
-      currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
+      currentMonth = new Date(
+        currentMonth.getFullYear(),
+        currentMonth.getMonth() + 1,
+        1
+      );
     }
 
     return monthsArray;
@@ -79,10 +85,10 @@ const LineChart = ({ dataFormat, type }) => {
   const processData = (info, type, dataFormat) => {
     const infoArray = [];
     const timesArray = [];
-  
+
     if (Object.keys(info).length !== 0) {
       const keys = Object.keys(info);
-  
+
       for (const key of keys) {
         if (key === type) {
           if (!dataFormat) {
@@ -91,13 +97,13 @@ const LineChart = ({ dataFormat, type }) => {
               infoArray.push(entry.amount);
             }
           }
-  
+
           if (dataFormat) {
             for (const entry of info[key]) {
               const entryMonth = new Date(entry._id).getMonth() + 1;
-  
+
               const average = entry.amount / entry.count;
-  
+
               timesArray.push(monthName.short[entryMonth]);
               infoArray.push(Math.round(average));
             }
@@ -105,7 +111,7 @@ const LineChart = ({ dataFormat, type }) => {
         }
       }
     }
-  
+
     if (infoArray.length > 0) {
       const total = Math.round(
         infoArray.reduce((previousValue, number) => {
@@ -114,7 +120,7 @@ const LineChart = ({ dataFormat, type }) => {
       );
       return { infoArray, timesArray, total };
     }
-  
+
     return { infoArray, timesArray, total: 0 };
   };
 
@@ -134,7 +140,7 @@ const LineChart = ({ dataFormat, type }) => {
       tooltip: {
         enabled: false,
         position: 'nearest',
-        external: context => {
+        external: (context) => {
           const { chart, tooltip } = context;
           let tooltipEl = chart.canvas.parentNode.querySelector('div');
           let tooltipTitle = chart.canvas.parentNode.querySelector('#value');
@@ -228,11 +234,10 @@ const LineChart = ({ dataFormat, type }) => {
 
   return (
     <>
-    
       <TitleContainer>
         <ChartsTitle>{type === 'water' ? 'Water' : 'Calories'}</ChartsTitle>
         <ChartsSubtitle>
-          Average value:{' '}
+          Average value:{''}
           <ChartsCaption>
             {average} {type === 'water' ? 'ml' : 'cal'}
           </ChartsCaption>
