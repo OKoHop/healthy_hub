@@ -135,7 +135,7 @@ const SettingsPage = () => {
 
             <Formik
               initialValues={initialValues}
-              onSubmit={(values)=>handleSaveClick(values)}
+              onSubmit={(values) => handleSaveClick(values)}
               validationSchema={validationSchema}
             >
               {({ values }) => (
@@ -267,7 +267,6 @@ const SettingsPage = () => {
                       selectedValue={values.activity.toString()}
                       text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"
                     />
-
                   </FormGroup>
 
                   <ButtonContainer>

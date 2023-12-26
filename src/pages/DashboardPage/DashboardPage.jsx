@@ -38,7 +38,7 @@ const DashboardPage = () => {
   });
   const isLoading = useSelector(selectStatsIsLoading);
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/today');
+  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
   const dispatch = useDispatch();
 
   const stats = useSelector(selectStatsInfo);

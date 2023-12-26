@@ -23,7 +23,9 @@ export const StyledFormInput = styled.input`
   border-radius: 12px;
   border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   background: ${(p) => p.theme.colors.primaryBlack2};
+  transition: ${(p) => p.theme.transition.customTrans};
   position: relative;
+  cursor: pointer;
   ::placeholder {
     color: ${(p) => p.theme.colors.primaryGray};
   }
@@ -47,6 +49,10 @@ export const StyledFormInput = styled.input`
     css`
       border: 1px solid ${(p) => p.theme.colors.correct};
     `}
+  &:hover,
+  &:focus {
+    border: 1px solid ${(p) => p.theme.colors.primaryWhite};
+  }
 `;
 
 export const ErrorText = styled.div`

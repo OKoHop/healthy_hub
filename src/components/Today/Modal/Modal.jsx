@@ -1,5 +1,13 @@
 import Modal from 'react-modal';
-import { Form, FormBtn, H1, Input, Label, ModalWindow, P } from './Modal.style';
+import {
+  Form,
+  FormBtn,
+  H1,
+  Input,
+  Label,
+  ModalWindow,
+  CancelBtn,
+} from './Modal.style';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
 import { getDailyStatistics } from '../../../redux/Today/Food/operations';
@@ -30,7 +38,7 @@ const WaterModal = ({ open, close }) => {
       <div>
         <Form onSubmit={handleSubmitForm}>
           <Label>
-            How match water
+            How much water
             <Input
               type="text"
               name="water"
@@ -40,7 +48,7 @@ const WaterModal = ({ open, close }) => {
           </Label>
           <FormBtn type="submit">Confirm</FormBtn>
         </Form>
-        <P onClick={close}>Cancel</P>
+        <CancelBtn onClick={close}>Cancel</CancelBtn>
       </div>
     </ModalWindow>
   );

@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  background-color: ${props => props.theme.colors.primaryBlack};
-  color: ${props => props.theme.colors.primaryWhite};
+  background-color: ${(props) => props.theme.colors.primaryBlack};
+  color: ${(props) => props.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
 
   padding-top: 16px;
@@ -50,6 +50,13 @@ export const BackLink = styled(NavLink)`
 
 export const ArrowReturn = styled.img`
   width: 16px;
+  svg {
+    &:hover {
+      stroke: ${(p) => p.theme.colors.primaryWhite};
+    }
+  }
+  transition: ${(p) => p.theme.transition.customTrans};
+
   @media screen and (min-width: 834px) {
     width: 24px;
   }
