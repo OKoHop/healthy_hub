@@ -13,7 +13,6 @@ import {
   ArrowReturn,
   TitlePage,
   InfoBox,
-  BannerThumb,
   Img,
   RecommendedFoodList,
 } from './RecommendedFoodPage.styled';
@@ -32,10 +31,10 @@ export default function RecommendedFood() {
 
   useEffect(() => {
     getRecommendedFood()
-      .then(responce => {
+      .then((responce) => {
         setArrayForRender(randomizeFood(responce, 10));
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -52,9 +51,7 @@ export default function RecommendedFood() {
         </HeaderPage>
 
         <InfoBox>
-          <BannerThumb>
-            <Img src={image} alt="Banner recommended food" />
-          </BannerThumb>
+          <Img src={image} alt="Banner recommended food" />
 
           <RecommendedFoodList>
             {arrayForRender.map(({ _id, img, name, amount, calories }) => {
