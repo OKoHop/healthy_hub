@@ -5,15 +5,21 @@ axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 export const getStats = createAsyncThunk(
   'stats/getAll',
-  async (startDate, endDate, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
+      const date = new Date();
       const { data } = await axios.get(`/api/user/statistics`, {
         params: {
-          dateFrom: startDate,
-          dateTo: endDate,
+          dateFrom: `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}`,
+          dateTo: `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}`,
         },
       });
-      return data;
+      console.log(data);
+      return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

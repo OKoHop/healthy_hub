@@ -21,6 +21,7 @@ import {
   getDailyStatistics,
   getStatisticts,
 } from '../../redux/Today/Food/operations';
+import { getStats } from '../../redux/statistics/statisticOperations';
 
 const Today = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Today = () => {
   useEffect(() => {
     dispatch(getDailyStatistics());
     dispatch(getStatisticts());
+    dispatch(getStats());
   }, [dispatch]);
 
   return (

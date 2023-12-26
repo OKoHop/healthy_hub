@@ -32,6 +32,7 @@ import {
 
 import img1 from '../../../images/diaryPageImages/trash.png';
 import img2 from '../../../images/diaryPageImages/trash@2x.png';
+import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -130,10 +131,15 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
           dispatch(updateFood({ foodId: item._id, data }));
         } else {
           dispatch(addFood(data));
+          dispatch(getDailyStatistics());
         }
       }
     );
-    dispatch(getStats('today'));
+    const currentDay = new Date();
+    const validateDay = `${currentDay.getFullYear()}-${
+      currentDay.getMonth() + 1
+    }-${currentDay.getDate()}`;
+    dispatch(getStats(validateDay));
     resetForm();
     onClose();
   };

@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectStatsInfo = state => state.stats.info;
-export const selectStatsIsLoading = state => state.stats.isLoading;
-export const selectIntakeFoodPerDay = state => state.stats.info.food;
-export const selectTotalCalories= state => state.stats.info.totalCalories;
-export const selectWaterIntake= state => state.stats.info.waterIntake;
-export const selectWeight= state => state.stats.info.weight;
+export const selectStatsInfo = (state) => state.stats.info;
+export const selectStatsIsLoading = (state) => state.stats.isLoading;
+export const selectIntakeFoodPerDay = (state) => state.stats.info.food;
+export const selectTotalCalories = (state) => state.stats.info.totalCalories;
+export const selectWaterIntake = (state) => state.stats.info.waterIntake;
+export const selectWeight = (state) => state.stats.info.weight;
 
 const getProductsByMealType = (products, inputMealType) => {
   return products.filter(({ mealType }) => mealType === inputMealType);
@@ -22,16 +22,13 @@ export const selectStatsWater = createSelector(
   }
 );
 
-export const selectStatsWeight = createSelector(
-  [selectWeight],
-  (weight) => {
-    if (!weight || weight.length === 0) {
-      return 0;
-    }
-
-    return weight || 0;
+export const selectStatsWeight = createSelector([selectWeight], (weight) => {
+  if (!weight || weight.length === 0) {
+    return 0;
   }
-);
+
+  return weight || 0;
+});
 
 export const selectStatsTotalCalories = createSelector(
   [selectTotalCalories],
@@ -42,8 +39,8 @@ export const selectStatsTotalCalories = createSelector(
 
 export const selectConsumedProductsForBreakfast = createSelector(
   [selectIntakeFoodPerDay],
-  intakeFood => {
-    if (!intakeFood || intakeFood.length === 0) {
+  (intakeFood) => {
+    if (!intakeFood || intakeFood.length === 0 || intakeFood === undefined) {
       return [];
     }
     return getProductsByMealType(intakeFood, 'Breakfast');
@@ -52,7 +49,7 @@ export const selectConsumedProductsForBreakfast = createSelector(
 
 export const selectConsumedProductsForLunch = createSelector(
   [selectIntakeFoodPerDay],
-  intakeFood => {
+  (intakeFood) => {
     if (!intakeFood || intakeFood.length === 0) {
       return [];
     }
@@ -62,7 +59,7 @@ export const selectConsumedProductsForLunch = createSelector(
 
 export const selectConsumedProductsForDinner = createSelector(
   [selectIntakeFoodPerDay],
-  intakeFood => {
+  (intakeFood) => {
     if (!intakeFood || intakeFood.length === 0) {
       return [];
     }
@@ -72,7 +69,7 @@ export const selectConsumedProductsForDinner = createSelector(
 
 export const selectConsumedProductsForSnack = createSelector(
   [selectIntakeFoodPerDay],
-  intakeFood => {
+  (intakeFood) => {
     if (!intakeFood || intakeFood.length === 0) {
       return [];
     }
@@ -89,82 +86,82 @@ const calculateSumMacronutrients = (products, inputMacronutrient) => {
 
 export const selectConsumedCarbonohidratesForBreakfast = createSelector(
   [selectConsumedProductsForBreakfast],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
+  (products) => calculateSumMacronutrients(products, 'carbonohidrates')
 );
 
 export const selectConsumedProteinForBreakfast = createSelector(
   [selectConsumedProductsForBreakfast],
-  products => calculateSumMacronutrients(products, 'protein')
+  (products) => calculateSumMacronutrients(products, 'protein')
 );
 
 export const selectConsumedFatForBreakfast = createSelector(
   [selectConsumedProductsForBreakfast],
-  products => calculateSumMacronutrients(products, 'fat')
+  (products) => calculateSumMacronutrients(products, 'fat')
 );
 
 export const selectConsumedCarbonohidratesForLunch = createSelector(
   [selectConsumedProductsForLunch],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
+  (products) => calculateSumMacronutrients(products, 'carbonohidrates')
 );
 
 export const selectConsumedProteinForLunch = createSelector(
   [selectConsumedProductsForLunch],
-  products => calculateSumMacronutrients(products, 'protein')
+  (products) => calculateSumMacronutrients(products, 'protein')
 );
 
 export const selectConsumedFatForLunch = createSelector(
   [selectConsumedProductsForLunch],
-  products => calculateSumMacronutrients(products, 'fat')
+  (products) => calculateSumMacronutrients(products, 'fat')
 );
 
 export const selectConsumedCarbonohidratesForDinner = createSelector(
   [selectConsumedProductsForDinner],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
+  (products) => calculateSumMacronutrients(products, 'carbonohidrates')
 );
 
 export const selectConsumedProteinForDinner = createSelector(
   [selectConsumedProductsForDinner],
-  products => calculateSumMacronutrients(products, 'protein')
+  (products) => calculateSumMacronutrients(products, 'protein')
 );
 
 export const selectConsumedFatForDinner = createSelector(
   [selectConsumedProductsForDinner],
-  products => calculateSumMacronutrients(products, 'fat')
+  (products) => calculateSumMacronutrients(products, 'fat')
 );
 
 export const selectConsumedCarbonohidratesForSnack = createSelector(
   [selectConsumedProductsForSnack],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
+  (products) => calculateSumMacronutrients(products, 'carbonohidrates')
 );
 
 export const selectConsumedProteinForSnack = createSelector(
   [selectConsumedProductsForSnack],
-  products => calculateSumMacronutrients(products, 'protein')
+  (products) => calculateSumMacronutrients(products, 'protein')
 );
 
 export const selectConsumedFatForSnack = createSelector(
   [selectConsumedProductsForSnack],
-  products => calculateSumMacronutrients(products, 'fat')
+  (products) => calculateSumMacronutrients(products, 'fat')
 );
 
 export const selectConsumedCarbonohidratesPerDay = createSelector(
   [selectIntakeFoodPerDay],
-  products => calculateSumMacronutrients(products, 'carbohydrate')
+  (products) => calculateSumMacronutrients(products, 'carbonohidrates')
 );
 
 export const selectConsumedProteinPerDay = createSelector(
   [selectIntakeFoodPerDay],
-  products => calculateSumMacronutrients(products, 'protein')
+  (products) => calculateSumMacronutrients(products, 'protein')
 );
 
 export const selectConsumedFatPerDay = createSelector(
   [selectIntakeFoodPerDay],
-  products => calculateSumMacronutrients(products, 'fat')
+  (products) => calculateSumMacronutrients(products, 'fat')
 );
 
 export const selectConsumedCaloriesPerDay = createSelector(
   [selectIntakeFoodPerDay],
-  products => calculateSumMacronutrients(products, 'calories')
+  (products) => calculateSumMacronutrients(products, 'calories')
 );
 
 export const selectConsumedMacronutrientsPerDay = createSelector(

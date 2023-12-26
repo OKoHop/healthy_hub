@@ -10,14 +10,14 @@ const statsInitialState = {
 const statsSlice = createSlice({
   name: 'stats',
   initialState: statsInitialState,
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(getStats.pending, state => {
+      .addCase(getStats.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(getStats.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.info = action.payload;
+        state.info = action.payload[0];
       })
       .addCase(getStats.rejected, (state, action) => {
         state.isLoading = false;
