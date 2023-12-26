@@ -65,7 +65,7 @@ const Protein = () => {
         <P>Protein</P>
         <Div3>
           <P2>
-            Goal: <Span>0</Span>
+            Goal: <Span>{recievedProtein}</Span>
           </P2>
           <P2>
             left: <Span>{leftProtein(dailyProtein, recievedProtein)}</Span>

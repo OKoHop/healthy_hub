@@ -4,6 +4,7 @@ import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.style';
 import { useSelector } from 'react-redux';
 import {
   carbonohidrates,
+  selectCarbonohidrates,
   totalCarbohidrates,
 } from '../../../../redux/Today/Food/selectors';
 
@@ -11,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Carbonohidrates = () => {
   const dailyCarb = useSelector(carbonohidrates);
-  const receivedCarb = useSelector(totalCarbohidrates) || 0;
+  const receivedCarb = useSelector(selectCarbonohidrates);
 
   const leftCarb = (dailyCarb, receivedCarb) => {
     if (dailyCarb - receivedCarb === null) {
@@ -71,7 +72,7 @@ const Carbonohidrates = () => {
         <P>Carbonohidrates</P>
         <Div3>
           <P2>
-            Goal: <Span>0</Span>
+            Goal: <Span>{receivedCarb}</Span>
           </P2>
           <P2>
             left: <Span>{leftCarb(dailyCarb, receivedCarb)}</Span>
