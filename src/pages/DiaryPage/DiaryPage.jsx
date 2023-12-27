@@ -85,8 +85,6 @@ const DiaryPage = () => {
     
   }, [foodIntake]);
 
-  console.log('Lunch', lunchFoodIntake);
-
   const consumedMacronutrients = useSelector(
     selectConsumedMacronutrientsPerDay
   );
@@ -131,7 +129,6 @@ const DiaryPage = () => {
             <BlockDetailedInformation>
               <ListOfDishes>
                 {getArrayToRenderDiary(breakfastFoodIntake, 'Breakfast').map(
-                  
                   (item, index) => (
                     <ElementOfFood
                       item={item}

@@ -25,15 +25,11 @@ const ElementOfFood = ({ item, index, img }) => {
 
   const toggleModalRecord = () => setIsRecordModalOpen(!isRecordModalOpen);
   const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
-  // console.log('item',item);
+  console.log('item',item);
 
   const { carbohidrates, protein, fat, dish, mealType, showButton } = item; 
-  // console.log(carbohidrates);
 
-  if (!carbohidrates && !protein && !fat && !dish && !mealType) {
-    // console.log('Empty item:', item);
-    return null; // Не отображаем компонент, если данные отсутствуют
-  }
+  // console.log('item',item);
 
   return (
     <>
@@ -84,6 +80,7 @@ const ElementOfFood = ({ item, index, img }) => {
             )}
           </Wrapper>
         )}
+        
     </>
   );
 };
