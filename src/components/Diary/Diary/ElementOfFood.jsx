@@ -25,8 +25,15 @@ const ElementOfFood = ({ item, index, img }) => {
 
   const toggleModalRecord = () => setIsRecordModalOpen(!isRecordModalOpen);
   const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
+  // console.log('item',item);
 
-  const { carbohydrate, protein, fat, mealName, mealType, showButton } = item;  
+  const { carbohidrates, protein, fat, dish, mealType, showButton } = item; 
+  // console.log(carbohidrates);
+
+  if (!carbohidrates && !protein && !fat && !dish && !mealType) {
+    // console.log('Empty item:', item);
+    return null; // Не отображаем компонент, если данные отсутствуют
+  }
 
   return (
     <>
@@ -47,19 +54,19 @@ const ElementOfFood = ({ item, index, img }) => {
               />
             )}
           </Wrapper>
-        ) : (
+        ) : ( 
           <Wrapper>
             <SequenceNumber>
               {index + 1}
             </SequenceNumber>
             {mealType && (
               <Dish>                
-                <Title>{mealName}</Title>
+                <Title>{dish}</Title>
                 <EditButton type="button" onClick={toggleModalEdit}><Img src={edit} alt="Edit" />Edit</EditButton>                
                 <BlockInfo>
                   <Carbonohidrates>
                     <span>Carb.</span>
-                    {carbohydrate}
+                    {carbohidrates}
                   </Carbonohidrates>
                   <Protein>
                     <span>Prot.</span>

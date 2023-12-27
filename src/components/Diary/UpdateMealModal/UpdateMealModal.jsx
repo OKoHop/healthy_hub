@@ -75,6 +75,14 @@ const schema = yup.object({
   })),
 });
 
+
+const today = new Date();
+const year = today.getFullYear();
+const month = (today.getMonth() + 1).toString().padStart(2, '0');
+const day = today.getDate().toString().padStart(2, '0');
+
+const formattedDate = `${year}-${month}-${day}`;
+
 const modalRoot = document.querySelector('#modal-root');
 
 
@@ -126,7 +134,7 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
       }
       dispatch(updateFood({ foodId: item._id, data }));
     });
-    dispatch(getStats('today'));
+    dispatch(getStats(formattedDate, formattedDate));
     resetForm();
     onClose();
   };
