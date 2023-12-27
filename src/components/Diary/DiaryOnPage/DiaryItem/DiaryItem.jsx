@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import {
@@ -11,16 +11,26 @@ import {
   ProteinWrap,
   FatWrap,
   DiaryImage,
-  TitleWrap
+  TitleWrap,
+  Svg,
 } from './DiaryItem.styled.js';
+// import { fetchFoodStatistics } from '../../../redux/Today/Diary/operations';
+import svgSlice from '../../../../images/Illustrations/Today/today-svg-sprite.svg';
+import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal.jsx';
 
-import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal.jsx'
-
-const DiaryItem = ({ title, image, info }) => {
+const DiaryItem = ({ title, image, carbonohidrates, protein, fat }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-  
-  const { carbonohidrates, protein, fat } = info;  
+
+  //   function handleDelete() {
+  //   dispatch(delFoodIntake());
+  //   setTimeout(() => {
+  //     dispatch(fetchFoodStatistics());
+  //   }, 100);
+  //   toast.success('FoodIntake has been successfuly reset');
+  // }
+
+  // const { carbonohidrates, protein, fat } = info;
 
   return (
     <CardWrap>
@@ -39,26 +49,32 @@ const DiaryItem = ({ title, image, info }) => {
           <FatWrap>
             Fat: <Value>{fat}</Value>
           </FatWrap>
+          <Svg onClick={toggleModal}>
+            <use href={`${svgSlice}#trash`}></use>
+          </Svg>
         </InfoWrap>
       ) : (
         <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
       )}
 
       {isModalOpen && (
-        <RecordDiaryModal onClose={toggleModal} image={ image } mealType={ title } />
+        <RecordDiaryModal
+          onClose={toggleModal}
+          image={image}
+          mealType={title}
+        />
       )}
     </CardWrap>
   );
 };
 
-DiaryItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  info: PropTypes.shape({
-    carbonohidrates: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-  }),
-};
+// DiaryItem.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   image: PropTypes.string.isRequired,
+
+//   carbonohidrates: PropTypes.number.isRequired,
+//   protein: PropTypes.number.isRequired,
+//   fat: PropTypes.number.isRequired,
+// };
 
 export default DiaryItem;
