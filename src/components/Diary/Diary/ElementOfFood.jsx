@@ -29,7 +29,7 @@ const ElementOfFood = ({ item, index, img }) => {
 
   const { carbohidrates, protein, fat, dish, mealType, showButton } = item; 
 
-  // console.log('item',item);
+  console.log('mealType', mealType);
 
   return (
     <>
@@ -55,7 +55,6 @@ const ElementOfFood = ({ item, index, img }) => {
             <SequenceNumber>
               {index + 1}
             </SequenceNumber>
-            {mealType && (
               <Dish>                
                 <Title>{dish}</Title>
                 <EditButton type="button" onClick={toggleModalEdit}><Img src={edit} alt="Edit" />Edit</EditButton>                
@@ -74,7 +73,6 @@ const ElementOfFood = ({ item, index, img }) => {
                   </Fat>
                 </BlockInfo>                
               </Dish>
-            )}
             {isEditModalOpen && (
               <UpdateMealModal onClose={toggleModalEdit} mealType={mealType} item={item} />
             )}
