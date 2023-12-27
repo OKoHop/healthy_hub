@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import { updateUser } from '../../redux/user/operations';
 import { selectUser } from '../../redux/auth/selectors';
-import { getStats } from '../../redux/statistics/statisticOperations';
 
 import {
   SettingsPageSection,
@@ -36,6 +34,7 @@ import avatar from '../../images/settingsPageImages/profile-circle.svg';
 
 import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
 import { refreshUser } from '../../redux/auth/operations';
+import { useState } from 'react';
 
 const validationSchema = yup.object({
   name: yup
@@ -74,14 +73,11 @@ const validationSchema = yup.object({
 });
 
 const SettingsPage = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const dispatch = useDispatch();
-  
   const userProfile = useSelector(selectUser);
-
-  const [isAvatarChanged, setIsAvatarChanged] = useState(false);
-  const [avatarFile, setAvatarFile] = useState(null);
-  const [avatarPreview, setAvatarPreview] = useState(userProfile.avatarURL);
-
+  
   const initialValues = {
     name: userProfile.name,
     age: userProfile.age,
@@ -89,199 +85,197 @@ const SettingsPage = () => {
     height: userProfile.height,
     weight: userProfile.weight,
     activity: userProfile?.activity?.toString() || '',
+    avatarPreview: userProfile.avatarURL,
+    userAvatarFile: null,
   };
 
   const handleSaveClick = (values) => {
+    const valuesWithFile = {
+      ...values,
+      userAvatarFile: selectedFile,
+    };
     dispatch(updateUser(values));
-    // if (isAvatarChanged) {
-    //   const formData = new FormData();
-    //   formData.append('avatar', avatarFile);
-    //   dispatch(updateAvatar(formData));
-    // }
-    dispatch(getStats('today'));
     dispatch(refreshUser());
-    
   };
 
-  const handleCancelClick = () => {
-    setIsAvatarChanged(false);
-    
-    dispatch(getStats('today'));
+  const handleCancelClick = (formik) => {
+    formik.resetForm({ values: initialValues });
   };
 
-  const handleChangeInputFile = (event) => {
+  const handleChangeInputFile = (event, formik) => {
     const selectedFile = event.target.files[0];
+    setSelectedFile(selectedFile);
 
     if (!selectedFile) return;
 
     const selectedFileUrl = URL.createObjectURL(selectedFile);
 
-    setAvatarFile(selectedFile);
-    setAvatarPreview(selectedFileUrl);
-    setIsAvatarChanged(true);
+    formik.setFieldValue('userAvatarFile', selectedFile);
+    formik.setFieldValue('avatarPreview', selectedFileUrl);
   };
 
   return (
-    <>
-      <SettingsPageSection>
-        <SettingsPageContainer>
-          <TitlePage>Profile setting</TitlePage>
+    <SettingsPageSection>
+      <SettingsPageContainer>
+        <TitlePage>Profile setting</TitlePage>
 
-          <ProfileSettingsContainer>
-            <BannerThumb>
-              <Img src={setingsPage} alt="Banner setings page" />
-            </BannerThumb>
+        <ProfileSettingsContainer>
+          <BannerThumb>
+            <Img src={setingsPage} alt="Banner setings page" />
+          </BannerThumb>
 
-            <Formik
-              initialValues={initialValues}
-              onSubmit={(values)=>handleSaveClick(values)}
-              validationSchema={validationSchema}
-            >
-              {({ values }) => (
-                <FormFormik>
-                  <Label>
-                    Your name
-                    <Input
-                      type="text"
-                      name="name"
-                      placeholder="Enter your name"
-                      required
-                    />
-                    <ErrorMsg name="name" component="div" />
-                  </Label>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values, formik) => handleSaveClick(values, formik)}
+            validationSchema={validationSchema}
+          >
+            {(formik) => (
+              <FormFormik>
+                <Label>
+                  Your name
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                  <ErrorMsg name="name" component="div" />
+                </Label>
 
-                  <InputFileContainer>
-                    Your photo
-                    <Input
-                      type="file"
-                      name="userAvatarFile"
-                      id="userAvatarFile"
-                      accept="image/*"
-                      onChange={handleChangeInputFile}
-                    />
-                    <Label htmlFor="userAvatarFile">
-                      <AvaThumb>
-                        <AvaImg
-                          src={avatarPreview || avatar}
-                          alt="userAvatar"
-                        />
-                      </AvaThumb>
-
-                      <LinkDownloadPhoto>
-                        <img src={downloadPhoto} alt="Select File" />
-                        Download new photo
-                      </LinkDownloadPhoto>
-                    </Label>
-                  </InputFileContainer>
-
-                  <Label>
-                    Your age
-                    <Input
-                      type="number"
-                      name="age"
-                      placeholder="Enter your age"
-                      required
-                    />
-                    <ErrorMsg name="age" component="div" />
-                  </Label>
-
-                  <FormGroup role="group" aria-labelledby="gender-head">
-                    <FormGroupLabel id="gender-head">Gender</FormGroupLabel>
-                    <WrapperRadioButton>
-                      <CustomRadioButton
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        selectedValue={values.gender}
-                        text="Male"
+                <InputFileContainer>
+                  Your photo
+                  <Input
+                    type="file"
+                    name="userAvatarFile"
+                    id="userAvatarFile"
+                    accept="image/*"
+                    onChange={(e) => handleChangeInputFile(e, formik)}
+                    value=""
+                  />
+                  <Label htmlFor="userAvatarFile">
+                    <AvaThumb>
+                      <AvaImg
+                        src={formik.values.avatarPreview || avatar}
+                        alt="userAvatar"
                       />
-                      <CustomRadioButton
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        selectedValue={values.gender}
-                        text="Female"
-                      />
-                    </WrapperRadioButton>
-                  </FormGroup>
-
-                  <Label>
-                    Height
-                    <Input
-                      type="number"
-                      name="height"
-                      placeholder="Enter your height"
-                      required
-                    />
-                    <ErrorMsg name="height" component="div" />
+                    </AvaThumb>
+                    <LinkDownloadPhoto>
+                      <img src={downloadPhoto} alt="Select File" />
+                      Download new photo
+                    </LinkDownloadPhoto>
                   </Label>
+                </InputFileContainer>
 
-                  <Label>
-                    Weight
-                    <Input
-                      type="number"
-                      name="weight"
-                      placeholder="Enter your weight"
-                      required
-                    />
-                    <ErrorMsg name="weight" component="div" />
-                  </Label>
+                <Label>
+                  Your age
+                  <Input
+                    type="number"
+                    name="age"
+                    placeholder="Enter your age"
+                    required
+                  />
+                  <ErrorMsg name="age" component="div" />
+                </Label>
 
-                  <FormGroup role="group" aria-labelledby="activity-head">
-                    <FormGroupLabel id="activity-head">
-                      Your activity
-                    </FormGroupLabel>
+                <FormGroup role="group" aria-labelledby="gender-head">
+                  <FormGroupLabel id="gender-head">Gender</FormGroupLabel>
+                  <WrapperRadioButton>
                     <CustomRadioButton
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      selectedValue={formik.values.gender}
+                      text="Male"
+                    />
+                    <CustomRadioButton
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      selectedValue={formik.values.gender}
+                      text="Female"
+                    />
+                  </WrapperRadioButton>
+                </FormGroup>
+
+                <Label>
+                  Height
+                  <Input
+                    type="number"
+                    name="height"
+                    placeholder="Enter your height"
+                    required
+                  />
+                  <ErrorMsg name="height" component="div" />
+                </Label>
+
+                <Label>
+                  Weight
+                  <Input
+                    type="number"
+                    name="weight"
+                    placeholder="Enter your weight"
+                    required
+                  />
+                  <ErrorMsg name="weight" component="div" />
+                </Label>
+
+                <FormGroup role="group" aria-labelledby="activity-head">
+                  <FormGroupLabel id="activity-head">
+                    Your activity
+                  </FormGroupLabel>
+                  <CustomRadioButton
                       name="activity"
                       id="activity1"
                       value="1.2"
-                      selectedValue={values.activity}
+                      selectedValue={formik.values.activity}
                       text="1.2 - if you do not have physical activity and sedentary work"
                     />
                     <CustomRadioButton
                       name="activity"
                       id="activity2"
                       value="1.375"
-                      selectedValue={values.activity}
+                      selectedValue={formik.values.activity}
                       text="1.375 - if you do short runs or light gymnastics 1-3 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
                       id="activity3"
                       value="1.55"
-                      selectedValue={values.activity}
+                      selectedValue={formik.values.activity}
                       text="1.55 - if you play sports with average loads 3-5 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
                       id="activity4"
                       value="1.725"
-                      selectedValue={values.activity}
+                      selectedValue={formik.values.activity}
                       text="1.725 - if you train fully 6-7 times a week"
                     />
                     <CustomRadioButton
                       name="activity"
                       id="activity5"
                       value="1.9"
-                      selectedValue={values.activity.toString()}
+                      selectedValue={formik.values.activity.toString()}
                       text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"
                     />
 
                   </FormGroup>
 
-                  <ButtonContainer>
-                    <SaveButton type="submit">Save</SaveButton>
-                    <CancelButton type="button" onClick={handleCancelClick}>
-                      Cancel
-                    </CancelButton>
-                  </ButtonContainer>
-                </FormFormik>
-              )}
-            </Formik>
-          </ProfileSettingsContainer>
-        </SettingsPageContainer>
-      </SettingsPageSection>
-    </>
+                <ButtonContainer>
+                  <SaveButton type="submit">Save</SaveButton>
+                  <CancelButton
+                    type="button"
+                    onClick={() => handleCancelClick(formik)}
+                  >
+                    Cancel
+                  </CancelButton>
+                </ButtonContainer>
+              </FormFormik>
+            )}
+          </Formik>
+        </ProfileSettingsContainer>
+      </SettingsPageContainer>
+    </SettingsPageSection>
   );
 };
 
