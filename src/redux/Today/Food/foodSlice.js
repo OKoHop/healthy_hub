@@ -28,7 +28,7 @@ const nutrientsSlice = createSlice({
             waterIntake: 0,
           };
         }
-        state.dailyNutrients = action.payload[0].stats;
+        state.dailyNutrients = action.payload.stats;
       });
   },
 });
