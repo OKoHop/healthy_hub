@@ -17,7 +17,8 @@ export const fetchFoodStatistics = createAsyncThunk(
           dateTo: today,
         },
       });
-      return response.data.data[0].stats.foodIntake;
+      console.log('foodIntake', response.data.stats);
+      return response.data.stats.foodIntake;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }
@@ -26,9 +27,11 @@ export const fetchFoodStatistics = createAsyncThunk(
 
 export const delFoodIntake = createAsyncThunk(
   'user/delFood',
-  async (_, thunkAPI) => {
+  async (foodIntakeName, thunkAPI) => {
     try {
-      const response = await axios.delete('/api/user/food-intake/:id');
+      const jsonData = { type: foodIntakeName };
+      const response = await axios.delete('/api/user/food-intake', jsonData);
+      console.log('delete food', response);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
