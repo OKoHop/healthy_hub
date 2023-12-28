@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import DiaryItem from './DiaryItem/DiaryItem';
 import {
   CardsWrap,
@@ -6,40 +8,45 @@ import {
   TitleWrapper,
   Container,
 } from './DiaryOnMain.styled';
-
 import breakfastImage from '../../../images/diaryPageImages/breakfast.png';
 import dinnerImage from '../../../images/diaryPageImages/dinner.png';
 import lunchImage from '../../../images/diaryPageImages/lunch.png';
 import snackImage from '../../../images/diaryPageImages/snack.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectConsumedMacronutrientsPerDay } from '../../../redux/statistics/statisticSelectors';
+import { selectFoodIntake } from '../../../redux/statistics/statisticSelectors';
 import { getStats } from '../../../redux/statistics/statisticOperations';
-import { useEffect } from 'react';
+import today from '../../../helpers/todayData';
+import { calculateTotal } from '../../../helpers/calculateTotalIngridients';
 
 const DiaryOnMain = () => {
   const dispatch = useDispatch();
-  const ConsumedMacronutrients = useSelector(
-    selectConsumedMacronutrientsPerDay
-  );
+  const foodIntake = useSelector(selectFoodIntake);
 
-  const {
-    breakfast: breakfastInfo,
-    lunch: lunchInfo,
-    dinner: dinnerInfo,
-    snack: snackInfo,
-  } = ConsumedMacronutrients;
+  const [lunchFoodIntake, setLunchFoodIntake] = useState([]);
+  const [breakfastFoodIntake, setBreakfastFoodIntake] = useState([]);
+  const [dinnerFoodIntake, setDinnerFoodIntake] = useState([]);
+  const [snackFoodIntake, setSnackFoodIntake] = useState([]);
 
-  const getStatsPerDay = () => {
-    const currentDay = new Date();
-    const validateDate = `${currentDay.getFullYear()}-${
-      currentDay.getMonth() + 1
-    }-${currentDay.getDate()}`;
-    dispatch(getStats(validateDate, validateDate));
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await dispatch(getStats(today));
+      } catch (error) {
+        toast.error(error);
+      }
+    };
 
-  // useEffect(() => {
-  //   getStatsPerDay();
-  // });
+    fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (foodIntake) {
+      setLunchFoodIntake(foodIntake.foodIntake.lunch);
+      setBreakfastFoodIntake(foodIntake.foodIntake.breakfast);
+      setDinnerFoodIntake(foodIntake.foodIntake.dinner);
+      setSnackFoodIntake(foodIntake.foodIntake.snack);
+    }
+  }, [foodIntake]);
 
   return (
     <Container>
@@ -51,11 +58,23 @@ const DiaryOnMain = () => {
         <DiaryItem
           title={'Breakfast'}
           image={breakfastImage}
-          info={breakfastInfo}
+          info={calculateTotal(breakfastFoodIntake)}
         />
-        <DiaryItem title={'Lunch'} image={lunchImage} info={lunchInfo} />
-        <DiaryItem title={'Dinner'} image={dinnerImage} info={dinnerInfo} />
-        <DiaryItem title={'Snack'} image={snackImage} info={snackInfo} />
+        <DiaryItem
+          title={'Lunch'}
+          image={lunchImage}
+          info={calculateTotal(lunchFoodIntake)}
+        />
+        <DiaryItem
+          title={'Dinner'}
+          image={dinnerImage}
+          info={calculateTotal(dinnerFoodIntake)}
+        />
+        <DiaryItem
+          title={'Snack'}
+          image={snackImage}
+          info={calculateTotal(snackFoodIntake)}
+        />
       </CardsWrap>
     </Container>
   );

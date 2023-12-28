@@ -8,12 +8,12 @@ import {
   
   const ItemToAdd = ({ info }) => {
   
-    const { carbonohidrates, protein, fat } = info;
+    const { carbohidrates, protein, fat } = info;
   
     return (      
       <Info>
         <CarbonohidratesWrap>
-          Carbonohidrates: <Value>{carbonohidrates}</Value>
+          Carbonohidrates: <Value>{carbohidrates}</Value>
         </CarbonohidratesWrap>
         <ProteinWrap>
           Protein: <Value>{protein}</Value>

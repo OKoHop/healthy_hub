@@ -53,8 +53,12 @@ export const HeaderUserInfoNav = () => {
 
   const openMenu = () => {
     setIsUserMenuOpen(true);
+    document.body.classList.add('modal-open');
   };
-  const closeMenu = () => setIsUserMenuOpen(false);
+  const closeMenu = () => {
+    setIsUserMenuOpen(false);
+    document.body.classList.remove('modal-open');
+  };
 
   return (
     <>
@@ -65,7 +69,7 @@ export const HeaderUserInfoNav = () => {
         ) : (
           <UserPhoto src={user.avatarURL}></UserPhoto>
         )}
-        
+
         {!isUserMenuOpen ? (
           <SvgUserBtnDown>
             <use href={`${swgIcons}#icon-arrow-down`}></use>

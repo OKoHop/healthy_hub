@@ -10,8 +10,7 @@ const statsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.
-    addCase(getStats.fulfilled, (state, action) => {
+    builder.addCase(getStats.fulfilled, (state, action) => {
       if (!action.payload) {
         state.stats = {
           totalCalories: 0,
