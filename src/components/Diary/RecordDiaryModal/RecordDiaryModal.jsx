@@ -33,6 +33,7 @@ import {
 import img1 from '../../../images/diaryPageImages/trash.png';
 import img2 from '../../../images/diaryPageImages/trash@2x.png';
 import today from '../../../helpers/todayData';
+import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -47,7 +48,7 @@ const schema = yup.object({
         .required('Carbonohidrates is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
-        .max(100, 'The maximum allowable value is 100')
+        .max(500, 'The maximum allowable value is 500')
         .test(
           'maxDigitsAfterDecimal',
           'Must have 1 digits after decimal',
@@ -58,7 +59,7 @@ const schema = yup.object({
         .required('Protein is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
-        .max(100, 'The maximum allowable value is 100')
+        .max(500, 'The maximum allowable value is 500')
         .test(
           'maxDigitsAfterDecimal',
           'Must have 1 digits after decimal',
@@ -69,7 +70,7 @@ const schema = yup.object({
         .required('Fat is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
-        .max(100, 'The maximum allowable value is 100')
+        .max(500, 'The maximum allowable value is 500')
         .test(
           'maxDigitsAfterDecimal',
           'Must have 1 digits after decimal',
@@ -80,7 +81,7 @@ const schema = yup.object({
         .required('Calories is required')
         .typeError('Must be a number')
         .min(0, 'Must a be positive number')
-        .max(1000, 'The maximum allowable value is 1000')
+        .max(2000, 'The maximum allowable value is 2000')
         .integer('Must be an integer'),
     })
   ),
@@ -131,6 +132,10 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
           dispatch(updateFood({ foodId: item._id, data }));
         } else {
           dispatch(addFood(data));
+
+          setTimeout(() => {
+            dispatch(getDailyStatistics());
+          }, 1);
         }
       }
     );
