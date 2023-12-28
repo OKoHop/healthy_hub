@@ -12,13 +12,26 @@ import {
   FatWrap,
   DiaryImage,
   TitleWrap,
+  Svg
 } from './DiaryItem.styled.js';
-
+import svgSlice from '../../../../images/Illustrations/Today/today-svg-sprite.svg';
 import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal.jsx';
+import { delFoodIntake } from '../../../../redux/statistics/statisticOperations.js';
+import { useDispatch } from 'react-redux';
 
 const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch()
   const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const foodIntakeName = title.toLowerCase();
+
+  //   function handleDelete(foodIntakeName) {
+  //   dispatch(delFoodIntake());
+  //   setTimeout(() => {
+  //     dispatch(getDailyStatistics());
+  //   }, 100);
+  //   // toast.success('WaterIntake has been successfuly reset');
+  // }
 
   const { carbohidrates, protein, fat } = info;
 
@@ -39,6 +52,9 @@ const DiaryItem = ({ title, image, info }) => {
           <FatWrap>
             Fat: <Value>{fat}</Value>
           </FatWrap>
+                    <Svg>
+            <use href={`${svgSlice}#trash`}></use>
+          </Svg>
         </InfoWrap>
       ) : (
         <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
