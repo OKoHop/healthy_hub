@@ -113,8 +113,8 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
       ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
         const data = {
           mealType: mealType.toString(),
-          mealName: mealName.toString(),
-          carbohydrate: carbonohidrates.toFixed(1).toString(),
+          dish: mealName.toString(),
+          carbohidrates: carbonohidrates.toFixed(1).toString(),
           protein: protein.toFixed(1).toString(),
           fat: fat.toFixed(1).toString(),
           calories: calories.toString(),
