@@ -19,7 +19,6 @@ export const updateGoal = createAsyncThunk(
   'user/updateGoal',
   async (data, thunkAPI) => {
     const currentGoal = { goal: data.toLowerCase() };
-    console.log(currentGoal);
     try {
       const response = await axios.put('api/user/goal', currentGoal);
       return response.data;
