@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -41,7 +42,7 @@ import {
   BlockHeader,
 } from './DiaryPage.styled';
 import { getStats } from '../../redux/statistics/statisticOperations';
-import { useState } from 'react';
+
 
 const today = new Date();
 const year = today.getFullYear();
@@ -67,7 +68,7 @@ const DiaryPage = () => {
       try {
         await dispatch(getStats(formattedDate));
       } catch (error) {
-        console.error('Error fetching data:', error);
+        toast.error(error)
       }
     };
 
@@ -88,6 +89,7 @@ const DiaryPage = () => {
   const consumedMacronutrients = useSelector(
     selectConsumedMacronutrientsPerDay
   );
+  console.log(foodIntakeArray);
   // const breakfastFoodIntake = useSelector(selectConsumedProductsForBreakfast);
   // console.log('breakfest', breakfastFoodIntake);
   // const lunchFoodIntake = useSelector(selectConsumedProductsForLunch);
