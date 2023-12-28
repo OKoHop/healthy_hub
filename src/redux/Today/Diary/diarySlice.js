@@ -2,10 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchFoodStatistics } from './operations';
 
 const initialState = {
-  breakfast: [],
-  lunch: [],
-  dinner: [],
-  snack: [],
+  foodIntake: '',
 };
 
 const diarySlice = createSlice({
@@ -13,10 +10,7 @@ const diarySlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchFoodStatistics.fulfilled, (state, action) => {
-      state.breakfast = action.payload.breakfast;
-      state.lunch = action.payload.lunch;
-      state.dinner = action.payload.dinner;
-      state.snack = action.payload.snack;
+      state.foodIntake = action.payload;
     });
   },
 });

@@ -1,12 +1,14 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectBreakfast = (state) => state.diary.breakfast;
+export const selectFoodIntake = (state) => state.diary.foodIntake;
 
-export const selectLunch = (state) => state.diary.lunch;
+export const selectBreakfast = (state) => state.diary.foodIntake.breakfast;
 
-export const selectDinner = (state) => state.diary.dinner;
+export const selectLunch = (state) => state.diary.foodIntake.lunch;
 
-export const selectSnack = (state) => state.diary.snack;
+export const selectDinner = (state) => state.diary.foodIntake.dinner;
+
+export const selectSnack = (state) => state.diary.foodIntake.snack;
 
 //Breakfast selectors
 
