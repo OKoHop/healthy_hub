@@ -86,26 +86,22 @@ const DiaryPage = () => {
     
   }, [foodIntake]);
 
+  const calculateTotal = (array) => {
+    return array.reduce(
+      (total, item) => {
+        total.carbohidrates += item.carbohidrates || 0;
+        total.protein += item.protein || 0;
+        total.fat += item.fat || 0;
+        return total;
+      },
+      { carbohidrates: 0, protein: 0, fat: 0 }
+    );
+  };
+
   const consumedMacronutrients = useSelector(
     selectConsumedMacronutrientsPerDay
   );
   console.log(foodIntakeArray);
-  // const breakfastFoodIntake = useSelector(selectConsumedProductsForBreakfast);
-  // console.log('breakfest', breakfastFoodIntake);
-  // const lunchFoodIntake = useSelector(selectConsumedProductsForLunch);
-  // // const lunchFoodIntake = foodIntakeArray.lunch;
-  // console.log('lunch', lunchFoodIntake);
-  // const dinnerFoodIntake = useSelector(selectConsumedProductsForDinner);
-  // console.log('dinner', dinnerFoodIntake);
-  // const snackFoodIntake = useSelector(selectConsumedProductsForSnack);
-  // console.log('snack', snackFoodIntake);
-
-  const {
-    breakfast: breakfastInfo,
-    lunch: lunchInfo,
-    dinner: dinnerInfo,
-    snack: snackInfo,
-  } = consumedMacronutrients;
 
   return (
     <Section>
@@ -126,7 +122,7 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Breakfast</Title>
               </BlockHeader>
-              <ItemsToAdd info={breakfastInfo} />
+              <ItemsToAdd info={calculateTotal(breakfastFoodIntake)} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
@@ -152,7 +148,7 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Lunch</Title>
               </BlockHeader>
-              <ItemsToAdd info={lunchInfo} />
+              <ItemsToAdd info={calculateTotal(lunchFoodIntake)} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
@@ -178,7 +174,7 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Dinner</Title>
               </BlockHeader>
-              <ItemsToAdd info={dinnerInfo} />
+              <ItemsToAdd info={calculateTotal(dinnerFoodIntake)} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
@@ -204,7 +200,7 @@ const DiaryPage = () => {
                 </ThumbImg>
                 <Title>Snack</Title>
               </BlockHeader>
-              <ItemsToAdd info={snackInfo} />
+              <ItemsToAdd info={calculateTotal(snackFoodIntake)} />
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
