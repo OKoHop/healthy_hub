@@ -22,6 +22,8 @@ import {
 import { updateGoal } from '../../../redux/user/operations';
 import { useAuth } from '../../../hooks/useAuth';
 import { refreshUser } from '../../../redux/auth/operations';
+import { toast } from 'react-hot-toast';
+import { getStatisticts } from '../../../redux/Today/Food/operations';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
   const { user } = useAuth();
@@ -37,9 +39,13 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (selectedTarget === user.goal) {
+      return toast.error('This Goal has already been selected');
+    }
     dispatch(updateGoal(selectedTarget));
-    dispatch(refreshUser());
     closePanel();
+    dispatch(refreshUser());
+    dispatch(getStatisticts());
   };
 
   return (
@@ -58,42 +64,42 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
       <FormTarget onSubmit={handleFormSubmit}>
         <FormTargetList>
           <li>
-            <FormTargetLabel isSelected={selectedTarget === 'Lose fat'}>
+            <FormTargetLabel isSelected={selectedTarget === 'lose fat'}>
               <FormTargetInput
                 type="radio"
                 value="Lose fat"
-                checked={selectedTarget === 'Lose fat'}
-                onChange={() => handleTargetChange('Lose fat')}
+                checked={selectedTarget === 'lose fat'}
+                onChange={() => handleTargetChange('lose fat')}
               />
-              <TargetImgBorder isSelected={selectedTarget === 'Lose fat'}>
+              <TargetImgBorder isSelected={selectedTarget === 'lose fat'}>
                 <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
               </TargetImgBorder>
               Lose fat
             </FormTargetLabel>
           </li>
           <li>
-            <FormTargetLabel isSelected={selectedTarget === 'Maintain'}>
+            <FormTargetLabel isSelected={selectedTarget === 'maintain'}>
               <FormTargetInput
                 type="radio"
-                value="Maintain"
-                checked={selectedTarget === 'Maintain'}
-                onChange={() => handleTargetChange('Maintain')}
+                value="maintain"
+                checked={selectedTarget === 'maintain'}
+                onChange={() => handleTargetChange('maintain')}
               />
-              <TargetImgBorder isSelected={selectedTarget === 'Maintain'}>
+              <TargetImgBorder isSelected={selectedTarget === 'maintain'}>
                 <ImgTarget src={`${maintakePng}`} alt="=maintain"></ImgTarget>
               </TargetImgBorder>
               Maintain
             </FormTargetLabel>
           </li>
           <li>
-            <FormTargetLabel isSelected={selectedTarget === 'Gain Muscle'}>
+            <FormTargetLabel isSelected={selectedTarget === 'gain muscle'}>
               <FormTargetInput
                 type="radio"
-                value="Gain Muscle"
-                checked={selectedTarget === 'Gain Muscle'}
-                onChange={() => handleTargetChange('Gain Muscle')}
+                value="gain muscle"
+                checked={selectedTarget === 'gain muscle'}
+                onChange={() => handleTargetChange('gain muscle')}
               />
-              <TargetImgBorder isSelected={selectedTarget === 'Gain Muscle'}>
+              <TargetImgBorder isSelected={selectedTarget === 'gain muscle'}>
                 <ImgTarget src={`${gainMusclePng}`} alt="muscle"></ImgTarget>
               </TargetImgBorder>
               Gain Muscle

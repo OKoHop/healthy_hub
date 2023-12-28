@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import { updateUser } from '../../redux/user/operations';
@@ -36,7 +35,6 @@ import downloadPhoto from '../../images/settingsPageImages/download-new-photo.sv
 import avatar from '../../images/settingsPageImages/profile-circle.svg';
 
 import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
-import { values } from 'lodash';
 import { refreshUser } from '../../redux/auth/operations';
 
 const validationSchema = yup.object({
@@ -77,7 +75,7 @@ const validationSchema = yup.object({
 
 const SettingsPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  
   const userProfile = useSelector(selectUser);
 
   const [isAvatarChanged, setIsAvatarChanged] = useState(false);
@@ -102,12 +100,12 @@ const SettingsPage = () => {
     // }
     dispatch(getStats('today'));
     dispatch(refreshUser());
-    navigate('/main');
+    
   };
 
   const handleCancelClick = () => {
     setIsAvatarChanged(false);
-    navigate('/main');
+    
     dispatch(getStats('today'));
   };
 

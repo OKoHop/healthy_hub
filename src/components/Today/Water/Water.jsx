@@ -23,12 +23,15 @@ import { water } from '../../../redux/Today/Daily/selectors';
 import { delWaterIntake } from '../../../redux/Today/Water/operations';
 import { waterIntake } from '../../../redux/Today/Water/selectors';
 import toast from 'react-hot-toast';
+import { dailyWater } from '../../../redux/Today/Food/selectors';
+import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 
 const Water = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const wat = useSelector(water);
   const watIntake = useSelector(waterIntake);
   const dispatch = useDispatch();
+  const getWater = useSelector(dailyWater) || 0;
 
   function openModal() {
     setIsOpen(true);
@@ -39,10 +42,10 @@ const Water = () => {
   }
 
   function waterLeft(wat, watIntake) {
-    if (wat - watIntake < 0) {
+    if (wat - getWater < 0) {
       return 0;
     }
-    return Math.round(wat - watIntake);
+    return Math.round(wat - getWater);
   }
 
   function persentWater(wat, waterIntake) {
@@ -52,31 +55,34 @@ const Water = () => {
     return Math.round((waterIntake / wat) * 100);
   }
 
+  function handleDelete() {
+    dispatch(delWaterIntake());
+    setTimeout(() => {
+      dispatch(getDailyStatistics());
+    }, 100);
+    toast.success('WaterIntake has been successfuly reset');
+  }
+
   return (
     <>
       <Thumb>
         <StyledSubtitle>Water</StyledSubtitle>
         <StyledDiv>
           <StyledDiagram>
-            <P>{persentWater(wat, watIntake)} %</P>
-            <Progress height={persentWater(wat, watIntake) || 0}></Progress>
+            <P>{persentWater(wat, getWater)} %</P>
+            <Progress height={persentWater(wat, getWater) || 0}></Progress>
           </StyledDiagram>
           <div>
-            <Svg
-              onClick={() => {
-                dispatch(delWaterIntake());
-                toast.success('WaterIntake has been successfuly reset');
-              }}
-            >
+            <Svg onClick={handleDelete}>
               <use href={`${svgSlice}#trash`}></use>
             </Svg>
             <StyledP>Water consumption</StyledP>
             <StyledDiv2>
               <StyledNum>
-                {watIntake} <StyledSpan>ml</StyledSpan>
+                {getWater} <StyledSpan>ml</StyledSpan>
               </StyledNum>
               <StyledLeft>
-                left: <StyledSpan2>{waterLeft(wat, watIntake)}</StyledSpan2>{' '}
+                left: <StyledSpan2>{waterLeft(wat, getWater)}</StyledSpan2>{' '}
                 <StyledSpan>ml</StyledSpan>
               </StyledLeft>
             </StyledDiv2>

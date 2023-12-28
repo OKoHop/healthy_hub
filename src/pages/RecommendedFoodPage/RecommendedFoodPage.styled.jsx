@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  background-color: ${props => props.theme.colors.primaryBlack};
-  color: ${props => props.theme.colors.primaryWhite};
+  background-color: ${(props) => props.theme.colors.primaryBlack};
+  color: ${(props) => props.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
 
   padding-top: 16px;
@@ -70,37 +70,28 @@ export const TitlePage = styled.h1`
 export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
   justify-content: center;
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    gap: 44px;
     align-items: start;
-    justify-content: space-between;
-  }
-`;
-
-export const BannerThumb = styled.div`
-  margin-bottom: 24px;
-  width: 300px;
-  height: 312px;
-
-  @media screen and (min-width: 834px) {
-    width: 380px;
-    height: 396px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 536px;
-    height: 560px;
-    margin-bottom: 0;
+    justify-content: flex-end;
   }
 `;
 
 export const Img = styled.img`
-  display: block;
-  max-width: 100%;
-  height: auto;
+  width: 300px;
+
+  @media screen and (min-width: 834px) {
+    width: 380px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 536px;
+  }
 `;
 
 export const RecommendedFoodList = styled.ul`
@@ -114,7 +105,7 @@ export const RecommendedFoodList = styled.ul`
     flex-wrap: wrap;
   }
 
-  @media screen and (1440px) {
-    width: calc((100% - 44px) / 2);
+  @media screen and (min-width: 1440px) {
+    width: 676px;
   }
 `;

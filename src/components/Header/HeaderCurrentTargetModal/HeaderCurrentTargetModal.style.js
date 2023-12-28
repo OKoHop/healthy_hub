@@ -105,6 +105,7 @@ export const FormTargetLabel = styled.label`
   gap: 12px;
   color: ${(p) =>
     p.isSelected ? p.theme.colors.primaryViolet : p.theme.colors.primaryWhite};
+  cursor: pointer;
 `;
 
 export const FormTargetBtn = styled.button`

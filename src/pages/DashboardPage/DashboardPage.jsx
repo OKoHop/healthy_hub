@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { getStats } from '../../redux/statistics/statisticOperations';
+
 import StyledDatepicker from '../../components/StyledDatepicker/StyledDatepicker';
-import {WaterGraph} from '../../components/Charts/WaterGraph/WaterGraph';
-import {CaloriesGraph} from '../../components/Charts/CaloriesGraph/CaloriesGraph';
-import {WeightGraph} from '../../components/Charts/WeightGraph/WeightGraph';
+import { WaterGraph } from '../../components/Charts/WaterGraph/WaterGraph';
+import { CaloriesGraph } from '../../components/Charts/CaloriesGraph/CaloriesGraph';
+import { WeightGraph } from '../../components/Charts/WeightGraph/WeightGraph';
+
 import arrowLeft from '../../images/arrow-left.svg';
 import { useLocation } from 'react-router-dom';
 import {
@@ -17,25 +19,19 @@ import {
   SecondHeader,
   LineChartBlock,
   ChartGrid,
-  ScaleChartBlock
+  ScaleChartBlock,
 } from './DashboardPage.styled';
 
 const DashboardPage = () => {
   const [date, setDate] = useState(null);
 
-
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
   const dispatch = useDispatch();
 
- 
-
-
-
   return (
     <DashboardSection>
       <DashboardContainer>
-        
         <HeaderBlock>
           <MainHeaderBlock>
             <BackLink
@@ -44,17 +40,16 @@ const DashboardPage = () => {
             >
               <ArrowReturn src={arrowLeft} alt="arrow left" />
             </BackLink>
-            <StyledDatepicker
-            />
+            <StyledDatepicker />
           </MainHeaderBlock>
           <SecondHeader></SecondHeader>
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>
-            <CaloriesGraph date={date} setDate={setDate}  />
+            <CaloriesGraph date={date} setDate={setDate} />
           </ChartGrid>
           <ChartGrid>
-          <WaterGraph date={date} setDate={setDate}  />
+            <WaterGraph date={date} setDate={setDate} />
           </ChartGrid>
         </LineChartBlock>
         <ScaleChartBlock>
