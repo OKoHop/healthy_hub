@@ -6,7 +6,7 @@ import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import { getStats } from '../../redux/statistics/statisticOperations';
 
-export const StyledDatepicker = () => {
+const StyledDatepicker = () => {
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -46,3 +46,5 @@ export const StyledDatepicker = () => {
     </>
   );
 };
+
+export default StyledDatepicker;
