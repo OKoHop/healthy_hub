@@ -1,4 +1,4 @@
-import{s as r,j as s,P as o,$ as c}from"./index-74deaae8.js";const l=r.li`
+import{s as r,j as s,P as o,a0 as c}from"./index-071323cb.js";const l=r.li`
   flex-basis: 100%;
   display: flex;
   flex-direction: row;
@@ -42,4 +42,4 @@ import{s as r,j as s,P as o,$ as c}from"./index-74deaae8.js";const l=r.li`
     font-weight: 500;
     color: ${e=>e.theme.colors.primaryGray};
   }
-`,a=({id:e,img:t,name:i,amount:n,calories:d})=>s.jsxs(l,{children:[s.jsx(p,{children:s.jsx(m,{src:t,alt:i})}),s.jsxs(x,{children:[s.jsx(h,{children:i}),s.jsxs(g,{children:[n," ",s.jsxs("span",{children:[d," calories"]})]})]})]},e);a.propTypes={id:o.string.isRequired,img:o.string.isRequired,name:o.string.isRequired,amount:o.string.isRequired,calories:o.number.isRequired};const f=a,b=async()=>{try{const{data:e}=await c.get("/api/recommended-food");return e}catch{}},w=(e,t=4)=>{const i=[];for(;i.length<t;){const n=Math.floor(Math.random()*e.length);i.includes(n)||i.push(n)}return e.filter((n,d)=>i.includes(d))};export{f as R,b as g,w as r};
+`,d=({id:e,img:t,name:i,amount:n,calories:a})=>s.jsxs(l,{children:[s.jsx(p,{children:s.jsx(m,{src:t,alt:i})}),s.jsxs(x,{children:[s.jsx(h,{children:i}),s.jsxs(g,{children:[n," ",s.jsxs("span",{children:[a," calories"]})]})]})]},e);d.propTypes={id:o.string.isRequired,img:o.string.isRequired,name:o.string.isRequired,amount:o.string.isRequired,calories:o.number.isRequired};const f=d,b=async()=>{try{const{data:e}=await c.get("/api/recommended-food");return e}catch{}},w=(e,t=4)=>{const i=[];for(;i.length<t;){const n=Math.floor(Math.random()*e.length);i.includes(n)||i.push(n)}return e.filter((n,a)=>i.includes(a))};export{f as R,b as g,w as r};
