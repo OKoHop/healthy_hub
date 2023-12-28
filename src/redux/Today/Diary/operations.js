@@ -8,7 +8,7 @@ const today = `${new Date().getFullYear()}-${
 }-${new Date().getDate()}`;
 
 export const fetchFoodStatistics = createAsyncThunk(
-  'user/statistics',
+  'today/foodStatistics',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/api/user/statistics', {
@@ -17,7 +17,6 @@ export const fetchFoodStatistics = createAsyncThunk(
           dateTo: today,
         },
       });
-      console.log('foodresponse:', response.data.data[0].stats.foodIntake);
       return response.data.data[0].stats.foodIntake;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
