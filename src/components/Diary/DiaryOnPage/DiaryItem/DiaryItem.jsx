@@ -25,13 +25,13 @@ const DiaryItem = ({ title, image, info }) => {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const foodIntakeName = title.toLowerCase();
 
-    function handleDelete(foodIntakeName) {
-    dispatch(delFoodIntake());
-    setTimeout(() => {
-      dispatch(getDailyStatistics());
-    }, 100);
-    // toast.success('WaterIntake has been successfuly reset');
-  }
+  //   function handleDelete(foodIntakeName) {
+  //   dispatch(delFoodIntake());
+  //   setTimeout(() => {
+  //     dispatch(getDailyStatistics());
+  //   }, 100);
+  //   // toast.success('WaterIntake has been successfuly reset');
+  // }
 
   const { carbohidrates, protein, fat } = info;
 
@@ -52,7 +52,7 @@ const DiaryItem = ({ title, image, info }) => {
           <FatWrap>
             Fat: <Value>{fat}</Value>
           </FatWrap>
-                    <Svg onClick={handleDelete(foodIntakeName)}>
+                    <Svg>
             <use href={`${svgSlice}#trash`}></use>
           </Svg>
         </InfoWrap>
