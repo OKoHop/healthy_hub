@@ -1,25 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getStats } from './statisticOperations';
 
-const initialState = {
-  stats: {},
+const statsInitialState = {
+  info: {},
+  isLoading: false,
+  error: null,
 };
 
 const statsSlice = createSlice({
   name: 'stats',
-  initialState,
-  reducers: {},
+  initialState: statsInitialState,
   extraReducers: (builder) => {
-    builder.addCase(getStats.fulfilled, (state, action) => {
-      if (!action.payload) {
-        state.stats = {
-          totalCalories: 0,
-          waterIntake: 0,
-          weight: 0,
-        };
-      }
-      state.stats = action.payload[0];
-    });
+    builder
+      .addCase(getStats.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getStats.fulfilled, (state, action) => {
+        state.info = action.payload;
+      })
+      .addCase(getStats.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 
