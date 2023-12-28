@@ -12,8 +12,9 @@ import {
   FatWrap,
   DiaryImage,
   TitleWrap,
+  Svg
 } from './DiaryItem.styled.js';
-
+import svgSlice from '../../../../images/Illustrations/Today/today-svg-sprite.svg';
 import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal.jsx';
 
 const DiaryItem = ({ title, image, info }) => {
@@ -39,6 +40,9 @@ const DiaryItem = ({ title, image, info }) => {
           <FatWrap>
             Fat: <Value>{fat}</Value>
           </FatWrap>
+                    <Svg onClick={() => dispatch(delFoodIntake(foodIntakeName))}>
+            <use href={`${svgSlice}#trash`}></use>
+          </Svg>
         </InfoWrap>
       ) : (
         <AddButton onClick={toggleModal}>+ Record your meal</AddButton>
