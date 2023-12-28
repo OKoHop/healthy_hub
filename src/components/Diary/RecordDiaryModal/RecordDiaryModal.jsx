@@ -32,6 +32,7 @@ import {
 
 import img1 from '../../../images/diaryPageImages/trash.png';
 import img2 from '../../../images/diaryPageImages/trash@2x.png';
+import today from '../../../helpers/todayData';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -133,7 +134,8 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
         }
       }
     );
-    dispatch(getStats('today'));
+
+    dispatch(getStats(today));
     resetForm();
     onClose();
   };

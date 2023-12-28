@@ -4,7 +4,6 @@
 	--fg: #E3FFA8;
 	--primary: #45FFBC;
 	--trans-dur: 0.3s;
-	font-size: calc(16px + (32 - 16) * (100vw - 320px) / (2560 - 320));
 }
 
 .loader_container{

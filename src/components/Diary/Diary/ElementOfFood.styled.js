@@ -96,7 +96,7 @@ export const AddFoodButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 8px;
-  color: ${props => props.theme.colors.primaryLiteGreen};
+  color: ${props => props.theme.colors.primaryGreenLite};
   font-size: ${p => p.theme.fontSizes.xs};
   line-height: 20px;
   background-color: transparent;
