@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { getStats } from '../../redux/statistics/statisticOperations';
-import { selectStatsIsLoading, selectStatsInfo } from '../../redux/statistics/statisticSelectors';
-import { Loader } from '../../components/Loader/Loader';
-import DateRangePicker from '../../components/StyledDatepicker/StyledDatepicker';
-import LineChart from '../../components/Charts/LineChart';
-import ScaleChart from '../../components/Charts/ScaleChart';
+import StyledDatepicker from '../../components/StyledDatepicker/StyledDatepicker';
+import {WaterGraph} from '../../components/Charts/WaterGraph/WaterGraph';
+import {CaloriesGraph} from '../../components/Charts/CaloriesGraph/CaloriesGraph';
+import {WeightGraph} from '../../components/Charts/WeightGraph/WeightGraph';
 import arrowLeft from '../../images/arrow-left.svg';
 import { useLocation } from 'react-router-dom';
 import {
@@ -22,67 +21,44 @@ import {
 } from './DashboardPage.styled';
 
 const DashboardPage = () => {
-  const currentDate = new Date();
-  const nextMonthDate = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth() + 1,
-    currentDate.getDate()
-  );
+  const [date, setDate] = useState(null);
 
-  const [dateRange, setDateRange] = useState({
-    startDate: currentDate,
-    endDate: nextMonthDate,
-  });
-  const isLoading = useSelector(selectStatsIsLoading);
+
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/today');
+  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
   const dispatch = useDispatch();
 
-  const stats = useSelector(selectStatsInfo);
-  useEffect(() => {
-    dispatch(getStats(dateRange.startDate, dateRange.endDate));
-  }, [dispatch, dateRange]);
+ 
 
-  const handleDateChange = (startDate, endDate) => {
-    const formattedStartDate = startDate.toISOString();
-    const formattedEndDate = endDate.toISOString();
 
-    setDateRange({
-      startDate: formattedStartDate,
-      endDate: formattedEndDate,
-    });
-  };
 
   return (
     <DashboardSection>
       <DashboardContainer>
-        {isLoading && <Loader />}
+        
         <HeaderBlock>
           <MainHeaderBlock>
             <BackLink
-              onClick={() => dispatch(getStats('main'))}
+              onClick={() => dispatch(getStats('today'))}
               to={backLinkLocationRef.current}
             >
               <ArrowReturn src={arrowLeft} alt="arrow left" />
             </BackLink>
-            <DateRangePicker
-              startDate={dateRange.startDate}
-              endDate={dateRange.endDate}
-              onDateChange={handleDateChange}
+            <StyledDatepicker
             />
           </MainHeaderBlock>
-          <SecondHeader>{currentDate.getMonth() + 1}</SecondHeader>
+          <SecondHeader></SecondHeader>
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>
-            <LineChart type={'calories'} info={stats} />
+            <CaloriesGraph date={date} setDate={setDate}  />
           </ChartGrid>
           <ChartGrid>
-            <LineChart type={'water'} info={stats} />
+          <WaterGraph date={date} setDate={setDate}  />
           </ChartGrid>
         </LineChartBlock>
         <ScaleChartBlock>
-          <ScaleChart type={'weight'} info={stats} />
+          <WeightGraph date={date} setDate={setDate} />
         </ScaleChartBlock>
       </DashboardContainer>
     </DashboardSection>

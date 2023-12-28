@@ -3,11 +3,29 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
+function getStartAndEndDate(dateString) {
+  if (dateString.length === 20) {
+    const startDateString = dateString.slice(0, 10);
+    const endDateString = dateString.slice(10, 20);
+    return [startDateString, endDateString];
+  } else if (dateString.length === 10) {
+    return [dateString, dateString];
+  } else {
+    console.error('incorrect date format');
+    return null;
+  }
+}
 export const getStats = createAsyncThunk(
-  'stats/getAll',
-  async (startDate, endDate, thunkAPI) => {
+  'user/statistics',
+  async (date, thunkAPI) => {
+    const [startDate, endDate] = getStartAndEndDate(date);
     try {
-      const { data } = await axios.get(`/api/user/statistics?dateFrom=${startDate}&dateTo=${endDate}`);
+      const { data } = await axios.get(`/api/user/statistics`, {
+        params: {
+          dateFrom: startDate,
+          dateTo: endDate,
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
