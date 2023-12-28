@@ -28,7 +28,7 @@ import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 
 const Water = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const wat = useSelector(water);
+  const wat = useSelector(water) || 0;
   const watIntake = useSelector(waterIntake);
   const dispatch = useDispatch();
   const getWater = useSelector(dailyWater) || 0;
