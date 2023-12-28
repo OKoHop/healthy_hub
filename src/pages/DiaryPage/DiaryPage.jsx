@@ -6,16 +6,7 @@ import { nanoid } from 'nanoid';
 
 import ItemsToAdd from '../../components/Diary/DiaryPageItemsToAdd/ItemsToAdd';
 import ElementOfFood from '../../components/Diary/Diary/ElementOfFood';
-import {
-  selectFoodIntake,
-  selectConsumedMacronutrientsPerDay,
-  selectConsumedProductsForBreakfast,
-  selectConsumedProductsForDinner,
-  selectConsumedProductsForLunch,
-  selectConsumedProductsForSnack,
-  selectIntakeFoodPerDay,
-  selectStatsInfo,
-} from '../../redux/statistics/statisticSelectors';
+import { selectFoodIntake } from '../../redux/statistics/statisticSelectors';
 import { getArrayToRenderDiary } from '../../helpers/getArrayToRenderDiary';
 
 import breakfastImg from '../../images/diaryPageImages/breakfast.png';
@@ -56,7 +47,6 @@ const DiaryPage = () => {
   const [snackFoodIntake, setSnackFoodIntake] = useState([]);
 
   const foodIntake = useSelector(selectFoodIntake);
-  const test = useSelector(selectStatsInfo);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,11 +69,10 @@ const DiaryPage = () => {
     }
   }, [foodIntake]);
 
-console.log(breakfastFoodIntake);
-const removeNullDishObjects = (array) =>{
-  const filteredArray = array.filter(item => item.dish !== null);
-  return filteredArray;
-}
+  const removeNullDishObjects = (array) => {
+    const filteredArray = array.filter((item) => item.dish !== null);
+    return filteredArray;
+  };
 
   return (
     <Section>
@@ -108,16 +97,17 @@ const removeNullDishObjects = (array) =>{
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
-                {getArrayToRenderDiary(removeNullDishObjects(breakfastFoodIntake), 'Breakfast').map(
-                  (item, index) => (
-                    <ElementOfFood
-                      item={item}
-                      key={nanoid()}
-                      index={index}
-                      img={breakfastImg}
-                    />
-                  )
-                )}
+                {getArrayToRenderDiary(
+                  removeNullDishObjects(breakfastFoodIntake),
+                  'Breakfast'
+                ).map((item, index) => (
+                  <ElementOfFood
+                    item={item}
+                    key={nanoid()}
+                    index={index}
+                    img={breakfastImg}
+                  />
+                ))}
               </ListOfDishes>
             </BlockDetailedInformation>
           </DiaryItem>
