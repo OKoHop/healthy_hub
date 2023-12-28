@@ -84,7 +84,7 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
   const initialValues = {
     productList: [
       {
-        mealType: mealType,
+        mealType: item?.type ?? '',
         mealName: item?.dish ?? '',
         carbonohidrates: item?.carbohidrates ?? '',
         protein: item?.protein ?? '',
@@ -112,9 +112,9 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
     await values.productList.forEach(
       ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
         const data = {
-          mealType: mealType.toString(),
-          mealName: mealName.toString(),
-          carbohydrate: carbonohidrates.toFixed(1).toString(),
+          type: mealType.toString(),
+          dish: mealName.toString(),
+          carbohidrates: carbonohidrates.toFixed(1).toString(),
           protein: protein.toFixed(1).toString(),
           fat: fat.toFixed(1).toString(),
           calories: calories.toString(),
