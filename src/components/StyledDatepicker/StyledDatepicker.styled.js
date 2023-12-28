@@ -4,7 +4,7 @@ import { createGlobalStyle, styled } from "styled-components";
 export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
     position: relative;
-   
+    z-index: 9999;
     
 
   }
@@ -22,7 +22,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     background-color: ${p => p.theme.colors.primaryBlack2};
     font-family: Poppins;
     border-radius: 6px; 
-    
+    z-index: 9999;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: ${p => p.theme.colors.primaryGreenLite} rgba(255, 255, 255, 0.12); 
@@ -70,14 +70,14 @@ export const CalendarGlobalStyles = createGlobalStyle`
     gap: 8px;
     flex-direction: column;
     justify-content: space-between;
-    
+    z-index: 9999;
     margin: 0;
   }
   .react-datepicker__month-wrapper {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    
+    z-index: 9999;
   }
   .react-datepicker__month--text {
     margin-left:-16px;
@@ -85,7 +85,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     background-color:${p => p.theme.colors.primaryBlack2};
     color:${p => p.theme.colors.primaryGray};
     font-size: 14px;
-    
+    z-index: 9999;
   }
   .react-datepicker__month-text:hover {
     color:${p => p.theme.colors.primaryGreenLite};

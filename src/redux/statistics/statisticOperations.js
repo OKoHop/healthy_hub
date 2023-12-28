@@ -15,9 +15,8 @@ function getStartAndEndDate(dateString) {
     return null;
   }
 }
-
 export const getStats = createAsyncThunk(
-  'stats/getAll',
+  'user/statistics',
   async (date, thunkAPI) => {
     const [startDate, endDate] = getStartAndEndDate(date);
     try {
