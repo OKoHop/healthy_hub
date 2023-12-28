@@ -17,6 +17,7 @@ import storage from 'redux-persist/lib/storage';
 import { waterIntakeReducer } from './Today/Water/waterSlice';
 import { nutrientsReducer } from './Today/Food/foodSlice';
 import { userReducer } from './user/slice';
+import { diaryReducer } from './Today/Diary/diarySlice';
 
 const dayliPersistConfig = {
   key: 'daily',
@@ -25,7 +26,7 @@ const dayliPersistConfig = {
 };
 
 const authPersistConfig = {
-  key: 'auth', 
+  key: 'auth',
   storage,
   whitelist: ['user', 'isLoggedIn', 'token'],
 };
@@ -39,6 +40,7 @@ export const store = configureStore({
     water: persistReducer(dayliPersistConfig, waterIntakeReducer),
     nutrients: nutrientsReducer,
     user: userReducer,
+    diary: diaryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
