@@ -14,7 +14,9 @@ const WaterModal = ({ open, close }) => {
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
     dispatch(saveWaterIntake(waterData));
-    dispatch(getDailyStatistics());
+    setTimeout(() => {
+      dispatch(getDailyStatistics());
+    }, 1);
     close();
   };
 
