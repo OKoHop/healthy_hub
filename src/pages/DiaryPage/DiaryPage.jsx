@@ -42,7 +42,8 @@ import {
   BlockHeader,
 } from './DiaryPage.styled';
 import { getStats } from '../../redux/statistics/statisticOperations';
-import today from '../../helpers/todayData'
+import today from '../../helpers/todayData';
+import { calculateTotal } from '../../helpers/calculateTotalIngridients';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ const DiaryPage = () => {
       try {
         await dispatch(getStats(today));
       } catch (error) {
-        toast.error(error)
+        toast.error(error);
       }
     };
 
@@ -76,22 +77,9 @@ const DiaryPage = () => {
       setDinnerFoodIntake(foodIntake.foodIntake.dinner);
       setSnackFoodIntake(foodIntake.foodIntake.snack);
     }
-    
   }, [foodIntake]);
 
-  const calculateTotal = (array) => {
-    return array.reduce(
-      (total, item) => {
-        total.carbohidrates += item.carbohidrates || 0;
-        total.protein += item.protein || 0;
-        total.fat += item.fat || 0;
-        return total;
-      },
-      { carbohidrates: 0, protein: 0, fat: 0 }
-    );
-  };
-
-  
+console.log(foodIntake);
 
   return (
     <Section>

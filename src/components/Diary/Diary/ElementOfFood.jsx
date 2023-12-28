@@ -43,7 +43,7 @@ const ElementOfFood = ({ item, index, img }) => {
             />
           )}
         </Wrapper>
-      ) : (
+      ) : ( dish && 
         <Wrapper>
           <SequenceNumber>{index + 1}</SequenceNumber>
           <Dish>
