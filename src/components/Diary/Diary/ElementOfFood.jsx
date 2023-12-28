@@ -28,7 +28,7 @@ const ElementOfFood = ({ item, index, img }) => {
   const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
 
   const { carbohidrates, protein, fat, dish, mealType, showButton } = item;
-  console.log(mealType);
+  
   return (
     <>
       {showButton ? (
