@@ -72,7 +72,7 @@ const Carbonohidrates = () => {
         <P>Carbonohidrates</P>
         <Div3>
           <P2>
-            Goal: <Span>{receivedCarb}</Span>
+            Goal: <Span>{dailyCarb}</Span>
           </P2>
           <P2>
             left: <Span>{leftCarb(dailyCarb, receivedCarb)}</Span>

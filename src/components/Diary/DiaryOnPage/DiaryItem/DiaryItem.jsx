@@ -17,9 +17,13 @@ import {
 } from './DiaryItem.styled.js';
 import svgSlice from '../../../../images/Illustrations/Today/today-svg-sprite.svg';
 import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal.jsx';
-import { delFoodIntake } from '../../../../redux/statistics/statisticOperations.js';
+import {
+  delFoodIntake,
+  getStats,
+} from '../../../../redux/statistics/statisticOperations.js';
 import { useDispatch } from 'react-redux';
 import { getDailyStatistics } from '../../../../redux/Today/Food/operations.js';
+import today from '../../../../helpers/todayData.js';
 
 const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,8 +33,10 @@ const DiaryItem = ({ title, image, info }) => {
 
   function handleDelete(foodIntakeName) {
     dispatch(delFoodIntake(foodIntakeName));
+
     setTimeout(() => {
       dispatch(getDailyStatistics());
+      dispatch(getStats(today));
     }, 100);
     toast.success('FoodIntake has been successfuly delete');
   }
