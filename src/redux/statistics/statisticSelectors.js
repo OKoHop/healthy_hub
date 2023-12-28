@@ -1,43 +1,14 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectFoodIntake = (state) => state.stats.info.stats;
-
-export const selectStatsInfo = (state) => state.stats.info.stats;
-export const selectStatsIsLoading = (state) => state.stats.isLoading;
-export const selectIntakeFoodPerDay = (state) => state.stats.info.data;
-export const selectTotalCalories = (state) => state.stats.info.totalCalories;
-export const selectWaterIntake = (state) => state.stats.info.waterIntake;
-export const selectWeight = (state) => state.stats.info.weight;
+export const selectIntakeFoodPerDay = (state) => state.stats.food;
+export const selectTotalCalories = (state) =>
+  state.data['0'].stats.totalCalories;
+export const selectWaterIntake = (state) => state.data['0'].stats.waterIntake;
+export const selectWeight = (state) => state.data['0'].stats.weight;
 
 const getProductsByMealType = (products, inputMealType) => {
   return products.filter(({ mealType }) => mealType === inputMealType);
 };
-
-export const selectStatsWater = createSelector(
-  [selectWaterIntake],
-  (waterIntake) => {
-    if (!waterIntake || waterIntake.length === 0) {
-      return 0;
-    }
-
-    return waterIntake[0].stats.waterIntake || 0;
-  }
-);
-
-export const selectStatsWeight = createSelector([selectWeight], (weight) => {
-  if (!weight || weight.length === 0) {
-    return 0;
-  }
-
-  return weight || 0;
-});
-
-export const selectStatsTotalCalories = createSelector(
-  [selectTotalCalories],
-  (totalCalories) => {
-    return totalCalories;
-  }
-);
 
 export const selectConsumedProductsForBreakfast = createSelector(
   [selectIntakeFoodPerDay],
