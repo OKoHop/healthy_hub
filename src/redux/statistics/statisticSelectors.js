@@ -1,7 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectStatsInfo = (state) => state.stats.info.stats;
 export const selectFoodIntake = (state) => state.stats.info.stats;
+
+export const selectStatsInfo = (state) => state.stats.info.stats;
 export const selectStatsIsLoading = (state) => state.stats.isLoading;
 export const selectIntakeFoodPerDay = (state) => state.stats.info.data;
 export const selectTotalCalories = (state) => state.stats.info.totalCalories;

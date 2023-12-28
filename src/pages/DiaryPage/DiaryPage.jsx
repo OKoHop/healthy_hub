@@ -79,7 +79,11 @@ const DiaryPage = () => {
     }
   }, [foodIntake]);
 
-console.log(foodIntake);
+console.log(breakfastFoodIntake);
+const removeNullDishObjects = (array) =>{
+  const filteredArray = array.filter(item => item.dish !== null);
+  return filteredArray;
+}
 
   return (
     <Section>
@@ -104,7 +108,7 @@ console.log(foodIntake);
             </BlockGeneralInfo>
             <BlockDetailedInformation>
               <ListOfDishes>
-                {getArrayToRenderDiary(breakfastFoodIntake, 'Breakfast').map(
+                {getArrayToRenderDiary(removeNullDishObjects(breakfastFoodIntake), 'Breakfast').map(
                   (item, index) => (
                     <ElementOfFood
                       item={item}

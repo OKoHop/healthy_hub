@@ -85,8 +85,8 @@ const SettingsPage = () => {
     height: userProfile.height,
     weight: userProfile.weight,
     activity: userProfile?.activity?.toString() || '',
-    avatarPreview: userProfile.avatarURL,
-    userAvatarFile: null,
+    // avatarPreview: userProfile.avatarURL,
+    // userAvatarFile: null,
   };
 
   const handleSaveClick = (values) => {
@@ -155,7 +155,7 @@ const SettingsPage = () => {
                   <Label htmlFor="userAvatarFile">
                     <AvaThumb>
                       <AvaImg
-                        src={formik.values.avatarPreview || avatar}
+                        src={userProfile.avatarURL || avatar}
                         alt="userAvatar"
                       />
                     </AvaThumb>
