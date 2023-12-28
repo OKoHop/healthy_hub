@@ -12,12 +12,13 @@ import dinnerImage from '../../../images/diaryPageImages/dinner.png';
 import lunchImage from '../../../images/diaryPageImages/lunch.png';
 import snackImage from '../../../images/diaryPageImages/snack.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectConsumedMacronutrientsPerDay } from '../../../redux/statistics/statisticSelectors';
+import { selectConsumedMacronutrientsPerDay, selectFoodIntake } from '../../../redux/statistics/statisticSelectors';
 import { getStats } from '../../../redux/statistics/statisticOperations';
 import { useEffect } from 'react';
 
 const DiaryOnMain = () => {
   const dispatch = useDispatch();
+  const foodIntake = useSelector(selectFoodIntake)
   const ConsumedMacronutrients = useSelector(
     selectConsumedMacronutrientsPerDay
   );
@@ -29,13 +30,13 @@ const DiaryOnMain = () => {
     snack: snackInfo,
   } = ConsumedMacronutrients;
 
-  const getStatsPerDay = () => {
-    const currentDay = new Date();
-    const validateDate = `${currentDay.getFullYear()}-${
-      currentDay.getMonth() + 1
-    }-${currentDay.getDate()}`;
-    dispatch(getStats(validateDate, validateDate));
-  };
+  // const getStatsPerDay = () => {
+  //   const currentDay = new Date();
+  //   const validateDate = `${currentDay.getFullYear()}-${
+  //     currentDay.getMonth() + 1
+  //   }-${currentDay.getDate()}`;
+  //   dispatch(getStats(validateDate, validateDate));
+  // };
 
   // useEffect(() => {
   //   getStatsPerDay();

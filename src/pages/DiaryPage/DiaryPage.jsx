@@ -42,31 +42,25 @@ import {
   BlockHeader,
 } from './DiaryPage.styled';
 import { getStats } from '../../redux/statistics/statisticOperations';
-
-
-const today = new Date();
-const year = today.getFullYear();
-const month = (today.getMonth() + 1).toString().padStart(2, '0');
-const day = today.getDate().toString().padStart(2, '0');
-
-const formattedDate = `${year}-${month}-${day}`;
+import today from '../../helpers/todayData'
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
-  const [foodIntakeArray, setFoodIntakeArray] = useState(null);
+
   const [lunchFoodIntake, setLunchFoodIntake] = useState([]);
   const [breakfastFoodIntake, setBreakfastFoodIntake] = useState([]);
   const [dinnerFoodIntake, setDinnerFoodIntake] = useState([]);
   const [snackFoodIntake, setSnackFoodIntake] = useState([]);
 
   const foodIntake = useSelector(selectFoodIntake);
+  const test = useSelector(selectStatsInfo);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await dispatch(getStats(formattedDate));
+        await dispatch(getStats(today));
       } catch (error) {
         toast.error(error)
       }
@@ -77,11 +71,10 @@ const DiaryPage = () => {
 
   useEffect(() => {
     if (foodIntake) {
-      setFoodIntakeArray(foodIntake[0].stats.foodIntake);
-      setLunchFoodIntake(foodIntake[0].stats.foodIntake.lunch);
-      setBreakfastFoodIntake(foodIntake[0].stats.foodIntake.breakfast);
-      setDinnerFoodIntake(foodIntake[0].stats.foodIntake.dinner);
-      setSnackFoodIntake(foodIntake[0].stats.foodIntake.snack);
+      setLunchFoodIntake(foodIntake.foodIntake.lunch);
+      setBreakfastFoodIntake(foodIntake.foodIntake.breakfast);
+      setDinnerFoodIntake(foodIntake.foodIntake.dinner);
+      setSnackFoodIntake(foodIntake.foodIntake.snack);
     }
     
   }, [foodIntake]);
@@ -98,10 +91,7 @@ const DiaryPage = () => {
     );
   };
 
-  const consumedMacronutrients = useSelector(
-    selectConsumedMacronutrientsPerDay
-  );
-  console.log(foodIntakeArray);
+  
 
   return (
     <Section>

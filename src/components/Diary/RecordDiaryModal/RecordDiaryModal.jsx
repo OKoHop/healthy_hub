@@ -32,6 +32,7 @@ import {
 
 import img1 from '../../../images/diaryPageImages/trash.png';
 import img2 from '../../../images/diaryPageImages/trash@2x.png';
+import today from '../../../helpers/todayData';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -85,14 +86,6 @@ const schema = yup.object({
   ),
 });
 
-
-const today = new Date();
-const year = today.getFullYear();
-const month = (today.getMonth() + 1).toString().padStart(2, '0');
-const day = today.getDate().toString().padStart(2, '0');
-
-const formattedDate = `${year}-${month}-${day}`;
-
 const modalRoot = document.querySelector('#modal-root');
 
 const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
@@ -142,7 +135,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
       }
     );
 
-    dispatch(getStats(formattedDate));
+    dispatch(getStats(today));
     resetForm();
     onClose();
   };
