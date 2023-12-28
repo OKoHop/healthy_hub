@@ -31,10 +31,10 @@ export const getDailyStatistics = createAsyncThunk(
           }-${date.getDate()}`,
         },
       });
-      if (!data.data) {
+      if (!data) {
         return null;
       }
-      return data.data;
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
