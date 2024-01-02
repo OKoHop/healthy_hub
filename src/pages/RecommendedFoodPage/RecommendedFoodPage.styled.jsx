@@ -50,6 +50,13 @@ export const BackLink = styled(NavLink)`
 
 export const ArrowReturn = styled.img`
   width: 16px;
+  svg {
+    &:hover {
+      stroke: ${(p) => p.theme.colors.primaryWhite};
+    }
+  }
+  transition: ${(p) => p.theme.transition.customTrans};
+
   @media screen and (min-width: 834px) {
     width: 24px;
   }

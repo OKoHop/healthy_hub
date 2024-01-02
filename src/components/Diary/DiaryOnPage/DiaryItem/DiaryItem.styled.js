@@ -77,6 +77,10 @@ export const AddButton = styled.button`
   outline: none;
   padding: 0;
   cursor: pointer;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Svg = styled.svg`

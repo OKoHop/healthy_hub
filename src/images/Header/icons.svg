@@ -8,9 +8,9 @@
 <path fill="none" stroke="#e3ffa8" style="stroke: var(--color1, #e3ffa8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M4.666 16h22.44"></path>
 </symbol>
 <symbol id="icon-close-circle" viewBox="0 0 32 32">
-<path fill="none" stroke="#b6b6b6" style="stroke: var(--color2, #b6b6b6)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M15.999 29.333c7.333 0 13.333-6 13.333-13.333s-6-13.333-13.333-13.333c-7.333 0-13.333 6-13.333 13.333s6 13.333 13.333 13.333z"></path>
-<path fill="none" stroke="#b6b6b6" style="stroke: var(--color2, #b6b6b6)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M12.227 19.773l7.547-7.547"></path>
-<path fill="none" stroke="#b6b6b6" style="stroke: var(--color2, #b6b6b6)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M19.773 19.773l-7.547-7.547"></path>
+<path fill="none"  style="stroke: var(--color2, )" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M15.999 29.333c7.333 0 13.333-6 13.333-13.333s-6-13.333-13.333-13.333c-7.333 0-13.333 6-13.333 13.333s6 13.333 13.333 13.333z"></path>
+<path fill="none"  style="stroke: var(--color2,)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M12.227 19.773l7.547-7.547"></path>
+<path fill="none"  style="stroke: var(--color2, )" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M19.773 19.773l-7.547-7.547"></path>
 </symbol>
 <symbol id="icon-edit-2" viewBox="0 0 32 32">
 <path fill="none" stroke="#e3ffa8" style="stroke: var(--color1, #e3ffa8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M17.679 4.8l-10.947 11.587c-0.413 0.44-0.813 1.307-0.893 1.907l-0.493 4.32c-0.173 1.56 0.947 2.627 2.493 2.36l4.293-0.733c0.6-0.107 1.44-0.547 1.853-1l10.947-11.587c1.893-2 2.747-4.28-0.2-7.067-2.933-2.76-5.16-1.787-7.053 0.213z"></path>

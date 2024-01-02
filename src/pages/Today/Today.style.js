@@ -32,6 +32,7 @@ export const SVG = styled.svg`
   width: 16px;
   height: 16px;
   stroke: #b6b6b6;
+  transition: ${(p) => p.theme.transition.customTrans};
 `;
 
 export const Div = styled.div`
@@ -84,7 +85,16 @@ export const DivLink = styled.div`
   display: flex;
   gap: 6px;
   align-items: center;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover {
+    svg {
+      stroke: ${(p) => p.theme.colors.primaryWhite};
+    }
+
+    color: ${(p) => p.theme.colors.primaryWhite};
+  }
 `;
+
 export const Section = styled.section`
   position: relative;
   margin-top: 16px;
