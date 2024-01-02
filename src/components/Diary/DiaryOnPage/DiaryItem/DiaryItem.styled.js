@@ -82,3 +82,17 @@ export const AddButton = styled.button`
     text-decoration: underline;
   }
 `;
+
+export const Svg = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: #e3ffa8;
+  cursor: pointer;
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  &:hover,
+  :focus {
+    transform: scale(1.2);
+  }
+`;

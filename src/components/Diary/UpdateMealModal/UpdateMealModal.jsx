@@ -24,6 +24,7 @@ import {
   BtnConfirm,
   BtnCancel,
 } from './UpdateMealModal.styled';
+import today from '../../../helpers/todayData';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -83,7 +84,7 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
   const initialValues = {
     productList: [
       {
-        mealType: mealType,
+        mealType: item?.type ?? '',
         mealName: item?.dish ?? '',
         carbonohidrates: item?.carbohidrates ?? '',
         protein: item?.protein ?? '',
@@ -111,22 +112,17 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
     await values.productList.forEach(
       ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
         const data = {
-          /* mealType: mealType.toString(), */
+          type: mealType.toString(),
           dish: mealName.toString(),
           carbohidrates: carbonohidrates.toFixed(1).toString(),
           protein: protein.toFixed(1).toString(),
           fat: fat.toFixed(1).toString(),
           calories: calories.toString(),
         };
-        console.log(item?._id);
-        if (item && item._id) {
-          dispatch(updateFood({ foodId: item._id, data }));
-        } else {
-          console.error('Item is undefined or has no _id');
-        }
+        dispatch(updateFood({ foodId: item._id, data }));
       }
     );
-    dispatch(getStats('today'));
+    dispatch(getStats(today));
     resetForm();
     onClose();
   };
@@ -139,8 +135,6 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   });
-
-  console.log('Item:', item);
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>

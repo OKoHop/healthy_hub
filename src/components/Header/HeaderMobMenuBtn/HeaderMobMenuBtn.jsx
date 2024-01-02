@@ -33,10 +33,14 @@ export const HeaderMobMenuBtn = () => {
 
   const openMenu = () => {
     setIsMenuOpen(true);
+    document.body.classList.add('modal-open');
   };
 
-  const closeMenu = () => setIsMenuOpen(false);
-  
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.classList.remove('modal-open');
+  };
+
   return (
     <>
       <BtnMenuMob onClick={openMenu}>

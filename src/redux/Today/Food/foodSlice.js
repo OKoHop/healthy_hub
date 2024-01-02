@@ -6,6 +6,7 @@ const initialState = {
   protein: 0,
   fat: 0,
   dailyNutrients: {},
+  isLoading: false,
 };
 
 const nutrientsSlice = createSlice({
@@ -13,22 +14,25 @@ const nutrientsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getStatisticts.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(getStatisticts.fulfilled, (state, action) => {
         state.carbonohidrates = action.payload.nutrients.carbonohidrates;
         state.protein = action.payload.nutrients.protein;
         state.fat = action.payload.nutrients.fat;
       })
+      .addCase(getStatisticts.rejected, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getDailyStatistics.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(getDailyStatistics.fulfilled, (state, action) => {
-        if (!action.payload) {
-          state.dailyNutrients = {
-            totalCalories: 0,
-            totalCarbohidrates: 0,
-            totalProtein: 0,
-            totalFat: 0,
-            waterIntake: 0,
-          };
-        }
-        state.dailyNutrients = action.payload[0].stats;
+        state.dailyNutrients = action.payload;
+      })
+      .addCase(getDailyStatistics.rejected, (state, action) => {
+        state.isLoading = true;
       });
   },
 });

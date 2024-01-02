@@ -75,7 +75,7 @@ button {
 }
 
 .modal-open {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
     

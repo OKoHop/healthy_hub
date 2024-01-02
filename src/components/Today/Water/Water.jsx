@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
 import {
   P,
@@ -28,7 +28,7 @@ import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 
 const Water = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const wat = useSelector(water);
+  const wat = useSelector(water) || 0;
   const watIntake = useSelector(waterIntake);
   const dispatch = useDispatch();
   const getWater = useSelector(dailyWater) || 0;
@@ -63,6 +63,10 @@ const Water = () => {
     toast.success('WaterIntake has been successfuly reset');
   }
 
+  useEffect(() => {
+    dispatch(getDailyStatistics());
+  }, [getWater]);
+
   return (
     <>
       <Thumb>
@@ -79,7 +83,7 @@ const Water = () => {
             <StyledP>Water consumption</StyledP>
             <StyledDiv2>
               <StyledNum>
-                {getWater} <StyledSpan>ml</StyledSpan>
+                {getWater && getWater} <StyledSpan>ml</StyledSpan>
               </StyledNum>
               <StyledLeft>
                 left: <StyledSpan2>{waterLeft(wat, getWater)}</StyledSpan2>{' '}

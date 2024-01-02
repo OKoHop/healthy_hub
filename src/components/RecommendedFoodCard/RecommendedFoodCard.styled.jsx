@@ -13,6 +13,10 @@ export const ProductCard = styled.li`
   @media screen and (min-width: 834px) {
     flex-basis: calc((100% - 20px) / 2);
   }
+
+    @media screen and (min-width: 1440px) {
+      flex-basis: calc((676px - 20px) / 2);
+  }
 `;
 
 export const ImgThumb = styled.div`

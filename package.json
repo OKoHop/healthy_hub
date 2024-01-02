@@ -18,6 +18,8 @@
     "@reduxjs/toolkit": "^2.0.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "axios": "^1.6.2",
+    "chart.js": "^4.4.1",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "formik": "^2.4.5",
     "live-server": "^1.2.2",
