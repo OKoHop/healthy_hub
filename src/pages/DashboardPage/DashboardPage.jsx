@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getStats } from '../../redux/statistics/statisticOperations';
 
 import StyledDatepicker from '../../components/StyledDatepicker/StyledDatepicker';
@@ -21,10 +21,13 @@ import {
   ChartGrid,
   ScaleChartBlock,
 } from './DashboardPage.styled';
+import { selectDateIntake, selectIsLoading } from '../../redux/statistics/statisticSelectors';
 
 const DashboardPage = () => {
   const [date, setDate] = useState(null);
 
+  const dataIntake = useSelector(selectDateIntake);
+  const isLoading = useSelector(selectIsLoading);
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/main');
   const dispatch = useDispatch();
@@ -46,7 +49,7 @@ const DashboardPage = () => {
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>
-            <CaloriesGraph date={date} setDate={setDate} />
+            <CaloriesGraph date={date} setDate={setDate} dataIntake={dataIntake} />
           </ChartGrid>
           <ChartGrid>
             <WaterGraph date={date} setDate={setDate} />

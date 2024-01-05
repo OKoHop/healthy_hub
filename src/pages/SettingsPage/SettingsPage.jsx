@@ -85,8 +85,8 @@ const SettingsPage = () => {
     height: userProfile.height,
     weight: userProfile.weight,
     activity: userProfile?.activity?.toString() || '',
-    // avatarPreview: userProfile.avatarURL,
-    // userAvatarFile: null,
+    avatarPreview: userProfile.avatarURL,
+    userAvatarFile: null,
   };
 
   const handleSaveClick = (values) => {

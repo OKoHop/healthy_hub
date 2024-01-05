@@ -24,25 +24,36 @@ import {
 import { useState, useEffect } from 'react';
 import { getStats } from '../../../redux/statistics/statisticOperations';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDateIntake, selectIsLoading } from '../../../redux/statistics/statisticSelectors';
 
-export const CaloriesGraph = ({ date }) => {
+export const CaloriesGraph = () => {
   const [totalCalories, setTotalCalories] = useState([]);
+  const [date, setDate] = useState([])
   const dispatch = useDispatch();
+  const arrayDateIntake = useSelector(selectDateIntake);
+  const isLoading = useSelector(selectIsLoading);
+ 
+  // setDate(arrayDateIntake.map(date => date.date));
+  // setTotalCalories(arrayDateIntake.map(calories => calories.stats.totalCalories))
 
-  useEffect(() => {
-    if (date !== null) {
-      const fetchData = async (date) => {
-        try {
-          const totalCalories = await dispatch(getStats(date));
-          setTotalCalories(totalCalories.payload);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-      fetchData(date);
-    }
-  }, [date, dispatch]);
+  // console.log('date', date);
+  // console.log('totalCalories', totalCalories);
+ 
+  // useEffect(() => {
+  //   if (date !== null) {
+  //     const fetchData = async (date) => {
+  //       try {
+  //         await dispatch(getStats(date));
+  //         console.log('totalCalories', totalCalories);
+  //         setTotalCalories(totalCalories.payload);
+  //       } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //       }
+  //     };
+  //     fetchData(date);
+  //   }
+  // }, [date, dispatch]);
 
   ChartJS.register(
     CategoryScale,

@@ -81,6 +81,7 @@ const schema = yup.object({
 const modalRoot = document.querySelector('#modal-root');
 
 const UpdateMealModal = ({ onClose, mealType, item }) => {
+  console.log(mealType);
   const initialValues = {
     productList: [
       {
