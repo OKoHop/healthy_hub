@@ -75,7 +75,9 @@ export const delFoodIntake = createAsyncThunk(
   async (foodIntakeName, thunkAPI) => {
     try {
       const response = await axios.delete('/api/user/food-intake', {
-        type: foodIntakeName,
+        params: {
+          type: foodIntakeName,
+        },
       });
 
       return response.data;

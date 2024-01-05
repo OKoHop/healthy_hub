@@ -22,11 +22,13 @@ const ElementOfFood = ({ item, index, img }) => {
   const [isRecordModalOpen, setIsRecordModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const toggleModalRecord = () => setIsRecordModalOpen(!isRecordModalOpen);
+  const toggleModalRecord = () => {
+    setIsRecordModalOpen(!isRecordModalOpen);
+  };
   const toggleModalEdit = () => setIsEditModalOpen(!isEditModalOpen);
 
   const { carbohidrates, protein, fat, dish, mealType, showButton } = item;
-
+  
   return (
     <>
       {showButton ? (

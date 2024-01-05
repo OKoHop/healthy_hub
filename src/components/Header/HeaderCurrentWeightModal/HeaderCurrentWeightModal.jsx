@@ -18,6 +18,7 @@ import {
   TextCurrentWeight,
   TitleCurrentWeight,
 } from './HeaderCurrentWeightModal.style';
+import { fetchData } from '../../../redux/Today/Daily/operations';
 
 export const HeaderCurrentWeightModal = ({ closePanel }) => {
   const dispatch = useDispatch();
@@ -40,8 +41,12 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
       return toast.error('Enter current weight');
     }
     dispatch(updateWeight(currentWeight));
-    dispatch(refreshUser())
-   
+    setTimeout(() => {
+      dispatch(fetchData());
+    }, 100);
+
+    dispatch(refreshUser());
+
     closePanel();
   };
 

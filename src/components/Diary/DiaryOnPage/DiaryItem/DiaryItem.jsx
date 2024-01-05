@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 import {
   AddButton,
@@ -12,26 +13,33 @@ import {
   FatWrap,
   DiaryImage,
   TitleWrap,
-  Svg
+  Svg,
 } from './DiaryItem.styled.js';
 import svgSlice from '../../../../images/Illustrations/Today/today-svg-sprite.svg';
 import RecordDiaryModal from '../../RecordDiaryModal/RecordDiaryModal.jsx';
-import { delFoodIntake } from '../../../../redux/statistics/statisticOperations.js';
+import {
+  delFoodIntake,
+  getStats,
+} from '../../../../redux/statistics/statisticOperations.js';
 import { useDispatch } from 'react-redux';
+import { getDailyStatistics } from '../../../../redux/Today/Food/operations.js';
+import today from '../../../../helpers/todayData.js';
 
 const DiaryItem = ({ title, image, info }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const foodIntakeName = title.toLowerCase();
 
-  //   function handleDelete(foodIntakeName) {
-  //   dispatch(delFoodIntake());
-  //   setTimeout(() => {
-  //     dispatch(getDailyStatistics());
-  //   }, 100);
-  //   // toast.success('WaterIntake has been successfuly reset');
-  // }
+  function handleDelete(foodIntakeName) {
+    dispatch(delFoodIntake(foodIntakeName));
+
+    setTimeout(() => {
+      dispatch(getDailyStatistics());
+      dispatch(getStats(today));
+    }, 100);
+    toast.success('FoodIntake has been successfuly delete');
+  }
 
   const { carbohidrates, protein, fat } = info;
 
@@ -52,7 +60,11 @@ const DiaryItem = ({ title, image, info }) => {
           <FatWrap>
             Fat: <Value>{fat}</Value>
           </FatWrap>
-                    <Svg>
+          <Svg
+            onClick={() => {
+              handleDelete(foodIntakeName);
+            }}
+          >
             <use href={`${svgSlice}#trash`}></use>
           </Svg>
         </InfoWrap>
