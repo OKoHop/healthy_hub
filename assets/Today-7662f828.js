@@ -1,4 +1,4 @@
-import{s as i,u,a as m,r as f,f as Y,j as t,c as O,g as H,N as Z,M as _,b as tt,d as y,e as et,_ as V,P as b,h as it,i as M,L as J}from"./index-6ea7d50e.js";import{C as k,A as S,p as D,a as $,D as C}from"./index-f69e148d.js";import{R as nt,t as F,s as st,b as ot,c as v,l as at,d as rt,a as dt}from"./calculateTotalIngridients-3a9e7759.js";import{g as lt,r as ct,R as xt}from"./randomizeFood-183a47bb.js";const pt=i.div`
+import{s as i,u,a as m,r as f,f as Y,j as t,c as O,g as H,N as Z,M as _,b as tt,d as y,e as et,_ as V,P as b,h as it,i as M,L as J}from"./index-b3fc2949.js";import{C as k,A as S,p as D,a as $,D as C}from"./index-3931e182.js";import{R as nt,t as F,s as st,b as ot,c as v,l as at,d as rt,a as dt}from"./calculateTotalIngridients-31ef2617.js";import{g as lt,r as ct,R as xt}from"./randomizeFood-da89788e.js";const pt=i.div`
   border-radius: 12px;
   background-color: #0f0f0f;
   display: flex;
@@ -97,7 +97,7 @@ import{s as i,u,a as m,r as f,f as Y,j as t,c as O,g as H,N as Z,M as _,b as tt,
   line-height: 1.43;
 `,N=i.span`
   color: #b6b6b6;
-`;k.register(S,D,$);const Bt=()=>{const e=m(bt),o=m(Ct),a=(s,n)=>s-n===null?0:s-n,d=(s,n)=>isNaN(Math.round(n/s*100))?0:Math.round(n/s*100),r=s=>100-s,x={datasets:[{data:[d(e,o),r(d(e,o))],backgroundColor:["#FFC4F7","#292928"],borderWidth:0,borderRadius:14,circumference:360,cutout:"80%"}]},p={id:"textCenter",beforeDatasetsDraw(s){const{ctx:n,data:h}=s,l=s.getDatasetMeta(0).data[0].x,c=s.getDatasetMeta(0).data[0].y,g=h.datasets[0].data[0];n.save(),n.font="400 14px sans-serif",n.fillStyle="#B6B6B6",n.textAlign="center",n.textBaseline="middle",n.fillText(`${g}%`,l,c)}};return t.jsxs(Mt,{children:[t.jsx(C,{data:x,plugins:[p]}),t.jsxs(Ft,{children:[t.jsx(Wt,{children:"Carbonohidrates"}),t.jsxs(It,{children:[t.jsxs(T,{children:["Goal: ",t.jsx(N,{children:e})]}),t.jsxs(T,{children:["left: ",t.jsx(N,{children:a(e,o)})]})]})]})]})},Rt=i.div`
+`;k.register(S,D,$);const Bt=()=>{const e=m(bt)||0,o=m(Ct)||0,a=(s,n)=>s-n===null?0:s-n,d=(s,n)=>isNaN(Math.round(n/s*100))?0:Math.round(n/s*100),r=s=>100-s,x={datasets:[{data:[d(e,o),r(d(e,o))],backgroundColor:["#FFC4F7","#292928"],borderWidth:0,borderRadius:14,circumference:360,cutout:"80%"}]},p={id:"textCenter",beforeDatasetsDraw(s){const{ctx:n,data:h}=s,l=s.getDatasetMeta(0).data[0].x,c=s.getDatasetMeta(0).data[0].y,g=h.datasets[0].data[0];n.save(),n.font="400 14px sans-serif",n.fillStyle="#B6B6B6",n.textAlign="center",n.textBaseline="middle",n.fillText(`${g}%`,l,c)}};return t.jsxs(Mt,{children:[t.jsx(C,{data:x,plugins:[p]}),t.jsxs(Ft,{children:[t.jsx(Wt,{children:"Carbonohidrates"}),t.jsxs(It,{children:[t.jsxs(T,{children:["Goal: ",t.jsx(N,{children:e})]}),t.jsxs(T,{children:["left: ",t.jsx(N,{children:a(e,o)})]})]})]})]})},Rt=i.div`
   height: 48px;
   display: flex;
   justify-content: flex-start;
