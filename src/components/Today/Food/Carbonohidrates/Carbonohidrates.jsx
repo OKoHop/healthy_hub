@@ -11,8 +11,8 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Carbonohidrates = () => {
-  const dailyCarb = useSelector(carbonohidrates);
-  const receivedCarb = useSelector(selectCarbonohidrates);
+  const dailyCarb = useSelector(carbonohidrates) || 0;
+  const receivedCarb = useSelector(selectCarbonohidrates) || 0;
 
   const leftCarb = (dailyCarb, receivedCarb) => {
     if (dailyCarb - receivedCarb === null) {
