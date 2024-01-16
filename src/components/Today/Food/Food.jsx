@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
+import { StyledSubtitle } from '../DailyGoal/DailyGoal.styled';
 import Calories from './Calories/Calories';
 import Carbonohidrates from './Carbonohidrates/Carbonohidrates';
 import Fat from './Fat/Fat';
-import { CaloriesDiv, StyleDiv, StyledDiv } from './Food.style';
+import { CaloriesDiv, StyleDiv, StyledDiv } from './Food.styled';
 import Protein from './Protein/Protein';
 import { useEffect } from 'react';
 import { getStatisticts } from '../../../redux/Today/Food/operations';

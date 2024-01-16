@@ -8,7 +8,7 @@ import {
   StyledSubtitle,
   Thumb,
   WaterSvg,
-} from './DailyGoal.style';
+} from './DailyGoal.styled';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';

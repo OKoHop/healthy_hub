@@ -70,7 +70,7 @@ export const WeightBtn = styled.button`
       color: ${(p) => p.theme.colors.primaryGreenLite};
     }
     & > ${SvgEdit} {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 `;

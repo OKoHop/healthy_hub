@@ -12,18 +12,18 @@ export const BtnClose = styled.button`
   position: absolute;
   top: 20px;
   right: 32px;
-  color: ${(p) => p.theme.colors.primaryWhite};
-
-  &:hover,
-  :focus {
-    stroke: ${(p) => p.theme.colors.primaryGreenLite};
-  }
 `;
 
 export const SvgClose = styled.svg`
-  fill: currentColor;
+  stroke: ${(p) => p.theme.colors.primaryGray};
   width: 16px;
   height: 16px;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover,
+  :focus {
+    transform: scale(1.05);
+    stroke: ${(p) => p.theme.colors.primaryGreenLite};
+  }
 `;
 
 export const TitleCurrentWeight = styled.h3`
@@ -86,9 +86,24 @@ export const FormWeightInput = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  outline: none;
+  cursor: pointer;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+  &[type='number']::-webkit-inner-spin-button,
+  &[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
   @media (${(p) => p.theme.mq.tabMin}) {
     width: 166px;
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid ${(p) => p.theme.colors.primaryWhite};
   }
 `;
 
@@ -100,12 +115,12 @@ export const FormWeightBtn = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 12px;
-  border: none;
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   background: ${(p) => p.theme.colors.primaryGreenLite};
   color: ${(p) => p.theme.colors.primaryBlack2};
   font-weight: 500;
   line-height: 20px;
-
+  transition: ${(p) => p.theme.transition.customTrans};
   @media (${(p) => p.theme.mq.tabMin}) {
     width: 166px;
   }

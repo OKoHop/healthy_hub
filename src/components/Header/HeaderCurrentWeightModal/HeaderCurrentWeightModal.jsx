@@ -17,7 +17,7 @@ import {
   SvgClose,
   TextCurrentWeight,
   TitleCurrentWeight,
-} from './HeaderCurrentWeightModal.style';
+} from './HeaderCurrentWeightModal.styled';
 import { fetchData } from '../../../redux/Today/Daily/operations';
 
 export const HeaderCurrentWeightModal = ({ closePanel }) => {

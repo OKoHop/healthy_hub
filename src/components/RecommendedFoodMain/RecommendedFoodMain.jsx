@@ -6,6 +6,7 @@ import {
   TitleSection,
   RecommendedFoodList,
   SeeMoreButton,
+  StyledArrowRight,
 } from './RecommendedFoodMain.styled';
 
 import { getRecommendedFood } from '../../helpers/getRecommendedFood';
@@ -15,10 +16,10 @@ const RecommendedFoodMain = () => {
   const [arrayForRender, setArrayForRender] = useState([]);
   useEffect(() => {
     getRecommendedFood()
-      .then(responce => {
+      .then((responce) => {
         setArrayForRender(randomizeFood(responce));
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
   return (
     <RecommendedFoodSection>
@@ -35,7 +36,10 @@ const RecommendedFoodMain = () => {
           />
         ))}
       </RecommendedFoodList>
-      <SeeMoreButton to="/recommended-food">See more</SeeMoreButton>
+      <SeeMoreButton to="/recommended-food">
+        See more
+        <StyledArrowRight />
+      </SeeMoreButton>
     </RecommendedFoodSection>
   );
 };

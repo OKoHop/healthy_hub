@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const Wrapper = styled.li`
   display: flex;
   column-gap: 16px;
-  color: ${p => p.theme.colors.primaryWhite};
-  font-size: ${p => p.theme.fontSizes.xs};
+  color: ${(p) => p.theme.colors.primaryWhite};
+  font-size: ${(p) => p.theme.fontSizes.xs};
   line-height: 20px;
 `;
 
 export const SequenceNumber = styled.span`
   min-width: 16px;
-  font-weight: ${p => p.theme.fontWeights.semiBold};
+  font-weight: ${(p) => p.theme.fontWeights.semiBold};
   text-align: center;
 `;
 
@@ -33,12 +33,12 @@ export const EditButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 6px;
-  color: ${p => p.theme.colors.primaryGray};
-  font-size: ${p => p.theme.fontSizes.xs};
+  color: ${(p) => p.theme.colors.primaryGray};
+  font-size: ${(p) => p.theme.fontSizes.xs};
   line-height: 20px;
   cursor: pointer;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     order: 1;
   }
 `;
@@ -54,8 +54,8 @@ export const BlockInfo = styled.div`
   font-size: 12px;
   line-height: 18px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
-    font-size: ${p => p.theme.fontSizes.xs};
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
+    font-size: ${(p) => p.theme.fontSizes.xs};
     line-height: 20px;
   }
 `;
@@ -66,10 +66,10 @@ export const Carbonohidrates = styled.p`
   column-gap: 6px;
 
   & > span {
-    color: ${props => props.theme.colors.primaryGray};
+    color: ${(props) => props.theme.colors.primaryGray};
   }
-  
-  @media screen and (${p => p.theme.mq.tabMin}) {
+
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     width: 80px;
 
     & > span {
@@ -80,14 +80,14 @@ export const Carbonohidrates = styled.p`
 
 export const Protein = styled(Carbonohidrates)`
   width: 62px;
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     width: 80px;
   }
 `;
 
 export const Fat = styled(Carbonohidrates)`
   width: 58px;
-  @media screen and (${p => p.theme.mq.tablet}) {
+  @media screen and (${(p) => p.theme.mq.tablet}) {
     width: 80px;
   }
 `;
@@ -96,12 +96,16 @@ export const AddFoodButton = styled.button`
   display: flex;
   align-items: center;
   column-gap: 8px;
-  color: ${props => props.theme.colors.primaryGreenLite};
-  font-size: ${p => p.theme.fontSizes.xs};
+  color: ${(props) => props.theme.colors.primaryGreenLite};
+  font-size: ${(p) => p.theme.fontSizes.xs};
   line-height: 20px;
   background-color: transparent;
   border: none;
   outline: none;
   padding: 0;
   cursor: pointer;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover {
+    text-decoration: underline;
+  }
 `;
