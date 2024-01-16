@@ -18,7 +18,7 @@ import {
   ImgTarget,
   FormTargetLabel,
   TargetImgBorder,
-} from './HeaderCurrentTargetModal.style';
+} from './HeaderCurrentTargetModal.styled';
 import { updateGoal } from '../../../redux/user/operations';
 import { useAuth } from '../../../hooks/useAuth';
 import { refreshUser } from '../../../redux/auth/operations';

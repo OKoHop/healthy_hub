@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
+import { StyledSubtitle } from '../DailyGoal/DailyGoal.styled';
 import {
   P,
   Progress,
@@ -15,7 +15,7 @@ import {
   StyledSpan2,
   Svg,
   Thumb,
-} from './Water.style';
+} from './Water.styled';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 import WaterModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';

@@ -18,6 +18,7 @@ export const SignUpPageContainer = styled.main`
     flex-direction: row;
     width: 100%;
     gap: 104px;
+    padding-left: 116px;
     text-align: start;
     align-items: flex-start;
   }
@@ -33,10 +34,10 @@ export const Media = styled.div`
   }
 `;
 
-export const Info = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  max-width: 444px;
   @media (${(p) => p.theme.mq.tabMin}) {
     align-items: center;
   }
@@ -45,6 +46,7 @@ export const Info = styled.div`
     align-items: flex-start;
   }
 `;
+
 export const Title = styled.h2`
   color: ${(p) => p.theme.colors.primaryWhite};
   font-size: 24px;
@@ -67,7 +69,6 @@ export const Subtitle = styled.p`
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 24px;
-
   @media (${(p) => p.theme.mq.tabMin}) {
     text-align: center;
     font-size: 22px;
@@ -90,9 +91,11 @@ export const FormBlock = styled.div`
   }
 `;
 
-export const SigInQuestion = styled.div`
+export const AuthQuestion = styled.div`
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
   @media (${(p) => p.theme.mq.tabMin}) {
-    display: flex;
     gap: 16px;
   }
 
@@ -108,15 +111,20 @@ export const SigInQuestion = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${(p) => p.theme.colors.primaryWhite};
-  font-size: 14px;
+  color: ${(p) =>
+    p.type === 'error' ? p.theme.colors.error : p.theme.colors.primaryWhite};
+  max-width: 800px;
+  font-size: ${(p) => (p.type === 'error' ? '16px' : '14px')};
   font-weight: 500;
   line-height: 20px;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: ${(p) => (p.type === 'error' ? 'underline' : 'none')};
   transition: ${(p) => p.theme.transition.customTrans};
   &:hover {
     text-decoration: underline;
+  }
+  @media (${(p) => p.theme.mq.tabMin}) {
+    font-size: ${(p) => (p.type === 'error' ? '20px' : '14px')};
   }
 `;
 
@@ -131,7 +139,22 @@ export const ErrorBlock = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
   margin-inline: auto;
-  text-align: center;
+  @media (${(p) => p.theme.mq.tabMin}) {
+    font-size: 20px;
+    padding: 10px;
+  }
+`;
+export const SuccessBlock = styled.div`
+  color: ${(p) => p.theme.colors.correct};
+  max-width: 800px;
+  /* border: 1px solid ${(p) => p.theme.colors.primaryWhite}; */
+  font-size: 16px;
+  padding: 5px;
+  /* background-color: ${(p) => p.theme.colors.primaryWhite}; */
+  border-radius: 14px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-inline: auto;
   @media (${(p) => p.theme.mq.tabMin}) {
     font-size: 20px;
     padding: 10px;

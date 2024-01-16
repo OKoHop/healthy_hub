@@ -1,6 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.style';
+import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.styled';
 import { useSelector } from 'react-redux';
 import {
   carbonohidrates,
@@ -11,8 +11,8 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Carbonohidrates = () => {
-  const dailyCarb = useSelector(carbonohidrates) || 0;
-  const receivedCarb = useSelector(selectCarbonohidrates) || 0;
+  const dailyCarb = useSelector(carbonohidrates);
+  const receivedCarb = useSelector(selectCarbonohidrates);
 
   const leftCarb = (dailyCarb, receivedCarb) => {
     if (dailyCarb - receivedCarb === null) {

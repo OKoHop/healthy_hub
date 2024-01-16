@@ -4,9 +4,9 @@ import MultiStepRegisterForm from '../../components/Auth/AuthForm/AuthForm';
 import {
   ErrorBlock,
   FormBlock,
-  Info,
+  Content,
   Media,
-  SigInQuestion,
+  AuthQuestion,
   SignUpPageContainer,
   StyledLink,
   Subtitle,
@@ -51,7 +51,7 @@ const SignUpPage = () => {
           </picture>
         </Media>
 
-        <Info>
+        <Content>
           <Title>{currentPageData?.info.title}</Title>
           <Subtitle>{currentPageData?.info.text}</Subtitle>
           <FormBlock $isSigninVisible={isSigninVisible}>
@@ -61,16 +61,15 @@ const SignUpPage = () => {
               setCurrentStep={handleSetCurrentStep}
             />
           </FormBlock>
-
           {isSigninVisible && (
-            <SigInQuestion>
+            <AuthQuestion>
               <p>Do you already have an account?</p>
               <StyledLink to="/signin" onClick={resetAuthError}>
                 Sign in
               </StyledLink>
-            </SigInQuestion>
+            </AuthQuestion>
           )}
-        </Info>
+        </Content>
       </SignUpPageContainer>
     </div>
   );

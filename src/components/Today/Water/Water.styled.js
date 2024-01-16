@@ -189,7 +189,7 @@ export const Svg = styled.svg`
 
   &:hover,
   :focus {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
 
