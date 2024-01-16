@@ -81,7 +81,6 @@ export const FormFormic = styled(Form)`
 export const ContentWrapper = styled.div`
   max-height: 300px;
   margin-bottom: 16px;
-
   @media screen and (${(p) => p.theme.mq.tabMin}) {
     max-height: 200px;
   }
@@ -95,7 +94,7 @@ export const ProductList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 30px;
-
+  overflow-x: hidden;
   @media screen and (${(p) => p.theme.mq.tabMin}) {
     height: calc(100% - 44px);
     gap: 24px;
@@ -120,13 +119,13 @@ export const Product = styled.li`
   display: grid;
   grid-gap: 12px;
   grid-template-columns: repeat(2, 1fr);
-
   & > div:nth-child(-n + 3) {
     grid-column-start: 1;
     grid-column-end: 4;
   }
-
+  position: relative;
   @media screen and (${(p) => p.theme.mq.tabMin}) {
+    position: relative;
     grid-template-columns: 40.5% 15.3% 11.5% 7.5% 13% 2.5%;
 
     & > div:nth-child(1) {
@@ -189,11 +188,21 @@ export const ErrorMsg = styled(ErrorMessage)`
 `;
 
 export const BtnRemoveProduct = styled.button`
-  padding: 0;
-  margin: 0;
+  position: absolute;
+  right: -18px;
+  top: 158px;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media (${(p) => p.theme.mq.tabMin}) {
+    position: absolute;
+    right: -12px;
+    top: 8px;
+  }
 `;
 
 export const BtnAddNewProduct = styled.button`
@@ -245,8 +254,9 @@ export const BtnConfirm = styled.button`
 `;
 
 export const BtnCancel = styled.button`
+  align-self: center;
   padding: 8px 10px;
-  width: 100px;
+  width: 100%;
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 12px;

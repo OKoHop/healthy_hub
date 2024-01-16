@@ -98,11 +98,10 @@ export const ImgTarget = styled.img`
 export const FormTargetLabel = styled.label`
   display: flex;
   align-items: center;
-
+  cursor:pointer;
   gap: 12px;
   color: ${(p) =>
     p.isSelected ? p.theme.colors.primaryViolet : p.theme.colors.primaryWhite};
-  cursor: pointer;
 `;
 
 export const FormTargetBtn = styled.button`

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ReactComponent as ArrowRight } from '../../images/arrow-right.svg';
 
 export const RecommendedFoodSection = styled.div`
   @media screen and (min-width: 1440px) {
@@ -55,5 +56,14 @@ export const SeeMoreButton = styled(Link)`
     margin-bottom: 40px;
     font-size: 16px;
     line-height: 22px;
+  }
+`;
+
+export const StyledArrowRight = styled(ArrowRight)`
+  stroke: ${(props) => props.theme.colors.primaryGray};
+  transition: ${(p) => p.theme.transition.customTrans};
+
+  ${SeeMoreButton}:hover & {
+    stroke: ${(props) => props.theme.colors.primaryWhite};
   }
 `;

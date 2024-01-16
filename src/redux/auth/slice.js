@@ -13,6 +13,7 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
+  success: null,
 };
 
 const handleRegisterAndLogInFulfilled = (state, action) => {
@@ -57,9 +58,11 @@ export const authSlice = createSlice({
       })
       .addCase(forgotPassword.fulfilled, (state) => {
         state.error = null;
+        state.success = 'Password reset email sent successfully.';
       })
       .addCase(forgotPassword.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = { type: 'forgot', message: action.payload };
+        state.success = null;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = { name: null, email: null };

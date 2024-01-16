@@ -78,7 +78,7 @@ export const CancelButton = styled.button`
   font-size: ${(props) => props.theme.fontSizes.xs};
   line-height: 20px;
   width: 100%;
-  margin-left: 10px;
+  margin-top: 10px;
   padding: 8px 12px;
   border: 1px solid transparent;
   border-radius: 12px;
@@ -90,6 +90,8 @@ export const CancelButton = styled.button`
 
   @media screen and (${(props) => props.theme.mq.tabMin}) {
     width: 212px;
+    margin-top: 0;
+    margin-left: 10px;
   }
 `;
 
@@ -111,7 +113,7 @@ export const SaveButton = styled.button`
   &:hover {
     background-color: transparent;
     border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
-    color: ${(p) => p.theme.colors.primaryGray};
+    color: ${(p) => p.theme.colors.primaryWhite};
   }
 `;
 
@@ -197,9 +199,12 @@ export const Input = styled(Field)`
 
   padding: 8px 10px;
   border-radius: 12px;
-  border: 1px solid ${(props) => props.theme.colors.gray};
+  border: 1px solid ${(props) => props.theme.colors.primaryGray};
+
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: none;
     border-color: ${(props) => props.theme.colors.primaryGreenLite};
   }
 

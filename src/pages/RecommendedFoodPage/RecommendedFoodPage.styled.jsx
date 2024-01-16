@@ -36,6 +36,7 @@ export const Content = styled.div`
 
 export const HeaderPage = styled.header`
   display: flex;
+  align-items: center;
   margin-bottom: 16px;
 `;
 
@@ -77,28 +78,38 @@ export const TitlePage = styled.h1`
 export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 
-  @media screen and (min-width: 1440px) {
-    flex-direction: row;
+  @media (${(p) => p.theme.mq.deskMin}) {
     gap: 44px;
-    align-items: start;
-    justify-content: flex-end;
+    flex-direction: row;
+    margin-left: 116px;
   }
 `;
 
-export const Img = styled.img`
+export const BannerThumb = styled.div`
+  margin-bottom: 24px;
   width: 300px;
+  height: 312px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
+    height: 396px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 536px;
+    height: 560px;
+    margin-bottom: 0;
   }
+`;
+
+export const Img = styled.img`
+  display: block;
+  max-width: 100%;
+  height: auto;
 `;
 
 export const RecommendedFoodList = styled.ul`
@@ -112,7 +123,7 @@ export const RecommendedFoodList = styled.ul`
     flex-wrap: wrap;
   }
 
-  @media screen and (min-width: 1440px) {
-    width: 676px;
+  @media screen and (1440px) {
+    width: calc((100% - 44px) / 2);
   }
 `;

@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
@@ -13,14 +12,11 @@ import breakfastImg from '../../images/diaryPageImages/breakfast.png';
 import dinnerImg from '../../images/diaryPageImages/dinner.png';
 import lunchImg from '../../images/diaryPageImages/lunch.png';
 import snackImg from '../../images/diaryPageImages/snack.png';
-import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
 import {
   Section,
   Container,
   MainHeaderBlock,
-  BackLink,
-  ArrowReturn,
   MainHeader,
   DiaryWrap,
   DiaryItem,
@@ -35,11 +31,10 @@ import {
 import { getStats } from '../../redux/statistics/statisticOperations';
 import today from '../../helpers/todayData';
 import { calculateTotal } from '../../helpers/calculateTotalIngridients';
+import BackLink from '../../components/BackLink';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
   const [lunchFoodIntake, setLunchFoodIntake] = useState([]);
   const [breakfastFoodIntake, setBreakfastFoodIntake] = useState([]);
@@ -78,9 +73,7 @@ const DiaryPage = () => {
     <Section>
       <Container>
         <MainHeaderBlock>
-          <BackLink to={backLinkLocationRef.current}>
-            <ArrowReturn src={arrowRight} alt="arrow right" />
-          </BackLink>
+          <BackLink />
           <MainHeader>Diary</MainHeader>
         </MainHeaderBlock>
 

@@ -33,28 +33,8 @@ export const HeaderBlock = styled.div`
 export const MainHeaderBlock = styled.div`
   position: relative;
   display: flex;
+  align-items: center;
 `;
-
-export const BackLink = styled(NavLink)`
-  display: flex;
-  @media screen and (${(props) => props.theme.mq.mobMin}) {
-    margin-right: 8px;
-  }
-  @media screen and (${(props) => props.theme.mq.tabMin}) {
-    margin-right: 12px;
-  }
-`;
-
-export const ArrowReturn = styled.img`
-  @media screen and (${(props) => props.theme.mq.mobMin}) {
-    width: 16px;
-  }
-  @media screen and (${(props) => props.theme.mq.tabMin}) {
-    width: 24px;
-  }
-`;
-
-
 
 export const Header = styled.h1`
   font-weight: 500;

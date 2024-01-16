@@ -96,7 +96,7 @@ export const FormBtn = styled.button`
   &:hover {
     background-color: transparent;
     border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
-    color: ${(p) => p.theme.colors.primaryGray};
+    color: ${(p) => p.theme.colors.primaryWhite};
   }
 `;
 

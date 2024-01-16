@@ -59,7 +59,7 @@ export const TargetBtn = styled.button`
       color: ${(p) => p.theme.colors.primaryGreenLite};
     }
     & > ${SvgArroy} {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 `;

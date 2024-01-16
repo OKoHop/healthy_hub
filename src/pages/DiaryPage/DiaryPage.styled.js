@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { ReactComponent as ArrowRight } from '../../images/diaryPageImages/arrow-right.svg';
 
 export const Section = styled.main`
   background-color: ${(p) => p.theme.colors.primaryBlack};
@@ -192,22 +193,5 @@ export const ListOfDishes = styled.ul`
   @media screen and (${(p) => p.theme.mq.tabMin}) {
     height: 176px;
     row-gap: 32px;
-  }
-`;
-
-export const AddMealButton = styled.button`
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
-  color: ${(props) => props.theme.colors.primaryGreenLite};
-  font-size: ${(p) => p.theme.fontSizes.xs};
-  line-height: 20px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
   }
 `;

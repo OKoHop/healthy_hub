@@ -1,32 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getStats } from '../../redux/statistics/statisticOperations';
 
 import StyledDatepicker from '../../components/StyledDatepicker/StyledDatepicker';
 import { WaterGraph } from '../../components/Charts/WaterGraph/WaterGraph';
 import { CaloriesGraph } from '../../components/Charts/CaloriesGraph/CaloriesGraph';
 import { WeightGraph } from '../../components/Charts/WeightGraph/WeightGraph';
 
-import arrowLeft from '../../images/arrow-left.svg';
-import { useLocation } from 'react-router-dom';
 import {
   DashboardSection,
   DashboardContainer,
   HeaderBlock,
   MainHeaderBlock,
-  BackLink,
-  ArrowReturn,
   SecondHeader,
   LineChartBlock,
   ChartGrid,
   ScaleChartBlock,
 } from './DashboardPage.styled';
+import BackLink from '../../components/BackLink';
 
 const DashboardPage = () => {
   const [date, setDate] = useState(null);
-
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
   const dispatch = useDispatch();
 
   return (
@@ -34,12 +27,13 @@ const DashboardPage = () => {
       <DashboardContainer>
         <HeaderBlock>
           <MainHeaderBlock>
-            <BackLink
+            {/*             <BackLink
               onClick={() => dispatch(getStats('today'))}
               to={backLinkLocationRef.current}
             >
               <ArrowReturn src={arrowLeft} alt="arrow left" />
-            </BackLink>
+            </BackLink> */}
+            <BackLink />
             <StyledDatepicker />
           </MainHeaderBlock>
           <SecondHeader></SecondHeader>

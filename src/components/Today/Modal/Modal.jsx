@@ -7,7 +7,7 @@ import {
   Label,
   ModalWindow,
   CancelBtn,
-} from './Modal.style';
+} from './Modal.styled';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
 import { getDailyStatistics } from '../../../redux/Today/Food/operations';
@@ -22,9 +22,7 @@ const WaterModal = ({ open, close }) => {
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
     dispatch(saveWaterIntake(waterData));
-    setTimeout(() => {
-      dispatch(getDailyStatistics());
-    }, 1);
+    dispatch(getDailyStatistics());
     close();
   };
 

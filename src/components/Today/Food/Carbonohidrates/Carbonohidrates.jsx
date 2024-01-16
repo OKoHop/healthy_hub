@@ -1,6 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.style';
+import { Div, Div2, Div3, P, P2, Span } from './Carbonohidrates.styled';
 import { useSelector } from 'react-redux';
 import {
   carbonohidrates,

@@ -1,6 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Div, Div2, Div3, P, P2, Span } from './Fat.style';
+import { Div, Div2, Div3, P, P2, Span } from './Fat.styled';
 import { useSelector } from 'react-redux';
 import { fat, totalFat } from '../../../../redux/Today/Food/selectors';
 
