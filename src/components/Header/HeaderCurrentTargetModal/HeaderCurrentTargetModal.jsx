@@ -23,7 +23,7 @@ import { updateGoal } from '../../../redux/user/operations';
 import { useAuth } from '../../../hooks/useAuth';
 import { refreshUser } from '../../../redux/auth/operations';
 import { toast } from 'react-hot-toast';
-import { getStatisticts } from '../../../redux/Today/Food/operations';
+import { getStatistics } from '../../../redux/Today/Food/operations';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
   const { user } = useAuth();
@@ -45,7 +45,7 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
     dispatch(updateGoal(selectedTarget));
     closePanel();
     dispatch(refreshUser());
-    dispatch(getStatisticts());
+    dispatch(getStatistics());
   };
 
   return (

@@ -6,13 +6,13 @@ import Fat from './Fat/Fat';
 import { CaloriesDiv, StyleDiv, StyledDiv } from './Food.styled';
 import Protein from './Protein/Protein';
 import { useEffect } from 'react';
-import { getStatisticts } from '../../../redux/Today/Food/operations';
+import { getStatistics } from '../../../redux/Today/Food/operations';
 
 const Food = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getStatisticts());
+    dispatch(getStatistics());
   });
 
   return (
