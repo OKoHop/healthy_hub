@@ -26,6 +26,7 @@ export const getStats = createAsyncThunk(
           dateTo: endDate,
         },
       });
+      console.log(data.stats)
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
