@@ -20,6 +20,7 @@ import BackLink from '../../components/BackLink';
 
 const DashboardPage = () => {
   const [date, setDate] = useState(null);
+
   const dispatch = useDispatch();
 
   return (
@@ -27,12 +28,6 @@ const DashboardPage = () => {
       <DashboardContainer>
         <HeaderBlock>
           <MainHeaderBlock>
-            {/*             <BackLink
-              onClick={() => dispatch(getStats('today'))}
-              to={backLinkLocationRef.current}
-            >
-              <ArrowReturn src={arrowLeft} alt="arrow left" />
-            </BackLink> */}
             <BackLink />
             <StyledDatepicker />
           </MainHeaderBlock>

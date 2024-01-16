@@ -36,46 +36,12 @@ const SignInForm = () => {
     validationSchema: validationSchema(),
     onSubmit: (values) => {
       try {
-        console.log('hi');
         dispatch(logIn(values));
       } catch (error) {
         console.error('Registration failed:', error.message);
       }
     },
   });
-
-  const innerContent = (
-    <Content>
-      <Title>Sign in</Title>
-      <Subtitle>You need to login to use the service</Subtitle>
-      <FormBlock onSubmit={formik.handleSubmit}>
-        {inputFields.map((field) => (
-          <FormInput
-            key={field.name}
-            formik={formik}
-            id={field.name.toLowerCase()}
-            type={field.type}
-            placeholder={field.placeholder}
-            label={field.label}
-            onBlur={() => formik.handleBlur({ target: { name: field.name } })}
-            showError={true}
-          />
-        ))}
-
-        <SubmitButton type="submit">Sign in</SubmitButton>
-        <ForgotPasswordLink to={'/forgot-password'} onClick={resetAuthError}>
-          Forgot your password?
-        </ForgotPasswordLink>
-      </FormBlock>
-
-      <AuthQuestion>
-        <p>If you don't have an account yet</p>
-        <StyledLink to="/signup" onClick={resetAuthError}>
-          Sign up
-        </StyledLink>
-      </AuthQuestion>
-    </Content>
-  );
 
   return (
     <div className="container">

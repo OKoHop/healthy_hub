@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { StyledArrowReturn, StyledBackLink } from './BackLink.styled';
 
 const BackLink = () => {
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
-    <StyledBackLink to={backLinkLocationRef.current}>
+    <StyledBackLink onClick={goBack}>
       <StyledArrowReturn />
     </StyledBackLink>
   );

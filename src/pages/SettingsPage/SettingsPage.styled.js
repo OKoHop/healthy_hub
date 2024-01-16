@@ -37,6 +37,8 @@ export const SettingsPageContainer = styled.div`
 `;
 
 export const TitlePage = styled.h1`
+  display: flex;
+  align-items: center;
   font-weight: ${(props) => props.theme.fontWeights.medium};
   font-size: ${(props) => props.theme.fontSizes.l};
   line-height: 30px;
