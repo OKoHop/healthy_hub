@@ -10,7 +10,7 @@ import {
   StyledDiv,
   StyledDiv2,
   Wrapper,
-} from './Today.style';
+} from './Today.styled';
 import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import DiaryOnMain from '../../components/Diary/DiaryOnPage/DiaryOnMain';
@@ -30,7 +30,7 @@ const Today = () => {
   useEffect(() => {
     dispatch(getDailyStatistics());
     dispatch(getStatisticts());
-    dispatch(getStats(today))
+    dispatch(getStats(today));
   }, [dispatch]);
 
   return (
