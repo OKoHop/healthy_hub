@@ -10,19 +10,10 @@ import {
   WaterSvg,
 } from './DailyGoal.styled';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchData } from '../../../redux/Today/Daily/operations';
-import { calories, water } from '../../../redux/Today/Daily/selectors';
+import { useAuth } from '../../../hooks/useAuth';
 
 const DailyGoal = () => {
-  const dispatch = useDispatch();
-  const cal = useSelector(calories);
-  const wat = useSelector(water);
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
+  const { user } = useAuth();
 
   return (
     <Thumb>
@@ -35,7 +26,7 @@ const DailyGoal = () => {
           </BubleSvg>
           <div>
             <StyledH3>Calories</StyledH3>
-            <StyledP>{cal && Math.round(cal)}</StyledP>
+            <StyledP> {Math.round(user.bmr)}</StyledP>
           </div>
         </StyledDiv2>
         <StyledDiv2>
@@ -45,7 +36,7 @@ const DailyGoal = () => {
           <div>
             <StyledH3>Water</StyledH3>
             <StyledP>
-              {wat && Math.round(wat)} <StyledSpan>ml</StyledSpan>
+              { Math.round(user.water)} <StyledSpan>ml</StyledSpan>
             </StyledP>
           </div>
         </StyledDiv2>

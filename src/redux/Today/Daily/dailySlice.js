@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchData } from './operations';
+import { getStatistics } from '../Food/operations';
 
 const initialState = {
   calories: null,
@@ -10,7 +10,7 @@ const dailySlice = createSlice({
   name: 'daily',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchData.fulfilled, (state, action) => {
+    builder.addCase(getStatistics.fulfilled, (state, action) => {
       state.calories = action.payload.bmr;
       state.water = action.payload.water;
     });

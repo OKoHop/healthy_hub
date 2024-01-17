@@ -9,11 +9,11 @@ import { useEffect } from 'react';
 import { getStatistics } from '../../../redux/Today/Food/operations';
 
 const Food = () => {
-  const dispatch = useDispatch();
+/*   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getStatistics());
-  });
+  }); */
 
   return (
     <div>

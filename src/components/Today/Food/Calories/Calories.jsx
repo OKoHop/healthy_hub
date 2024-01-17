@@ -3,12 +3,15 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { calories } from '../../../../redux/Today/Daily/selectors';
 import { dailyCal } from '../../../../redux/Today/Food/selectors';
+import { useAuth } from '../../../../hooks/useAuth';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Calories = () => {
+  const { user } = useAuth();
   const calDaily = useSelector(calories);
   const calReceived = useSelector(dailyCal);
+  console.log(calDaily,calReceived);
 
   const remainingCalories = (calReceived, calDaily) => {
     if (!calDaily && !calReceived) {

@@ -20,9 +20,9 @@ export const getStatistics = createAsyncThunk(
   'user/foodStatistics',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/user/current');
-      console.log(response.data.user);
-      return response.data.user;
+      const {data} = await axios.get('/api/user/current');
+      console.log(data.user);
+      return data.user;
       
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

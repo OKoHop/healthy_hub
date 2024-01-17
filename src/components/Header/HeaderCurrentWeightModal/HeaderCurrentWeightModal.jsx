@@ -19,6 +19,8 @@ import {
   TitleCurrentWeight,
 } from './HeaderCurrentWeightModal.styled';
 import { fetchData } from '../../../redux/Today/Daily/operations';
+import { getStatistics } from '../../../redux/Today/Food/operations';
+import today from '../../../helpers/todayData';
 
 export const HeaderCurrentWeightModal = ({ closePanel }) => {
   const dispatch = useDispatch();
@@ -34,20 +36,16 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
     month < 10 ? '0' : ''
   }${month}.${year}`;
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const currentWeight = e.target.elements.weight.value;
     if (currentWeight === '') {
       return toast.error('Enter current weight');
     }
-    dispatch(updateWeight(currentWeight));
-    setTimeout(() => {
-      dispatch(fetchData());
-    }, 100);
-
-    dispatch(refreshUser());
-
     closePanel();
+   await dispatch(updateWeight(currentWeight));
+   await dispatch(refreshUser());
+   await dispatch(getStatistics());
   };
 
   return (

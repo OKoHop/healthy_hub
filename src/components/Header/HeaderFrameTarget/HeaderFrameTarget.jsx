@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
 import loseFatPng from '../../../images/Header/lose_fat_image_men.png';
-import maintakePng from '../../../images/Header/maintake_image_men.png';
+import maintainPng from '../../../images/Header/maintain_image_men.png';
 import gainMusclePng from '../../../images/Header/gain_muscle.png';
 import { HeaderCurrentTargetModal } from '../HeaderCurrentTargetModal/HeaderCurrentTargetModal';
 import {
@@ -25,9 +25,9 @@ export const HeaderFrameTarget = () => {
   const {user} = useAuth();
   const dispatch = useDispatch();
  
-  useEffect(() => {
+/*   useEffect(() => {
       dispatch(refreshUser())
-  }, [dispatch]);
+  }, [dispatch]); */
 
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 834px)' });
@@ -92,13 +92,13 @@ export const HeaderFrameTarget = () => {
       <TargetFrame>
         <TargetImgBorder>
           {user.goal === 'lose fat' && (
-            <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
+            <ImgTarget src={`${loseFatPng}`} alt="Runner"></ImgTarget>
           )}
           {user.goal === 'maintain' && (
-            <ImgTarget src={`${maintakePng}`} alt="waight"></ImgTarget>
+            <ImgTarget src={`${maintainPng}`} alt="Yoga"></ImgTarget>
           )}
           {user.goal === 'gain muscle' && (
-            <ImgTarget src={`${gainMusclePng}`} alt="waight"></ImgTarget>
+            <ImgTarget src={`${gainMusclePng}`} alt="Muscle"></ImgTarget>
           )}
         </TargetImgBorder>
         <TargetContainerBtn>
