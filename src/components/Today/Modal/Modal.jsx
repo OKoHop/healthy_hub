@@ -10,8 +10,9 @@ import {
 } from './Modal.styled';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
-import { getDailyStatistics, getStatistics } from '../../../redux/Today/Food/operations';
+import { getStatistics } from '../../../redux/Today/Food/operations';
 import today from '../../../helpers/todayData';
+import { getStats } from '../../../redux/statistics/statisticOperations';
 
 Modal.setAppElement('#root');
 
@@ -23,7 +24,8 @@ const WaterModal = ({ open, close }) => {
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
     await dispatch(saveWaterIntake(waterData));
-    await dispatch(getStatistics(today));
+/*     await dispatch(getStatistics(today)); */
+/*     await dispatch(getStats(today) ); */
     close();
   };
 

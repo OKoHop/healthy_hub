@@ -9,7 +9,6 @@ export const saveWaterIntake = createAsyncThunk(
     try {
       const jsonData = { waterIntake: data };
       const response = await axios.post('/api/user/water-intake', jsonData);
-      console.log(response.data);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);

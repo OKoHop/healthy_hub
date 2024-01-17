@@ -20,9 +20,8 @@ import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 import WaterModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { delWaterIntake } from '../../../redux/Today/Water/operations';
-import {  waterIntake } from '../../../redux/Today/Water/selectors';
+import { waterIntake } from '../../../redux/Today/Water/selectors';
 import toast from 'react-hot-toast';
-import { getDailyStatistics } from '../../../redux/Today/Food/operations';
 import { useAuth } from '../../../hooks/useAuth';
 
 const Water = () => {
@@ -32,7 +31,6 @@ const Water = () => {
   const { user } = useAuth();
   const intakeWater = useSelector(waterIntake);
   const dailyWater = user.water;
-  
 
   function openModal() {
     setIsOpen(true);
