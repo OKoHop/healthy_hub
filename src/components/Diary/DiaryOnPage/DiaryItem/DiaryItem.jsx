@@ -31,14 +31,12 @@ const DiaryItem = ({ title, image, info }) => {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const foodIntakeName = title.toLowerCase();
 
-  function handleDelete(foodIntakeName) {
-    dispatch(delFoodIntake(foodIntakeName));
+  async function handleDelete(foodIntakeName) {
+    await dispatch(delFoodIntake(foodIntakeName));
 
-    setTimeout(() => {
-      dispatch(getDailyStatistics());
-      dispatch(getStats(today));
-    }, 100);
-    toast.success('FoodIntake has been successfuly delete');
+     await  dispatch(getDailyStatistics());
+     await dispatch(getStats(today));
+    toast.success('The meal intake has been successfully removed.');
   }
 
   const { carbohidrates, protein, fat } = info;

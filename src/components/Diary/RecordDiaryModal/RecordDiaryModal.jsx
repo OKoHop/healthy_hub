@@ -118,8 +118,8 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    await values.productList.forEach(
-      ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
+    await Promise.all(
+      values.productList.map(async ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
         const data = {
           type: mealType.toString().toLowerCase(),
           dish: mealName.toString(),
@@ -129,21 +129,19 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
           calories: calories.toString(),
         };
         if (item) {
-          dispatch(updateFood({ foodId: item._id, data }));
+          await dispatch(updateFood({ foodId: item._id, data }));
         } else {
-          dispatch(addFood(data));
-
-          setTimeout(() => {
-            dispatch(getDailyStatistics());
-          }, 1);
+          await dispatch(addFood(data));
+          /* await dispatch(getDailyStatistics()); */
         }
-      }
+      })
     );
-
-    dispatch(getStats(today));
+  
+    await dispatch(getStats(today));
     resetForm();
     onClose();
   };
+  
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden';

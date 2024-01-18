@@ -8,9 +8,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Calories = () => {
   const { user } = useAuth();
-  const caloriesDaily = user.bmr;
+  const caloriesDaily = user?.bmr;
   const nutrients = useSelector(selectFoodIntake);
-  const caloriesIntake = nutrients?.totalCalories;
+  const caloriesIntake = nutrients?.totalCalories || 0;
 
   const remainingCalories = (calReceived, calDaily) => {
     if (!calDaily && !calReceived) {
