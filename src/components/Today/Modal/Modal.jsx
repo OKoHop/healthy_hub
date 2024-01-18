@@ -24,8 +24,8 @@ const WaterModal = ({ open, close }) => {
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
     await dispatch(saveWaterIntake(waterData));
-/*     await dispatch(getStatistics(today)); */
-/*     await dispatch(getStats(today) ); */
+    /*     await dispatch(getStatistics(today)); */
+    /*     await dispatch(getStats(today) ); */
     close();
   };
 
@@ -43,10 +43,11 @@ const WaterModal = ({ open, close }) => {
           <Label>
             How much water
             <Input
-              type="text"
+              type="number"
               name="water"
               placeholder="Enter milliliters"
               autoComplete="off"
+              max={7000}
             />
           </Label>
           <FormBtn type="submit">Confirm</FormBtn>

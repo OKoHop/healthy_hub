@@ -26,7 +26,7 @@ import { useAuth } from '../../../hooks/useAuth';
 
 const Water = () => {
   const dispatch = useDispatch();
-
+  const [isLoading, setIsLoading] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
   const intakeWater = useSelector(waterIntake);
@@ -54,9 +54,14 @@ const Water = () => {
     return Math.round((waterIntake / water) * 100);
   }
 
-  function handleDelete() {
-    dispatch(delWaterIntake());
-    toast.success('Water consumption has been successfully reset');
+  async function handleDelete() {
+    try {
+      setIsLoading(true);
+      await dispatch(delWaterIntake());
+      toast.success('Water consumption has been successfully reset');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -66,23 +71,31 @@ const Water = () => {
         <StyledDiv>
           <StyledDiagram>
             <P>{waterPercentage(dailyWater, intakeWater)} %</P>
-            <Progress height={waterPercentage(dailyWater, intakeWater) || 0}></Progress>
+            <Progress
+              height={waterPercentage(dailyWater, intakeWater) || 0}
+            ></Progress>
           </StyledDiagram>
           <div>
             <Svg onClick={handleDelete}>
               <use href={`${svgSlice}#trash`}></use>
             </Svg>
+            {isLoading && (
+              <>
+                <span>loading</span>
+              </>
+            )}
             <StyledP>Water consumption</StyledP>
             <StyledDiv2>
               <StyledNum>
-               {intakeWater} <StyledSpan>ml</StyledSpan>
+                {intakeWater} <StyledSpan>ml</StyledSpan>
               </StyledNum>
               <StyledLeft>
-                left: <StyledSpan2>{waterLeft(dailyWater, intakeWater)}</StyledSpan2>{' '}
+                left:{' '}
+                <StyledSpan2>{waterLeft(dailyWater, intakeWater)}</StyledSpan2>{' '}
                 <StyledSpan>ml</StyledSpan>
               </StyledLeft>
             </StyledDiv2>
-            <StyledBtn onClick={openModal}>
+            <StyledBtn onClick={openModal} disabled={isLoading}>
               <SVG>
                 <use href={`${svgSlice}#add`}></use>
               </SVG>

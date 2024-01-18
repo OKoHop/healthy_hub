@@ -42,10 +42,11 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
     if (currentWeight === '') {
       return toast.error('Enter current weight');
     }
-    closePanel();
+   
    await dispatch(updateWeight(currentWeight));
    await dispatch(refreshUser());
-   await dispatch(getStatistics());
+   closePanel();
+   /* await dispatch(getStatistics()); */
   };
 
   return (

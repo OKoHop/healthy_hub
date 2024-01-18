@@ -44,10 +44,11 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
     if (selectedTarget === user.goal) {
       return toast.error('This Goal has already been selected');
     }
-    closePanel();
+    
     await dispatch(updateGoal(selectedTarget));
     await dispatch(refreshUser());
-    await dispatch(getStatistics());
+    closePanel();
+    /* await dispatch(getStatistics()); */
   };
 
   return (
