@@ -26,3 +26,18 @@ export const updateFood = createAsyncThunk(
     }
   }
 );
+
+export const deleteFood = createAsyncThunk(
+  'foods/deleteFood',
+  async ({ foodId, type }, thunkAPI) => {
+    try {
+      const response = await axios.delete(
+        `/api/user/food-intake/${foodId}`,
+        type
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -119,29 +119,37 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     await Promise.all(
-      values.productList.map(async ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
-        const data = {
-          type: mealType.toString().toLowerCase(),
-          dish: mealName.toString(),
-          carbohidrates: carbonohidrates.toFixed(1).toString(),
-          protein: protein.toFixed(1).toString(),
-          fat: fat.toFixed(1).toString(),
-          calories: calories.toString(),
-        };
-        if (item) {
-          await dispatch(updateFood({ foodId: item._id, data }));
-        } else {
-          await dispatch(addFood(data));
-          /* await dispatch(getDailyStatistics()); */
+      values.productList.map(
+        async ({
+          mealType,
+          mealName,
+          carbonohidrates,
+          protein,
+          fat,
+          calories,
+        }) => {
+          const data = {
+            type: mealType.toString().toLowerCase(),
+            dish: mealName.toString(),
+            carbohidrates: carbonohidrates.toFixed(1).toString(),
+            protein: protein.toFixed(1).toString(),
+            fat: fat.toFixed(1).toString(),
+            calories: calories.toString(),
+          };
+          if (item) {
+            await dispatch(updateFood({ foodId: item._id, data }));
+          } else {
+            await dispatch(addFood(data));
+            /* await dispatch(getDailyStatistics()); */
+          }
         }
-      })
+      )
     );
-  
+
     await dispatch(getStats(today));
     resetForm();
     onClose();
   };
-  
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden';

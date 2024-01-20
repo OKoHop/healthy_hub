@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFood, updateFood } from './foodsOperations';
+import { addFood, updateFood, deleteFood } from './foodsOperations';
 
 const foodsSlice = createSlice({
   name: 'foods',
@@ -9,9 +9,9 @@ const foodsSlice = createSlice({
     error: null,
   },
 
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(addFood.pending, state => {
+      .addCase(addFood.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(addFood.fulfilled, (state, action) => {
@@ -23,18 +23,32 @@ const foodsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(updateFood.pending, state => {
+      .addCase(updateFood.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(updateFood.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.foods.findIndex(
-          food => food._id === action.payload._id
+          (food) => food._id === action.payload._id
         );
         state.foods.splice(index, 1, action.payload);
       })
       .addCase(updateFood.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteFood.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteFood.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.foods = state.foods.filter(
+          (food) => food._id !== action.payload._id
+        );
+      })
+      .addCase(deleteFood.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

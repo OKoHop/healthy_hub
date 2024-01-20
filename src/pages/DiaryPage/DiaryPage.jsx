@@ -99,6 +99,7 @@ const DiaryPage = () => {
                     key={nanoid()}
                     index={index}
                     img={breakfastImg}
+                    mealType="breakfast"
                   />
                 ))}
               </ListOfDishes>
@@ -124,6 +125,7 @@ const DiaryPage = () => {
                       key={nanoid()}
                       index={index}
                       img={lunchImg}
+                      mealType="lunch"
                     />
                   )
                 )}
@@ -150,6 +152,7 @@ const DiaryPage = () => {
                       key={nanoid()}
                       index={index}
                       img={dinnerImg}
+                      mealType="dinner"
                     />
                   )
                 )}
@@ -176,6 +179,7 @@ const DiaryPage = () => {
                       key={nanoid()}
                       index={index}
                       img={snackImg}
+                      mealType="snack"
                     />
                   )
                 )}

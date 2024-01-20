@@ -42,6 +42,13 @@ export const EditButton = styled.button`
     order: 1;
   }
 `;
+export const RemoveBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
+    order: 1;
+  }
+`;
 
 export const Img = styled.img`
   width: 16px;
