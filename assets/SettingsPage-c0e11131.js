@@ -1,4 +1,4 @@
-import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a as A,a9 as W,C as L,aa as C,ab as B}from"./index-9a561cf5.js";import{B as G}from"./index-e8d1bfc9.js";const V=i.main`
+import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,b as M,a as A,aa as W,C as L,ab as C}from"./index-61153e53.js";import{B}from"./index-6c25879a.js";const G=i.main`
   background-color: ${e=>e.theme.colors.primaryBlack};
   color: ${e=>e.theme.colors.primaryWhite};
   padding-top: 16px;
@@ -12,7 +12,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
   @media screen and (${e=>e.theme.mq.deskMin}) {
     padding-top: 20px;
   }
-`,E=i.div`
+`,V=i.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -29,7 +29,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     width: 1440px;
     padding: 0 34px;
   }
-`,P=i.h1`
+`,E=i.h1`
   display: flex;
   align-items: center;
   font-weight: ${e=>e.theme.fontWeights.medium};
@@ -45,7 +45,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     font-size: ${e=>e.theme.fontSizes.xl};
     line-height: 36px;
   }
-`,R=i.div`
+`,P=i.div`
   gap: 12px;
   margin-top: 40px;
   padding-bottom: 40pxa;
@@ -63,7 +63,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     margin-right: 34px;
     padding-bottom: 72px;
   }
-`,U=i.button`
+`,R=i.button`
   background-color: ${e=>e.theme.colors.primaryBlack};
   color: ${e=>e.theme.colors.primaryWhite};
   font-size: ${e=>e.theme.fontSizes.xs};
@@ -104,7 +104,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     border: 1px solid ${e=>e.theme.colors.primaryGreenLite};
     color: ${e=>e.theme.colors.primaryWhite};
   }
-`,D=i.div`
+`,U=i.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,7 +122,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     gap: 100px;
     margin-top: 16px;
   }
-`,H=i.div`
+`,D=i.div`
   width: 300px;
   margin-bottom: 24px;
 
@@ -134,11 +134,11 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     width: 536px;
     margin-bottom: 0;
   }
-`,N=i.img`
+`,H=i.img`
   display: block;
   max-width: 100%;
   height: auto;
-`,T=i(k)`
+`,N=i(k)`
   display: flex;
   flex-direction: column;
   row-gap: 40px;
@@ -199,11 +199,11 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
   &::placeholder {
     color: ${e=>e.theme.colors.primaryGray};
   }
-`,h=i(q)`
+`,m=i(q)`
   font-size: 10px;
   line-height: 12px;
   color: ${e=>e.theme.colors.error};
-`,Y=i.div`
+`,T=i.div`
   font-size: ${e=>e.theme.fontSizes.xs};
   font-weight: ${e=>e.theme.fontWeights.medium};
   line-height: 20px;
@@ -229,22 +229,22 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
   font-weight: ${e=>e.theme.fontWeights.medium};
   line-height: 20px;
   margin-bottom: 12px;
-`,Z=i.div`
+`,Y=i.div`
   display: flex;
   gap: 16px;
   height: 100%;
-`,_=i.div`
+`,Z=i.div`
   height: 36px;
   width: 36px;
   border-radius: 50%;
   margin-right: 12px;
   overflow: hidden;
-`,O=i.img`
+`,_=i.img`
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-`,J=i.div`
+`,O=i.div`
   display: flex;
   align-items: center;
   gap: 6px;
@@ -253,7 +253,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
     width: 16px;
     height: 16px;
   }
-`,K="/healthy_hub/assets/setings-page-b0655153.png",Q="/healthy_hub/assets/download-new-photo-eac1d45e.svg",X="/healthy_hub/assets/profile-circle-8b091608.svg",g=i.span`
+`,J="/healthy_hub/assets/setings-page-b0655153.png",K="/healthy_hub/assets/download-new-photo-eac1d45e.svg",Q="/healthy_hub/assets/profile-circle-8b091608.svg",g=i.span`
   margin-right: 10px;
   min-width: 12px;
   height: 12px;
@@ -279,7 +279,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
       display: block;
     }
   }
-`,ee=i(v)`
+`,X=i(v)`
   appearance: none;
 
   &:checked + ${g} {
@@ -287,7 +287,7 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
       display: block;
     }
   }
-`,te=i.label`
+`,ee=i.label`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -295,4 +295,4 @@ import{s as i,v as k,x as v,E as q,j as t,y as F,A as S,B as p,r as z,u as M,a a
   &:hover > ${g} {
     border-color: ${e=>e.theme.colors.primaryGreenLite};
   }
-`,r=({name:e,value:l,selectedValue:c,text:n})=>t.jsx(t.Fragment,{children:t.jsxs(te,{children:[t.jsx(ee,{type:"radio",name:e,value:l,checked:c===l}),t.jsx(g,{}),n]})}),ie=F({name:S().matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,"Name may contain only letters, apostrophe, dash and spaces.").min(2,"Name must be at least 2 characters long.").max(50,"Name must be no more than 50 characters.").required("Name is required").trim("Name cannot include leading and trailing spaces").strict(!0),age:p().min(18,"Age must be at least 18 years old").max(110,"Age must be no more than 110 years old").required("Age is required").integer("Age must be an integer"),height:p().min(120,"Height must be at least 120cm").max(220,"Height must be no more than 220cm").required("Height is required").integer("Height must be an integer"),weight:p().min(40,"Weight must be at least 40kg").max(200,"Weight must be no more than 200kg").required("Weight is required").test("maxDigitsAfterDecimal","Must have 1 digits after decimal",e=>/^\d+(\.\d{1})?$/.test(e))}),re=()=>{var u;const[e,l]=z.useState(null),c=M(),n=A(W),x={name:n.name,age:n.age,gender:n.gender,height:n.height,weight:n.weight,activity:((u=n==null?void 0:n.activity)==null?void 0:u.toString())||""},f=a=>{({...a},c(C(a))),c(B())},w=a=>{a.resetForm({values:x})},$=(a,o)=>{const m=a.target.files[0];if(l(m),!m)return;const j=URL.createObjectURL(m);o.setFieldValue("userAvatarFile",m),o.setFieldValue("avatarPreview",j)};return t.jsx(V,{children:t.jsxs(E,{children:[t.jsxs(P,{children:[t.jsx(G,{}),"Profile setting"]}),t.jsxs(D,{children:[t.jsx(H,{children:t.jsx(N,{src:K,alt:"Banner setings page"})}),t.jsx(L,{initialValues:x,onSubmit:(a,o)=>f(a),validationSchema:ie,children:a=>t.jsxs(T,{children:[t.jsxs(s,{children:["Your name",t.jsx(d,{type:"text",name:"name",placeholder:"Enter your name",required:!0}),t.jsx(h,{name:"name",component:"div"})]}),t.jsxs(Y,{children:["Your photo",t.jsx(d,{type:"file",name:"userAvatarFile",id:"userAvatarFile",accept:"image/*",onChange:o=>$(o,a),value:""}),t.jsxs(s,{htmlFor:"userAvatarFile",children:[t.jsx(_,{children:t.jsx(O,{src:n.avatarURL||X,alt:"userAvatar"})}),t.jsxs(J,{children:[t.jsx("img",{src:Q,alt:"Select File"}),"Download new photo"]})]})]}),t.jsxs(s,{children:["Your age",t.jsx(d,{type:"number",name:"age",placeholder:"Enter your age",required:!0}),t.jsx(h,{name:"age",component:"div"})]}),t.jsxs(y,{role:"group","aria-labelledby":"gender-head",children:[t.jsx(b,{id:"gender-head",children:"Gender"}),t.jsxs(Z,{children:[t.jsx(r,{type:"radio",name:"gender",value:"male",selectedValue:a.values.gender,text:"Male"}),t.jsx(r,{type:"radio",name:"gender",value:"female",selectedValue:a.values.gender,text:"Female"})]})]}),t.jsxs(s,{children:["Height",t.jsx(d,{type:"number",name:"height",placeholder:"Enter your height",required:!0}),t.jsx(h,{name:"height",component:"div"})]}),t.jsxs(s,{children:["Weight",t.jsx(d,{type:"number",name:"weight",placeholder:"Enter your weight",required:!0}),t.jsx(h,{name:"weight",component:"div"})]}),t.jsxs(y,{role:"group","aria-labelledby":"activity-head",children:[t.jsx(b,{id:"activity-head",children:"Your activity"}),t.jsx(r,{name:"activity",id:"activity1",value:"1.2",selectedValue:a.values.activity,text:"1.2 - if you do not have physical activity and sedentary work"}),t.jsx(r,{name:"activity",id:"activity2",value:"1.375",selectedValue:a.values.activity,text:"1.375 - if you do short runs or light gymnastics 1-3 times a week"}),t.jsx(r,{name:"activity",id:"activity3",value:"1.55",selectedValue:a.values.activity,text:"1.55 - if you play sports with average loads 3-5 times a week"}),t.jsx(r,{name:"activity",id:"activity4",value:"1.725",selectedValue:a.values.activity,text:"1.725 - if you train fully 6-7 times a week"}),t.jsx(r,{name:"activity",id:"activity5",value:"1.9",selectedValue:a.values.activity.toString(),text:"1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"})]}),t.jsxs(R,{children:[t.jsx(I,{type:"submit",children:"Save"}),t.jsx(U,{type:"button",onClick:()=>w(a),children:"Cancel"})]})]})})]})]})})};export{re as default};
+`,r=({name:e,value:l,selectedValue:h,text:n})=>t.jsx(t.Fragment,{children:t.jsxs(ee,{children:[t.jsx(X,{type:"radio",name:e,value:l,checked:h===l}),t.jsx(g,{}),n]})}),te=F({name:S().matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,"Name may contain only letters, apostrophe, dash and spaces.").min(2,"Name must be at least 2 characters long.").max(50,"Name must be no more than 50 characters.").required("Name is required").trim("Name cannot include leading and trailing spaces").strict(!0),age:p().min(18,"Age must be at least 18 years old").max(110,"Age must be no more than 110 years old").required("Age is required").integer("Age must be an integer"),height:p().min(120,"Height must be at least 120cm").max(220,"Height must be no more than 220cm").required("Height is required").integer("Height must be an integer"),weight:p().min(40,"Weight must be at least 40kg").max(200,"Weight must be no more than 200kg").required("Weight is required").test("maxDigitsAfterDecimal","Must have 1 digits after decimal",e=>/^\d+(\.\d{1})?$/.test(e))}),ne=()=>{var u;const[e,l]=z.useState(null),h=M(),n=A(W),x={name:n.name,age:n.age,gender:n.gender,height:n.height,weight:n.weight,activity:((u=n==null?void 0:n.activity)==null?void 0:u.toString())||""},f=a=>{({...a},h(C(a)))},w=a=>{a.resetForm({values:x})},$=(a,o)=>{const c=a.target.files[0];if(l(c),!c)return;const j=URL.createObjectURL(c);o.setFieldValue("userAvatarFile",c),o.setFieldValue("avatarPreview",j)};return t.jsx(G,{children:t.jsxs(V,{children:[t.jsxs(E,{children:[t.jsx(B,{}),"Profile setting"]}),t.jsxs(U,{children:[t.jsx(D,{children:t.jsx(H,{src:J,alt:"Banner setings page"})}),t.jsx(L,{initialValues:x,onSubmit:(a,o)=>f(a),validationSchema:te,children:a=>t.jsxs(N,{children:[t.jsxs(s,{children:["Your name",t.jsx(d,{type:"text",name:"name",placeholder:"Enter your name",required:!0}),t.jsx(m,{name:"name",component:"div"})]}),t.jsxs(T,{children:["Your photo",t.jsx(d,{type:"file",name:"userAvatarFile",id:"userAvatarFile",accept:"image/*",onChange:o=>$(o,a),value:""}),t.jsxs(s,{htmlFor:"userAvatarFile",children:[t.jsx(Z,{children:t.jsx(_,{src:n.avatarURL||Q,alt:"userAvatar"})}),t.jsxs(O,{children:[t.jsx("img",{src:K,alt:"Select File"}),"Download new photo"]})]})]}),t.jsxs(s,{children:["Your age",t.jsx(d,{type:"number",name:"age",placeholder:"Enter your age",required:!0}),t.jsx(m,{name:"age",component:"div"})]}),t.jsxs(y,{role:"group","aria-labelledby":"gender-head",children:[t.jsx(b,{id:"gender-head",children:"Gender"}),t.jsxs(Y,{children:[t.jsx(r,{type:"radio",name:"gender",value:"male",selectedValue:a.values.gender,text:"Male"}),t.jsx(r,{type:"radio",name:"gender",value:"female",selectedValue:a.values.gender,text:"Female"})]})]}),t.jsxs(s,{children:["Height",t.jsx(d,{type:"number",name:"height",placeholder:"Enter your height",required:!0}),t.jsx(m,{name:"height",component:"div"})]}),t.jsxs(s,{children:["Weight",t.jsx(d,{type:"number",name:"weight",placeholder:"Enter your weight",required:!0}),t.jsx(m,{name:"weight",component:"div"})]}),t.jsxs(y,{role:"group","aria-labelledby":"activity-head",children:[t.jsx(b,{id:"activity-head",children:"Your activity"}),t.jsx(r,{name:"activity",id:"activity1",value:"1.2",selectedValue:a.values.activity,text:"1.2 - if you do not have physical activity and sedentary work"}),t.jsx(r,{name:"activity",id:"activity2",value:"1.375",selectedValue:a.values.activity,text:"1.375 - if you do short runs or light gymnastics 1-3 times a week"}),t.jsx(r,{name:"activity",id:"activity3",value:"1.55",selectedValue:a.values.activity,text:"1.55 - if you play sports with average loads 3-5 times a week"}),t.jsx(r,{name:"activity",id:"activity4",value:"1.725",selectedValue:a.values.activity,text:"1.725 - if you train fully 6-7 times a week"}),t.jsx(r,{name:"activity",id:"activity5",value:"1.9",selectedValue:a.values.activity.toString(),text:"1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"})]}),t.jsxs(P,{children:[t.jsx(I,{type:"submit",children:"Save"}),t.jsx(R,{type:"button",onClick:()=>w(a),children:"Cancel"})]})]})})]})]})})};export{ne as default};

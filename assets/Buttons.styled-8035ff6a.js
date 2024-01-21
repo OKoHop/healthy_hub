@@ -1,4 +1,4 @@
-import{p as o,t,s as h}from"./index-9a561cf5.js";const l=o`
+import{o,q as t,s as h}from"./index-61153e53.js";const l=o`
   padding: 8px 10px;
   border-radius: 12px;
   text-decoration: none;
@@ -11,7 +11,7 @@ import{p as o,t,s as h}from"./index-9a561cf5.js";const l=o`
   transition: ${t.transition.customTrans};
 `,u=h.button`
   ${l}
-  ${({width:i,textColor:n,backGrColor:r,borderColor:e,widthTab:s,widthDesk:a,backGrColorHov:d,borderColorHov:$,textColorHov:p,widthTabHov:c,widthDeskHov:m})=>o`
+  ${({width:i,textColor:n,backGrColor:r,borderColor:e,widthTab:s,widthDesk:a,backGrColorHov:d,borderColorHov:$,textColorHov:c,widthTabHov:m,widthDeskHov:p})=>o`
     width: ${i};
     color: ${n};
     background-color: ${r};
@@ -34,21 +34,21 @@ import{p as o,t,s as h}from"./index-9a561cf5.js";const l=o`
     &&:focus {
       background-color: ${d};
       border: 1px solid ${$};
-      color: ${p};
+      color: ${c};
       animation: ${t.transition.customTrans};
     }
 
     @media (${t.mq.tabMin}) {
       &&:hover,
       &&:focus {
-        width: ${c};
+        width: ${m};
       }
     }
 
     @media (${t.mq.deskMin}) {
       &&:hover,
       &&:focus {
-        width: ${m};
+        width: ${p};
       }
     }
   `}
