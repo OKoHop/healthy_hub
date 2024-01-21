@@ -10,19 +10,22 @@ import {
 } from './Modal.styled';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
-import { getDailyStatistics } from '../../../redux/Today/Food/operations';
+import { getStatistics } from '../../../redux/Today/Food/operations';
+import today from '../../../helpers/todayData';
+import { getStats } from '../../../redux/statistics/statisticOperations';
 
 Modal.setAppElement('#root');
 
 const WaterModal = ({ open, close }) => {
   const dispatch = useDispatch();
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
-    dispatch(saveWaterIntake(waterData));
-    dispatch(getDailyStatistics());
+    await dispatch(saveWaterIntake(waterData));
+    /*     await dispatch(getStatistics(today)); */
+    /*     await dispatch(getStats(today) ); */
     close();
   };
 
@@ -40,10 +43,11 @@ const WaterModal = ({ open, close }) => {
           <Label>
             How much water
             <Input
-              type="text"
+              type="number"
               name="water"
               placeholder="Enter milliliters"
               autoComplete="off"
+              max={7000}
             />
           </Label>
           <FormBtn type="submit">Confirm</FormBtn>

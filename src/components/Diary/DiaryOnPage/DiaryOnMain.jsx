@@ -27,7 +27,7 @@ const DiaryOnMain = () => {
   const [dinnerFoodIntake, setDinnerFoodIntake] = useState([]);
   const [snackFoodIntake, setSnackFoodIntake] = useState([]);
 
-  useEffect(() => {
+/*   useEffect(() => {
     const fetchData = async () => {
       try {
         await dispatch(getStats(today));
@@ -37,7 +37,7 @@ const DiaryOnMain = () => {
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [dispatch]); */
 
   useEffect(() => {
     if (foodIntake) {

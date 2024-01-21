@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as ArrowRight } from '../../images/diaryPageImages/arrow-right.svg';
 
 export const Section = styled.main`
   background-color: ${(p) => p.theme.colors.primaryBlack};
@@ -171,7 +170,7 @@ export const BlockDetailedInformation = styled.ul`
 export const ListOfDishes = styled.ul`
   display: flex;
   flex-direction: column;
-  row-gap: 40px;
+  row-gap: 20px;
   height: 200px;
   overflow-y: auto;
   padding-right: 10px;

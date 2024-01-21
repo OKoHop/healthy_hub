@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { addFood, updateFood } from '../../../redux/foods/foodsOperations';
 import { getStats } from '../../../redux/statistics/statisticOperations';
+import capitalize from '../../../helpers/capitalizeFirstLetter';
 
 import { FieldArray, Formik } from 'formik';
 import * as yup from 'yup';
@@ -118,29 +119,35 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    await values.productList.forEach(
-      ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
-        const data = {
-          type: mealType.toString().toLowerCase(),
-          dish: mealName.toString(),
-          carbohidrates: carbonohidrates.toFixed(1).toString(),
-          protein: protein.toFixed(1).toString(),
-          fat: fat.toFixed(1).toString(),
-          calories: calories.toString(),
-        };
-        if (item) {
-          dispatch(updateFood({ foodId: item._id, data }));
-        } else {
-          dispatch(addFood(data));
-
-          setTimeout(() => {
-            dispatch(getDailyStatistics());
-          }, 1);
+    await Promise.all(
+      values.productList.map(
+        async ({
+          mealType,
+          mealName,
+          carbonohidrates,
+          protein,
+          fat,
+          calories,
+        }) => {
+          const data = {
+            type: mealType.toString().toLowerCase(),
+            dish: mealName.toString(),
+            carbohidrates: carbonohidrates.toFixed(1).toString(),
+            protein: protein.toFixed(1).toString(),
+            fat: fat.toFixed(1).toString(),
+            calories: calories.toString(),
+          };
+          if (item) {
+            await dispatch(updateFood({ foodId: item._id, data }));
+          } else {
+            await dispatch(addFood(data));
+            /* await dispatch(getDailyStatistics()); */
+          }
         }
-      }
+      )
     );
 
-    dispatch(getStats(today));
+    await dispatch(getStats(today));
     resetForm();
     onClose();
   };
@@ -160,7 +167,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
         <ModalTitle>Record your meal</ModalTitle>
         <WrapperFormTitle>
           <Image src={image} alt="Plate" />
-          <Title>{mealType}</Title>
+          <Title>{capitalize(mealType)}</Title>
         </WrapperFormTitle>
 
         <Formik

@@ -1,14 +1,16 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { calories } from '../../../../redux/Today/Daily/selectors';
-import { dailyCal } from '../../../../redux/Today/Food/selectors';
+import { useAuth } from '../../../hooks/useAuth';
+import { selectFoodIntake } from '../../../redux/statistics/statisticSelectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Calories = () => {
-  const calDaily = useSelector(calories);
-  const calReceived = useSelector(dailyCal);
+  const { user } = useAuth();
+  const caloriesDaily = user?.bmr;
+  const nutrients = useSelector(selectFoodIntake);
+  const caloriesIntake = nutrients?.totalCalories || 0;
 
   const remainingCalories = (calReceived, calDaily) => {
     if (!calDaily && !calReceived) {
@@ -16,20 +18,13 @@ const Calories = () => {
     }
     return calDaily - calReceived;
   };
-
-  const receivedCal = (calReceived) => {
-    if (!calReceived) {
-      return 0;
-    }
-    return calReceived;
-  };
-
+  
   const data = {
     datasets: [
       {
         data: [
-          receivedCal(calReceived),
-          remainingCalories(calReceived, calDaily),
+          caloriesIntake,
+          remainingCalories(caloriesIntake, caloriesDaily),
         ],
         backgroundColor: ['#45FFBC', '#292928'],
         borderWidth: 0,
@@ -60,8 +55,8 @@ const Calories = () => {
     },
   };
 
-  const backgroundCirgle = {
-    id: 'backgroundCirgle',
+  const backgroundCircle = {
+    id: 'backgroundCircle',
     beforeDatasetsDraw(chart) {
       const { ctx } = chart;
       ctx.save();
@@ -81,7 +76,7 @@ const Calories = () => {
     },
   };
 
-  return <Doughnut data={data} plugins={[textCenter, backgroundCirgle]} />;
+  return <Doughnut data={data} plugins={[textCenter, backgroundCircle]} />;
 };
 
 export default Calories;

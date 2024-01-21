@@ -245,7 +245,7 @@ export const BtnConfirm = styled.button`
   &:hover {
     background-color: transparent;
     border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
-    color: ${(p) => p.theme.colors.primaryGray};
+    color: ${(p) => p.theme.colors.primaryWhite};
   }
 
   @media screen and (${(p) => p.theme.mq.tabMin}) {

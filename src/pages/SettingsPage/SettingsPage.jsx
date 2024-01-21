@@ -96,7 +96,7 @@ const SettingsPage = () => {
       userAvatarFile: selectedFile,
     };
     dispatch(updateUser(values));
-    dispatch(refreshUser());
+    /* dispatch(refreshUser()); */
   };
 
   const handleCancelClick = (formik) => {
