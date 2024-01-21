@@ -44,9 +44,11 @@ const foodsSlice = createSlice({
       .addCase(deleteFood.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.foods = state.foods.filter(
-          (food) => food._id !== action.payload._id
-        );
+        const foodId = action.meta.arg.foodId;
+        const index = state.foods.findIndex((food) => food._id === foodId);
+        if (index !== -1) {
+          state.foods.splice(index, 1);
+        }
       })
       .addCase(deleteFood.rejected, (state, action) => {
         state.isLoading = false;

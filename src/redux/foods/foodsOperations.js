@@ -29,12 +29,13 @@ export const updateFood = createAsyncThunk(
 
 export const deleteFood = createAsyncThunk(
   'foods/deleteFood',
-  async ({ foodId, type }, thunkAPI) => {
+  async ({ foodId, foodIntakeName }, thunkAPI) => {
     try {
-      const response = await axios.delete(
-        `/api/user/food-intake/${foodId}`,
-        type
-      );
+      const response = await axios.delete(`/api/user/food-intake/${foodId}`, {
+        params: {
+          type: foodIntakeName,
+        },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -33,9 +33,8 @@ const DiaryItem = ({ title, image, info }) => {
 
   async function handleDelete(foodIntakeName) {
     await dispatch(delFoodIntake(foodIntakeName));
-
-     await  dispatch(getDailyStatistics());
-     await dispatch(getStats(today));
+    await dispatch(getDailyStatistics());
+    await dispatch(getStats(today));
     toast.success('The meal intake has been successfully removed.');
   }
 

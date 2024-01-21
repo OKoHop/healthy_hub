@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { addFood, updateFood } from '../../../redux/foods/foodsOperations';
 import { getStats } from '../../../redux/statistics/statisticOperations';
+import capitalize from '../../../helpers/capitalizeFirstLetter';
 
 import { FieldArray, Formik } from 'formik';
 import * as yup from 'yup';
@@ -166,7 +167,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
         <ModalTitle>Record your meal</ModalTitle>
         <WrapperFormTitle>
           <Image src={image} alt="Plate" />
-          <Title>{mealType}</Title>
+          <Title>{capitalize(mealType)}</Title>
         </WrapperFormTitle>
 
         <Formik

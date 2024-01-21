@@ -25,21 +25,30 @@ export const Title = styled.p`
   text-transform: capitalize;
   flex-grow: 1;
 `;
-
+export const BtnsBlock = styled.div`
+  display: flex;
+  align-items: flex-start;
+  transition: ${(p) => p.theme.transition.customTrans};
+  img {
+    width: 16px;
+    height: 16px;
+  }
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
+    order: 1;
+  }
+`;
 export const EditButton = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
   display: flex;
-  align-items: center;
   column-gap: 6px;
   color: ${(p) => p.theme.colors.primaryGray};
   font-size: ${(p) => p.theme.fontSizes.xs};
   line-height: 20px;
   cursor: pointer;
-
-  @media screen and (${(p) => p.theme.mq.tabMin}) {
-    order: 1;
+  &:hover {
+    color: ${(p) => p.theme.colors.primaryWhite};
   }
 `;
 export const RemoveBtn = styled.button`
@@ -47,6 +56,9 @@ export const RemoveBtn = styled.button`
   background-color: transparent;
   @media screen and (${(p) => p.theme.mq.tabMin}) {
     order: 1;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 

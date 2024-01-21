@@ -18,9 +18,12 @@ import {
   Protein,
   Fat,
   RemoveBtn,
+  BtnsBlock,
 } from './ElementOfFood.styled';
 import { useDispatch } from 'react-redux';
 import { deleteFood } from '../../../redux/foods/foodsOperations';
+import { getStats } from '../../../redux/statistics/statisticOperations';
+import today from '../../../helpers/todayData';
 
 const ElementOfFood = ({ item, index, img, mealType }) => {
   const dispatch = useDispatch();
@@ -35,9 +38,13 @@ const ElementOfFood = ({ item, index, img, mealType }) => {
     setIsEditModalOpen(!isEditModalOpen);
   };
 
-  const handleRemoveClick = () => {
+  const handleRemoveClick = async () => {
+    console.log(item._id, mealType);
     if (item && item._id) {
-      dispatch(deleteFood({ foodId: item._id }));
+      await dispatch(
+        deleteFood({ foodId: item._id, foodIntakeName: mealType })
+      );
+      await dispatch(getStats(today));
     }
   };
 
@@ -63,7 +70,7 @@ const ElementOfFood = ({ item, index, img, mealType }) => {
           <Dish>
             <Title>{dish}</Title>
             {dish && (
-              <>
+              <BtnsBlock>
                 <EditButton type="button" onClick={toggleModalEdit}>
                   <Img src={edit} alt="Edit" />
                   Edit
@@ -71,7 +78,7 @@ const ElementOfFood = ({ item, index, img, mealType }) => {
                 <RemoveBtn type="button" onClick={handleRemoveClick}>
                   <img src={img1} alt="Trash" />
                 </RemoveBtn>
-              </>
+              </BtnsBlock>
             )}
 
             <BlockInfo>

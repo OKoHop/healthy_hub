@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
@@ -81,6 +81,8 @@ const schema = yup.object({
 const modalRoot = document.querySelector('#modal-root');
 
 const UpdateMealModal = ({ onClose, item, mealType }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const initialValues = {
     productList: [
       {
@@ -108,6 +110,7 @@ const UpdateMealModal = ({ onClose, item, mealType }) => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
+    setIsLoading(true);
     await values.productList.map(
       async ({ mealName, carbonohidrates, protein, fat, calories }) => {
         const data = {
@@ -121,10 +124,9 @@ const UpdateMealModal = ({ onClose, item, mealType }) => {
         await dispatch(updateFood({ foodId: item._id, data }));
         await dispatch(getStats(today));
         resetForm();
+        onClose();
       }
     );
-
-    onClose();
   };
 
   useEffect(() => {
@@ -236,7 +238,9 @@ const UpdateMealModal = ({ onClose, item, mealType }) => {
               />
 
               <ContainerForBtns>
-                <BtnConfirm type="submit">Confirm</BtnConfirm>
+                <BtnConfirm type="submit" disabled={isLoading}>
+                  {isLoading ? 'Updating...' : 'Confirm'}
+                </BtnConfirm>
                 <BtnCancel type="button" onClick={onClose}>
                   Cancel
                 </BtnCancel>
