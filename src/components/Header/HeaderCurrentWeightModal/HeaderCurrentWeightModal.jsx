@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import svgIcons from '../../../images/Header/icons.svg';
 import { refreshUser } from '../../../redux/auth/operations';
 import { updateWeight } from '../../../redux/user/operations';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 import {
   BtnCancel,
   BtnClose,
@@ -18,11 +19,9 @@ import {
   TextCurrentWeight,
   TitleCurrentWeight,
 } from './HeaderCurrentWeightModal.styled';
-import { fetchData } from '../../../redux/Today/Daily/operations';
-import { getStatistics } from '../../../redux/Today/Food/operations';
-import today from '../../../helpers/todayData';
 
 export const HeaderCurrentWeightModal = ({ closePanel }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 834px)' });
@@ -38,19 +37,21 @@ export const HeaderCurrentWeightModal = ({ closePanel }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const currentWeight = e.target.elements.weight.value;
     if (currentWeight === '') {
       return toast.error('Enter current weight');
     }
-   
-   await dispatch(updateWeight(currentWeight));
-   await dispatch(refreshUser());
-   closePanel();
-   /* await dispatch(getStatistics()); */
+
+    await dispatch(updateWeight(currentWeight));
+    await dispatch(refreshUser());
+    closePanel();
+    setLoading(false);
   };
 
   return (
     <>
+      {loading && <LoaderWithBackdrop />}
       {isTabletOrDesktop && (
         <BtnClose type="button" onClick={closePanel}>
           <SvgClose>

@@ -23,10 +23,11 @@ import { delWaterIntake } from '../../../redux/Today/Water/operations';
 import { waterIntake } from '../../../redux/Today/Water/selectors';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../../hooks/useAuth';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 const Water = () => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
   const intakeWater = useSelector(waterIntake);
@@ -56,11 +57,11 @@ const Water = () => {
 
   async function handleDelete() {
     try {
-      setIsLoading(true);
+      setLoading(true);
       await dispatch(delWaterIntake());
       toast.success('Water consumption has been successfully reset');
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   }
 
@@ -79,11 +80,7 @@ const Water = () => {
             <Svg onClick={handleDelete}>
               <use href={`${svgSlice}#trash`}></use>
             </Svg>
-            {isLoading && (
-              <>
-                <span>loading</span>
-              </>
-            )}
+            {loading && <LoaderWithBackdrop />}
             <StyledP>Water consumption</StyledP>
             <StyledDiv2>
               <StyledNum>
@@ -95,7 +92,7 @@ const Water = () => {
                 <StyledSpan>ml</StyledSpan>
               </StyledLeft>
             </StyledDiv2>
-            <StyledBtn onClick={openModal} disabled={isLoading}>
+            <StyledBtn onClick={openModal} disabled={loading}>
               <SVG>
                 <use href={`${svgSlice}#add`}></use>
               </SVG>

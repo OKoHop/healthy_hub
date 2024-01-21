@@ -16,8 +16,11 @@ import {
 } from '../../pages/SignUpPage/SignUpPage.styled';
 import WelcomeAuthWrapper from '../../components/WelcomeAuthWrapper';
 import { SubmitButton, ForgotPasswordLink, FormBlock } from './SignIn.styled';
+import { useState } from 'react';
+import LoaderWithBackdrop from '../LoaderSpinner';
 
 const SignInForm = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const error = useSelector(selectError);
@@ -34,9 +37,11 @@ const SignInForm = () => {
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     validationSchema: validationSchema(),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        dispatch(logIn(values));
+        setLoading(true);
+        await dispatch(logIn(values));
+        setLoading(false);
       } catch (error) {
         console.error('Registration failed:', error.message);
       }
@@ -45,6 +50,7 @@ const SignInForm = () => {
 
   return (
     <div className="container">
+      {loading && <LoaderWithBackdrop />}
       {error && error.type === 'login' && (
         <ErrorBlock>
           The email or password you entered is incorrect. Please review your

@@ -10,23 +10,27 @@ import {
 } from './Modal.styled';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
-import { getStatistics } from '../../../redux/Today/Food/operations';
-import today from '../../../helpers/todayData';
-import { getStats } from '../../../redux/statistics/statisticOperations';
+import { useState } from 'react';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 Modal.setAppElement('#root');
 
 const WaterModal = ({ open, close }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
+    if (waterData.trim() === '') {
+      setLoading(false);
+      return;
+    }
     await dispatch(saveWaterIntake(waterData));
-    /*     await dispatch(getStatistics(today)); */
-    /*     await dispatch(getStats(today) ); */
     close();
+    setLoading(false);
   };
 
   return (
@@ -54,6 +58,7 @@ const WaterModal = ({ open, close }) => {
         </Form>
         <CancelBtn onClick={close}>Cancel</CancelBtn>
       </div>
+      {loading && <LoaderWithBackdrop />}
     </ModalWindow>
   );
 };

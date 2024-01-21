@@ -36,6 +36,8 @@ import avatar from '../../images/settingsPageImages/profile-circle.svg';
 import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
 import { refreshUser } from '../../redux/auth/operations';
 import { useState } from 'react';
+import { getStatistics } from '../../redux/Today/Food/operations';
+import LoaderWithBackdrop from '../../components/LoaderSpinner';
 
 const validationSchema = yup.object({
   name: yup
@@ -74,6 +76,7 @@ const validationSchema = yup.object({
 });
 
 const SettingsPage = () => {
+  const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const dispatch = useDispatch();
@@ -90,12 +93,16 @@ const SettingsPage = () => {
     // userAvatarFile: null,
   };
 
-  const handleSaveClick = (values) => {
-    const valuesWithFile = {
+  const handleSaveClick = async (values, formik) => {
+    setLoading(true);
+    /*     const valuesWithFile = {
       ...values,
       userAvatarFile: selectedFile,
-    };
-    dispatch(updateUser(values));
+    }; */
+    await dispatch(updateUser(values));
+    await dispatch(refreshUser());
+    await dispatch(getStatistics());
+    setLoading(false);
     /* dispatch(refreshUser()); */
   };
 
@@ -117,6 +124,7 @@ const SettingsPage = () => {
 
   return (
     <SettingsPageSection>
+      {loading && <LoaderWithBackdrop />}
       <SettingsPageContainer>
         <TitlePage>
           <BackLink />

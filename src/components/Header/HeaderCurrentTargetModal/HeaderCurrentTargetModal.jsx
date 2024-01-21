@@ -23,11 +23,10 @@ import { updateGoal } from '../../../redux/user/operations';
 import { useAuth } from '../../../hooks/useAuth';
 import { refreshUser } from '../../../redux/auth/operations';
 import { toast } from 'react-hot-toast';
-import { getStatistics } from '../../../redux/Today/Food/operations';
-import today from '../../../helpers/todayData';
-
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const [selectedTarget, setSelectedTarget] = useState(user.goal);
   const dispatch = useDispatch();
@@ -41,18 +40,20 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (selectedTarget === user.goal) {
       return toast.error('This Goal has already been selected');
     }
-    
+
     await dispatch(updateGoal(selectedTarget));
     await dispatch(refreshUser());
     closePanel();
-    /* await dispatch(getStatistics()); */
+    setLoading(false);
   };
 
   return (
     <>
+      {loading && <LoaderWithBackdrop />}
       {isTabletOrDesktop && (
         <BtnClose type="button" onClick={closePanel}>
           <SvgClose>

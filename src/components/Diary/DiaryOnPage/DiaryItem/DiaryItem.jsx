@@ -24,24 +24,29 @@ import {
 import { useDispatch } from 'react-redux';
 import { getDailyStatistics } from '../../../../redux/Today/Food/operations.js';
 import today from '../../../../helpers/todayData.js';
+import LoaderWithBackdrop from '../../../LoaderSpinner.jsx';
 
 const DiaryItem = ({ title, image, info }) => {
+  const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const foodIntakeName = title.toLowerCase();
 
   async function handleDelete(foodIntakeName) {
+    setLoading(true);
     await dispatch(delFoodIntake(foodIntakeName));
     await dispatch(getDailyStatistics());
     await dispatch(getStats(today));
     toast.success('The meal intake has been successfully removed.');
+    setLoading(false);
   }
 
   const { carbohidrates, protein, fat } = info;
 
   return (
     <CardWrap>
+      {loading && <LoaderWithBackdrop />}
       <TitleWrap>
         <DiaryImage src={image} alt="Plate" />
         <Title>{title}</Title>
