@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
@@ -35,6 +35,7 @@ import img1 from '../../../images/diaryPageImages/trash.png';
 import img2 from '../../../images/diaryPageImages/trash@2x.png';
 import today from '../../../helpers/todayData';
 import { getDailyStatistics } from '../../../redux/Today/Food/operations';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -91,6 +92,7 @@ const schema = yup.object({
 const modalRoot = document.querySelector('#modal-root');
 
 const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     productList: [
       {
@@ -137,11 +139,11 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
             fat: fat.toFixed(1).toString(),
             calories: calories.toString(),
           };
+          setLoading(true);
           if (item) {
             await dispatch(updateFood({ foodId: item._id, data }));
           } else {
             await dispatch(addFood(data));
-            /* await dispatch(getDailyStatistics()); */
           }
         }
       )
@@ -150,6 +152,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
     await dispatch(getStats(today));
     resetForm();
     onClose();
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -163,6 +166,7 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
+      {loading && <LoaderWithBackdrop />}
       <Modal>
         <ModalTitle>Record your meal</ModalTitle>
         <WrapperFormTitle>

@@ -15,20 +15,27 @@ import {
 import BackLink from '../../components/BackLink';
 
 import { randomizeFood } from '../../helpers/randomizeFood';
+import LoaderWithBackdrop from '../../components/LoaderSpinner';
 
 export default function RecommendedFood() {
+  const [loading, setLoading] = useState(false);
   const [arrayForRender, setArrayForRender] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     getRecommendedFood()
-      .then((responce) => {
-        setArrayForRender(randomizeFood(responce, 10));
+      .then((response) => {
+        setArrayForRender(randomizeFood(response, 10));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
     <Container>
+      {loading && <LoaderWithBackdrop />}
       <Content>
         <HeaderPage>
           <BackLink />
