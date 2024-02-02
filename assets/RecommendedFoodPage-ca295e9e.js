@@ -1,4 +1,4 @@
-import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as c,R as h}from"./randomizeFood-d1a24066.js";import{B as l}from"./index-6c25879a.js";const g="/healthy_hub/assets/Ketogenic-f362ff99.png",f=i.main`
+import{s as n,N as c,r as d,j as i,L as h}from"./index-8658c9f2.js";import{g as l,r as g,R as f}from"./randomizeFood-b8a99e30.js";import{B as w}from"./index-346ac358.js";const u="/healthy_hub/assets/Ketogenic-f362ff99.png",y=n.main`
   background-color: ${e=>e.theme.colors.primaryBlack};
   color: ${e=>e.theme.colors.primaryWhite};
   font-family: 'Poppins', sans-serif;
@@ -13,7 +13,7 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
   @media screen and (min-width: 1440px) {
     padding-top: 20px;
   }
-`,w=i.div`
+`,j=n.div`
   margin: 0 auto;
   width: 320px;
   padding: 0 10px;
@@ -27,18 +27,18 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
     width: 1440px;
     padding: 0 34px;
   }
-`,u=i.header`
+`,k=n.header`
   display: flex;
   align-items: center;
   margin-bottom: 16px;
-`;i(p)`
+`;n(c)`
   display: flex;
   margin-right: 8px;
 
   @media screen and (min-width: 834px) {
     margin-right: 12px;
   }
-`;i.img`
+`;n.img`
   width: 16px;
   svg {
     &:hover {
@@ -50,7 +50,7 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
   @media screen and (min-width: 834px) {
     width: 24px;
   }
-`;const y=i.h1`
+`;const R=n.h1`
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
@@ -60,7 +60,7 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
     font-size: 30px;
     line-height: 36px;
   }
-`,j=i.div`
+`,b=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +72,7 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
     flex-direction: row;
     margin-left: 116px;
   }
-`;i.div`
+`;n.div`
   margin-bottom: 24px;
   width: 300px;
   height: 312px;
@@ -87,11 +87,11 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
     height: 560px;
     margin-bottom: 0;
   }
-`;const R=i.img`
+`;const F=n.img`
   display: block;
   max-width: 100%;
   height: auto;
-`,k=i.ul`
+`,v=n.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -105,4 +105,4 @@ import{s as i,N as p,r as d,j as n}from"./index-61153e53.js";import{g as x,r as 
   @media screen and (1440px) {
     width: calc((100% - 44px) / 2);
   }
-`;function B(){const[e,a]=d.useState([]);return d.useEffect(()=>{x().then(t=>{a(c(t,10))}).catch(t=>console.error(t))},[]),n.jsx(f,{children:n.jsxs(w,{children:[n.jsxs(u,{children:[n.jsx(l,{}),n.jsx(y,{children:"Recommended food"})]}),n.jsxs(j,{children:[n.jsx(R,{src:g,alt:"Banner recommended food"}),n.jsx(k,{children:e.map(({_id:t,img:o,name:r,amount:s,calories:m})=>n.jsx(h,{id:t,img:o,name:r,amount:s,calories:m},t))})]})]})})}export{B as default};
+`;function z(){const[e,a]=d.useState(!1),[o,r]=d.useState([]);return d.useEffect(()=>{a(!0),l().then(t=>{r(g(t,10))}).catch(t=>console.error(t)).finally(()=>{a(!1)})},[]),i.jsxs(y,{children:[e&&i.jsx(h,{}),i.jsxs(j,{children:[i.jsxs(k,{children:[i.jsx(w,{}),i.jsx(R,{children:"Recommended food"})]}),i.jsxs(b,{children:[i.jsx(F,{src:u,alt:"Banner recommended food"}),i.jsx(v,{children:o.map(({_id:t,img:s,name:p,amount:m,calories:x})=>i.jsx(f,{id:t,img:s,name:p,amount:m,calories:x},t))})]})]})]})}export{z as default};
