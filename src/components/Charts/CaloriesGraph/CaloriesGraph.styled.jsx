@@ -30,18 +30,26 @@ export const Overflow = styled.div`
   }
 `;
 
-export const CaloriesSectionhWrapper = styled.div`
+export const CaloriesSectionWrapper = styled.div`
   margin-top: 16px;
   @media screen and (min-width: 1440px) {
     width: 676px;
   }
+  @media screen and (min-width: 834px) and (max-width: 1439px) {
+    margin-top: 40px;
+  }
+  @media screen and (max-width: 834px) {
+    margin-top: 27px;
+  }
 `;
+
 export const CaloriesHeadingWrapper = styled.div`
   display: flex;
   align-items: baseline;
   margin-bottom: 6px;
-  justify-content: space-between;
+  gap: 20px;
 `;
+
 export const CaloriesHeader = styled.h2`
   font-family: Poppins;
   font-size: 22px;
@@ -62,7 +70,7 @@ export const HeaderData = styled.div`
 // eslint-disable-next-line react-refresh/only-export-components
 export const СaloriesGraphWrapper = styled.div`
   border-radius: 12px;
-  background: var(--layout-color);
+  background: ${(p) => p.theme.colors.primaryBlack2};
   padding-left: 15px;
   padding-top: 25px;
   padding-right: 15px;

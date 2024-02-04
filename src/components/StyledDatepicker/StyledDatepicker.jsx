@@ -1,33 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux"; 
-import { format, startOfMonth, endOfMonth } from "date-fns";
-import DatePicker from "react-datepicker";
-import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
-import "react-datepicker/dist/react-datepicker-cssmodules.css";
-import { getStats } from '../../redux/statistics/statisticOperations';
+import React, { useState, useEffect } from 'react';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
+import DatePicker from 'react-datepicker';
+import {
+  CalendarGlobalStyles,
+  CalendarHeader,
+  TitleWrapper,
+} from './StyledDatepicker.styled';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import swgIcons from '../../images/Header/icons.svg';
+import { SvgUserBtnDown } from '../Header/HeaderUserInfoNav/HeaderUserInfoNav.styled';
 
-const StyledDatepicker = () => {
-  const dispatch = useDispatch();
+const StyledDatepicker = ({ onDateRangeChange }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const formatDateForUrl = (date) => {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
-  }; 
+  };
 
   const updateUrlParams = (startDate, endDate) => {
-    const startDateFormatted = formatDateForUrl(startDate);
-    const endDateFormatted = formatDateForUrl(endDate);
-    const dateRange = `${startDateFormatted}${endDateFormatted}`;
-    
-    dispatch(getStats(dateRange));
+    const newDateRange = `${formatDateForUrl(startDate)}${formatDateForUrl(
+      endDate
+    )}`;
+    onDateRangeChange(newDateRange);
   };
 
   useEffect(() => {
-    updateUrlParams(startOfMonth(selectedDate), endOfMonth(selectedDate));
-  }, [dispatch, selectedDate]);
+    const startDate = startOfMonth(selectedDate);
+    const endDate = endOfMonth(selectedDate);
+
+    updateUrlParams(startDate, endDate);
+  }, [selectedDate]);
+
+  const rotateSvg = { transform: 'rotate(180deg)' };
 
   return (
     <>
@@ -37,10 +45,28 @@ const StyledDatepicker = () => {
           setSelectedDate(date);
           updateUrlParams(startOfMonth(date), endOfMonth(date));
         }}
-        dateFormat={"dd MM yyyy"}
+        onCalendarOpen={() => setIsCalendarOpen(true)}
+        onCalendarClose={() => setIsCalendarOpen(false)}
+        dateFormat={'dd MM yyyy'}
         calendarStartDay={1}
         showMonthYearPicker
-        customInput={<TitleWrapper>{format(selectedDate, "MMMM")}</TitleWrapper>}
+        customInput={
+          <CalendarHeader>
+            <TitleWrapper>
+              Months
+              {!isCalendarOpen ? (
+                <SvgUserBtnDown>
+                  <use href={`${swgIcons}#icon-arrow-down`}></use>
+                </SvgUserBtnDown>
+              ) : (
+                <SvgUserBtnDown style={rotateSvg}>
+                  <use href={`${swgIcons}#icon-arrow-down`}></use>
+                </SvgUserBtnDown>
+              )}
+            </TitleWrapper>
+            <p>{format(selectedDate, 'MMMM')}</p>
+          </CalendarHeader>
+        }
       />
       <CalendarGlobalStyles />
     </>

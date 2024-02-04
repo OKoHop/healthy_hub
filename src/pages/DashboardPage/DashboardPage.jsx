@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import StyledDatepicker from '../../components/StyledDatepicker/StyledDatepicker';
 import { WaterGraph } from '../../components/Charts/WaterGraph/WaterGraph';
@@ -17,11 +17,27 @@ import {
   ScaleChartBlock,
 } from './DashboardPage.styled';
 import BackLink from '../../components/BackLink';
+import { getStatsForPeriod } from '../../redux/statistics/statisticOperations';
+import { selectInfo } from '../../redux/statistics/statisticSelectors';
 
 const DashboardPage = () => {
-  const [date, setDate] = useState(null);
-
+  const [dateRange, setDateRange] = useState(null);
   const dispatch = useDispatch();
+  const statsInfo = useSelector(selectInfo);
+
+  useEffect(() => {
+    const fetchDataAndUpdate = async () => {
+      try {
+        await dispatch(getStatsForPeriod(dateRange));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    if (dateRange) {
+      fetchDataAndUpdate();
+    }
+  }, [dispatch, dateRange]);
 
   return (
     <DashboardSection>
@@ -29,20 +45,20 @@ const DashboardPage = () => {
         <HeaderBlock>
           <MainHeaderBlock>
             <BackLink />
-            <StyledDatepicker />
+            <StyledDatepicker onDateRangeChange={setDateRange} />
           </MainHeaderBlock>
           <SecondHeader></SecondHeader>
         </HeaderBlock>
         <LineChartBlock>
           <ChartGrid>
-            <CaloriesGraph date={date} setDate={setDate} />
+            <CaloriesGraph dateRange={dateRange} stats={statsInfo} />
           </ChartGrid>
           <ChartGrid>
-            <WaterGraph date={date} setDate={setDate} />
+            <WaterGraph dateRange={dateRange} stats={statsInfo} />
           </ChartGrid>
         </LineChartBlock>
         <ScaleChartBlock>
-          <WeightGraph date={date} setDate={setDate} />
+          <WeightGraph dateRange={dateRange} stats={statsInfo} />
         </ScaleChartBlock>
       </DashboardContainer>
     </DashboardSection>
