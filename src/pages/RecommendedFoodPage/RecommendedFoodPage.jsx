@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { getRecommendedFood } from '../../helpers/getRecommendedFood';
 
 import RecommendedFoodCard from '../../components/RecommendedFoodCard/RecommendedFoodCard';
@@ -9,44 +7,38 @@ import {
   Container,
   Content,
   HeaderPage,
-  BackLink,
-  ArrowReturn,
   TitlePage,
   InfoBox,
   Img,
   RecommendedFoodList,
 } from './RecommendedFoodPage.styled';
+import BackLink from '../../components/BackLink';
 
 import { randomizeFood } from '../../helpers/randomizeFood';
-
-import arrowRight from '../../images/RecommendedFoodPage/arrow-right.svg';
-import { getStats } from '../../redux/statistics/statisticOperations';
+import LoaderWithBackdrop from '../../components/LoaderSpinner';
 
 export default function RecommendedFood() {
+  const [loading, setLoading] = useState(false);
   const [arrayForRender, setArrayForRender] = useState([]);
 
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
-
   useEffect(() => {
+    setLoading(true);
     getRecommendedFood()
-      .then((responce) => {
-        setArrayForRender(randomizeFood(responce, 10));
+      .then((response) => {
+        setArrayForRender(randomizeFood(response, 10));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
     <Container>
+      {loading && <LoaderWithBackdrop />}
       <Content>
         <HeaderPage>
-          <BackLink
-            to={backLinkLocationRef.current}
-            onClick={() => dispatch(getStats('today'))}
-          >
-            <ArrowReturn src={arrowRight} alt="arrow right" />
-          </BackLink>
+          <BackLink />
           <TitlePage>Recommended food</TitlePage>
         </HeaderPage>
 

@@ -10,7 +10,7 @@ import {
   StyledDiv,
   StyledDiv2,
   Wrapper,
-} from './Today.style';
+} from './Today.styled';
 import Water from '../../components/Today/Water/Water';
 import svgSlice from '../../images/Illustrations/Today/today-svg-sprite.svg';
 import DiaryOnMain from '../../components/Diary/DiaryOnPage/DiaryOnMain';
@@ -19,7 +19,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {
   getDailyStatistics,
-  getStatisticts,
+  getStatistics,
 } from '../../redux/Today/Food/operations';
 import { getStats } from '../../redux/statistics/statisticOperations';
 import today from '../../helpers/todayData';
@@ -28,9 +28,9 @@ const Today = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDailyStatistics());
-    dispatch(getStatisticts());
-    dispatch(getStats(today))
+    dispatch(getDailyStatistics(today));
+    dispatch(getStatistics(today));
+    dispatch(getStats(today));
   }, [dispatch]);
 
   return (

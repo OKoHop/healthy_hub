@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Div = styled.div`
+export const NutrientBlock = styled.div`
   height: 48px;
   display: flex;
   justify-content: flex-start;
@@ -8,26 +8,26 @@ export const Div = styled.div`
   gap: 12px;
 `;
 
-export const Div2 = styled.div`
+export const NutrientInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
 `;
-export const Div3 = styled.div`
-  display: flex;
-  gap: 12px;
-`;
 
-export const P = styled.p`
+export const NutrientName = styled.p`
   font-weight: 500;
   font-size: 18px;
   line-height: 1.33;
 `;
 
-export const P2 = styled.p`
-  font-size: 14px;
+export const NutrientStatistics = styled.div`
+  display: flex;
+  gap: 12px;
+  p{
+    font-size: 14px;
   line-height: 1.43;
-`;
-export const Span = styled.span`
-  color: #b6b6b6;
+  }
+  span{
+    color: #b6b6b6;
+  }
 `;

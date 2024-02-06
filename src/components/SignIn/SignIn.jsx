@@ -1,18 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
-import SportAndFitnessTrackerIMG from './../../images/Illustrations/Welcome/sport_fit_tracker_desk@1x.png';
 import { useFormik } from 'formik';
 import FormInput from '../Auth/AuthFormInput/FormInput';
 import validationSchema from './validationSchema';
 import { logIn } from '../../redux/auth/operations';
-import { Link } from 'react-router-dom';
-
-import css from './SignIn.module.css';
 import { selectError } from '../../redux/auth/selectors';
 
 import useAuthResetError from '../../hooks/useAuthResetError';
-import { ErrorBlock } from '../../pages/SignUpPage/SignUpPage.styled';
+import {
+  Content,
+  ErrorBlock,
+  AuthQuestion,
+  StyledLink,
+  Subtitle,
+  Title,
+} from '../../pages/SignUpPage/SignUpPage.styled';
+import WelcomeAuthWrapper from '../../components/WelcomeAuthWrapper';
+import { SubmitButton, ForgotPasswordLink, FormBlock } from './SignIn.styled';
+import { useState } from 'react';
+import LoaderWithBackdrop from '../LoaderSpinner';
 
 const SignInForm = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const error = useSelector(selectError);
@@ -29,9 +37,11 @@ const SignInForm = () => {
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     validationSchema: validationSchema(),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        dispatch(logIn(values));
+        setLoading(true);
+        await dispatch(logIn(values));
+        setLoading(false);
       } catch (error) {
         console.error('Registration failed:', error.message);
       }
@@ -40,19 +50,18 @@ const SignInForm = () => {
 
   return (
     <div className="container">
+      {loading && <LoaderWithBackdrop />}
       {error && error.type === 'login' && (
-        <ErrorBlock>{error.message}</ErrorBlock>
+        <ErrorBlock>
+          The email or password you entered is incorrect. Please review your
+          information and attempt to log in again.
+        </ErrorBlock>
       )}
-      <div className={css.wrapper}>
-        <img
-          className={css.img}
-          src={SportAndFitnessTrackerIMG}
-          alt="illustration-sport-and-fitness-tracker"
-        />
-        <div className={css.content}>
-          <h1 className={css.title}>Sign in</h1>
-          <h2 className={css.subtitle}>You need to login to use the service</h2>
-          <form className={css.form} onSubmit={formik.handleSubmit}>
+      <WelcomeAuthWrapper>
+        <Content>
+          <Title>Sign in</Title>
+          <Subtitle>You need to login to use the service</Subtitle>
+          <FormBlock onSubmit={formik.handleSubmit}>
             {inputFields.map((field) => (
               <FormInput
                 key={field.name}
@@ -68,29 +77,23 @@ const SignInForm = () => {
               />
             ))}
 
-            <button className={css.signinBtn} type="submit">
-              Sign in
-            </button>
-            <Link
-              className={css.forgotPassword}
+            <SubmitButton type="submit">Sign in</SubmitButton>
+            <ForgotPasswordLink
               to={'/forgot-password'}
               onClick={resetAuthError}
             >
               Forgot your password?
-            </Link>
-          </form>
-          <div className={css.questionTrumb}>
-            <p className={css.question}> If you don't have an account yet? </p>
-            <Link
-              className={css.signupBtn}
-              to="/signup"
-              onClick={resetAuthError}
-            >
+            </ForgotPasswordLink>
+          </FormBlock>
+
+          <AuthQuestion>
+            <p>If you don't have an account yet</p>
+            <StyledLink to="/signup" onClick={resetAuthError}>
               Sign up
-            </Link>
-          </div>
-        </div>
-      </div>
+            </StyledLink>
+          </AuthQuestion>
+        </Content>
+      </WelcomeAuthWrapper>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux';
 import svgIcons from '../../../images/Header/icons.svg';
 import loseFatPng from '../../../images/Header/lose_fat_image_men.png';
-import maintakePng from '../../../images/Header/maintake_image_men.png';
+import maintainPng from '../../../images/Header/maintain_image_men.png';
 import gainMusclePng from '../../../images/Header/gain_muscle.png';
 import {
   BtnCancel,
@@ -18,14 +18,15 @@ import {
   ImgTarget,
   FormTargetLabel,
   TargetImgBorder,
-} from './HeaderCurrentTargetModal.style';
+} from './HeaderCurrentTargetModal.styled';
 import { updateGoal } from '../../../redux/user/operations';
 import { useAuth } from '../../../hooks/useAuth';
 import { refreshUser } from '../../../redux/auth/operations';
 import { toast } from 'react-hot-toast';
-import { getStatisticts } from '../../../redux/Today/Food/operations';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 export const HeaderCurrentTargetModal = ({ closePanel }) => {
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const [selectedTarget, setSelectedTarget] = useState(user.goal);
   const dispatch = useDispatch();
@@ -37,19 +38,22 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
     setSelectedTarget(value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (selectedTarget === user.goal) {
       return toast.error('This Goal has already been selected');
     }
-    dispatch(updateGoal(selectedTarget));
+
+    await dispatch(updateGoal(selectedTarget));
+    await dispatch(refreshUser());
     closePanel();
-    dispatch(refreshUser());
-    dispatch(getStatisticts());
+    setLoading(false);
   };
 
   return (
     <>
+      {loading && <LoaderWithBackdrop />}
       {isTabletOrDesktop && (
         <BtnClose type="button" onClick={closePanel}>
           <SvgClose>
@@ -72,7 +76,7 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
                 onChange={() => handleTargetChange('lose fat')}
               />
               <TargetImgBorder isSelected={selectedTarget === 'lose fat'}>
-                <ImgTarget src={`${loseFatPng}`} alt="waight"></ImgTarget>
+                <ImgTarget src={`${loseFatPng}`} alt="weight"></ImgTarget>
               </TargetImgBorder>
               Lose fat
             </FormTargetLabel>
@@ -86,7 +90,7 @@ export const HeaderCurrentTargetModal = ({ closePanel }) => {
                 onChange={() => handleTargetChange('maintain')}
               />
               <TargetImgBorder isSelected={selectedTarget === 'maintain'}>
-                <ImgTarget src={`${maintakePng}`} alt="=maintain"></ImgTarget>
+                <ImgTarget src={`${maintainPng}`} alt="=maintain"></ImgTarget>
               </TargetImgBorder>
               Maintain
             </FormTargetLabel>

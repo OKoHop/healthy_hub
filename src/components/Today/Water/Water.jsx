@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
+import { useState } from 'react';
+import { StyledSubtitle } from '../DailyGoal/DailyGoal.styled';
 import {
   P,
   Progress,
@@ -15,23 +15,23 @@ import {
   StyledSpan2,
   Svg,
   Thumb,
-} from './Water.style';
+} from './Water.styled';
 import svgSlice from '../../../images/Illustrations/Today/today-svg-sprite.svg';
 import WaterModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { water } from '../../../redux/Today/Daily/selectors';
 import { delWaterIntake } from '../../../redux/Today/Water/operations';
 import { waterIntake } from '../../../redux/Today/Water/selectors';
 import toast from 'react-hot-toast';
-import { dailyWater } from '../../../redux/Today/Food/selectors';
-import { getDailyStatistics } from '../../../redux/Today/Food/operations';
+import { useAuth } from '../../../hooks/useAuth';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 const Water = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const wat = useSelector(water) || 0;
-  const watIntake = useSelector(waterIntake);
   const dispatch = useDispatch();
-  const getWater = useSelector(dailyWater) || 0;
+  const [loading, setLoading] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
+  const intakeWater = useSelector(waterIntake);
+  const dailyWater = user.water;
 
   function openModal() {
     setIsOpen(true);
@@ -41,31 +41,29 @@ const Water = () => {
     setIsOpen(false);
   }
 
-  function waterLeft(wat, watIntake) {
-    if (wat - getWater < 0) {
+  function waterLeft(water, intake) {
+    if (water - intake < 0) {
       return 0;
     }
-    return Math.round(wat - getWater);
+    return Math.round(water - intake);
   }
 
-  function persentWater(wat, waterIntake) {
-    if ((waterIntake / wat) * 100 >= 100) {
+  function waterPercentage(water, waterIntake) {
+    if ((waterIntake / water) * 100 >= 100) {
       return 100;
     }
-    return Math.round((waterIntake / wat) * 100);
+    return Math.round((waterIntake / water) * 100);
   }
 
-  function handleDelete() {
-    dispatch(delWaterIntake());
-    setTimeout(() => {
-      dispatch(getDailyStatistics());
-    }, 100);
-    toast.success('WaterIntake has been successfuly reset');
+  async function handleDelete() {
+    try {
+      setLoading(true);
+      await dispatch(delWaterIntake());
+      toast.success('Water consumption has been successfully reset');
+    } finally {
+      setLoading(false);
+    }
   }
-
-  useEffect(() => {
-    dispatch(getDailyStatistics());
-  }, [getWater]);
 
   return (
     <>
@@ -73,24 +71,28 @@ const Water = () => {
         <StyledSubtitle>Water</StyledSubtitle>
         <StyledDiv>
           <StyledDiagram>
-            <P>{persentWater(wat, getWater)} %</P>
-            <Progress height={persentWater(wat, getWater) || 0}></Progress>
+            <P>{waterPercentage(dailyWater, intakeWater)} %</P>
+            <Progress
+              height={waterPercentage(dailyWater, intakeWater) || 0}
+            ></Progress>
           </StyledDiagram>
           <div>
             <Svg onClick={handleDelete}>
               <use href={`${svgSlice}#trash`}></use>
             </Svg>
+            {loading && <LoaderWithBackdrop />}
             <StyledP>Water consumption</StyledP>
             <StyledDiv2>
               <StyledNum>
-                {getWater && getWater} <StyledSpan>ml</StyledSpan>
+                {intakeWater} <StyledSpan>ml</StyledSpan>
               </StyledNum>
               <StyledLeft>
-                left: <StyledSpan2>{waterLeft(wat, getWater)}</StyledSpan2>{' '}
+                left:{' '}
+                <StyledSpan2>{waterLeft(dailyWater, intakeWater)}</StyledSpan2>{' '}
                 <StyledSpan>ml</StyledSpan>
               </StyledLeft>
             </StyledDiv2>
-            <StyledBtn onClick={openModal}>
+            <StyledBtn onClick={openModal} disabled={loading}>
               <SVG>
                 <use href={`${svgSlice}#add`}></use>
               </SVG>

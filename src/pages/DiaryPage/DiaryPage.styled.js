@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Section = styled.main`
-  background-color: ${p => p.theme.colors.primaryBlack};
-  color: ${p => p.theme.colors.primaryWhite};
+  background-color: ${(p) => p.theme.colors.primaryBlack};
+  color: ${(p) => p.theme.colors.primaryWhite};
   padding-top: 16px;
   padding-bottom: 60px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     padding-top: 24px;
     padding-bottom: 20px;
   }
-  @media screen and (${p => p.theme.mq.deskMin}) {
+  @media screen and (${(p) => p.theme.mq.deskMin}) {
     padding-top: 20px;
   }
 `;
@@ -21,11 +21,11 @@ export const Container = styled.div`
   width: 320px;
   padding: 0 10px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     width: 834px;
     padding: 0 27px;
   }
-  @media screen and (${p => p.theme.mq.deskMin}) {
+  @media screen and (${(p) => p.theme.mq.deskMin}) {
     width: 1440px;
     padding: 0 34px;
   }
@@ -33,19 +33,19 @@ export const Container = styled.div`
 
 export const BackLink = styled(NavLink)`
   display: flex;
-  @media screen and (${p => p.theme.mq.mobMin}) {
+  @media screen and (${(p) => p.theme.mq.mobMin}) {
     margin-right: 8px;
   }
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     margin-right: 12px;
   }
 `;
 
 export const ArrowReturn = styled.img`
-  @media screen and (${p => p.theme.mq.mobMin}) {
+  @media screen and (${(p) => p.theme.mq.mobMin}) {
     width: 16px;
   }
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     width: 24px;
   }
 `;
@@ -55,22 +55,21 @@ export const MainHeaderBlock = styled.header`
   align-items: center;
   margin-bottom: 20px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     margin-bottom: 24px;
-
   }
-  @media screen and (${p => p.theme.mq.deskMin}) {
+  @media screen and (${(p) => p.theme.mq.deskMin}) {
     margin-bottom: 16px;
   }
 `;
 
 export const MainHeader = styled.h1`
-  font-size: ${p => p.theme.fontSizes.l2};
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: ${(p) => p.theme.fontSizes.l2};
+  font-weight: ${(p) => p.theme.fontWeights.medium};
   line-height: 1.25;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
-    font-size: ${p => p.theme.fontSizes.xl};
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
+    font-size: ${(p) => p.theme.fontSizes.xl};
     line-height: 1.2;
   }
 `;
@@ -80,7 +79,7 @@ export const DiaryWrap = styled.ul`
   flex-direction: column;
   gap: 24px;
 
-  @media screen and (${p => p.theme.mq.deskMin}) {
+  @media screen and (${(p) => p.theme.mq.deskMin}) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
@@ -105,18 +104,17 @@ export const DiaryItem = styled.li`
   flex-direction: column;
   gap: 12px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     gap: 6px;
   }
 
-  @media screen and (${p => p.theme.mq.deskMin}) {
+  @media screen and (${(p) => p.theme.mq.deskMin}) {
     width: calc((100% - 20px) / 2);
   }
 `;
 
-
 export const BlockGeneralInfo = styled.div`
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -129,10 +127,9 @@ export const BlockHeader = styled.div`
   gap: 12px;
   margin-bottom: 12px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     margin-bottom: 0;
   }
-
 `;
 
 export const ThumbImg = styled.div`
@@ -149,22 +146,22 @@ export const Img = styled.img`
 `;
 
 export const Title = styled.h2`
-  font-size: ${p => p.theme.fontSizes.m};
+  font-size: ${(p) => p.theme.fontSizes.m};
   line-height: 26px;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
-    font-size: ${p => p.theme.fontSizes.l};
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
+    font-size: ${(p) => p.theme.fontSizes.l};
     line-height: 32px;
   }
 `;
 
 export const BlockDetailedInformation = styled.ul`
-  background-color: ${p => p.theme.colors.primaryBlack2};
-  border-radius:12px;
+  background-color: ${(p) => p.theme.colors.primaryBlack2};
+  border-radius: 12px;
   height: 232px;
   padding: 16px 12px;
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     height: 240px;
     padding: 32px 14px;
   }
@@ -173,7 +170,7 @@ export const BlockDetailedInformation = styled.ul`
 export const ListOfDishes = styled.ul`
   display: flex;
   flex-direction: column;
-  row-gap: 40px;
+  row-gap: 20px;
   height: 200px;
   overflow-y: auto;
   padding-right: 10px;
@@ -192,7 +189,7 @@ export const ListOfDishes = styled.ul`
     }
   }
 
-  @media screen and (${p => p.theme.mq.tabMin}) {
+  @media screen and (${(p) => p.theme.mq.tabMin}) {
     height: 176px;
     row-gap: 32px;
   }

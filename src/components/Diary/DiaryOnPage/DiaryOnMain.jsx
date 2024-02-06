@@ -28,18 +28,6 @@ const DiaryOnMain = () => {
   const [snackFoodIntake, setSnackFoodIntake] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(getStats(today));
-      } catch (error) {
-        toast.error(error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch]);
-
-  useEffect(() => {
     if (foodIntake) {
       setLunchFoodIntake(foodIntake.foodIntake.lunch);
       setBreakfastFoodIntake(foodIntake.foodIntake.breakfast);

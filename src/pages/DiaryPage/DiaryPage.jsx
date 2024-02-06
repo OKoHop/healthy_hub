@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
@@ -16,14 +15,11 @@ import breakfastImg from '../../images/diaryPageImages/breakfast.png';
 import dinnerImg from '../../images/diaryPageImages/dinner.png';
 import lunchImg from '../../images/diaryPageImages/lunch.png';
 import snackImg from '../../images/diaryPageImages/snack.png';
-import arrowRight from '../../images/diaryPageImages/arrow-right.svg';
 
 import {
   Section,
   Container,
   MainHeaderBlock,
-  BackLink,
-  ArrowReturn,
   MainHeader,
   DiaryWrap,
   DiaryItem,
@@ -38,11 +34,10 @@ import {
 import { getStats } from '../../redux/statistics/statisticOperations';
 import today from '../../helpers/todayData';
 import { calculateTotal } from '../../helpers/calculateTotalIngridients';
+import BackLink from '../../components/BackLink';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/main');
 
   const [lunchFoodIntake, setLunchFoodIntake] = useState([]);
   const [breakfastFoodIntake, setBreakfastFoodIntake] = useState([]);
@@ -82,120 +77,124 @@ const DiaryPage = () => {
     <Section>
       <Container>
         <MainHeaderBlock>
-          <BackLink to={backLinkLocationRef.current}>
-            <ArrowReturn src={arrowRight} alt="arrow right" />
-          </BackLink>
+          <BackLink />
           <MainHeader>Diary</MainHeader>
         </MainHeaderBlock>
 
-        {isLoading && (
-          <DiaryWrap>
-            <DiaryItem>
-              <BlockGeneralInfo>
-                <BlockHeader>
-                  <ThumbImg>
-                    <Img src={breakfastImg} alt="Plate" />
-                  </ThumbImg>
-                  <Title>Breakfast</Title>
-                </BlockHeader>
-                <ItemsToAdd info={calculateTotal(breakfastFoodIntake)} />
-              </BlockGeneralInfo>
-              <BlockDetailedInformation>
-                <ListOfDishes>
-                  {getArrayToRenderDiary(
-                    removeNullDishObjects(breakfastFoodIntake),
-                    'Breakfast'
-                  ).map((item, index) => (
+
+        <DiaryWrap>
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={breakfastImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Breakfast</Title>
+              </BlockHeader>
+              <ItemsToAdd info={calculateTotal(breakfastFoodIntake)} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(
+                  removeNullDishObjects(breakfastFoodIntake),
+                  'Breakfast'
+                ).map((item, index) => (
+                  <ElementOfFood
+                    item={item}
+                    key={nanoid()}
+                    index={index}
+                    img={breakfastImg}
+                    mealType="breakfast"
+                  />
+                ))}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
+
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={lunchImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Lunch</Title>
+              </BlockHeader>
+              <ItemsToAdd info={calculateTotal(lunchFoodIntake)} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(lunchFoodIntake, 'Lunch').map(
+                  (item, index) => (
+
                     <ElementOfFood
                       item={item}
                       key={nanoid()}
                       index={index}
-                      img={breakfastImg}
+
+                      img={lunchImg}
+                      mealType="lunch"
+
                     />
                   ))}
                 </ListOfDishes>
               </BlockDetailedInformation>
             </DiaryItem>
 
-            <DiaryItem>
-              <BlockGeneralInfo>
-                <BlockHeader>
-                  <ThumbImg>
-                    <Img src={lunchImg} alt="Plate" />
-                  </ThumbImg>
-                  <Title>Lunch</Title>
-                </BlockHeader>
-                <ItemsToAdd info={calculateTotal(lunchFoodIntake)} />
-              </BlockGeneralInfo>
-              <BlockDetailedInformation>
-                <ListOfDishes>
-                  {getArrayToRenderDiary(lunchFoodIntake, 'Lunch').map(
-                    (item, index) => (
-                      <ElementOfFood
-                        item={item}
-                        key={nanoid()}
-                        index={index}
-                        img={lunchImg}
-                      />
-                    )
-                  )}
-                </ListOfDishes>
-              </BlockDetailedInformation>
-            </DiaryItem>
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={dinnerImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Dinner</Title>
+              </BlockHeader>
+              <ItemsToAdd info={calculateTotal(dinnerFoodIntake)} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(dinnerFoodIntake, 'Dinner').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={dinnerImg}
+                      mealType="dinner"
+                    />
+                  )
+                )}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
 
-            <DiaryItem>
-              <BlockGeneralInfo>
-                <BlockHeader>
-                  <ThumbImg>
-                    <Img src={dinnerImg} alt="Plate" />
-                  </ThumbImg>
-                  <Title>Dinner</Title>
-                </BlockHeader>
-                <ItemsToAdd info={calculateTotal(dinnerFoodIntake)} />
-              </BlockGeneralInfo>
-              <BlockDetailedInformation>
-                <ListOfDishes>
-                  {getArrayToRenderDiary(dinnerFoodIntake, 'Dinner').map(
-                    (item, index) => (
-                      <ElementOfFood
-                        item={item}
-                        key={nanoid()}
-                        index={index}
-                        img={dinnerImg}
-                      />
-                    )
-                  )}
-                </ListOfDishes>
-              </BlockDetailedInformation>
-            </DiaryItem>
+          <DiaryItem>
+            <BlockGeneralInfo>
+              <BlockHeader>
+                <ThumbImg>
+                  <Img src={snackImg} alt="Plate" />
+                </ThumbImg>
+                <Title>Snack</Title>
+              </BlockHeader>
+              <ItemsToAdd info={calculateTotal(snackFoodIntake)} />
+            </BlockGeneralInfo>
+            <BlockDetailedInformation>
+              <ListOfDishes>
+                {getArrayToRenderDiary(snackFoodIntake, 'Snack').map(
+                  (item, index) => (
+                    <ElementOfFood
+                      item={item}
+                      key={nanoid()}
+                      index={index}
+                      img={snackImg}
+                      mealType="snack"
+                    />
+                  )
+                )}
+              </ListOfDishes>
+            </BlockDetailedInformation>
+          </DiaryItem>
+        </DiaryWrap>
 
-            <DiaryItem>
-              <BlockGeneralInfo>
-                <BlockHeader>
-                  <ThumbImg>
-                    <Img src={snackImg} alt="Plate" />
-                  </ThumbImg>
-                  <Title>Snack</Title>
-                </BlockHeader>
-                <ItemsToAdd info={calculateTotal(snackFoodIntake)} />
-              </BlockGeneralInfo>
-              <BlockDetailedInformation>
-                <ListOfDishes>
-                  {getArrayToRenderDiary(snackFoodIntake, 'Snack').map(
-                    (item, index) => (
-                      <ElementOfFood
-                        item={item}
-                        key={nanoid()}
-                        index={index}
-                        img={snackImg}
-                      />
-                    )
-                  )}
-                </ListOfDishes>
-              </BlockDetailedInformation>
-            </DiaryItem>
-          </DiaryWrap>
-        )}
       </Container>
     </Section>
   );

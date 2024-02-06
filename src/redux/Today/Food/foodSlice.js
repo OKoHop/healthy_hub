@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getDailyStatistics, getStatisticts } from './operations';
+  import { createSlice } from '@reduxjs/toolkit';
+import { getDailyStatistics, getStatistics } from './operations';
 
 const initialState = {
   carbonohidrates: 0,
@@ -14,21 +14,22 @@ const nutrientsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getStatisticts.pending, (state, action) => {
+      .addCase(getStatistics.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(getStatisticts.fulfilled, (state, action) => {
+      .addCase(getStatistics.fulfilled, (state, action) => {
         state.carbonohidrates = action.payload.nutrients.carbonohidrates;
         state.protein = action.payload.nutrients.protein;
         state.fat = action.payload.nutrients.fat;
       })
-      .addCase(getStatisticts.rejected, (state, action) => {
+      .addCase(getStatistics.rejected, (state, action) => {
         state.isLoading = true;
       })
       .addCase(getDailyStatistics.pending, (state, action) => {
         state.isLoading = true;
       })
       .addCase(getDailyStatistics.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.dailyNutrients = action.payload;
       })
       .addCase(getDailyStatistics.rejected, (state, action) => {

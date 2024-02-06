@@ -27,6 +27,7 @@ import {
   FormGroupLabel,
   LinkDownloadPhoto,
 } from './SettingsPage.styled';
+import BackLink from '../../components/BackLink';
 
 import setingsPage from '../../images/settingsPageImages/setings-page.png';
 import downloadPhoto from '../../images/settingsPageImages/download-new-photo.svg';
@@ -35,6 +36,8 @@ import avatar from '../../images/settingsPageImages/profile-circle.svg';
 import CustomRadioButton from '../../components/SettingsPage/CustomRadioButton';
 import { refreshUser } from '../../redux/auth/operations';
 import { useState } from 'react';
+import { getStatistics } from '../../redux/Today/Food/operations';
+import LoaderWithBackdrop from '../../components/LoaderSpinner';
 
 const validationSchema = yup.object({
   name: yup
@@ -73,11 +76,12 @@ const validationSchema = yup.object({
 });
 
 const SettingsPage = () => {
+  const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUser);
-  
+
   const initialValues = {
     name: userProfile.name,
     age: userProfile.age,
@@ -89,13 +93,17 @@ const SettingsPage = () => {
     userAvatarFile: null,
   };
 
-  const handleSaveClick = (values) => {
-    const valuesWithFile = {
+  const handleSaveClick = async (values, formik) => {
+    setLoading(true);
+    /*     const valuesWithFile = {
       ...values,
       userAvatarFile: selectedFile,
-    };
-    dispatch(updateUser(values));
-    dispatch(refreshUser());
+    }; */
+    await dispatch(updateUser(values));
+    await dispatch(refreshUser());
+    await dispatch(getStatistics());
+    setLoading(false);
+    /* dispatch(refreshUser()); */
   };
 
   const handleCancelClick = (formik) => {
@@ -116,8 +124,12 @@ const SettingsPage = () => {
 
   return (
     <SettingsPageSection>
+      {loading && <LoaderWithBackdrop />}
       <SettingsPageContainer>
-        <TitlePage>Profile setting</TitlePage>
+        <TitlePage>
+          <BackLink />
+          Profile setting
+        </TitlePage>
 
         <ProfileSettingsContainer>
           <BannerThumb>
@@ -224,42 +236,41 @@ const SettingsPage = () => {
                     Your activity
                   </FormGroupLabel>
                   <CustomRadioButton
-                      name="activity"
-                      id="activity1"
-                      value="1.2"
-                      selectedValue={formik.values.activity}
-                      text="1.2 - if you do not have physical activity and sedentary work"
-                    />
-                    <CustomRadioButton
-                      name="activity"
-                      id="activity2"
-                      value="1.375"
-                      selectedValue={formik.values.activity}
-                      text="1.375 - if you do short runs or light gymnastics 1-3 times a week"
-                    />
-                    <CustomRadioButton
-                      name="activity"
-                      id="activity3"
-                      value="1.55"
-                      selectedValue={formik.values.activity}
-                      text="1.55 - if you play sports with average loads 3-5 times a week"
-                    />
-                    <CustomRadioButton
-                      name="activity"
-                      id="activity4"
-                      value="1.725"
-                      selectedValue={formik.values.activity}
-                      text="1.725 - if you train fully 6-7 times a week"
-                    />
-                    <CustomRadioButton
-                      name="activity"
-                      id="activity5"
-                      value="1.9"
-                      selectedValue={formik.values.activity.toString()}
-                      text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"
-                    />
-
-                  </FormGroup>
+                    name="activity"
+                    id="activity1"
+                    value="1.2"
+                    selectedValue={formik.values.activity}
+                    text="1.2 - if you do not have physical activity and sedentary work"
+                  />
+                  <CustomRadioButton
+                    name="activity"
+                    id="activity2"
+                    value="1.375"
+                    selectedValue={formik.values.activity}
+                    text="1.375 - if you do short runs or light gymnastics 1-3 times a week"
+                  />
+                  <CustomRadioButton
+                    name="activity"
+                    id="activity3"
+                    value="1.55"
+                    selectedValue={formik.values.activity}
+                    text="1.55 - if you play sports with average loads 3-5 times a week"
+                  />
+                  <CustomRadioButton
+                    name="activity"
+                    id="activity4"
+                    value="1.725"
+                    selectedValue={formik.values.activity}
+                    text="1.725 - if you train fully 6-7 times a week"
+                  />
+                  <CustomRadioButton
+                    name="activity"
+                    id="activity5"
+                    value="1.9"
+                    selectedValue={formik.values.activity.toString()}
+                    text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"
+                  />
+                </FormGroup>
 
                 <ButtonContainer>
                   <SaveButton type="submit">Save</SaveButton>

@@ -1,23 +1,36 @@
 import Modal from 'react-modal';
-import { Form, FormBtn, H1, Input, Label, ModalWindow, P } from './Modal.style';
+import {
+  Form,
+  FormBtn,
+  H1,
+  Input,
+  Label,
+  ModalWindow,
+  CancelBtn,
+} from './Modal.styled';
 import { useDispatch } from 'react-redux';
 import { saveWaterIntake } from '../../../redux/Today/Water/operations';
-import { getDailyStatistics } from '../../../redux/Today/Food/operations';
+import { useState } from 'react';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 Modal.setAppElement('#root');
 
 const WaterModal = ({ open, close }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const form = e.currentTarget;
     const waterData = form.elements.water.value;
-    dispatch(saveWaterIntake(waterData));
-    setTimeout(() => {
-      dispatch(getDailyStatistics());
-    }, 1);
+    if (waterData.trim() === '') {
+      setLoading(false);
+      return;
+    }
+    await dispatch(saveWaterIntake(waterData));
     close();
+    setLoading(false);
   };
 
   return (
@@ -32,18 +45,20 @@ const WaterModal = ({ open, close }) => {
       <div>
         <Form onSubmit={handleSubmitForm}>
           <Label>
-            How match water
+            How much water
             <Input
-              type="text"
+              type="number"
               name="water"
               placeholder="Enter milliliters"
               autoComplete="off"
+              max={7000}
             />
           </Label>
           <FormBtn type="submit">Confirm</FormBtn>
         </Form>
-        <P onClick={close}>Cancel</P>
+        <CancelBtn onClick={close}>Cancel</CancelBtn>
       </div>
+      {loading && <LoaderWithBackdrop />}
     </ModalWindow>
   );
 };

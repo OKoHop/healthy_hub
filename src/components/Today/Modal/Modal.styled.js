@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import { sharedButtonStyles } from '../../Buttons/Buttons.styled';
 
 export const H1 = styled.h1`
   font-weight: 500;
@@ -31,22 +32,36 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   width: 276px;
+  max-width: 100%;
   height: 34px;
-  border: 1px solid #e3ffa8;
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   border-radius: 12px;
   padding: 8px 10px;
   background-color: #0f0f0f;
   color: #b6b6b6;
-
+  transition: ${(p) => p.theme.transition.customTrans};
+  outline: none;
+  cursor: pointer;
   &::placeholder {
     color: #b6b6b6;
   }
-
+  &:hover,
+  &:focus {
+    border: 1px solid ${(p) => p.theme.colors.primaryWhite};
+  }
   @media (min-width: 834px) {
     width: 212px;
     height: 36px;
     margin-left: auto;
     margin-right: auto;
+  }
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+  &[type='number']::-webkit-inner-spin-button,
+  &[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 `;
 
@@ -68,29 +83,39 @@ export const Label = styled.label`
 export const FormBtn = styled.button`
   width: 276px;
   height: 36px;
-  border: inherit;
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   border-radius: 12px;
-  background-color: #e3ffa8;
+  background: ${(p) => p.theme.colors.primaryGreenLite};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-
+  font-size: 14px;
   @media (min-width: 834px) {
     width: 212px;
     height: 36px;
   }
 
-  &:hover,
-  :focus {
+  &:hover {
     background-color: transparent;
-    border: 1px solid #e3ffa8;
-    color: #ffffff;
+    border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
+    color: ${(p) => p.theme.colors.primaryWhite};
   }
 `;
 
-export const P = styled.p`
+export const CancelBtn = styled.button`
+  ${sharedButtonStyles}
+  display: block;
+  color: ${(p) => p.theme.colors.primaryGray};
+  border: 1px solid transparent;
+  background-color: transparent;
+  width: 100px;
   margin-top: 16px;
-  text-align: center;
-  color: #b6b6b6;
-  cursor: pointer;
+  margin-inline: auto;
+  &:hover {
+    border-color: ${(p) => p.theme.colors.primaryGreenLite};
+    width: 100%;
+    @media (min-width: 834px) {
+      width: 212px;
+    }
+  }
 `;
 
 export const ModalWindow = styled(Modal)`

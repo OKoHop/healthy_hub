@@ -16,8 +16,10 @@ import {
   renderInputs,
   renderRadioButtons,
 } from '../../../helpers/authFormHelpers';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const selectErrorFromStore = useSelector(selectError);
 
@@ -38,12 +40,14 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
     validationSchema: validationSchema(currentStep),
     onSubmit: async (values) => {
       if (currentStep === 4) {
+        setLoading(true);
         const originalActivity = formik.values['activity'];
         values.activity = modifyActivityValue(values.activity);
 
         try {
           await dispatch(register(values));
           values.activity = originalActivity;
+          setLoading(false);
         } catch (error) {
           const errorMessage =
             selectErrorFromStore || 'An unexpected error occurred.';
@@ -77,6 +81,7 @@ const MultiPageRegisterForm = ({ currentStep, setCurrentStep, onError }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      {loading && <LoaderWithBackdrop />}
       <InputsBlock $hasBackButton={currentStep > 0}>
         {currentStep === 0 && <>{renderInputs(inputFields.main, formik)}</>}
         {currentStep === 1 && (

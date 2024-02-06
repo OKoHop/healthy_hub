@@ -15,17 +15,19 @@ export const BtnClose = styled.button`
   top: 20px;
   right: 32px;
   color: ${(p) => p.theme.colors.primaryWhite};
-
-  &:hover,
-  :focus {
-    stroke: ${(p) => p.theme.colors.primaryGreenLite};
-  }
+  transition: ${(p) => p.theme.transition.customTrans};
 `;
 
 export const SvgClose = styled.svg`
-  fill: currentColor;
+  stroke: ${(p) => p.theme.colors.primaryGray};
   width: 16px;
   height: 16px;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover,
+  :focus {
+    transform: scale(1.05);
+    stroke: ${(p) => p.theme.colors.primaryGreenLite};
+  }
 `;
 
 export const TitleCurrentTarget = styled.h3`
@@ -47,7 +49,7 @@ export const BtnCancel = styled.button`
   margin: 24px auto 0;
   width: 192px;
   height: 20px;
-  border: none;
+  border: inherit;
   background: transparent;
   display: flex;
   justify-content: center;
@@ -56,11 +58,6 @@ export const BtnCancel = styled.button`
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-
-  &:hover,
-  :focus {
-    color: ${(p) => p.theme.colors.primaryGreenLite};
-  }
 `;
 
 export const FormTarget = styled.form`
@@ -101,11 +98,10 @@ export const ImgTarget = styled.img`
 export const FormTargetLabel = styled.label`
   display: flex;
   align-items: center;
-
+  cursor:pointer;
   gap: 12px;
   color: ${(p) =>
     p.isSelected ? p.theme.colors.primaryViolet : p.theme.colors.primaryWhite};
-  cursor: pointer;
 `;
 
 export const FormTargetBtn = styled.button`
@@ -116,12 +112,13 @@ export const FormTargetBtn = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 12px;
-  border: none;
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   background: ${(p) => p.theme.colors.primaryGreenLite};
   color: ${(p) => p.theme.colors.primaryBlack2};
+  font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-
+  transition: ${(p) => p.theme.transition.customTrans};
   @media (${(p) => p.theme.mq.tabMin}) {
     width: 166px;
   }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
@@ -36,10 +36,10 @@ const schema = yup.object({
         .strict(true),
       carbonohidrates: yup
         .number()
-        .required('Carbonohidrates is required')
+        .required('Carbohydrates is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
-        .max(100, 'The maximum allowable value is 100')
+        .max(500, 'The maximum allowable value is 100')
         .test(
           'maxDigitsAfterDecimal',
           'Must have 1 digits after decimal',
@@ -50,7 +50,7 @@ const schema = yup.object({
         .required('Protein is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
-        .max(100, 'The maximum allowable value is 100')
+        .max(500, 'The maximum allowable value is 100')
         .test(
           'maxDigitsAfterDecimal',
           'Must have 1 digits after decimal',
@@ -61,7 +61,7 @@ const schema = yup.object({
         .required('Fat is required')
         .typeError('Must be a number')
         .min(0, 'Must be a positive number')
-        .max(100, 'The maximum allowable value is 100')
+        .max(500, 'The maximum allowable value is 100')
         .test(
           'maxDigitsAfterDecimal',
           'Must have 1 digits after decimal',
@@ -72,7 +72,7 @@ const schema = yup.object({
         .required('Calories is required')
         .typeError('Must be a number')
         .min(0, 'Must a be positive number')
-        .max(1000, 'The maximum allowable value is 1000')
+        .max(2000, 'The maximum allowable value is 1000')
         .integer('Must be an integer'),
     })
   ),
@@ -80,12 +80,13 @@ const schema = yup.object({
 
 const modalRoot = document.querySelector('#modal-root');
 
-const UpdateMealModal = ({ onClose, mealType, item }) => {
-  console.log(mealType);
+
+const UpdateMealModal = ({ onClose, item, mealType }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const initialValues = {
     productList: [
       {
-        mealType: item?.type ?? '',
         mealName: item?.dish ?? '',
         carbonohidrates: item?.carbohidrates ?? '',
         protein: item?.protein ?? '',
@@ -110,8 +111,9 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    await values.productList.forEach(
-      ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
+    setIsLoading(true);
+    await values.productList.map(
+      async ({ mealName, carbonohidrates, protein, fat, calories }) => {
         const data = {
           dish: mealName.toString(),
           carbohidrates: carbonohidrates.toFixed(1).toString(),
@@ -119,12 +121,12 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
           fat: fat.toFixed(1).toString(),
           calories: calories.toString(),
         };
-        dispatch(updateFood({ foodId: item._id, data }));
+        await dispatch(updateFood({ foodId: item._id, data }));
+        await dispatch(getStats(today));
+        resetForm();
+        onClose();
       }
     );
-    dispatch(getStats(today));
-    resetForm();
-    onClose();
   };
 
   useEffect(() => {
@@ -236,7 +238,9 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
               />
 
               <ContainerForBtns>
-                <BtnConfirm type="submit">Confirm</BtnConfirm>
+                <BtnConfirm type="submit" disabled={isLoading}>
+                  {isLoading ? 'Updating...' : 'Confirm'}
+                </BtnConfirm>
                 <BtnCancel type="button" onClick={onClose}>
                   Cancel
                 </BtnCancel>
@@ -252,7 +256,7 @@ const UpdateMealModal = ({ onClose, mealType, item }) => {
 
 UpdateMealModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  mealType: PropTypes.string.isRequired,
+  /*   mealType: PropTypes.string.isRequired, */
 };
 
 export default UpdateMealModal;

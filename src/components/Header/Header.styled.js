@@ -38,6 +38,10 @@ export const StyledNavLogoLink = styled(NavLink)`
   line-height: 22px;
   display: flex;
   align-items: center;
+  transition: ${(p) => p.theme.transition.customTrans};
+  &:hover {
+    color: ${(props) => props.theme.colors.primaryWhite};
+  }
 
   @media (${(p) => p.theme.mq.tabMin}) {
     font-size: 22px;

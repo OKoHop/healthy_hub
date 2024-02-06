@@ -1,19 +1,21 @@
 import { useDispatch } from 'react-redux';
-import { StyledSubtitle } from '../DailyGoal/DailyGoal.style';
-import Calories from './Calories/Calories';
-import Carbonohidrates from './Carbonohidrates/Carbonohidrates';
-import Fat from './Fat/Fat';
-import { CaloriesDiv, StyleDiv, StyledDiv } from './Food.style';
-import Protein from './Protein/Protein';
+import { StyledSubtitle } from '../DailyGoal/DailyGoal.styled';
+import Calories from './Calories';
+import { CaloriesDiv, StyleDiv, StyledDiv } from './Food.styled';
 import { useEffect } from 'react';
-import { getStatisticts } from '../../../redux/Today/Food/operations';
+import { getStatistics } from '../../../redux/Today/Food/operations';
+import { selectFoodIntake } from '../../../redux/statistics/statisticSelectors';
+import {  NutrientComponent } from '../../NutrientComponent';
+
+const CarbohydratesComponent = NutrientComponent('Carbohydrates', 'carbonohidrates', selectFoodIntake, 'totalCarbohidrates',['#FFC4F7', '#292928']);
+const ProteinComponent = NutrientComponent('Protein', 'protein', selectFoodIntake, 'totalProtein',['#B6B6B6', '#292928']);
+const FatComponent = NutrientComponent('Fat', 'fat', selectFoodIntake, 'totalFat',['#FFF3B7', '#292928']);
 
 const Food = () => {
-  const dispatch = useDispatch();
-
+/*   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getStatisticts());
-  });
+    dispatch(getStatistics());
+  }); */
 
   return (
     <div>
@@ -24,9 +26,9 @@ const Food = () => {
           <Calories />
         </CaloriesDiv>
         <StyleDiv>
-          <Carbonohidrates />
-          <Protein />
-          <Fat />
+          <CarbohydratesComponent/>
+          <ProteinComponent />
+          <FatComponent />
         </StyleDiv>
       </StyledDiv>
     </div>

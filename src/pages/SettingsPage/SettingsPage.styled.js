@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { ErrorMessage, Field, Form } from 'formik';
 
 export const SettingsPageSection = styled.main`
-  background-color: ${props => props.theme.colors.primaryBlack};
-  color: ${props => props.theme.colors.primaryWhite};
+  background-color: ${(props) => props.theme.colors.primaryBlack};
+  color: ${(props) => props.theme.colors.primaryWhite};
   padding-top: 16px;
   padding-bottom: 20px;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
     padding-top: 24px;
     padding-bottom: 20px;
   }
 
-  @media screen and (${props => props.theme.mq.deskMin}) {
+  @media screen and (${(props) => props.theme.mq.deskMin}) {
     padding-top: 20px;
   }
 `;
@@ -24,30 +24,32 @@ export const SettingsPageContainer = styled.div`
   padding: 0 10px;
   width: 320px;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
     width: 834px;
     padding: 0 27px;
     position: relative;
   }
 
-  @media screen and (${props => props.theme.mq.deskMin}) {
+  @media screen and (${(props) => props.theme.mq.deskMin}) {
     width: 1440px;
     padding: 0 34px;
   }
 `;
 
 export const TitlePage = styled.h1`
-  font-weight: ${props => props.theme.fontWeights.medium};
-  font-size: ${props => props.theme.fontSizes.l};
+  display: flex;
+  align-items: center;
+  font-weight: ${(props) => props.theme.fontWeights.medium};
+  font-size: ${(props) => props.theme.fontSizes.l};
   line-height: 30px;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
-    font-size: ${props => props.theme.fontSizes.xl};
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
+    font-size: ${(props) => props.theme.fontSizes.xl};
     line-height: 36px;
   }
 
-  @media screen and (${props => props.theme.mq.deskMin}) {
-    font-size: ${props => props.theme.fontSizes.xl};
+  @media screen and (${(props) => props.theme.mq.deskMin}) {
+    font-size: ${(props) => props.theme.fontSizes.xl};
     line-height: 36px;
   }
 `;
@@ -57,7 +59,7 @@ export const ButtonContainer = styled.div`
   margin-top: 40px;
   padding-bottom: 40pxa;
 
-  @media screen and (min-width: ${props => props.theme.mq.tabMin}) {
+  @media screen and (min-width: ${(props) => props.theme.mq.tabMin}) {
     display: flex;
     top: 0;
     right: 0;
@@ -66,47 +68,54 @@ export const ButtonContainer = styled.div`
     padding-bottom: 174px;
   }
 
-  @media screen and (${props => props.theme.mq.deskMin}) {
+  @media screen and (${(props) => props.theme.mq.deskMin}) {
     margin-right: 34px;
     padding-bottom: 72px;
   }
 `;
 
 export const CancelButton = styled.button`
-  background-color: ${props => props.theme.colors.primaryBlack};
-  color: ${props => props.theme.colors.primaryWhite};
-  font-size: ${props => props.theme.fontSizes.xs};
+  background-color: ${(props) => props.theme.colors.primaryBlack};
+  color: ${(props) => props.theme.colors.primaryWhite};
+  font-size: ${(props) => props.theme.fontSizes.xs};
   line-height: 20px;
-
   width: 100%;
+  margin-top: 10px;
   padding: 8px 12px;
   border: 1px solid transparent;
   border-radius: 12px;
   cursor: pointer;
-
+  transition: ${(p) => p.theme.transition.customTrans};
   &:hover {
-    border: 1px solid ${p => p.theme.colors.primaryGreenLite};
+    border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   }
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
     width: 212px;
+    margin-top: 0;
+    margin-left: 10px;
   }
 `;
 
 export const SaveButton = styled.button`
-  background-color: ${props => props.theme.colors.primaryGreenLite};
-  font-size: ${props => props.theme.fontSizes.xs};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  background-color: ${(props) => props.theme.colors.primaryGreenLite};
+  font-size: ${(props) => props.theme.fontSizes.xs};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
   line-height: 20px;
 
   width: 212px;
-  border: 1px solid ${p => p.theme.colors.primaryGreenLite};
+  border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
   border-radius: 12px;
   padding: 8px;
   cursor: pointer;
-
+  transition: ${(p) => p.theme.transition.customTrans};
   @media screen and (max-width: 833px) {
     width: 100%;
+  }
+  &:hover {
+    background-color: transparent;
+    border: 1px solid ${(p) => p.theme.colors.primaryGreenLite};
+    color: ${(p) => p.theme.colors.primaryWhite};
   }
 `;
 
@@ -117,11 +126,11 @@ export const ProfileSettingsContainer = styled.div`
   justify-content: center;
   margin-top: 16px;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
     margin-top: 20px;
   }
 
-  @media screen and (${props => props.theme.mq.deskMin}) {
+  @media screen and (${(props) => props.theme.mq.deskMin}) {
     flex-direction: row;
     align-items: start;
     justify-content: center;
@@ -134,11 +143,11 @@ export const BannerThumb = styled.div`
   width: 300px;
   margin-bottom: 24px;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
     width: 380px;
   }
 
-  @media screen and (${props => props.theme.mq.deskMin}) {
+  @media screen and (${(props) => props.theme.mq.deskMin}) {
     width: 536px;
     margin-bottom: 0;
   }
@@ -156,7 +165,7 @@ export const FormFormik = styled(Form)`
   row-gap: 40px;
   width: 100%;
 
-  @media screen and (${props => props.theme.mq.tabMin}) {
+  @media screen and (${(props) => props.theme.mq.tabMin}) {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 60px;
@@ -169,8 +178,8 @@ export const FormFormik = styled(Form)`
 `;
 
 export const Label = styled.label`
-  font-size: ${props => props.theme.fontSizes.xs};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${(props) => props.theme.fontSizes.xs};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
   line-height: 20px;
   display: flex;
   flex-direction: column;
@@ -185,17 +194,20 @@ export const Label = styled.label`
 `;
 
 export const Input = styled(Field)`
-  font-size: ${props => props.theme.fontSizes.xs};
+  font-size: ${(props) => props.theme.fontSizes.xs};
   line-height: 20px;
-  background-color: ${props => props.theme.colors.primaryBlack};
-  color: ${props => props.theme.colors.primaryWhite};
+  background-color: ${(props) => props.theme.colors.primaryBlack};
+  color: ${(props) => props.theme.colors.primaryWhite};
 
   padding: 8px 10px;
   border-radius: 12px;
-  border: 1px solid ${props => props.theme.colors.gray};
+  border: 1px solid ${(props) => props.theme.colors.primaryGray};
 
-  &:hover {
-    border-color: ${props => props.theme.colors.primaryGreenLite};
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    outline: none;
+    border-color: ${(props) => props.theme.colors.primaryGreenLite};
   }
 
   &[type='file'] {
@@ -210,19 +222,19 @@ export const Input = styled(Field)`
   }
 
   &::placeholder {
-    color: ${p => p.theme.colors.primaryGray};
+    color: ${(p) => p.theme.colors.primaryGray};
   }
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
   font-size: 10px;
   line-height: 12px;
-  color: ${p => p.theme.colors.error};
+  color: ${(p) => p.theme.colors.error};
 `;
 
 export const InputFileContainer = styled.div`
-  font-size: ${props => props.theme.fontSizes.xs};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${(props) => props.theme.fontSizes.xs};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
   line-height: 20px;
 
   display: flex;
@@ -235,8 +247,8 @@ export const FormGroup = styled.div`
   flex-direction: column;
 
   & > label {
-    font-size: ${props => props.theme.fontSizes.xs};
-    font-weight: ${props => props.theme.fontWeights.medium};
+    font-size: ${(props) => props.theme.fontSizes.xs};
+    font-weight: ${(props) => props.theme.fontWeights.medium};
     line-height: 20px;
 
     &:not(:last-child) {
@@ -246,8 +258,8 @@ export const FormGroup = styled.div`
 `;
 
 export const FormGroupLabel = styled.p`
-  font-size: ${props => props.theme.fontSizes.xs};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-size: ${(props) => props.theme.fontSizes.xs};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
   line-height: 20px;
   margin-bottom: 12px;
 `;

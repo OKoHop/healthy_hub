@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
 import { addFood, updateFood } from '../../../redux/foods/foodsOperations';
 import { getStats } from '../../../redux/statistics/statisticOperations';
+import capitalize from '../../../helpers/capitalizeFirstLetter';
 
 import { FieldArray, Formik } from 'formik';
 import * as yup from 'yup';
@@ -34,6 +35,7 @@ import img1 from '../../../images/diaryPageImages/trash.png';
 import img2 from '../../../images/diaryPageImages/trash@2x.png';
 import today from '../../../helpers/todayData';
 import { getDailyStatistics } from '../../../redux/Today/Food/operations';
+import LoaderWithBackdrop from '../../LoaderSpinner';
 
 const schema = yup.object({
   productList: yup.array().of(
@@ -90,6 +92,7 @@ const schema = yup.object({
 const modalRoot = document.querySelector('#modal-root');
 
 const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     productList: [
       {
@@ -118,31 +121,38 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    await values.productList.forEach(
-      ({ mealType, mealName, carbonohidrates, protein, fat, calories }) => {
-        const data = {
-          type: mealType.toString().toLowerCase(),
-          dish: mealName.toString(),
-          carbohidrates: carbonohidrates.toFixed(1).toString(),
-          protein: protein.toFixed(1).toString(),
-          fat: fat.toFixed(1).toString(),
-          calories: calories.toString(),
-        };
-        if (item) {
-          dispatch(updateFood({ foodId: item._id, data }));
-        } else {
-          dispatch(addFood(data));
-
-          setTimeout(() => {
-            dispatch(getDailyStatistics());
-          }, 1);
+    await Promise.all(
+      values.productList.map(
+        async ({
+          mealType,
+          mealName,
+          carbonohidrates,
+          protein,
+          fat,
+          calories,
+        }) => {
+          const data = {
+            type: mealType.toString().toLowerCase(),
+            dish: mealName.toString(),
+            carbohidrates: carbonohidrates.toFixed(1).toString(),
+            protein: protein.toFixed(1).toString(),
+            fat: fat.toFixed(1).toString(),
+            calories: calories.toString(),
+          };
+          setLoading(true);
+          if (item) {
+            await dispatch(updateFood({ foodId: item._id, data }));
+          } else {
+            await dispatch(addFood(data));
+          }
         }
-      }
+      )
     );
 
-    dispatch(getStats(today));
+    await dispatch(getStats(today));
     resetForm();
     onClose();
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -156,11 +166,12 @@ const RecordDiaryModal = ({ onClose, image, mealType, item }) => {
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
+      {loading && <LoaderWithBackdrop />}
       <Modal>
         <ModalTitle>Record your meal</ModalTitle>
         <WrapperFormTitle>
           <Image src={image} alt="Plate" />
-          <Title>{mealType}</Title>
+          <Title>{capitalize(mealType)}</Title>
         </WrapperFormTitle>
 
         <Formik

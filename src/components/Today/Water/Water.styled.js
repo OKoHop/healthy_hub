@@ -1,3 +1,4 @@
+import { Oval } from 'react-loader-spinner';
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
@@ -189,7 +190,7 @@ export const Svg = styled.svg`
 
   &:hover,
   :focus {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
 
