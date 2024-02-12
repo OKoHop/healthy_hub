@@ -30,12 +30,7 @@ export const Overflow = styled.div`
   }
 `;
 
-export const CaloriesSectionhWrapper = styled.div`
-  margin-top: 16px;
-  width: 676px;
-`;
-
-export const WaterSectionhWrapper = styled.div`
+export const WaterSectionWrapper = styled.div`
   margin-top: 16px;
   @media screen and (min-width: 1440px) {
     width: 676px;
@@ -47,12 +42,14 @@ export const WaterSectionhWrapper = styled.div`
     margin-top: 27px;
   }
 `;
+
 export const WaterHeadingWrapper = styled.div`
   display: flex;
   align-items: baseline;
   margin-bottom: 6px;
-  justify-content: space-between;
+  gap: 20px;
 `;
+
 export const WaterHeader = styled.h2`
   font-family: Poppins;
   font-size: 22px;
@@ -72,7 +69,7 @@ export const HeaderData = styled.div`
 
 export const WaterGraphWrapper = styled.div`
   border-radius: 12px;
-  background: var(--layout-color);
+  background: ${(p) => p.theme.colors.primaryBlack2};
   padding-left: 15px;
   padding-top: 25px;
   padding-right: 15px;

@@ -7,7 +7,7 @@ import {
   Title,
   Tooltip,
   Filler,
-  Legend
+  Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import {
@@ -16,33 +16,74 @@ import {
   CaloriesAverageTitle,
   CaloriesHeader,
   CaloriesHeadingWrapper,
-  CaloriesSectionhWrapper,
+  CaloriesSectionWrapper,
   СaloriesGraphWrapper,
   ScrollerWrapper,
-  HeaderData
+  HeaderData,
 } from './CaloriesGraph.styled';
-import { useState, useEffect } from 'react';
-import { getStats } from '../../../redux/statistics/statisticOperations';
 
-import { useDispatch } from 'react-redux';
+import { generateDaysArray } from '../../../helpers/generateDatesArray';
 
-export const CaloriesGraph = ({ date }) => {
-  const [totalCalories, setTotalCalories] = useState([]);
-  const dispatch = useDispatch();
+export const CaloriesGraph = ({ dateRange, stats }) => {
+  let daysArray = generateDaysArray(dateRange);
 
-  useEffect(() => {
-    if (date !== null) {
-      const fetchData = async (date) => {
-        try {
-          const totalCalories = await dispatch(getStats(date));
-          setTotalCalories(totalCalories.payload);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-      fetchData(date);
+  const labels = daysArray;
+
+  const caloriesIntakeArray = stats.map((item) =>
+    item.stats ? item.stats.totalCalories || 0 : 0
+  );
+
+  const initialCaloriesIntakeData = labels.map((day) => ({ day, value: 0 }));
+
+  const caloriesIntakeData = stats.reduce((result, item) => {
+    if (item.stats) {
+      result.push({
+        day: new Date(item.date).getDate().toString(),
+        value: item.stats.totalCalories || 0,
+      });
     }
-  }, [date, dispatch]);
+    return result;
+  }, []);
+
+  const combinedCaloriesIntakeData = initialCaloriesIntakeData.map(
+    (initialItem) => {
+      const matchingItem = caloriesIntakeData.find(
+        (item) => item.day === initialItem.day
+      );
+
+      if (matchingItem) {
+        return matchingItem;
+      } else {
+        return initialItem;
+      }
+    }
+  );
+
+  const maxNumber = Math.max(...caloriesIntakeArray);
+
+  const arrayOfGraphData = () => {
+    return combinedCaloriesIntakeData.map((item) => item.value);
+  };
+
+  const maxOnGraph = () => {
+    const defaultMinimum = 3000;
+    if (maxNumber < defaultMinimum) {
+      return defaultMinimum;
+    }
+    const roundedNumber = Math.ceil(maxNumber / 1000) * 1000;
+    return roundedNumber;
+  };
+
+  const averageCalories = () => {
+    const totalCalories = combinedCaloriesIntakeData.reduce(
+      (sum, item) => sum + item.value,
+      0
+    );
+
+    return totalCalories / combinedCaloriesIntakeData.length;
+  };
+
+  const avgCalories = averageCalories();
 
   ChartJS.register(
     CategoryScale,
@@ -54,53 +95,6 @@ export const CaloriesGraph = ({ date }) => {
     Filler,
     Legend
   );
-
-  const numberOfDaysInTheMonth = (date) => {
-    let monthNumberTested;
-
-    if (date !== new Date().getMonth()) {
-      monthNumberTested = new Date().getDate();
-    } else {
-      monthNumberTested = new Date(2023, date, 0).getDate();
-    }
-    const daysArray = Array.from({ length: monthNumberTested }, (_, index) =>
-      (index + 1).toString()
-    );
-    return daysArray;
-  };
-
-  const dataCap = (numberOfDay) => {
-    if (Object.keys(totalCalories).length) {
-      const foundItem = stats.totalCalories.find(
-        (el) => numberOfDay === el.day.toString()
-      );
-      if (foundItem) {
-        return foundItem.totalCalories;
-      } else {
-        return 0;
-      }
-    }
-    return 0;
-  };
-
-  const labels = numberOfDaysInTheMonth(date);
-
-  const arrayOfGoods = labels.map((el) => dataCap(el));
-
-  const maxNumber = Math.max(...arrayOfGoods);
-
-  const arrayOfGraphData = () => {
-    return arrayOfGoods;
-  };
-
-  const maxOnGraph = () => {
-    const defaultMinimum = 3000;
-    if (maxNumber < defaultMinimum) {
-      return defaultMinimum;
-    }
-    const roundedNumber = Math.ceil(maxNumber / 1000) * 1000;
-    return roundedNumber;
-  };
 
   const options = {
     maintainAspectRatio: false,
@@ -199,20 +193,19 @@ export const CaloriesGraph = ({ date }) => {
   };
 
   return (
-    <CaloriesSectionhWrapper>
+    <CaloriesSectionWrapper>
       <CaloriesHeadingWrapper>
         <CaloriesHeader>Calories</CaloriesHeader>
-        {totalCalories.avgCalories ? (
+        {avgCalories ? (
           <HeaderData>
             <CaloriesAverageTitle>Average value:</CaloriesAverageTitle>
             <CaloriesAverageNumber>
-              {totalCalories.avgCalories.toFixed(0)}cal
+              {avgCalories.toFixed(0)} cal
             </CaloriesAverageNumber>
           </HeaderData>
         ) : (
           <HeaderData>
             <CaloriesAverageTitle>Average value:</CaloriesAverageTitle>
-           
           </HeaderData>
         )}
       </CaloriesHeadingWrapper>
@@ -223,6 +216,6 @@ export const CaloriesGraph = ({ date }) => {
           </СaloriesGraphWrapper>
         </Overflow>
       </ScrollerWrapper>
-    </CaloriesSectionhWrapper>
+    </CaloriesSectionWrapper>
   );
 };
